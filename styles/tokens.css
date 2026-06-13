@@ -1,0 +1,12 @@
+/* design tokens — koncept */
+:root {
+  --color-bg:        #0D0D0D;
+  --color-bg-2:      #141414;
+  --color-bg-3:      #1C1C1C;
+  --color-ink:       #F0EDE8;
+  --color-ink-2:     #8A8A85;
+  --color-accent:    #D42020;
+  --color-accent-2:  rgba(212, 32, 32, 0.15);
+  --color-border:    rgba(240, 237, 232, 0.08);
+  --color-border-2:  rgba(240, 237, 232, 0.14);
+}
