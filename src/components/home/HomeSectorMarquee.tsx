@@ -10,7 +10,7 @@ export default function HomeSectorMarquee() {
         {ITEMS.map((sector, i) => (
           <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: 28, paddingRight: 56, fontSize: 13, fontWeight: 600, letterSpacing: "0.07em", textTransform: "uppercase", color: "var(--color-ink-2)" }}>
             <span style={{ display: "inline-block", width: 5, height: 5, borderRadius: "50%", background: "var(--color-accent)", flexShrink: 0 }} />
-            {sector}
+            {sector.name}
           </span>
         ))}
       </div>
