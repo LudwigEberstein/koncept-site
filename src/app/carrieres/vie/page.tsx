@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
+import { CollaboratorCard, type Collaborator } from "@/components/CollaboratorCard"
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 
@@ -80,30 +81,39 @@ const PERKS = [
   { icon: "📍", label: "Centre de Toulouse", desc: "Parc Technologique du Canal. Accessible tramway ligne T1, à 20 min du centre." },
 ]
 
-const PORTRAITS = [
+const COLLABORATORS: Collaborator[] = [
   {
     name: "Thomas",
-    title: "Lead Dev Java",
-    xp: "8 ans chez Koncept",
-    img: "https://picsum.photos/seed/thomas-lead-java-koncept/300/300",
-    quote: "Ce qui m'a gardé ici, c'est qu'on me fait confiance sur les sujets techniques. Je ne suis pas une ressource — je suis un expert reconnu par mes pairs.",
-    fun: "Champion interne Rocket League depuis 2022 🏆",
+    role: "Lead Développeur Java",
+    seniority: "8 ans chez Koncept",
+    img: "https://picsum.photos/seed/thomas-lead-java-koncept/400/300",
+    parcours: "Développeur Java confirmé en sortie d'école, Thomas a grandi sur des projets aéronautique et télécoms. Il a pris la lead tech d'une équipe de 6 personnes après 4 ans, sans jamais quitter le code.",
+    stack: ["Java 21", "Spring Boot", "Kafka", "PostgreSQL", "Docker", "GitLab CI"],
+    favProject: "La refonte du SI temps-réel d'un opérateur télécoms — 50 ms de latence, 2M d'événements/jour, et une migration sans downtime qu'on a préparée 6 mois.",
+    lovesKoncept: "Ce qui m'a gardé ici, c'est la confiance réelle sur les décisions techniques. Je ne suis pas une ressource à placer — je suis un expert reconnu par mes pairs. Et l'équipe, franchement, ça aide.",
+    advice: "Ne triche pas sur le niveau en entretien. On cherche quelqu'un qui sait ce qu'il ne sait pas autant que quelqu'un qui maîtrise sa stack. La curiosité se voit tout de suite.",
   },
   {
     name: "Sarah",
-    title: "Architecte Solution",
-    xp: "5 ans chez Koncept",
-    img: "https://picsum.photos/seed/sarah-architecte-koncept/300/300",
-    quote: "J'ai refusé des offres mieux payées pour rester ici. L'environnement, les projets et les collègues n'ont vraiment pas de prix.",
-    fun: "Organisatrice des sessions board games du vendredi 🎲",
+    role: "Architecte Solution",
+    seniority: "5 ans chez Koncept",
+    img: "https://picsum.photos/seed/sarah-architecte-koncept/400/300",
+    parcours: "Passée par une grande SSII puis une startup fintech, Sarah a rejoint Koncept pour retrouver une taille humaine sans sacrifier la qualité des projets. Elle est aujourd'hui architecte référente sur deux comptes bancaires majeurs.",
+    stack: ["Architecture microservices", "API Gateway", "AWS", "Kubernetes", "Terraform", "TypeScript"],
+    favProject: "La conception d'une plateforme d'onboarding client pour une banque régionale — du DDD en greenfield, avec une équipe qu'on a formée de zéro. Le genre de projet qu'on n'a pas souvent.",
+    lovesKoncept: "J'ai refusé des offres mieux payées pour rester ici. L'environnement, les projets complexes, et des collègues qui challengent vraiment mes décisions — ça n'a pas de prix sur une fiche de paie.",
+    advice: "Prépare un exemple concret d'une décision technique que tu regrettes. C'est ce genre de recul qu'on valorise. On n'embauche pas des gens qui ont toujours raison — on embauche des gens qui apprennent vite.",
   },
   {
     name: "Karim",
-    title: "DevOps Engineer",
-    xp: "3 ans chez Koncept",
-    img: "https://picsum.photos/seed/karim-devops-koncept/300/300",
-    quote: "J'ai appris plus en 18 mois ici qu'en 4 ans dans mon poste précédent. Et je peux travailler depuis chez moi 2 jours par semaine sans avoir à me justifier.",
-    fun: "Moto KTM 890 Adventure — toujours partant pour une balade 🏍",
+    role: "DevOps Engineer",
+    seniority: "3 ans chez Koncept",
+    img: "https://picsum.photos/seed/karim-devops-koncept/400/300",
+    parcours: "Adminsys reconverti DevOps, Karim a passé 4 ans dans l'infra bancaire avant de rejoindre Koncept. Il est maintenant référent Kubernetes sur plusieurs missions, tout en participant activement au kata club interne.",
+    stack: ["Kubernetes", "Terraform", "ArgoCD", "Prometheus", "Grafana", "Python", "Bash"],
+    favProject: "La migration d'une plateforme monolithique vers du k8s multi-tenant — 3 mois de préparation, 48h de bascule, zéro incident en prod. On a eu les mains qui tremblaient, mais ça a tenu.",
+    lovesKoncept: "J'ai appris plus en 18 mois ici qu'en 4 ans dans mon poste précédent. Et les 2 jours de télétravail sans justification à fournir, ça semble rien mais ça change tout sur la durée.",
+    advice: "Mets en avant ce que tu as cassé autant que ce que tu as construit. Un bon inginfra sait pourquoi les choses tombent. Si tu n'as jamais rien cassé, c'est soit que tu n'as rien fait d'ambitieux, soit que tu ne t'en souviens pas.",
   },
 ]
 
@@ -234,36 +244,22 @@ export default function Vie() {
         </div>
       </section>
 
-      {/* ── Portraits ── */}
-      <section style={{ padding: "80px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
+      {/* ── Portraits collaborateurs ── */}
+      <section style={{ padding: "96px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.div {...fadeUp()}>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4ade80", marginBottom: 12 }}>Portraits</p>
-            <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 48 }}>
+            <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 12 }}>
               Ils font Koncept au quotidien.
             </h2>
+            <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.75, maxWidth: "52ch", marginBottom: 48 }}>
+              Pas des témoignages marketing. Des vrais retours de devs, sur leur parcours, leur stack, et pourquoi ils sont encore là.
+            </p>
           </motion.div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} className="portraits-grid">
-            {PORTRAITS.map((p, i) => (
-              <motion.div key={p.name}
-                style={{ padding: "32px 28px", borderRadius: 16, border: "1px solid rgba(74,222,128,0.2)", background: "rgba(74,222,128,0.03)", display: "flex", flexDirection: "column" }}
-                {...fadeUp(i * 0.1)}
-              >
-                <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 20 }}>
-                  <img src={p.img} alt={p.name} style={{ width: 52, height: 52, borderRadius: "50%", objectFit: "cover", border: "2px solid rgba(74,222,128,0.3)" }} />
-                  <div>
-                    <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 16, fontWeight: 700 }}>{p.name}</p>
-                    <p style={{ color: "#4ade80", fontSize: 11, fontWeight: 600, marginTop: 2 }}>{p.title}</p>
-                    <p style={{ color: "var(--color-ink-2)", fontSize: 11, marginTop: 1 }}>{p.xp}</p>
-                  </div>
-                </div>
-                <blockquote style={{ borderLeft: "2px solid #4ade80", paddingLeft: 14, margin: "0 0 16px", flex: 1 }}>
-                  <p style={{ fontSize: 13, fontStyle: "italic", lineHeight: 1.7, color: "var(--color-ink)" }}>&ldquo;{p.quote}&rdquo;</p>
-                </blockquote>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "10px 14px", borderRadius: 8, background: "rgba(74,222,128,0.08)", border: "1px solid rgba(74,222,128,0.15)" }}>
-                  <span style={{ fontSize: 13 }}>🎮</span>
-                  <span style={{ fontSize: 11, color: "var(--color-ink-2)" }}>{p.fun}</span>
-                </div>
+            {COLLABORATORS.map((c, i) => (
+              <motion.div key={c.name} {...fadeUp(i * 0.1)}>
+                <CollaboratorCard data={c} variant="career" />
               </motion.div>
             ))}
           </div>
