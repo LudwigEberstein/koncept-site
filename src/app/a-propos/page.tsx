@@ -1,6 +1,7 @@
 'use client'
 
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, Linkedin } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import { IMAGES, SITE, VALUES, CAREER_EVENTS } from "@/lib/content"
@@ -163,10 +164,10 @@ export default function APropos() {
             </motion.div>
           </div>
           <motion.div
-            style={{ borderRadius: 20, overflow: "hidden", aspectRatio: "4/3" }}
+            style={{ borderRadius: 20, overflow: "hidden", aspectRatio: "4/3", position: "relative" }}
             initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           >
-            <img src={IMAGES.team} alt="L'équipe Koncept IS" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <Image src={IMAGES.team} alt="L'équipe Koncept IS" fill sizes="(max-width: 1023px) 100vw, 50vw" style={{ objectFit: "cover" }} />
           </motion.div>
         </div>
       </section>
@@ -310,8 +311,8 @@ export default function APropos() {
                 style={{ borderRadius: 16, overflow: "hidden", border: "1px solid var(--color-border)", background: "var(--color-bg-2)", display: "flex", flexDirection: "column" }}
                 {...fadeUp(i * 0.09)}
               >
-                <div style={{ aspectRatio: "3/4", overflow: "hidden" }}>
-                  <img src={m.img} alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(15%)" }} />
+                <div style={{ aspectRatio: "3/4", overflow: "hidden", position: "relative" }}>
+                  <Image src={m.img} alt={m.name} fill sizes="(max-width: 767px) 100vw, 33vw" style={{ objectFit: "cover", filter: "grayscale(15%)" }} />
                 </div>
                 <div style={{ padding: "24px 24px 28px", display: "flex", flexDirection: "column", gap: 0, flexGrow: 1 }}>
                   <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 18, fontWeight: 800, letterSpacing: "-0.02em" }}>{m.name}</p>
@@ -350,9 +351,10 @@ export default function APropos() {
                 className="portrait-row"
                 {...fadeUp(i * 0.1)}
               >
-                <img
+                <Image
                   src={p.img} alt={p.name}
-                  style={{ width: 72, height: 72, borderRadius: "50%", objectFit: "cover", border: "2px solid var(--color-border)", flexShrink: 0 }}
+                  width={72} height={72}
+                  style={{ borderRadius: "50%", objectFit: "cover", border: "2px solid var(--color-border)", flexShrink: 0 }}
                 />
                 <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 24, alignItems: "center" }} className="portrait-inner">
                   <div>

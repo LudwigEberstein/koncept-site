@@ -33,7 +33,7 @@ const PATHS: { id: string; title: string; emoji: string; color: string; desc: st
     id: "lead",
     title: "Lead & Architecture",
     emoji: "◈",
-    color: "#4ade80",
+    color: "var(--color-career)",
     desc: "Tu veux concevoir des systèmes entiers, couvrir plusieurs projets, être l'interlocuteur technique des DSI. La voie architecte.",
     steps: [
       { year: "0–2 ans", label: "Senior dev — maîtrise d'une ou plusieurs stacks" },
@@ -60,7 +60,7 @@ const PATHS: { id: string; title: string; emoji: string; color: string; desc: st
 const CERTIFS = [
   { name: "AWS Solutions Architect", level: "Associate → Professional", color: "#f59e0b" },
   { name: "Azure Fundamentals → Expert", level: "AZ-900 → AZ-305", color: "#3b82f6" },
-  { name: "Google Cloud Professional", level: "Associate → Professional", color: "#16a34a" },
+  { name: "Google Cloud Professional", level: "Associate → Professional", color: "var(--color-career-dark)" },
   { name: "Kubernetes (CKA/CKAD)", level: "Linux Foundation", color: "#06b6d4" },
   { name: "Oracle Java Certified", level: "OCA → OCP", color: "#f97316" },
   { name: "GitLab CI/CD", level: "Associate → Professional", color: "#8b5cf6" },
@@ -71,7 +71,7 @@ const CERTIFS = [
 const KATA_SESSIONS = [
   { label: "Algo & Data Structures", desc: "LeetCode, Advent of Code. Pas pour l'entretien — pour le plaisir et la rigueur." },
   { label: "Design Patterns", desc: "GoF, patterns d'entreprise, anti-patterns. Avec des exemples tirés des vrais projets Koncept." },
-  { label: "Architecture & DDD", label2: "Architecture", desc: "Event storming, bounded contexts, CQRS/ES. Le niveau au-dessus du code propre." },
+  { label: "Architecture & DDD", desc: "Event storming, bounded contexts, CQRS/ES. Le niveau au-dessus du code propre." },
   { label: "DevSecOps", desc: "Threat modeling, SAST/DAST, secrets management. La sécurité n'est pas une option." },
 ]
 
@@ -94,7 +94,7 @@ export default function Formation() {
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }} className="hero-grid">
           <div>
             <motion.p
-              style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#4ade80", marginBottom: 20 }}
+              style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
             >
               Carrières · Formation & Évolution
@@ -103,7 +103,7 @@ export default function Formation() {
               style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(36px, 5.5vw, 76px)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 24 }}
               initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
             >
-              On investit dans les humains.<br /><span style={{ color: "#4ade80" }}>Pas dans les CV.</span>
+              On investit dans les humains.<br /><span style={{ color: "var(--color-career)" }}>Pas dans les CV.</span>
             </motion.h1>
             <motion.p
               style={{ color: "var(--color-ink-2)", fontSize: 17, lineHeight: 1.75, maxWidth: "48ch" }}
@@ -122,8 +122,8 @@ export default function Formation() {
               { value: "30 min", label: "veille/semaine", sub: "Temps libre dédié" },
               { value: "Hebdo", label: "kata club", sub: "Sessions techniques internes" },
             ].map(s => (
-              <div key={s.label} style={{ padding: "28px 22px", borderRadius: 14, border: "1px solid rgba(74,222,128,0.2)", background: "rgba(74,222,128,0.04)", textAlign: "center" }}>
-                <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 800, color: "#4ade80", letterSpacing: "-0.03em" }}>{s.value}</p>
+              <div key={s.label} style={{ padding: "28px 22px", borderRadius: 14, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)", textAlign: "center" }}>
+                <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 800, color: "var(--color-career)", letterSpacing: "-0.03em" }}>{s.value}</p>
                 <p style={{ fontSize: 12, fontWeight: 700, color: "var(--color-ink)", marginTop: 5 }}>{s.label}</p>
                 <p style={{ color: "var(--color-ink-2)", fontSize: 11, marginTop: 3 }}>{s.sub}</p>
               </div>
@@ -136,7 +136,7 @@ export default function Formation() {
       <section style={{ padding: "96px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4ade80", marginBottom: 12 }}>Formation</p>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Formation</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
               Ce qu&apos;on prend en charge.
             </h2>
@@ -162,12 +162,12 @@ export default function Formation() {
       <section style={{ padding: "80px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4ade80", marginBottom: 12 }}>Certifications</p>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Certifications</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
               Koncept paie ces certifications.
             </h2>
             <p style={{ color: "var(--color-ink-2)", fontSize: 15, maxWidth: "52ch", lineHeight: 1.7, marginBottom: 48 }}>
-              Sans plafond par certification. Sans condition de restée après la certif. On part du principe qu&apos;un dev certifié qui reste est plus utile qu&apos;un dev non-certifié qui part.
+              Sans plafond par certification. Sans condition de rester après la certif. On part du principe qu&apos;un dev certifié qui reste est plus utile qu&apos;un dev non-certifié qui part.
             </p>
           </motion.div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }} className="certifs-grid">
@@ -189,7 +189,7 @@ export default function Formation() {
       <section style={{ padding: "80px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }} className="kata-grid">
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4ade80", marginBottom: 12 }}>Kata Club</p>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Kata Club</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
               Une session technique<br />chaque semaine.
             </h2>
@@ -203,10 +203,10 @@ export default function Formation() {
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             {KATA_SESSIONS.map((s, i) => (
               <motion.div key={s.label}
-                style={{ display: "flex", gap: 16, padding: "20px 24px", borderRadius: 12, border: "1px solid rgba(74,222,128,0.2)", background: "rgba(74,222,128,0.04)", alignItems: "flex-start" }}
+                style={{ display: "flex", gap: 16, padding: "20px 24px", borderRadius: 12, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)", alignItems: "flex-start" }}
                 {...fadeUp(i * 0.08)}
               >
-                <div style={{ width: 28, height: 28, borderRadius: 7, background: "rgba(74,222,128,0.15)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 12, fontWeight: 800, color: "#4ade80" }}>
+                <div style={{ width: 28, height: 28, borderRadius: 7, background: "rgba(var(--color-career),0.15)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 12, fontWeight: 800, color: "var(--color-career)" }}>
                   {String(i + 1).padStart(2, "0")}
                 </div>
                 <div>
@@ -223,7 +223,7 @@ export default function Formation() {
       <section style={{ padding: "96px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4ade80", marginBottom: 12 }}>Évolution de carrière</p>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Évolution de carrière</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
               Trois trajectoires.<br />Aucune voie imposée.
             </h2>
@@ -275,7 +275,7 @@ export default function Formation() {
           </div>
           <div style={{ display: "flex", gap: 12 }}>
             <Link href="/carrieres/offres"
-              style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#16a34a", color: "#fff", padding: "15px 28px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", transition: "filter 0.15s" }}
+              style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-career-dark)", color: "#fff", padding: "15px 28px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", transition: "filter 0.15s" }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.1)" }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}
             >

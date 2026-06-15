@@ -135,7 +135,7 @@ export default function Vie() {
       <section style={{ paddingTop: 140, paddingBottom: 80, background: "var(--color-bg)", borderBottom: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.p
-            style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#4ade80", marginBottom: 20 }}
+            style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
           >
             Carrières · Vie chez Koncept
@@ -144,7 +144,7 @@ export default function Vie() {
             style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(38px, 6vw, 88px)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 24 }}
             initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
           >
-            Le boulot c&apos;est sérieux.<br /><span style={{ color: "#4ade80" }}>Le reste aussi.</span>
+            Le boulot c&apos;est sérieux.<br /><span style={{ color: "var(--color-career)" }}>Le reste aussi.</span>
           </motion.h1>
           <motion.p
             style={{ color: "var(--color-ink-2)", fontSize: 17, lineHeight: 1.75, maxWidth: "56ch" }}
@@ -159,7 +159,7 @@ export default function Vie() {
       <section style={{ padding: "96px 0", background: "var(--color-bg)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4ade80", marginBottom: 12 }}>Le quotidien</p>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Le quotidien</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
               Une journée chez Koncept,<br />honnêtement.
             </h2>
@@ -173,7 +173,7 @@ export default function Vie() {
               >
                 <div style={{ flexShrink: 0, textAlign: "center" }}>
                   <span style={{ fontSize: 24, display: "block", marginBottom: 6 }}>{item.icon}</span>
-                  <span style={{ fontSize: 10, fontWeight: 700, color: "#4ade80", letterSpacing: "0.04em" }}>{item.time}</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, color: "var(--color-career)", letterSpacing: "0.04em" }}>{item.time}</span>
                 </div>
                 <div>
                   <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 15, fontWeight: 700, marginBottom: 7 }}>{item.label}</p>
@@ -189,7 +189,7 @@ export default function Vie() {
       <section style={{ padding: "96px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4ade80", marginBottom: 12 }}>Les events</p>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Les events</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
               Les rendez-vous qui font<br />l&apos;ADN Koncept.
             </h2>
@@ -197,19 +197,19 @@ export default function Vie() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} className="events-grid">
             {EVENTS.map((ev, i) => (
               <motion.div key={ev.title}
-                style={{ padding: "36px 32px", borderRadius: 16, border: "1px solid rgba(74,222,128,0.2)", background: "rgba(74,222,128,0.04)", display: "flex", flexDirection: "column" }}
+                style={{ padding: "36px 32px", borderRadius: 16, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)", display: "flex", flexDirection: "column" }}
                 {...fadeUp(i * 0.1)}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
                   <span style={{ fontSize: 28 }}>{ev.emoji}</span>
-                  <span style={{ background: "rgba(74,222,128,0.15)", color: "#4ade80", borderRadius: 6, padding: "3px 10px", fontSize: 11, fontWeight: 700, letterSpacing: "0.06em" }}>{ev.freq}</span>
+                  <span style={{ background: "rgba(var(--color-career),0.15)", color: "var(--color-career)", borderRadius: 6, padding: "3px 10px", fontSize: 11, fontWeight: 700, letterSpacing: "0.06em" }}>{ev.freq}</span>
                 </div>
                 <h3 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 22, fontWeight: 800, marginBottom: 12 }}>{ev.title}</h3>
                 <p style={{ color: "var(--color-ink-2)", fontSize: 14, lineHeight: 1.7, marginBottom: 24, flex: 1 }}>{ev.desc}</p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
                   {ev.details.map(d => (
                     <div key={d} style={{ display: "flex", gap: 10, alignItems: "center" }}>
-                      <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#4ade80", flexShrink: 0 }} />
+                      <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--color-career)", flexShrink: 0 }} />
                       <span style={{ fontSize: 12, color: "var(--color-ink-2)" }}>{d}</span>
                     </div>
                   ))}
@@ -224,7 +224,7 @@ export default function Vie() {
       <section style={{ padding: "96px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4ade80", marginBottom: 12 }}>Avantages</p>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Avantages</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
               Les petites choses qui<br />font la différence.
             </h2>
@@ -248,7 +248,7 @@ export default function Vie() {
       <section style={{ padding: "96px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4ade80", marginBottom: 12 }}>Portraits</p>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Portraits</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 12 }}>
               Ils font Koncept au quotidien.
             </h2>
@@ -279,15 +279,15 @@ export default function Vie() {
           </div>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <Link href="/carrieres/offres"
-              style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#16a34a", color: "#fff", padding: "15px 28px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", transition: "filter 0.15s" }}
+              style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-career-dark)", color: "#fff", padding: "15px 28px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", transition: "filter 0.15s" }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.1)" }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}
             >
               Voir les offres <ArrowRight size={15} />
             </Link>
             <Link href="/carrieres/candidature"
-              style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#4ade80", padding: "15px 28px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", border: "1px solid rgba(74,222,128,0.3)", transition: "background 0.15s" }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(74,222,128,0.08)" }}
+              style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--color-career)", padding: "15px 28px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", border: "1px solid var(--color-career-border)", transition: "background 0.15s" }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent" }}
             >
               Candidature spontanée

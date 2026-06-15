@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react"
+import Image from "next/image"
 import { motion, AnimatePresence } from "motion/react"
 import { ChevronDown } from "lucide-react"
 
@@ -9,16 +10,16 @@ import { ChevronDown } from "lucide-react"
 export type Collaborator = {
   name: string
   role: string
-  seniority: string          // "8 ans chez Koncept"
+  seniority: string
   img: string
-  parcours: string           // 1–2 phrases, trajectory narrative
-  stack: string[]            // tech tags
-  favProject: string         // one compelling sentence
-  lovesKoncept: string       // authentic, first-person
-  advice: string             // tip for future candidates
+  parcours: string
+  stack: string[]
+  favProject: string
+  lovesKoncept: string
+  advice: string
 }
 
-// ─── Sub-components ──────────────────────────────────────────────────────────
+// ─── Section accordion ───────────────────────────────────────────────────────
 
 type SectionProps = {
   label: string
@@ -29,11 +30,14 @@ type SectionProps = {
 
 function Section({ label, accent, children, defaultOpen = false }: SectionProps) {
   const [open, setOpen] = useState(defaultOpen)
+  const sectionId = `section-${label.replace(/\W+/g, '-').toLowerCase()}-${Math.random().toString(36).slice(2, 6)}`
 
   return (
     <div style={{ borderTop: "1px solid var(--color-border)" }}>
       <button
         onClick={() => setOpen(v => !v)}
+        aria-expanded={open}
+        aria-controls={sectionId}
         style={{
           width: "100%",
           display: "flex",
@@ -53,6 +57,7 @@ function Section({ label, accent, children, defaultOpen = false }: SectionProps)
           animate={{ rotate: open ? 180 : 0 }}
           transition={{ duration: 0.2 }}
           style={{ color: accent, flexShrink: 0, display: "flex" }}
+          aria-hidden="true"
         >
           <ChevronDown size={14} />
         </motion.span>
@@ -61,10 +66,11 @@ function Section({ label, accent, children, defaultOpen = false }: SectionProps)
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
+            id={sectionId}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
             style={{ overflow: "hidden" }}
           >
             <div style={{ paddingBottom: 14 }}>
@@ -81,14 +87,14 @@ function Section({ label, accent, children, defaultOpen = false }: SectionProps)
 
 type Props = {
   data: Collaborator
-  accentColor?: string        // defaults to green career theme
-  variant?: "career" | "client"  // career = green, client = red
+  accentColor?: string
+  variant?: "career" | "client"
 }
 
 export function CollaboratorCard({ data, accentColor, variant = "career" }: Props) {
-  const accent = accentColor ?? (variant === "career" ? "#4ade80" : "#D42020")
-  const accentBg = variant === "career" ? "rgba(74,222,128,0.08)" : "rgba(212,32,32,0.08)"
-  const accentBorder = variant === "career" ? "rgba(74,222,128,0.25)" : "rgba(212,32,32,0.25)"
+  const accent = accentColor ?? (variant === "career" ? "var(--color-career)" : "var(--color-accent)")
+  const accentBg = variant === "career" ? "var(--color-career-bg)" : "var(--color-accent-2)"
+  const accentBorder = variant === "career" ? "var(--color-career-border)" : "rgba(212,32,32,0.25)"
 
   return (
     <article
@@ -103,10 +109,12 @@ export function CollaboratorCard({ data, accentColor, variant = "career" }: Prop
     >
       {/* ── Photo ── */}
       <div style={{ position: "relative", aspectRatio: "4/3", overflow: "hidden", background: "var(--color-bg-3)" }}>
-        <img
+        <Image
           src={data.img}
-          alt={data.name}
-          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+          alt={`Portrait de ${data.name}, ${data.role}`}
+          fill
+          sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
+          style={{ objectFit: "cover" }}
         />
         {/* Seniority badge */}
         <div style={{
@@ -122,7 +130,7 @@ export function CollaboratorCard({ data, accentColor, variant = "career" }: Prop
           alignItems: "center",
           gap: 6,
         }}>
-          <span style={{ width: 6, height: 6, borderRadius: "50%", background: accent, flexShrink: 0 }} />
+          <span style={{ width: 6, height: 6, borderRadius: "50%", background: accent, flexShrink: 0 }} aria-hidden="true" />
           <span style={{ fontSize: 11, fontWeight: 700, color: "var(--color-ink)", whiteSpace: "nowrap" }}>
             {data.seniority}
           </span>

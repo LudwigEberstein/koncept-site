@@ -415,9 +415,10 @@ export default function Realisations() {
                   </div>
                 </div>
                 <button onClick={() => setSelected(null)}
+                  aria-label="Fermer l'étude de cas"
                   style={{ width: 36, height: 36, borderRadius: 9, background: "var(--color-bg-2)", border: "1px solid var(--color-border)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: "var(--color-ink-2)" }}
                 >
-                  <X size={16} />
+                  <X size={16} aria-hidden="true" />
                 </button>
               </div>
 

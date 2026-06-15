@@ -1,6 +1,7 @@
 'use client'
 
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 
@@ -119,7 +120,7 @@ export default function Carrieres() {
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }} className="hero-grid">
           <div>
             <motion.p
-              style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#4ade80", marginBottom: 20 }}
+              style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
             >
               Carrières · Rejoignez Koncept IS
@@ -128,7 +129,7 @@ export default function Carrieres() {
               style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(38px, 5.5vw, 80px)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 24 }}
               initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
             >
-              On cherche des devs.<br /><span style={{ color: "#4ade80" }}>Pas des profils.</span>
+              On cherche des devs.<br /><span style={{ color: "var(--color-career)" }}>Pas des profils.</span>
             </motion.h1>
             <motion.p
               style={{ color: "var(--color-ink-2)", fontSize: 17, lineHeight: 1.75, maxWidth: "48ch", marginBottom: 36 }}
@@ -141,14 +142,14 @@ export default function Carrieres() {
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.15 }}
             >
               <Link href="/carrieres/offres"
-                style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#16a34a", color: "#fff", padding: "14px 24px", borderRadius: 10, fontSize: 14, fontWeight: 700, textDecoration: "none", transition: "filter 0.15s" }}
+                style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-career-dark)", color: "#fff", padding: "14px 24px", borderRadius: 10, fontSize: 14, fontWeight: 700, textDecoration: "none", transition: "filter 0.15s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.1)" }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}
               >
                 Voir les offres <ArrowRight size={15} />
               </Link>
               <Link href="/carrieres/candidature"
-                style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(34,197,94,0.1)", color: "#4ade80", padding: "14px 24px", borderRadius: 10, fontSize: 14, fontWeight: 700, textDecoration: "none", border: "1px solid rgba(34,197,94,0.25)", transition: "background 0.15s" }}
+                style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(34,197,94,0.1)", color: "var(--color-career)", padding: "14px 24px", borderRadius: 10, fontSize: 14, fontWeight: 700, textDecoration: "none", border: "1px solid rgba(34,197,94,0.25)", transition: "background 0.15s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(34,197,94,0.18)" }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "rgba(34,197,94,0.1)" }}
               >
@@ -170,18 +171,18 @@ export default function Carrieres() {
             style={{ display: "flex", flexDirection: "column", gap: 12 }}
             initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.65, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4ade80", marginBottom: 4 }}>Ce qu&apos;on entend dans les couloirs</p>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 4 }}>Ce qu&apos;on entend dans les couloirs</p>
             {[
               { text: "\"La première semaine, j'avais déjà un accès prod et une PR mergée. C'est pas commun.\"", name: "Romain, 2 ans chez Koncept" },
               { text: "\"Mon manager m'a conseillé de prendre la certification AWS avant même que je lui demande.\"", name: "Léa, 3 ans chez Koncept" },
               { text: "\"J'ai quitté un poste en GAFA pour venir ici. La qualité des projets et l'ambiance valent plus qu'un badge.\"", name: "Alex, 4 ans chez Koncept" },
             ].map((q, i) => (
               <motion.div key={i}
-                style={{ padding: "20px 24px", borderRadius: 14, border: "1px solid rgba(74,222,128,0.2)", background: "rgba(74,222,128,0.04)" }}
+                style={{ padding: "20px 24px", borderRadius: 14, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)" }}
                 initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
               >
                 <p style={{ fontSize: 14, lineHeight: 1.65, fontStyle: "italic", color: "var(--color-ink)", marginBottom: 10 }}>{q.text}</p>
-                <p style={{ fontSize: 11, fontWeight: 600, color: "#4ade80" }}>{q.name}</p>
+                <p style={{ fontSize: 11, fontWeight: 600, color: "var(--color-career)" }}>{q.name}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -192,7 +193,7 @@ export default function Carrieres() {
       <section style={{ padding: "96px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4ade80", marginBottom: 12 }}>Pourquoi nous</p>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Pourquoi nous</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
               Concrètement, pourquoi Koncept<br />plutôt qu&apos;une autre ESN ?
             </h2>
@@ -204,8 +205,8 @@ export default function Carrieres() {
                 {...fadeUp(i * 0.07)}
                 whileHover={{ borderColor: "rgba(74,222,128,0.4)" }}
               >
-                <span style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", position: "absolute", top: 16, right: 20, fontSize: 48, fontWeight: 800, color: "#4ade80", opacity: 0.08 }}>{item.icon}</span>
-                <div style={{ width: 28, height: 3, background: "#4ade80", borderRadius: 2, marginBottom: 20 }} />
+                <span style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", position: "absolute", top: 16, right: 20, fontSize: 48, fontWeight: 800, color: "var(--color-career)", opacity: 0.08 }}>{item.icon}</span>
+                <div style={{ width: 28, height: 3, background: "var(--color-career)", borderRadius: 2, marginBottom: 20 }} />
                 <h3 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 17, fontWeight: 800, letterSpacing: "-0.02em", marginBottom: 10 }}>{item.title}</h3>
                 <p style={{ color: "var(--color-ink-2)", fontSize: 13, lineHeight: 1.7 }}>{item.desc}</p>
               </motion.div>
@@ -218,7 +219,7 @@ export default function Carrieres() {
       <section style={{ padding: "96px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4ade80", marginBottom: 12 }}>L&apos;ADN Koncept</p>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>L&apos;ADN Koncept</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
               On est des développeurs.<br />On vit comme des développeurs.
             </h2>
@@ -247,7 +248,7 @@ export default function Carrieres() {
       <section style={{ padding: "80px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4ade80", marginBottom: 12 }}>Portraits</p>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Portraits</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 48 }}>
               Ils ont choisi Koncept.<br />Ils ont choisi de rester.
             </h2>
@@ -255,17 +256,17 @@ export default function Carrieres() {
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             {PORTRAITS.map((p, i) => (
               <motion.div key={p.name}
-                style={{ display: "grid", gridTemplateColumns: "64px 1fr auto", gap: 24, padding: "28px 32px", borderRadius: 14, border: "1px solid rgba(74,222,128,0.15)", background: "rgba(74,222,128,0.03)", alignItems: "center" }}
+                style={{ display: "grid", gridTemplateColumns: "64px 1fr auto", gap: 24, padding: "28px 32px", borderRadius: 14, border: "1px solid rgba(var(--color-career),0.15)", background: "var(--color-career-bg)", alignItems: "center" }}
                 className="portrait-row"
                 {...fadeUp(i * 0.1)}
               >
-                <img src={p.img} alt={p.name} style={{ width: 56, height: 56, borderRadius: "50%", objectFit: "cover", border: "2px solid rgba(74,222,128,0.3)" }} />
+                <Image src={p.img} alt={p.name} width={56} height={56} style={{ borderRadius: "50%", objectFit: "cover", border: "2px solid var(--color-career-border)" }} />
                 <div>
                   <p style={{ fontSize: 15, fontStyle: "italic", color: "var(--color-ink)", lineHeight: 1.6 }}>{p.quote}</p>
                 </div>
                 <div style={{ textAlign: "right", flexShrink: 0 }}>
                   <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 14, fontWeight: 700 }}>{p.name}</p>
-                  <p style={{ color: "#4ade80", fontSize: 11, fontWeight: 600 }}>{p.title}</p>
+                  <p style={{ color: "var(--color-career)", fontSize: 11, fontWeight: 600 }}>{p.title}</p>
                 </div>
               </motion.div>
             ))}
@@ -285,14 +286,14 @@ export default function Carrieres() {
             {SUB_PAGES.map((page, i) => (
               <motion.div key={page.href} {...fadeUp(i * 0.08)}>
                 <Link href={page.href}
-                  style={{ display: "flex", flexDirection: "column", gap: 12, padding: "28px 24px", borderRadius: 14, border: "1px solid rgba(74,222,128,0.2)", background: "rgba(74,222,128,0.04)", textDecoration: "none", height: "100%", transition: "border-color 0.18s, background 0.18s" }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(74,222,128,0.45)"; (e.currentTarget as HTMLElement).style.background = "rgba(74,222,128,0.09)" }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(74,222,128,0.2)"; (e.currentTarget as HTMLElement).style.background = "rgba(74,222,128,0.04)" }}
+                  style={{ display: "flex", flexDirection: "column", gap: 12, padding: "28px 24px", borderRadius: 14, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)", textDecoration: "none", height: "100%", transition: "border-color 0.18s, background 0.18s" }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(74,222,128,0.45)"; (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-career-border)"; (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
                 >
                   <span style={{ fontSize: 24 }}>{page.emoji}</span>
                   <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 16, fontWeight: 700, color: "var(--color-ink)" }}>{page.label}</p>
                   <p style={{ fontSize: 13, color: "var(--color-ink-2)", lineHeight: 1.55, flex: 1 }}>{page.desc}</p>
-                  <span style={{ color: "#4ade80", fontSize: 13, fontWeight: 700, display: "flex", alignItems: "center", gap: 4 }}>Explorer <ArrowRight size={13} /></span>
+                  <span style={{ color: "var(--color-career)", fontSize: 13, fontWeight: 700, display: "flex", alignItems: "center", gap: 4 }}>Explorer <ArrowRight size={13} /></span>
                 </Link>
               </motion.div>
             ))}

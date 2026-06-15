@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react"
+import Image from "next/image"
 import { ArrowRight, MapPin, Mail, Phone, Linkedin } from "lucide-react"
 import { motion, AnimatePresence } from "motion/react"
 import { SITE } from "@/lib/content"
@@ -164,7 +165,7 @@ export default function Contact() {
                 </p>
                 {contact && (
                   <div style={{ marginTop: 28, display: "inline-flex", alignItems: "center", gap: 14, padding: "14px 20px", borderRadius: 12, border: "1px solid var(--color-border)", background: "var(--color-bg-3)" }}>
-                    <img src={contact.img} alt={contact.name} style={{ width: 40, height: 40, borderRadius: "50%", objectFit: "cover" }} />
+                    <Image src={contact.img} alt={contact.name} width={40} height={40} style={{ borderRadius: "50%", objectFit: "cover" }} />
                     <div style={{ textAlign: "left" }}>
                       <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 14, fontWeight: 700 }}>{contact.name}</p>
                       <p style={{ color: "var(--color-ink-2)", fontSize: 12 }}>{contact.role}</p>
@@ -306,7 +307,7 @@ export default function Contact() {
                   style={{ padding: "28px 24px", borderRadius: 16, border: "1px solid rgba(212,32,32,0.2)", background: "rgba(212,32,32,0.04)" }}
                 >
                   <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 14 }}>
-                    <img src={contact.img} alt={contact.name} style={{ width: 52, height: 52, borderRadius: "50%", objectFit: "cover", border: "2px solid var(--color-border)" }} />
+                    <Image src={contact.img} alt={contact.name} width={52} height={52} style={{ borderRadius: "50%", objectFit: "cover", border: "2px solid var(--color-border)" }} />
                     <div>
                       <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 16, fontWeight: 700 }}>{contact.name}</p>
                       <p style={{ color: "var(--color-accent)", fontSize: 11, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", marginTop: 2 }}>{contact.role}</p>

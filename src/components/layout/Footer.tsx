@@ -1,8 +1,10 @@
 'use client'
 
+import Image from "next/image"
 import Link from "next/link"
 import { Linkedin } from "lucide-react"
 import { SITE, NAV_CLIENT, NAV_CAREER, IMAGES } from "@/lib/content"
+import { YearClient } from "./YearClient"
 
 export default function Footer() {
   return (
@@ -13,7 +15,7 @@ export default function Footer() {
         <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr 1fr", gap: 48, marginBottom: 48 }} className="footer-grid">
           {/* Brand */}
           <div>
-            <img src={IMAGES.logo} alt="Koncept" style={{ height: 28, width: "auto", objectFit: "contain", marginBottom: 16 }} />
+            <Image src={IMAGES.logo} alt="Koncept IS" width={120} height={28} style={{ height: 28, width: "auto", objectFit: "contain", marginBottom: 16 }} />
             <p style={{ color: "var(--color-ink-2)", fontSize: 13, lineHeight: 1.7, marginBottom: 16 }}>
               ESN toulousaine spécialisée en développement Java, .NET et DevOps. Partenaire de votre transformation digitale depuis 2014.
             </p>
@@ -51,7 +53,7 @@ export default function Footer() {
 
           {/* Carrières */}
           <div>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4ade80", marginBottom: 16 }}>Carrières</p>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 16 }}>Carrières</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
               {NAV_CAREER.map(({ label, href }) => (
                 <Link key={href} href={href} style={{ color: "var(--color-ink-2)", textDecoration: "none", fontSize: 13, fontWeight: 500, padding: "5px 0", transition: "color 0.15s" }}
@@ -74,11 +76,11 @@ export default function Footer() {
             >
               Parlons de votre projet
             </Link>
-            <Link href="/carrieres/offres" style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "12px 18px", borderRadius: 9, background: "rgba(34,197,94,0.1)", color: "#4ade80", fontSize: 13, fontWeight: 700, textDecoration: "none", textAlign: "center", border: "1px solid rgba(34,197,94,0.25)", transition: "background 0.15s" }}
-              onMouseEnter={e => (e.currentTarget.style.background = "rgba(34,197,94,0.18)")}
-              onMouseLeave={e => (e.currentTarget.style.background = "rgba(34,197,94,0.1)")}
+            <Link href="/carrieres/offres" style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "12px 18px", borderRadius: 9, background: "var(--color-career-bg)", color: "var(--color-career)", fontSize: 13, fontWeight: 700, textDecoration: "none", textAlign: "center", border: "1px solid var(--color-career-border)", transition: "background 0.15s" }}
+              onMouseEnter={e => (e.currentTarget.style.background = "rgba(74,222,128,0.14)")}
+              onMouseLeave={e => (e.currentTarget.style.background = "var(--color-career-bg)")}
             >
-              Voir les offres d'emploi
+              Voir les offres d&apos;emploi
             </Link>
           </div>
         </div>
@@ -86,15 +88,16 @@ export default function Footer() {
         {/* Bottom row */}
         <div style={{ borderTop: "1px solid var(--color-border)", paddingTop: 24, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
           <p style={{ color: "var(--color-ink-2)", fontSize: 12 }}>
-            &copy; {new Date().getFullYear()} Koncept IS — ESN Toulousaine. Site par{" "}
+            &copy; <YearClient /> Koncept IS — ESN Toulousaine. Site par{" "}
             <a href="https://devantia.vercel.app" style={{ color: "var(--color-accent)", textDecoration: "none" }}>Devantia</a>.
           </p>
           <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer"
+            aria-label="Koncept IS sur LinkedIn"
             style={{ color: "var(--color-ink-2)", display: "flex", alignItems: "center", gap: 6, fontSize: 12, textDecoration: "none", transition: "color 0.2s" }}
             onMouseEnter={e => (e.currentTarget.style.color = "var(--color-ink)")}
             onMouseLeave={e => (e.currentTarget.style.color = "var(--color-ink-2)")}
           >
-            <Linkedin size={14} /> LinkedIn
+            <Linkedin size={14} aria-hidden="true" /> LinkedIn
           </a>
         </div>
       </div>
