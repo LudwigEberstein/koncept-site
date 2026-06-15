@@ -175,6 +175,7 @@ export const NAV_CLIENT = [
   { label: "Expertises", href: "/expertises" },
   { label: "Secteurs", href: "/secteurs" },
   { label: "Méthodologie", href: "/methodologie" },
+  { label: "Réalisations", href: "/realisations" },
 ] as const
 
 export const NAV_CAREER = [
