@@ -109,7 +109,7 @@ export default function Nav() {
               aria-haspopup="true"
               style={{
                 display: "flex", alignItems: "center", gap: 5, padding: "8px 12px",
-                borderRadius: 7, background: active === "carrieres" ? "rgba(34,197,94,0.1)" : "transparent",
+                borderRadius: 7, background: active === "carrieres" ? "var(--color-career-bg)" : "transparent",
                 border: "none", cursor: "pointer", color: active === "carrieres" ? "var(--color-career)" : "var(--color-ink-2)",
                 fontSize: 13, fontWeight: 600, transition: "all 0.15s",
               }}>

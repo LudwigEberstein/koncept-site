@@ -61,10 +61,10 @@ export default function HomeBifurcation() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-            style={{ borderRadius: 20, border: "1px solid rgba(34,197,94,0.25)", background: "linear-gradient(135deg, rgba(34,197,94,0.06) 0%, rgba(13,13,13,0) 60%)", padding: "48px 40px", display: "flex", flexDirection: "column" }}
+            style={{ borderRadius: 20, border: "1px solid var(--color-career-border)", background: "linear-gradient(135deg, var(--color-career-bg) 0%, rgba(13,13,13,0) 60%)", padding: "48px 40px", display: "flex", flexDirection: "column" }}
           >
-            <div style={{ width: 44, height: 44, borderRadius: 12, background: "rgba(34,197,94,0.15)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 28, fontSize: 20 }}>🚀</div>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4ade80", marginBottom: 12 }}>Vous êtes développeur</p>
+            <div style={{ width: 44, height: 44, borderRadius: 12, background: "var(--color-career-bg)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 28, fontSize: 20 }}>🚀</div>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Vous êtes développeur</p>
             <h3 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(22px, 2.5vw, 32px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16, lineHeight: 1.15 }}>
               Envie de devenir Koncepteur ?
             </h3>
@@ -72,15 +72,15 @@ export default function HomeBifurcation() {
               Des missions ambitieuses, un suivi de carrière sérieux, une équipe soudée. Si vous êtes passionné, on a quelque chose à construire ensemble.
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              <Link href="/carrieres/offres" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 20px", borderRadius: 10, background: "#16a34a", color: "#fff", textDecoration: "none", fontSize: 14, fontWeight: 700, transition: "filter 0.15s" }}
+              <Link href="/carrieres/offres" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 20px", borderRadius: 10, background: "var(--color-career-dark)", color: "#fff", textDecoration: "none", fontSize: 14, fontWeight: 700, transition: "filter 0.15s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.12)" }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}
               >
                 Voir les offres d'emploi <ArrowRight size={15} />
               </Link>
-              <Link href="/carrieres" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 20px", borderRadius: 10, background: "rgba(34,197,94,0.1)", color: "#4ade80", textDecoration: "none", fontSize: 13, fontWeight: 600, transition: "background 0.15s" }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(34,197,94,0.18)" }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "rgba(34,197,94,0.1)" }}
+              <Link href="/carrieres" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 20px", borderRadius: 10, background: "var(--color-career-bg)", color: "var(--color-career)", textDecoration: "none", fontSize: 13, fontWeight: 600, transition: "background 0.15s" }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg-hover)" }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
               >
                 Découvrir la vie chez Koncept <ArrowRight size={13} />
               </Link>

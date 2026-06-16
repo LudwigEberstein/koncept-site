@@ -4,6 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
+import { makeFadeUp } from "@/lib/motion"
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 
@@ -106,12 +107,7 @@ const SUB_PAGES = [
 export default function Carrieres() {
   const reduce = useReducedMotion()
 
-  const fadeUp = (delay = 0) => reduce ? false as const : ({
-    initial: { opacity: 0, y: 24 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.08 as const },
-    transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] as const },
-  })
+  const fadeUp = (delay = 0) => makeFadeUp(reduce, delay)
 
   return (
     <>
@@ -149,9 +145,9 @@ export default function Carrieres() {
                 Voir les offres <ArrowRight size={15} />
               </Link>
               <Link href="/carrieres/candidature"
-                style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(34,197,94,0.1)", color: "var(--color-career)", padding: "14px 24px", borderRadius: 10, fontSize: 14, fontWeight: 700, textDecoration: "none", border: "1px solid rgba(34,197,94,0.25)", transition: "background 0.15s" }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(34,197,94,0.18)" }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "rgba(34,197,94,0.1)" }}
+                style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-career-bg)", color: "var(--color-career)", padding: "14px 24px", borderRadius: 10, fontSize: 14, fontWeight: 700, textDecoration: "none", border: "1px solid var(--color-career-border)", transition: "background 0.15s" }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg-hover)" }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
               >
                 Candidature spontanée
               </Link>
@@ -203,7 +199,7 @@ export default function Carrieres() {
               <motion.div key={item.title}
                 style={{ padding: "32px 28px", borderRadius: 16, border: "1px solid var(--color-border)", background: "var(--color-bg-3)", position: "relative", overflow: "hidden" }}
                 {...fadeUp(i * 0.07)}
-                whileHover={{ borderColor: "rgba(74,222,128,0.4)" }}
+                whileHover={{ borderColor: "var(--color-career-border-hover)" }}
               >
                 <span style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", position: "absolute", top: 16, right: 20, fontSize: 48, fontWeight: 800, color: "var(--color-career)", opacity: 0.08 }}>{item.icon}</span>
                 <div style={{ width: 28, height: 3, background: "var(--color-career)", borderRadius: 2, marginBottom: 20 }} />
@@ -287,7 +283,7 @@ export default function Carrieres() {
               <motion.div key={page.href} {...fadeUp(i * 0.08)}>
                 <Link href={page.href}
                   style={{ display: "flex", flexDirection: "column", gap: 12, padding: "28px 24px", borderRadius: 14, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)", textDecoration: "none", height: "100%", transition: "border-color 0.18s, background 0.18s" }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(74,222,128,0.45)"; (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-career-border-hover)"; (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-career-border)"; (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
                 >
                   <span style={{ fontSize: 24 }}>{page.emoji}</span>

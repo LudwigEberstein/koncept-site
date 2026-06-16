@@ -5,6 +5,7 @@ import Image from "next/image"
 import { ArrowRight, Linkedin } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import { IMAGES, SITE, VALUES, CAREER_EVENTS } from "@/lib/content"
+import { makeFadeUp } from "@/lib/motion"
 
 // ─── Local enriched data ────────────────────────────────────────────────────
 
@@ -113,12 +114,7 @@ const PORTRAITS = [
 export default function APropos() {
   const reduce = useReducedMotion()
 
-  const fadeUp = (delay = 0) => reduce ? false as const : ({
-    initial: { opacity: 0, y: 24 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.1 as const },
-    transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] as const },
-  })
+  const fadeUp = (delay = 0) => makeFadeUp(reduce, delay)
 
   return (
     <>
@@ -155,9 +151,9 @@ export default function APropos() {
                 Parlons de votre projet <ArrowRight size={15} />
               </Link>
               <Link href="/carrieres"
-                style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(34,197,94,0.1)", color: "#4ade80", padding: "13px 24px", borderRadius: 10, fontSize: 14, fontWeight: 700, textDecoration: "none", border: "1px solid rgba(34,197,94,0.25)", transition: "background 0.15s" }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(34,197,94,0.2)" }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "rgba(34,197,94,0.1)" }}
+                style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-career-bg)", color: "var(--color-career)", padding: "13px 24px", borderRadius: 10, fontSize: 14, fontWeight: 700, textDecoration: "none", border: "1px solid var(--color-career-border)", transition: "background 0.15s" }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg-hover)" }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
               >
                 Rejoindre l&apos;équipe <ArrowRight size={15} />
               </Link>
@@ -386,7 +382,7 @@ export default function APropos() {
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 80, alignItems: "start" }} className="life-grid">
             <motion.div {...fadeUp()} style={{ position: "sticky", top: 100 }}>
-              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4ade80", marginBottom: 12 }}>Vie de l&apos;entreprise</p>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Vie de l&apos;entreprise</p>
               <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: 20 }}>
                 On travaille bien<br />parce qu&apos;on vit bien.
               </h2>
@@ -394,8 +390,8 @@ export default function APropos() {
                 La qualité de nos projets passe par la qualité de vie de nos équipes. Ce n&apos;est pas un discours RH — c&apos;est notre modèle.
               </p>
               <Link href="/carrieres"
-                style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#4ade80", fontSize: 14, fontWeight: 700, textDecoration: "none", border: "1px solid rgba(74,222,128,0.3)", padding: "12px 20px", borderRadius: 9, transition: "background 0.15s" }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(74,222,128,0.08)" }}
+                style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--color-career)", fontSize: 14, fontWeight: 700, textDecoration: "none", border: "1px solid var(--color-career-border)", padding: "12px 20px", borderRadius: 9, transition: "background 0.15s" }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent" }}
               >
                 Découvrir la vie chez Koncept <ArrowRight size={14} />
@@ -416,7 +412,7 @@ export default function APropos() {
                     {...fadeUp(i * 0.07)}
                   >
                     <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
-                      <span style={{ color: "#4ade80", fontSize: 10, fontWeight: 800 }}>{t.emoji}</span>
+                      <span style={{ color: "var(--color-career)", fontSize: 10, fontWeight: 800 }}>{t.emoji}</span>
                       <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 14, fontWeight: 700 }}>{t.label}</p>
                     </div>
                     <p style={{ color: "var(--color-ink-2)", fontSize: 12, lineHeight: 1.65 }}>{t.desc}</p>
@@ -427,16 +423,16 @@ export default function APropos() {
               {/* Events */}
               {CAREER_EVENTS.map((ev, i) => (
                 <motion.div key={ev.title}
-                  style={{ display: "flex", gap: 20, padding: "24px 28px", borderRadius: 14, border: "1px solid rgba(74,222,128,0.15)", background: "rgba(74,222,128,0.04)", alignItems: "flex-start" }}
+                  style={{ display: "flex", gap: 20, padding: "24px 28px", borderRadius: 14, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)", alignItems: "flex-start" }}
                   {...fadeUp(0.1 + i * 0.08)}
                 >
-                  <div style={{ width: 44, height: 44, borderRadius: 10, background: "rgba(74,222,128,0.1)", border: "1px solid rgba(74,222,128,0.2)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: "#4ade80", fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 11, fontWeight: 800, textAlign: "center", lineHeight: 1.2 }}>
+                  <div style={{ width: 44, height: 44, borderRadius: 10, background: "var(--color-career-bg)", border: "1px solid var(--color-career-border)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: "var(--color-career)", fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 11, fontWeight: 800, textAlign: "center", lineHeight: 1.2 }}>
                     {ev.freq.split(" ")[0].slice(0, 3).toUpperCase()}
                   </div>
                   <div>
                     <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 5 }}>
                       <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 15, fontWeight: 700 }}>{ev.title}</p>
-                      <span style={{ fontSize: 10, fontWeight: 700, color: "#4ade80", background: "rgba(74,222,128,0.12)", padding: "2px 8px", borderRadius: 4 }}>{ev.freq}</span>
+                      <span style={{ fontSize: 10, fontWeight: 700, color: "var(--color-career)", background: "var(--color-career-bg)", padding: "2px 8px", borderRadius: 4 }}>{ev.freq}</span>
                     </div>
                     <p style={{ color: "var(--color-ink-2)", fontSize: 13, lineHeight: 1.65 }}>{ev.desc}</p>
                   </div>
@@ -467,8 +463,8 @@ export default function APropos() {
               Parlons de votre projet <ArrowRight size={15} />
             </Link>
             <Link href="/carrieres"
-              style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#4ade80", padding: "15px 28px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", border: "1px solid rgba(74,222,128,0.3)", transition: "background 0.15s" }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(74,222,128,0.08)" }}
+              style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--color-career)", padding: "15px 28px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", border: "1px solid var(--color-career-border)", transition: "background 0.15s" }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent" }}
             >
               Rejoindre l&apos;équipe <ArrowRight size={15} />

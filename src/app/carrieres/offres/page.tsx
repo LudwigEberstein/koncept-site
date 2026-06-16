@@ -5,6 +5,7 @@ import { ArrowRight, MapPin, Briefcase, ChevronDown, ChevronUp } from "lucide-re
 import { useState } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "motion/react"
 import { JOBS } from "@/lib/content"
+import { makeFadeUp } from "@/lib/motion"
 
 // ─── Enriched jobs ───────────────────────────────────────────────────────────
 
@@ -45,12 +46,7 @@ export default function Offres() {
   const reduce = useReducedMotion()
   const [expanded, setExpanded] = useState<string | null>(ENRICHED_JOBS[0]?.id ?? null)
 
-  const fadeUp = (delay = 0) => reduce ? false as const : ({
-    initial: { opacity: 0, y: 24 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.08 as const },
-    transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] as const },
-  })
+  const fadeUp = (delay = 0) => makeFadeUp(reduce, delay)
 
   return (
     <>
@@ -93,7 +89,7 @@ export default function Offres() {
               const isOpen = expanded === job.id
               return (
                 <motion.div key={job.id}
-                  style={{ borderRadius: 16, border: `1px solid ${isOpen ? "rgba(74,222,128,0.4)" : "var(--color-career-border)"}`, background: isOpen ? "var(--color-career-bg)" : "var(--color-bg-2)", overflow: "hidden", transition: "border-color 0.2s" }}
+                  style={{ borderRadius: 16, border: `1px solid ${isOpen ? "var(--color-career-border-hover)" : "var(--color-career-border)"}`, background: isOpen ? "var(--color-career-bg)" : "var(--color-bg-2)", overflow: "hidden", transition: "border-color 0.2s" }}
                   {...fadeUp(i * 0.08)}
                 >
                   {/* Header — always visible */}

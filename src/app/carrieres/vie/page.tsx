@@ -4,6 +4,7 @@ import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import { CollaboratorCard, type Collaborator } from "@/components/CollaboratorCard"
+import { makeFadeUp } from "@/lib/motion"
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 
@@ -122,12 +123,7 @@ const COLLABORATORS: Collaborator[] = [
 export default function Vie() {
   const reduce = useReducedMotion()
 
-  const fadeUp = (delay = 0) => reduce ? false as const : ({
-    initial: { opacity: 0, y: 24 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.08 as const },
-    transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] as const },
-  })
+  const fadeUp = (delay = 0) => makeFadeUp(reduce, delay)
 
   return (
     <>

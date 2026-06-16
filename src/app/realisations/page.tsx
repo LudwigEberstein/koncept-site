@@ -166,13 +166,6 @@ export default function Realisations() {
 
   const filtered = activeFilter === "Tous" ? CASES : CASES.filter(c => c.sector === activeFilter)
 
-  const fadeUp = (delay = 0) => reduce ? false as const : ({
-    initial: { opacity: 0, y: 24 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.08 as const },
-    transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] as const },
-  })
-
   return (
     <>
       {/* ── Hero ── */}

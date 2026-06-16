@@ -48,9 +48,9 @@ export default function Candidature() {
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 380px", gap: 64, alignItems: "start" }} className="contact-grid">
           <div>
             {submitted ? (
-              <motion.div style={{ background: "rgba(34,197,94,0.06)", border: "1px solid rgba(34,197,94,0.3)", borderRadius: 16, padding: "48px 40px", textAlign: "center" }}
+              <motion.div style={{ background: "var(--color-career-bg)", border: "1px solid var(--color-career-border-hover)", borderRadius: 16, padding: "48px 40px", textAlign: "center" }}
                 initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4 }}>
-                <div style={{ width: 52, height: 52, borderRadius: "50%", background: "rgba(34,197,94,0.15)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px", color: "var(--color-career)", fontSize: 22 }}>✓</div>
+                <div style={{ width: 52, height: 52, borderRadius: "50%", background: "var(--color-career-bg)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px", color: "var(--color-career)", fontSize: 22 }}>✓</div>
                 <h3 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 24, fontWeight: 800, marginBottom: 10 }}>Candidature envoyée !</h3>
                 <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.65 }}>Valentine vous recontactera dans les meilleurs délais.</p>
               </motion.div>
@@ -103,7 +103,7 @@ export default function Candidature() {
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            <div style={{ padding: "28px 24px", borderRadius: 14, border: "1px solid rgba(34,197,94,0.2)", background: "rgba(34,197,94,0.04)" }}>
+            <div style={{ padding: "28px 24px", borderRadius: 14, border: "1px solid var(--color-career-bg-hover)", background: "var(--color-career-bg)" }}>
               <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 17, fontWeight: 700, marginBottom: 4 }}>Valentine</p>
               <p style={{ color: "var(--color-career)", fontSize: 12, fontWeight: 600, marginBottom: 16 }}>Directrice des Ressources Humaines</p>
               <p style={{ color: "var(--color-ink-2)", fontSize: 13, lineHeight: 1.7 }}>"On ne cherche pas des CV parfaits. On cherche des gens curieux, impliqués et honnêtes."</p>
@@ -113,7 +113,7 @@ export default function Candidature() {
               { icon: <Linkedin size={16} />, label: "LinkedIn", val: "Suivez-nous", href: SITE.linkedin },
             ].map(item => (
               <div key={item.label} style={{ display: "flex", gap: 14, padding: "20px 20px", borderRadius: 12, border: "1px solid var(--color-border)", background: "var(--color-bg-2)", alignItems: "center" }}>
-                <div style={{ width: 38, height: 38, borderRadius: 9, background: "rgba(34,197,94,0.1)", color: "var(--color-career)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{item.icon}</div>
+                <div style={{ width: 38, height: 38, borderRadius: 9, background: "var(--color-career-bg)", color: "var(--color-career)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{item.icon}</div>
                 <div>
                   <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--color-ink-2)", marginBottom: 3 }}>{item.label}</p>
                   <a href={item.href} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, color: "var(--color-ink)", textDecoration: "none" }}>{item.val}</a>

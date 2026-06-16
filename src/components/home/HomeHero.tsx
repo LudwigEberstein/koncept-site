@@ -1,9 +1,10 @@
 'use client'
 
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
-import { SITE, IMAGES } from "@/lib/content"
+import { IMAGES } from "@/lib/content"
 
 export default function HomeHero() {
   const reduce = useReducedMotion()
@@ -43,7 +44,7 @@ export default function HomeHero() {
             >
               Nous contacter <ArrowRight size={16} />
             </Link>
-            <Link href="/notre-offre" style={{ background: "transparent", color: "var(--color-ink)", padding: "14px 28px", borderRadius: 10, fontSize: 15, fontWeight: 500, textDecoration: "none", border: "1px solid var(--color-border-2)", transition: "border-color 0.2s" }}
+            <Link href="/expertises" style={{ background: "transparent", color: "var(--color-ink)", padding: "14px 28px", borderRadius: 10, fontSize: 15, fontWeight: 500, textDecoration: "none", border: "1px solid var(--color-border-2)", transition: "border-color 0.2s" }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(240,237,232,0.35)" }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-border-2)" }}
             >
@@ -56,7 +57,7 @@ export default function HomeHero() {
           initial={reduce ? false : { opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         >
-          <img src={IMAGES.hero} alt="Koncept - solutions IT pour l'aéronautique et l'industrie toulousaine" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <Image src={IMAGES.hero} alt="Koncept - solutions IT pour l'aéronautique et l'industrie toulousaine" fill sizes="50vw" priority style={{ objectFit: "cover" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(212,32,32,0.18) 0%, transparent 50%)", pointerEvents: "none" }} />
         </motion.div>
       </div>

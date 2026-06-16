@@ -77,7 +77,7 @@ export default function Footer() {
               Parlons de votre projet
             </Link>
             <Link href="/carrieres/offres" style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "12px 18px", borderRadius: 9, background: "var(--color-career-bg)", color: "var(--color-career)", fontSize: 13, fontWeight: 700, textDecoration: "none", textAlign: "center", border: "1px solid var(--color-career-border)", transition: "background 0.15s" }}
-              onMouseEnter={e => (e.currentTarget.style.background = "rgba(74,222,128,0.14)")}
+              onMouseEnter={e => (e.currentTarget.style.background = "var(--color-career-bg-hover)")}
               onMouseLeave={e => (e.currentTarget.style.background = "var(--color-career-bg)")}
             >
               Voir les offres d&apos;emploi

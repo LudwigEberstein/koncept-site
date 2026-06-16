@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { useId, useState } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "motion/react"
 import { ChevronDown } from "lucide-react"
@@ -30,7 +30,7 @@ type SectionProps = {
 
 function Section({ label, accent, children, defaultOpen = false }: SectionProps) {
   const [open, setOpen] = useState(defaultOpen)
-  const sectionId = `section-${label.replace(/\W+/g, '-').toLowerCase()}-${Math.random().toString(36).slice(2, 6)}`
+  const sectionId = useId()
 
   return (
     <div style={{ borderTop: "1px solid var(--color-border)" }}>
