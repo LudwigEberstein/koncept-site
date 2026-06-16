@@ -1,5 +1,6 @@
 'use client'
 
+import Image from "next/image"
 import { motion, useReducedMotion } from "motion/react"
 
 interface PageHeroProps {
@@ -57,7 +58,7 @@ export default function PageHero({ label, title, titleAccent, subtitle, img, img
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="page-hero-img"
           >
-            <img src={img} alt={imgAlt ?? ""} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            <Image src={img} alt={imgAlt ?? ""} fill sizes="(max-width: 767px) 100vw, 50vw" style={{ objectFit: "cover" }} />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(212,32,32,0.12) 0%, transparent 60%)", pointerEvents: "none" }} />
           </motion.div>
         )}

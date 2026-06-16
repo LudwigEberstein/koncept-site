@@ -9,4 +9,12 @@
   --color-accent-2:  rgba(212, 32, 32, 0.15);
   --color-border:    rgba(240, 237, 232, 0.08);
   --color-border-2:  rgba(240, 237, 232, 0.14);
+
+  /* Career track — distinct from client red accent */
+  --color-career:            #4ade80;
+  --color-career-dark:       #16a34a;
+  --color-career-bg:         rgba(74, 222, 128, 0.06);
+  --color-career-bg-hover:   rgba(74, 222, 128, 0.18);
+  --color-career-border:     rgba(74, 222, 128, 0.22);
+  --color-career-border-hover: rgba(74, 222, 128, 0.4);
 }

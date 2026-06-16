@@ -1,6 +1,7 @@
 'use client'
 
 import Link from "next/link"
+import Image from "next/image"
 import { Code2, Server, ShieldCheck } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import RevealSection from "@/components/ui/RevealSection"
@@ -58,7 +59,7 @@ export default function HomeServices() {
                 transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ scale: 1.015 }}
               >
-                <img src={svc.img} alt={svc.title} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.3 }} />
+                <Image src={svc.img} alt={svc.title} fill sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 66vw" style={{ objectFit: "cover", opacity: 0.3 }} />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(13,13,13,0.97) 40%, rgba(13,13,13,0.4) 100%)" }} />
                 <div style={{ position: "relative", zIndex: 1, padding: 32, height: "100%", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
                   <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 10, background: "rgba(212,32,32,0.18)", border: "1px solid rgba(212,32,32,0.3)", marginBottom: 20 }}>
@@ -73,7 +74,7 @@ export default function HomeServices() {
         </div>
 
         <div style={{ marginTop: 32, textAlign: "center" }}>
-          <Link href="/notre-offre" style={{ color: "var(--color-ink-2)", fontSize: 14, fontWeight: 500, textDecoration: "none", borderBottom: "1px solid var(--color-border-2)", paddingBottom: 2, transition: "color 0.2s, border-color 0.2s" }}
+          <Link href="/expertises" style={{ color: "var(--color-ink-2)", fontSize: 14, fontWeight: 500, textDecoration: "none", borderBottom: "1px solid var(--color-border-2)", paddingBottom: 2, transition: "color 0.2s, border-color 0.2s" }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "var(--color-ink)"; (e.currentTarget as HTMLElement).style.borderColor = "var(--color-ink)" }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "var(--color-ink-2)"; (e.currentTarget as HTMLElement).style.borderColor = "var(--color-border-2)" }}
           >

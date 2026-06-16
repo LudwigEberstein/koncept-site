@@ -22,7 +22,7 @@ export default function HomeJoinCTA() {
           <p style={{ color: "rgba(255,255,255,0.78)", fontSize: "clamp(15px, 1.5vw, 18px)", lineHeight: 1.65, maxWidth: "44ch", margin: "0 auto 36px" }}>
             Développeurs Java, .NET, Angular ou profils DevOps : si vous aimez les projets qui ont du sens, on a peut-être une place pour vous à Toulouse.
           </p>
-          <Link href="/recrutement" style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#fff", color: "var(--color-accent)", padding: "14px 32px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", transition: "transform 0.15s, box-shadow 0.15s" }}
+          <Link href="/carrieres/offres" style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#fff", color: "var(--color-accent)", padding: "14px 32px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", transition: "transform 0.15s, box-shadow 0.15s" }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)"; (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 32px rgba(0,0,0,0.25)" }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = "translateY(0)"; (e.currentTarget as HTMLElement).style.boxShadow = "none" }}
           >

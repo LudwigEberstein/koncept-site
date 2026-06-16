@@ -20,7 +20,7 @@ export default function HomeSectors() {
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }} className="sectors-grid">
           {SECTORS.map((sector, i) => (
-            <motion.div key={sector}
+            <motion.div key={sector.slug}
               style={{ padding: "24px 20px", borderRadius: 12, border: "1px solid var(--color-border)", background: "var(--color-bg-2)", transition: "border-color 0.2s" }}
               initial={reduce ? false : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -29,7 +29,7 @@ export default function HomeSectors() {
               whileHover={{ borderColor: "rgba(212,32,32,0.4)" }}
             >
               <div style={{ width: 8, height: 8, borderRadius: 2, background: "var(--color-accent)", marginBottom: 16 }} />
-              <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 16, fontWeight: 600 }}>{sector}</p>
+              <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 16, fontWeight: 600 }}>{sector.name}</p>
             </motion.div>
           ))}
         </div>

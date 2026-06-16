@@ -1,6 +1,7 @@
 'use client'
 
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import { IMAGES, STATS } from "@/lib/content"
@@ -16,7 +17,7 @@ export default function HomeAbout() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <img src={IMAGES.team} alt="L'équipe Koncept à Toulouse" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <Image src={IMAGES.team} alt="L'équipe Koncept à Toulouse" fill sizes="(max-width: 1023px) 100vw, 50vw" style={{ objectFit: "cover" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, transparent 60%, rgba(212,32,32,0.15) 100%)" }} />
         </motion.div>
 
@@ -51,7 +52,7 @@ export default function HomeAbout() {
             ))}
           </div>
 
-          <Link href="/qui-sommes-nous" style={{ color: "var(--color-ink)", fontSize: 14, fontWeight: 600, textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 6, transition: "gap 0.2s" }}
+          <Link href="/a-propos" style={{ color: "var(--color-ink)", fontSize: 14, fontWeight: 600, textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 6, transition: "gap 0.2s" }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.gap = "10px" }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.gap = "6px" }}
           >
