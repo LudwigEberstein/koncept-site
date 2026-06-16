@@ -54,29 +54,33 @@ const KEY_STATS = [
 const DIRIGEANTS = [
   {
     name: "Gérard",
-    role: "Président & Co-fondateur",
-    img: "https://picsum.photos/seed/gerard-koncept-president/400/500",
+    role: "Président KONCEPT",
+    img: "/team/gerard-front.png",
+    imgBack: "/team/gerard-back.png",
     bio: "Co-fondateur de Koncept IS, Gérard a bâti l'ESN sur un principe simple : que chaque client soit suivi par quelqu'un qui comprend son métier en profondeur.",
     quote: "On ne veut pas être la plus grande ESN de Toulouse. On veut être la meilleure pour nos clients.",
   },
   {
     name: "Guillaume",
-    role: "Directeur Technique",
-    img: "https://picsum.photos/seed/guillaume-koncept-director/400/500",
+    role: "Directeur KONCEPT",
+    img: "/team/guillaume-front.png",
+    imgBack: "/team/guillaume-back.jpg",
     bio: "15 ans d'expérience en architecture logicielle. Guillaume supervise les choix techniques et s'assure que la qualité ne soit jamais sacrifiée à la vitesse.",
     quote: "Un projet bien cadré en amont, c'est 80 % des problèmes évités en production.",
   },
   {
     name: "Valentine",
     role: "Directrice des Ressources Humaines",
-    img: "https://picsum.photos/seed/valentine-koncept-rh/400/500",
+    img: "/team/valentine-front.jpg",
+    imgBack: "/team/valentine-back.jpg",
     bio: "Valentine a construit la culture Koncept de l'intérieur depuis 2015. Son obsession : que chaque Koncepteur trouve sa place et s'y épanouisse vraiment.",
     quote: "On recrute des gens, pas des compétences. Les compétences, ça s'apprend. La personnalité, non.",
   },
   {
     name: "Aurélie",
-    role: "Responsable Commercial",
-    img: "https://picsum.photos/seed/aurelie-koncept-commercial/400/500",
+    role: "Responsable Commerciale",
+    img: "/team/aurelie-front.jpg",
+    imgBack: "/team/aurelie-back.jpg",
     bio: "Aurélie est l'interlocutrice de confiance des DSI et directeurs de projet. Elle porte la promesse Koncept à chaque avant-vente.",
     quote: "Je ne signe pas un contrat si je ne suis pas convaincue qu'on peut le tenir.",
   },
@@ -224,16 +228,16 @@ export default function APropos() {
         </div>
       </section>
 
-      {/* ── 3. Vision ── */}
-      <section style={{ padding: "96px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
+      {/* ── 3. Vision (section mise en avant — palier gris clair) ── */}
+      <section style={{ padding: "96px 0", background: "var(--color-soft-bg)", color: "var(--color-soft-ink)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 80, alignItems: "center" }} className="vision-grid">
             <motion.div {...fadeUp()}>
               <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-accent)", marginBottom: 16 }}>Notre vision</p>
-              <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.08, marginBottom: 24 }}>
+              <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.08, marginBottom: 24, color: "var(--color-soft-ink)" }}>
                 Rendre chaque client<br />autonome et&nbsp;<span style={{ color: "var(--color-accent)" }}>performant.</span>
               </h2>
-              <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.8 }}>
+              <p style={{ color: "var(--color-soft-ink-2)", fontSize: 15, lineHeight: 1.8 }}>
                 On ne cherche pas à créer de la dépendance. Notre succès se mesure à la capacité de nos clients à voler de leurs propres ailes à la fin de chaque projet.
               </p>
             </motion.div>
@@ -247,15 +251,15 @@ export default function APropos() {
                 { icon: "📐", title: "Méthode rigoureuse, résultats mesurables", desc: "Chaque engagement est suivi, mesuré, documenté. La confiance se construit sur la transparence, pas les belles paroles." },
               ].map((item, i) => (
                 <motion.div key={item.title}
-                  style={{ display: "flex", gap: 20, padding: "24px 28px", borderRadius: 14, border: "1px solid var(--color-border)", background: "var(--color-bg-2)", alignItems: "flex-start" }}
+                  style={{ display: "flex", gap: 20, padding: "24px 28px", borderRadius: 14, border: "1px solid var(--color-soft-border)", background: "var(--color-soft-bg-2)", alignItems: "flex-start" }}
                   {...fadeUp(0.1 + i * 0.08)}
                 >
-                  <div style={{ width: 40, height: 40, borderRadius: 10, background: "rgba(212,32,32,0.1)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0 }}>
+                  <div style={{ width: 40, height: 40, borderRadius: 10, background: "rgba(212,32,32,0.12)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0 }}>
                     {item.icon}
                   </div>
                   <div>
-                    <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 15, fontWeight: 700, marginBottom: 5 }}>{item.title}</p>
-                    <p style={{ color: "var(--color-ink-2)", fontSize: 13, lineHeight: 1.65 }}>{item.desc}</p>
+                    <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 15, fontWeight: 700, marginBottom: 5, color: "var(--color-soft-ink)" }}>{item.title}</p>
+                    <p style={{ color: "var(--color-soft-ink-2)", fontSize: 13, lineHeight: 1.65 }}>{item.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -265,7 +269,7 @@ export default function APropos() {
       </section>
 
       {/* ── 4. Valeurs ── */}
-      <section style={{ padding: "80px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
+      <section style={{ padding: "80px 0", background: "var(--color-bg-2)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.div {...fadeUp()}>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-accent)", marginBottom: 12 }}>Nos valeurs</p>
@@ -307,8 +311,15 @@ export default function APropos() {
                 style={{ borderRadius: 16, overflow: "hidden", border: "1px solid var(--color-border)", background: "var(--color-bg-2)", display: "flex", flexDirection: "column" }}
                 {...fadeUp(i * 0.09)}
               >
-                <div style={{ aspectRatio: "3/4", overflow: "hidden", position: "relative" }}>
-                  <Image src={m.img} alt={m.name} fill sizes="(max-width: 767px) 100vw, 33vw" style={{ objectFit: "cover", filter: "grayscale(15%)" }} />
+                <div className="flip-card" style={{ height: 300, width: "100%", position: "relative", perspective: 1200 }}>
+                  <div className="flip-card-inner" style={{ position: "absolute", inset: 0, transformStyle: "preserve-3d", transition: "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)" }}>
+                    <div className="flip-card-face" style={{ position: "absolute", inset: 0, backfaceVisibility: "hidden", overflow: "hidden" }}>
+                      <Image src={m.img} alt={m.name} fill sizes="(max-width: 767px) 100vw, 33vw" style={{ objectFit: "cover", filter: "grayscale(15%)" }} />
+                    </div>
+                    <div className="flip-card-face flip-card-back" style={{ position: "absolute", inset: 0, backfaceVisibility: "hidden", transform: "rotateY(180deg)", overflow: "hidden" }}>
+                      <Image src={m.imgBack} alt={`${m.name} — coulisses`} fill sizes="(max-width: 767px) 100vw, 33vw" style={{ objectFit: "cover", filter: "grayscale(15%)" }} />
+                    </div>
+                  </div>
                 </div>
                 <div style={{ padding: "24px 24px 28px", display: "flex", flexDirection: "column", gap: 0, flexGrow: 1 }}>
                   <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 18, fontWeight: 800, letterSpacing: "-0.02em" }}>{m.name}</p>
@@ -474,6 +485,7 @@ export default function APropos() {
       </section>
 
       <style>{`
+        .flip-card:hover .flip-card-inner{transform:rotateY(180deg)}
         @media(max-width:1280px){
           .timeline-grid{grid-template-columns:repeat(3,1fr) !important}
           .timeline-line{display:none !important}

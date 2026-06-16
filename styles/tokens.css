@@ -1,14 +1,22 @@
 /* design tokens — koncept */
 :root {
-  --color-bg:        #0D0D0D;
-  --color-bg-2:      #141414;
-  --color-bg-3:      #1C1C1C;
+  --color-bg:        #15151A;
+  --color-bg-2:      #242430;
+  --color-bg-3:      #2E2E3A;
   --color-ink:       #F0EDE8;
-  --color-ink-2:     #8A8A85;
+  --color-ink-2:     #A8A8A5;
   --color-accent:    #D42020;
   --color-accent-2:  rgba(212, 32, 32, 0.15);
-  --color-border:    rgba(240, 237, 232, 0.08);
-  --color-border-2:  rgba(240, 237, 232, 0.14);
+  --color-border:    rgba(240, 237, 232, 0.10);
+  --color-border-2:  rgba(240, 237, 232, 0.16);
+
+  /* Soft sections — palier le plus clair, réservé aux sections mises en avant
+     (ex: "Vision") pour casser la monotonie sans sortir du thème sombre */
+  --color-soft-bg:       #3A3A46;
+  --color-soft-bg-2:     #44444F;
+  --color-soft-ink:      #F0EDE8;
+  --color-soft-ink-2:    #BBBBB7;
+  --color-soft-border:   rgba(240, 237, 232, 0.14);
 
   /* Career track — distinct from client red accent */
   --color-career:            #4ade80;
