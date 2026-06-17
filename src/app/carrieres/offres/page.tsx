@@ -1,6 +1,7 @@
 'use client'
 
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, MapPin, Briefcase, ChevronDown, ChevronUp } from "lucide-react"
 import { useState } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "motion/react"
@@ -231,8 +232,11 @@ export default function Offres() {
             ))}
           </div>
           <motion.div {...fadeUp(0.1)}
-            style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, padding: "32px 36px", borderRadius: 16, border: "1px solid var(--color-border)", background: "var(--color-bg-3)", flexWrap: "wrap" }}
+            style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, padding: "32px 36px", borderRadius: 16, border: "1px solid var(--color-border)", background: "var(--color-bg-3)", flexWrap: "wrap", position: "relative" }}
           >
+            <div className="sticker-monalisa" style={{ position: "absolute", top: -22, left: -18, width: 72, height: 72, transform: "rotate(-8deg)" }}>
+              <Image src="/culture/monalisa.gif" alt="L'humour Koncept depuis le premier jour" fill unoptimized sizes="72px" style={{ objectFit: "cover", borderRadius: 10, border: "1px solid var(--color-border-2)", boxShadow: "0 8px 20px rgba(0,0,0,0.35)" }} />
+            </div>
             <div>
               <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 20, fontWeight: 800, marginBottom: 6 }}>Ton profil n&apos;est pas listé ?</p>
               <p style={{ color: "var(--color-ink-2)", fontSize: 14 }}>Envoie-nous quand même. On est curieux des profils atypiques.</p>
@@ -258,6 +262,7 @@ export default function Offres() {
           .daily-grid{grid-template-columns:1fr !important}
           .profiles-grid{grid-template-columns:repeat(2,1fr) !important}
           .process-grid{grid-template-columns:repeat(2,1fr) !important}
+          .sticker-monalisa{display:none !important}
         }
         @media(max-width:479px){
           .profiles-grid{grid-template-columns:1fr !important}

@@ -1,6 +1,7 @@
 'use client'
 
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import { makeFadeUp } from "@/lib/motion"
@@ -184,7 +185,10 @@ export default function Formation() {
       {/* ── Kata Club ── */}
       <section style={{ padding: "80px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }} className="kata-grid">
-          <motion.div {...fadeUp()}>
+          <motion.div {...fadeUp()} style={{ position: "relative" }}>
+            <div className="sticker-einstein" style={{ position: "absolute", top: -28, right: 0, width: 84, height: 84, transform: "rotate(5deg)" }}>
+              <Image src="/culture/einstein.gif" alt="La culture geek Koncept" fill unoptimized sizes="84px" style={{ objectFit: "cover", borderRadius: 12, border: "1px solid var(--color-career-border)", boxShadow: "0 8px 20px rgba(0,0,0,0.35)" }} />
+            </div>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Kata Club</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
               Une session technique<br />chaque semaine.
@@ -292,6 +296,7 @@ export default function Formation() {
           .hero-grid{grid-template-columns:1fr !important;gap:48px !important}
           .covers-grid{grid-template-columns:1fr !important}
           .certifs-grid{grid-template-columns:repeat(2,1fr) !important}
+          .sticker-einstein{display:none !important}
         }
         @media(max-width:479px){
           .certifs-grid{grid-template-columns:1fr !important}

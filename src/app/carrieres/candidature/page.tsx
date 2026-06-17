@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react"
+import Image from "next/image"
 import { ArrowRight, Mail, Linkedin } from "lucide-react"
 import { motion } from "motion/react"
 import { SITE } from "@/lib/content"
@@ -103,7 +104,10 @@ export default function Candidature() {
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            <div style={{ padding: "28px 24px", borderRadius: 14, border: "1px solid var(--color-career-bg-hover)", background: "var(--color-career-bg)" }}>
+            <div style={{ padding: "28px 24px", borderRadius: 14, border: "1px solid var(--color-career-bg-hover)", background: "var(--color-career-bg)", position: "relative" }}>
+              <div className="sticker-grandma" style={{ position: "absolute", top: -24, right: -16, width: 70, height: 70, transform: "rotate(8deg)" }}>
+                <Image src="/culture/grandma.gif" alt="La touche déjantée de Koncept" fill unoptimized sizes="70px" style={{ objectFit: "cover", borderRadius: 10, border: "1px solid var(--color-career-border)", boxShadow: "0 8px 20px rgba(0,0,0,0.35)" }} />
+              </div>
               <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 17, fontWeight: 700, marginBottom: 4 }}>Valentine</p>
               <p style={{ color: "var(--color-career)", fontSize: 12, fontWeight: 600, marginBottom: 16 }}>Directrice des Ressources Humaines</p>
               <p style={{ color: "var(--color-ink-2)", fontSize: 13, lineHeight: 1.7 }}>"On ne cherche pas des CV parfaits. On cherche des gens curieux, impliqués et honnêtes."</p>
@@ -126,7 +130,7 @@ export default function Candidature() {
 
       <style>{`
         @media(max-width:1023px){.contact-grid{grid-template-columns:1fr !important}}
-        @media(max-width:639px){.name-grid{grid-template-columns:1fr !important}}
+        @media(max-width:639px){.name-grid{grid-template-columns:1fr !important}.sticker-grandma{display:none !important}}
       `}</style>
     </>
   )
