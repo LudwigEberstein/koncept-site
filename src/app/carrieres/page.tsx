@@ -164,9 +164,12 @@ export default function Carrieres() {
 
           {/* Floating quotes panel */}
           <motion.div
-            style={{ display: "flex", flexDirection: "column", gap: 12 }}
+            style={{ display: "flex", flexDirection: "column", gap: 12, position: "relative" }}
             initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.65, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
           >
+            <div className="sticker-luchador" style={{ position: "absolute", top: -34, right: -14, width: 76, height: 76, transform: "rotate(6deg)", zIndex: 2 }}>
+              <Image src="/culture/luchador.gif" alt="L'esprit potache Koncept" fill unoptimized sizes="76px" style={{ objectFit: "cover", borderRadius: 12, border: "1px solid var(--color-border-2)", boxShadow: "0 8px 20px rgba(0,0,0,0.35)" }} />
+            </div>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 4 }}>Ce qu&apos;on entend dans les couloirs</p>
             {[
               { text: "\"La première semaine, j'avais déjà un accès prod et une PR mergée. C'est pas commun.\"", name: "Romain, 2 ans chez Koncept" },
@@ -309,6 +312,7 @@ export default function Carrieres() {
           .dna-grid{grid-template-columns:1fr !important}
           .portrait-row{grid-template-columns:64px 1fr !important}
           .nav-grid{grid-template-columns:1fr !important}
+          .sticker-luchador{display:none !important}
         }
       `}</style>
     </>

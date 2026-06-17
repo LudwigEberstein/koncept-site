@@ -1,6 +1,7 @@
 'use client'
 
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import { CollaboratorCard, type Collaborator } from "@/components/CollaboratorCard"
@@ -154,11 +155,16 @@ export default function Vie() {
       {/* ── Une journée chez Koncept ── */}
       <section style={{ padding: "96px 0", background: "var(--color-bg)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
-          <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Le quotidien</p>
-            <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
-              Une journée chez Koncept,<br />honnêtement.
-            </h2>
+          <motion.div {...fadeUp()} style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24 }}>
+            <div>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Le quotidien</p>
+              <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
+                Une journée chez Koncept,<br />honnêtement.
+              </h2>
+            </div>
+            <div className="sticker-mario" style={{ position: "relative", width: 130, height: 78, flexShrink: 0, transform: "rotate(-3deg)", marginBottom: 56 }}>
+              <Image src="/culture/mario-flappybird.gif" alt="Clin d'œil gaming Koncept" fill unoptimized sizes="130px" style={{ objectFit: "cover", borderRadius: 10, border: "1px solid var(--color-border-2)" }} />
+            </div>
           </motion.div>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }} className="daily-grid">
@@ -302,6 +308,7 @@ export default function Vie() {
           .events-grid{grid-template-columns:1fr !important}
           .perks-grid{grid-template-columns:repeat(2,1fr) !important}
           .portraits-grid{grid-template-columns:1fr !important}
+          .sticker-mario{display:none !important}
         }
         @media(max-width:479px){
           .perks-grid{grid-template-columns:1fr !important}
