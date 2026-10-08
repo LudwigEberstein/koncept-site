@@ -36,7 +36,7 @@ export default function HomeHero() {
             initial={reduce ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
           >
-            <Link href="/contact" style={{ background: "var(--color-accent)", color: "#fff", padding: "14px 28px", borderRadius: 10, fontSize: 15, fontWeight: 600, textDecoration: "none", display: "flex", alignItems: "center", gap: 8, transition: "background 0.2s, transform 0.1s" }}
+            <Link href="/solutions/contact" style={{ background: "var(--color-accent)", color: "#fff", padding: "14px 28px", borderRadius: 10, fontSize: 15, fontWeight: 600, textDecoration: "none", display: "flex", alignItems: "center", gap: 8, transition: "background 0.2s, transform 0.1s" }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#E53535" }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "var(--color-accent)" }}
               onMouseDown={e => { (e.currentTarget as HTMLElement).style.transform = "scale(0.98)" }}
@@ -44,7 +44,7 @@ export default function HomeHero() {
             >
               Nous contacter <ArrowRight size={16} />
             </Link>
-            <Link href="/expertises" style={{ background: "transparent", color: "var(--color-ink)", padding: "14px 28px", borderRadius: 10, fontSize: 15, fontWeight: 500, textDecoration: "none", border: "1px solid var(--color-border-2)", transition: "border-color 0.2s" }}
+            <Link href="/solutions/expertises" style={{ background: "transparent", color: "var(--color-ink)", padding: "14px 28px", borderRadius: 10, fontSize: 15, fontWeight: 500, textDecoration: "none", border: "1px solid var(--color-border-2)", transition: "border-color 0.2s" }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(240,237,232,0.35)" }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-border-2)" }}
             >

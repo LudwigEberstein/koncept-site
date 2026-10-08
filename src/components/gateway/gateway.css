@@ -63,7 +63,7 @@
 @keyframes gw-marq { to { transform: translateX(-50%) } }
 .gw-vig { background: linear-gradient(90deg, rgba(11,5,6,.85), transparent 45%), linear-gradient(0deg, rgba(11,5,6,.9), transparent 30%); }
 /* le noir du GIF se fond dans la scène (lighten) */
-.gw-figure { position: absolute; right: -6vw; bottom: -3vh; height: min(68vh, 100%); aspect-ratio: 3/4; z-index: 2; pointer-events: none; }
+.gw-figure { position: absolute; right: -6vw; bottom: -3vh; height: min(68vh, 42vw); aspect-ratio: 3/4; z-index: 2; pointer-events: none; }
 .gw-figure::before { content: ""; position: absolute; left: 46%; top: 2%; width: 110%; aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(212,32,32,.55), rgba(212,32,32,.18) 45%, transparent 70%); }
 .gw-figure img { position: relative; display: block; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: lighten; -webkit-mask: linear-gradient(180deg, #000 80%, transparent 100%); mask: linear-gradient(180deg, #000 80%, transparent 100%); }
 

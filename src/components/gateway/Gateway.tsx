@@ -9,7 +9,7 @@ import "./gateway.css"
 
 type Side = "pro" | "fun"
 
-const DEST: Record<Side, string> = { pro: "/solutions", fun: "/carrieres" }
+const DEST: Record<Side, string> = { pro: "/solutions", fun: "/carrieres/pourquoi-nous-rejoindre" }
 const STORAGE_KEY = "koncept-side"
 const CIRCLE_BG: Record<Side, string> = {
   pro: "#3b82f6",
@@ -90,9 +90,15 @@ export default function Gateway() {
     )
     grow.onfinish = () => {
       router.push(DEST[side])
-      setTimeout(() => {
-        circle.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 450, fill: "forwards" }).onfinish = () => circle.remove()
-      }, 350)
+      // on garde le cercle tant que la nouvelle page n'est pas affichée (compilation lente en dev, réseau lent…)
+      const startedAt = Date.now()
+      const wait = setInterval(() => {
+        if (window.location.pathname === "/" && Date.now() - startedAt < 6000) return
+        clearInterval(wait)
+        setTimeout(() => {
+          circle.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 450, fill: "forwards" }).onfinish = () => circle.remove()
+        }, 250)
+      }, 50)
     }
   }
 

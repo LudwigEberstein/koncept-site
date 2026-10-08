@@ -40,13 +40,13 @@ export default function HomeBifurcation() {
               Développement applicatif, architecture, cloud, DevOps. Nos équipes s'intègrent à vos projets avec méthode et engagement.
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              <Link href="/expertises" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 20px", borderRadius: 10, background: "#3b82f6", color: "#fff", textDecoration: "none", fontSize: 14, fontWeight: 700, transition: "filter 0.15s" }}
+              <Link href="/solutions/expertises" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 20px", borderRadius: 10, background: "#3b82f6", color: "#fff", textDecoration: "none", fontSize: 14, fontWeight: 700, transition: "filter 0.15s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.12)" }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}
               >
                 Découvrir nos expertises <ArrowRight size={15} />
               </Link>
-              <Link href="/contact" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 20px", borderRadius: 10, background: "rgba(59,130,246,0.1)", color: "#60a5fa", textDecoration: "none", fontSize: 13, fontWeight: 600, transition: "background 0.15s" }}
+              <Link href="/solutions/contact" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 20px", borderRadius: 10, background: "rgba(59,130,246,0.1)", color: "#60a5fa", textDecoration: "none", fontSize: 13, fontWeight: 600, transition: "background 0.15s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(59,130,246,0.18)" }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "rgba(59,130,246,0.1)" }}
               >
@@ -78,7 +78,7 @@ export default function HomeBifurcation() {
               >
                 Voir les offres d'emploi <ArrowRight size={15} />
               </Link>
-              <Link href="/carrieres" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 20px", borderRadius: 10, background: "var(--color-career-bg)", color: "var(--color-career)", textDecoration: "none", fontSize: 13, fontWeight: 600, transition: "background 0.15s" }}
+              <Link href="/carrieres/pourquoi-nous-rejoindre" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 20px", borderRadius: 10, background: "var(--color-career-bg)", color: "var(--color-career)", textDecoration: "none", fontSize: 13, fontWeight: 600, transition: "background 0.15s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg-hover)" }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
               >

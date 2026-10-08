@@ -172,14 +172,14 @@ export const JOBS = [
 
 // Navigation — two distinct tracks
 export const NAV_CLIENT = [
-  { label: "Expertises", href: "/expertises" },
-  { label: "Secteurs", href: "/secteurs" },
-  { label: "Méthodologie", href: "/methodologie" },
-  { label: "Réalisations", href: "/realisations" },
+  { label: "Expertises", href: "/solutions/expertises" },
+  { label: "Secteurs", href: "/solutions/secteurs" },
+  { label: "Méthodologie", href: "/solutions/methodologie" },
+  { label: "Réalisations", href: "/solutions/realisations" },
 ] as const
 
 export const NAV_CAREER = [
-  { label: "Pourquoi nous rejoindre", href: "/carrieres" },
+  { label: "Pourquoi nous rejoindre", href: "/carrieres/pourquoi-nous-rejoindre" },
   { label: "Vie chez Koncept", href: "/carrieres/vie" },
   { label: "Formation", href: "/carrieres/formation" },
   { label: "Offres d'emploi", href: "/carrieres/offres" },

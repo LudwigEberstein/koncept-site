@@ -47,7 +47,7 @@ export default function Footer() {
                 onMouseEnter={e => (e.currentTarget.style.color = "var(--color-ink)")}
                 onMouseLeave={e => (e.currentTarget.style.color = "var(--color-ink-2)")}
               >À propos</Link>
-              <Link href="/contact" style={{ color: "var(--color-ink-2)", textDecoration: "none", fontSize: 13, fontWeight: 500, padding: "5px 0", transition: "color 0.15s" }}
+              <Link href="/solutions/contact" style={{ color: "var(--color-ink-2)", textDecoration: "none", fontSize: 13, fontWeight: 500, padding: "5px 0", transition: "color 0.15s" }}
                 onMouseEnter={e => (e.currentTarget.style.color = "var(--color-ink)")}
                 onMouseLeave={e => (e.currentTarget.style.color = "var(--color-ink-2)")}
               >Contact</Link>
@@ -73,7 +73,7 @@ export default function Footer() {
 
           {/* CTA block */}
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-            <Link href="/contact" style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "13px 18px", borderRadius: 9, background: "var(--color-accent)", color: "#fff", fontSize: 13, fontWeight: 700, textDecoration: "none", textAlign: "center", transition: "filter 0.15s" }}
+            <Link href="/solutions/contact" style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "13px 18px", borderRadius: 9, background: "var(--color-accent)", color: "#fff", fontSize: 13, fontWeight: 700, textDecoration: "none", textAlign: "center", transition: "filter 0.15s" }}
               onMouseEnter={e => (e.currentTarget.style.filter = "brightness(1.1)")}
               onMouseLeave={e => (e.currentTarget.style.filter = "brightness(1)")}
             >

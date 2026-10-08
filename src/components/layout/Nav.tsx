@@ -17,12 +17,11 @@ const SECTION_COLORS: Record<Section, { fg: string; rgb: string }> = {
   carrieres: { fg: "#ff5a5a", rgb: "212,32,32" },
   apropos: { fg: "#f0ede8", rgb: "240,237,232" },
 }
-const SOLUTIONS_PATHS = ["/solutions", "/expertises", "/secteurs", "/methodologie", "/realisations", "/contact"]
 
 function getSection(pathname: string): Section | null {
   if (pathname.startsWith("/carrieres")) return "carrieres"
   if (pathname.startsWith("/a-propos")) return "apropos"
-  if (SOLUTIONS_PATHS.some(p => pathname.startsWith(p))) return "solutions"
+  if (pathname.startsWith("/solutions")) return "solutions"
   return null
 }
 
@@ -64,7 +63,7 @@ export default function Nav() {
   useEffect(() => { setMenuOpen(false); setActive(null) }, [pathname])
 
   const isCareerPage = pathname.startsWith("/carrieres")
-  const ctaHref = isCareerPage ? "/carrieres/offres" : "/contact"
+  const ctaHref = isCareerPage ? "/carrieres/offres" : "/solutions/contact"
   const ctaLabel = isCareerPage ? "Voir les offres" : "Parlons de votre projet"
   // Le logo ramène à l'écran de choix Solutions / Carrières
   const homeHref = "/?choisir"
@@ -136,7 +135,7 @@ export default function Nav() {
                   </Link>
                 ))}
                 <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", marginTop: 12, paddingTop: 12 }}>
-                  <Link href="/contact" role="menuitem" style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-accent)", fontSize: 13, fontWeight: 700, textDecoration: "none" }}>
+                  <Link href="/solutions/contact" role="menuitem" style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-accent)", fontSize: 13, fontWeight: 700, textDecoration: "none" }}>
                     Demander un devis <ArrowRight size={13} aria-hidden="true" />
                   </Link>
                 </div>
@@ -260,7 +259,7 @@ export default function Nav() {
             À propos
           </Link>
 
-          <Link href="/contact" style={{ marginTop: 20, display: "flex", justifyContent: "center", alignItems: "center", gap: 8, background: "var(--color-accent)", color: "#fff", padding: "14px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none" }}>
+          <Link href="/solutions/contact" style={{ marginTop: 20, display: "flex", justifyContent: "center", alignItems: "center", gap: 8, background: "var(--color-accent)", color: "#fff", padding: "14px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none" }}>
             Parlons de votre projet <ArrowRight size={15} aria-hidden="true" />
           </Link>
           <Link href="/carrieres/offres" style={{ marginTop: 10, display: "flex", justifyContent: "center", alignItems: "center", gap: 8, background: "var(--color-career-bg)", color: "var(--color-career)", padding: "12px", borderRadius: 10, fontSize: 14, fontWeight: 700, textDecoration: "none" }}>

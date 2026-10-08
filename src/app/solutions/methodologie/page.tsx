@@ -417,7 +417,7 @@ export default function Methodologie() {
               <motion.div
                 initial={reduce ? false : { opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.15 }}
               >
-                <Link href="/contact"
+                <Link href="/solutions/contact"
                   style={{ display: "inline-flex", alignItems: "center", gap: 9, background: "var(--color-accent)", color: "#fff", padding: "15px 28px", borderRadius: 10, fontSize: 14, fontWeight: 700, textDecoration: "none", transition: "filter 0.15s" }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.1)" }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}
@@ -463,14 +463,14 @@ export default function Methodologie() {
             </p>
           </div>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <Link href="/contact"
+            <Link href="/solutions/contact"
               style={{ display: "inline-flex", alignItems: "center", gap: 9, background: "var(--color-accent)", color: "#fff", padding: "15px 32px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", whiteSpace: "nowrap", transition: "filter 0.15s" }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.1)" }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}
             >
               Démarrer la découverte <ArrowRight size={15} />
             </Link>
-            <Link href="/expertises"
+            <Link href="/solutions/expertises"
               style={{ display: "inline-flex", alignItems: "center", gap: 9, background: "transparent", color: "var(--color-ink)", padding: "15px 32px", borderRadius: 10, fontSize: 15, fontWeight: 600, textDecoration: "none", border: "1px solid var(--color-border)", whiteSpace: "nowrap", transition: "border-color 0.15s" }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-ink)" }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-border)" }}

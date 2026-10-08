@@ -385,7 +385,7 @@ export default function Expertises() {
               Décrivez votre problème. On vous revient avec une analyse honnête et une proposition de collaboration adaptée.
             </p>
           </div>
-          <Link href="/contact"
+          <Link href="/solutions/contact"
             style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "var(--color-accent)", color: "#fff", padding: "18px 32px", borderRadius: 12, fontSize: 15, fontWeight: 700, textDecoration: "none", whiteSpace: "nowrap", transition: "filter 0.15s, transform 0.15s" }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.1)"; (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)" }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)"; (e.currentTarget as HTMLElement).style.transform = "translateY(0)" }}
