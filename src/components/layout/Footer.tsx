@@ -2,11 +2,14 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Linkedin } from "lucide-react"
 import { SITE, NAV_CLIENT, NAV_CAREER, IMAGES } from "@/lib/content"
 import { YearClient } from "./YearClient"
 
 export default function Footer() {
+  const pathname = usePathname()
+  if (pathname === "/") return null
   return (
     <footer style={{ background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
       <div style={{ maxWidth: 1320, margin: "0 auto", padding: "56px 24px 32px" }}>
@@ -32,7 +35,7 @@ export default function Footer() {
 
           {/* Solutions */}
           <div>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#60a5fa", marginBottom: 16 }}>Solutions</p>
+            <Link href="/solutions" style={{ display: "block", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#60a5fa", marginBottom: 16, textDecoration: "none" }}>Solutions</Link>
             <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
               {NAV_CLIENT.map(({ label, href }) => (
                 <Link key={href} href={href} style={{ color: "var(--color-ink-2)", textDecoration: "none", fontSize: 13, fontWeight: 500, padding: "5px 0", transition: "color 0.15s" }}
@@ -44,7 +47,7 @@ export default function Footer() {
                 onMouseEnter={e => (e.currentTarget.style.color = "var(--color-ink)")}
                 onMouseLeave={e => (e.currentTarget.style.color = "var(--color-ink-2)")}
               >À propos</Link>
-              <Link href="/contact" style={{ color: "var(--color-ink-2)", textDecoration: "none", fontSize: 13, fontWeight: 500, padding: "5px 0", transition: "color 0.15s" }}
+              <Link href="/solutions/contact" style={{ color: "var(--color-ink-2)", textDecoration: "none", fontSize: 13, fontWeight: 500, padding: "5px 0", transition: "color 0.15s" }}
                 onMouseEnter={e => (e.currentTarget.style.color = "var(--color-ink)")}
                 onMouseLeave={e => (e.currentTarget.style.color = "var(--color-ink-2)")}
               >Contact</Link>
@@ -53,7 +56,7 @@ export default function Footer() {
 
           {/* Carrières */}
           <div>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 16 }}>Carrières</p>
+            <Link href="/carrieres" style={{ display: "block", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 16, textDecoration: "none" }}>Carrières</Link>
             <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
               {NAV_CAREER.map(({ label, href }) => (
                 <Link key={href} href={href} style={{ color: "var(--color-ink-2)", textDecoration: "none", fontSize: 13, fontWeight: 500, padding: "5px 0", transition: "color 0.15s" }}
@@ -61,16 +64,12 @@ export default function Footer() {
                   onMouseLeave={e => (e.currentTarget.style.color = "var(--color-ink-2)")}
                 >{label}</Link>
               ))}
-              <Link href="/carrieres/candidature" style={{ color: "var(--color-ink-2)", textDecoration: "none", fontSize: 13, fontWeight: 500, padding: "5px 0", transition: "color 0.15s" }}
-                onMouseEnter={e => (e.currentTarget.style.color = "var(--color-ink)")}
-                onMouseLeave={e => (e.currentTarget.style.color = "var(--color-ink-2)")}
-              >Candidature spontanée</Link>
             </div>
           </div>
 
           {/* CTA block */}
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-            <Link href="/contact" style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "13px 18px", borderRadius: 9, background: "var(--color-accent)", color: "#fff", fontSize: 13, fontWeight: 700, textDecoration: "none", textAlign: "center", transition: "filter 0.15s" }}
+            <Link href="/solutions/contact" style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "13px 18px", borderRadius: 9, background: "var(--color-accent)", color: "#fff", fontSize: 13, fontWeight: 700, textDecoration: "none", textAlign: "center", transition: "filter 0.15s" }}
               onMouseEnter={e => (e.currentTarget.style.filter = "brightness(1.1)")}
               onMouseLeave={e => (e.currentTarget.style.filter = "brightness(1)")}
             >

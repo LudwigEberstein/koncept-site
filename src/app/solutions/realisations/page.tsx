@@ -350,7 +350,7 @@ export default function Realisations() {
               Parlons-en. On peut estimer ensemble faisabilité et charge.
             </p>
           </div>
-          <Link href="/contact"
+          <Link href="/solutions/contact"
             style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-accent)", color: "#fff", padding: "16px 32px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", transition: "filter 0.15s", whiteSpace: "nowrap" }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.12)" }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}
@@ -493,7 +493,7 @@ export default function Realisations() {
                 <p style={{ fontSize: 13, color: "var(--color-ink-2)", marginBottom: 14 }}>
                   Ce projet vous parle ? Discutons de votre contexte.
                 </p>
-                <Link href="/contact"
+                <Link href="/solutions/contact"
                   onClick={() => setSelected(null)}
                   style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-accent)", color: "#fff", padding: "13px 24px", borderRadius: 9, fontSize: 14, fontWeight: 700, textDecoration: "none" }}
                 >

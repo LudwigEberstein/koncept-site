@@ -74,7 +74,7 @@ export default function HomeServices() {
         </div>
 
         <div style={{ marginTop: 32, textAlign: "center" }}>
-          <Link href="/expertises" style={{ color: "var(--color-ink-2)", fontSize: 14, fontWeight: 500, textDecoration: "none", borderBottom: "1px solid var(--color-border-2)", paddingBottom: 2, transition: "color 0.2s, border-color 0.2s" }}
+          <Link href="/solutions/expertises" style={{ color: "var(--color-ink-2)", fontSize: 14, fontWeight: 500, textDecoration: "none", borderBottom: "1px solid var(--color-border-2)", paddingBottom: 2, transition: "color 0.2s, border-color 0.2s" }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "var(--color-ink)"; (e.currentTarget as HTMLElement).style.borderColor = "var(--color-ink)" }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "var(--color-ink-2)"; (e.currentTarget as HTMLElement).style.borderColor = "var(--color-border-2)" }}
           >

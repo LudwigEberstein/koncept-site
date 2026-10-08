@@ -350,7 +350,7 @@ export default function Secteurs() {
                     <div style={{ width: 6, height: 6, borderRadius: "50%", background: active.color }} />
                     <span style={{ fontSize: 12, fontWeight: 600, color: active.color }}>{active.credential}</span>
                   </div>
-                  <Link href="/contact"
+                  <Link href="/solutions/contact"
                     style={{ display: "inline-flex", alignItems: "center", gap: 8, background: active.color, color: "#fff", padding: "12px 22px", borderRadius: 9, fontSize: 13, fontWeight: 700, textDecoration: "none", transition: "filter 0.15s", whiteSpace: "nowrap" }}
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.12)" }}
                     onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}
@@ -405,7 +405,7 @@ export default function Secteurs() {
               Un échange de 30 minutes pour qualifier votre besoin.
             </p>
           </div>
-          <Link href="/contact"
+          <Link href="/solutions/contact"
             style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-accent)", color: "#fff", padding: "16px 32px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", whiteSpace: "nowrap", transition: "filter 0.15s" }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.1)" }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}

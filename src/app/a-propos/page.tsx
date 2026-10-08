@@ -147,7 +147,7 @@ export default function APropos() {
             <motion.div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.18 }}
             >
-              <Link href="/contact"
+              <Link href="/solutions/contact"
                 style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-accent)", color: "#fff", padding: "13px 24px", borderRadius: 10, fontSize: 14, fontWeight: 700, textDecoration: "none", transition: "filter 0.15s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.1)" }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}
@@ -466,7 +466,7 @@ export default function APropos() {
             </p>
           </div>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <Link href="/contact"
+            <Link href="/solutions/contact"
               style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-accent)", color: "#fff", padding: "15px 28px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", transition: "filter 0.15s" }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.1)" }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}

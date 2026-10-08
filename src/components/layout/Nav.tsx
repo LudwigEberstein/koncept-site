@@ -4,10 +4,47 @@ import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { motion } from "motion/react"
 import { ChevronDown, Menu, X, ArrowRight } from "lucide-react"
 import { SITE, NAV_CLIENT, NAV_CAREER, IMAGES } from "@/lib/content"
 
 type DropdownId = "solutions" | "carrieres" | null
+type Section = "solutions" | "carrieres" | "apropos"
+
+// Couleur de chaque partie du site (texte, teinte du halo)
+const SECTION_COLORS: Record<Section, { fg: string; rgb: string }> = {
+  solutions: { fg: "#60a5fa", rgb: "59,130,246" },
+  carrieres: { fg: "#ff5a5a", rgb: "212,32,32" },
+  apropos: { fg: "#f0ede8", rgb: "240,237,232" },
+}
+
+function getSection(pathname: string): Section | null {
+  if (pathname.startsWith("/carrieres")) return "carrieres"
+  if (pathname.startsWith("/a-propos")) return "apropos"
+  if (pathname.startsWith("/solutions")) return "solutions"
+  return null
+}
+
+/** Pastille + liseré lumineux qui « glissent » d'un onglet à l'autre (layoutId partagé). */
+function ActivePill({ section }: { section: Section }) {
+  const { rgb, fg } = SECTION_COLORS[section]
+  return (
+    <motion.span
+      layoutId="nav-active"
+      aria-hidden="true"
+      transition={{ type: "spring", stiffness: 380, damping: 34 }}
+      initial={false}
+      animate={{ backgroundColor: `rgba(${rgb},0.13)`, borderColor: `rgba(${rgb},0.38)`, boxShadow: `0 0 22px rgba(${rgb},0.22)` }}
+      style={{ position: "absolute", inset: 0, borderRadius: 8, border: "1px solid", zIndex: -1, pointerEvents: "none" }}
+    >
+      {/* liseré posé sur la bordure basse du header */}
+      <motion.span
+        animate={{ backgroundColor: fg, boxShadow: `0 0 12px 1px rgba(${rgb},0.8)` }}
+        style={{ position: "absolute", left: 10, right: 10, top: "calc(50% + var(--nav-h) / 2 - 2px)", height: 2, borderRadius: 2 }}
+      />
+    </motion.span>
+  )
+}
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -25,9 +62,15 @@ export default function Nav() {
 
   useEffect(() => { setMenuOpen(false); setActive(null) }, [pathname])
 
-  const isCareerPage = pathname.startsWith("/carrieres")
-  const ctaHref = isCareerPage ? "/carrieres/offres" : "/contact"
+  const section = getSection(pathname)
+  const isCareerPage = section === "carrieres"
+  const ctaHref = isCareerPage ? "/carrieres/offres" : "/solutions/contact"
   const ctaLabel = isCareerPage ? "Voir les offres" : "Parlons de votre projet"
+  // Le logo ramène à l'écran de choix Solutions / Carrières
+  const homeHref = "/?choisir"
+
+  // L'écran d'accueil (choix Solutions / Carrières) occupe tout l'écran : pas de header
+  if (pathname === "/") return null
 
   function openDropdown(id: DropdownId) {
     if (timeoutRef.current) clearTimeout(timeoutRef.current)
@@ -39,6 +82,7 @@ export default function Nav() {
 
   return (
     <header style={{
+      ["--nav-h" as string]: "68px", // hauteur du header : source unique (barre + liseré de l'onglet actif)
       position: "sticky", top: 0, zIndex: 50,
       background: scrolled ? "rgba(13,13,13,0.95)" : "rgba(13,13,13,0.8)",
       backdropFilter: "blur(20px)",
@@ -46,10 +90,10 @@ export default function Nav() {
       borderBottom: "1px solid var(--color-border)",
       transition: "background 0.3s",
     }}>
-      <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", height: 68, display: "flex", alignItems: "center", gap: 8 }}>
+      <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", height: "var(--nav-h)", display: "flex", alignItems: "center", gap: 8 }}>
 
         {/* Logo */}
-        <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", flexShrink: 0, marginRight: 16 }}>
+        <Link href={homeHref} style={{ display: "flex", alignItems: "center", textDecoration: "none", flexShrink: 0, marginRight: 16 }}>
           <Image src={IMAGES.logo} alt={`${SITE.name} — accueil`} width={120} height={30} style={{ height: 30, width: "auto", objectFit: "contain" }} priority />
         </Link>
 
@@ -61,17 +105,19 @@ export default function Nav() {
             onMouseEnter={() => openDropdown("solutions")}
             onMouseLeave={closeDropdown}
           >
-            <button
+            <Link
+              href="/solutions"
               aria-expanded={active === "solutions"}
               aria-haspopup="true"
               style={{
                 display: "flex", alignItems: "center", gap: 5, padding: "8px 12px",
-                borderRadius: 7, background: active === "solutions" ? "rgba(59,130,246,0.1)" : "transparent",
-                border: "none", cursor: "pointer", color: active === "solutions" ? "#60a5fa" : "var(--color-ink-2)",
-                fontSize: 13, fontWeight: 600, transition: "all 0.15s",
+                position: "relative", isolation: "isolate", borderRadius: 8, background: active === "solutions" && section !== "solutions" ? "rgba(59,130,246,0.1)" : "transparent",
+                border: "none", cursor: "pointer", textDecoration: "none", color: active === "solutions" || section === "solutions" ? SECTION_COLORS.solutions.fg : "var(--color-ink-2)",
+                fontSize: 13, fontWeight: section === "solutions" ? 700 : 600, transition: "color 0.2s, background 0.15s",
               }}>
+              {section === "solutions" && <ActivePill section="solutions" />}
               Solutions <ChevronDown size={13} aria-hidden="true" style={{ transition: "transform 0.2s", transform: active === "solutions" ? "rotate(180deg)" : "none" }} />
-            </button>
+            </Link>
 
             {active === "solutions" && (
               <div role="menu" onMouseEnter={() => openDropdown("solutions")} onMouseLeave={closeDropdown}
@@ -91,7 +137,7 @@ export default function Nav() {
                   </Link>
                 ))}
                 <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", marginTop: 12, paddingTop: 12 }}>
-                  <Link href="/contact" role="menuitem" style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-accent)", fontSize: 13, fontWeight: 700, textDecoration: "none" }}>
+                  <Link href="/solutions/contact" role="menuitem" style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-accent)", fontSize: 13, fontWeight: 700, textDecoration: "none" }}>
                     Demander un devis <ArrowRight size={13} aria-hidden="true" />
                   </Link>
                 </div>
@@ -104,17 +150,19 @@ export default function Nav() {
             onMouseEnter={() => openDropdown("carrieres")}
             onMouseLeave={closeDropdown}
           >
-            <button
+            <Link
+              href="/carrieres"
               aria-expanded={active === "carrieres"}
               aria-haspopup="true"
               style={{
                 display: "flex", alignItems: "center", gap: 5, padding: "8px 12px",
-                borderRadius: 7, background: active === "carrieres" ? "var(--color-career-bg)" : "transparent",
-                border: "none", cursor: "pointer", color: active === "carrieres" ? "var(--color-career)" : "var(--color-ink-2)",
-                fontSize: 13, fontWeight: 600, transition: "all 0.15s",
+                position: "relative", isolation: "isolate", borderRadius: 8, background: active === "carrieres" && section !== "carrieres" ? "var(--color-career-bg)" : "transparent",
+                border: "none", cursor: "pointer", textDecoration: "none", color: active === "carrieres" || section === "carrieres" ? SECTION_COLORS.carrieres.fg : "var(--color-ink-2)",
+                fontSize: 13, fontWeight: section === "carrieres" ? 700 : 600, transition: "color 0.2s, background 0.15s",
               }}>
+              {section === "carrieres" && <ActivePill section="carrieres" />}
               Carrières <ChevronDown size={13} aria-hidden="true" style={{ transition: "transform 0.2s", transform: active === "carrieres" ? "rotate(180deg)" : "none" }} />
-            </button>
+            </Link>
 
             {active === "carrieres" && (
               <div role="menu" onMouseEnter={() => openDropdown("carrieres")} onMouseLeave={closeDropdown}
@@ -142,15 +190,16 @@ export default function Nav() {
             )}
           </div>
 
-          <Link href="/a-propos" style={{ padding: "8px 12px", borderRadius: 7, color: pathname === "/a-propos" ? "var(--color-ink)" : "var(--color-ink-2)", textDecoration: "none", fontSize: 13, fontWeight: 500, background: pathname === "/a-propos" ? "rgba(240,237,232,0.07)" : "transparent", transition: "all 0.15s" }}
+          <Link href="/a-propos" style={{ position: "relative", isolation: "isolate", padding: "8px 12px", borderRadius: 8, color: section === "apropos" ? SECTION_COLORS.apropos.fg : "var(--color-ink-2)", textDecoration: "none", fontSize: 13, fontWeight: section === "apropos" ? 700 : 500, transition: "color 0.2s" }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "var(--color-ink)" }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = pathname === "/a-propos" ? "var(--color-ink)" : "var(--color-ink-2)" }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = section === "apropos" ? SECTION_COLORS.apropos.fg : "var(--color-ink-2)" }}
           >
+            {section === "apropos" && <ActivePill section="apropos" />}
             À propos
           </Link>
 
           {/* CTA — pushed right */}
-          <div style={{ marginLeft: "auto" }}>
+          <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 14 }}>
             <Link href={ctaHref} style={{
               background: isCareerPage ? "var(--color-career-dark)" : "var(--color-accent)",
               color: "#fff", padding: "9px 18px",
@@ -182,13 +231,19 @@ export default function Nav() {
       {menuOpen && (
         <nav aria-label="Menu mobile" style={{ background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)", padding: "16px 24px 28px", display: "flex", flexDirection: "column" }}>
           {/* Solutions section */}
-          <button
-            onClick={() => setMobileOpen(mobileOpen === "solutions" ? null : "solutions")}
-            aria-expanded={mobileOpen === "solutions"}
-            style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 0", background: "none", border: "none", cursor: "pointer", color: "#60a5fa", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", borderBottom: "1px solid var(--color-border)" }}
-          >
-            Solutions <ChevronDown size={14} aria-hidden="true" style={{ transform: mobileOpen === "solutions" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
-          </button>
+          <div style={{ display: "flex", alignItems: "center", borderBottom: "1px solid var(--color-border)" }}>
+            <Link href="/solutions" style={{ flex: 1, padding: "14px 0", color: "#60a5fa", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none" }}>
+              Solutions
+            </Link>
+            <button
+              onClick={() => setMobileOpen(mobileOpen === "solutions" ? null : "solutions")}
+              aria-expanded={mobileOpen === "solutions"}
+              aria-label="Sous-menu Solutions"
+              style={{ padding: "14px 4px 14px 16px", background: "none", border: "none", cursor: "pointer", color: "#60a5fa" }}
+            >
+              <ChevronDown size={14} aria-hidden="true" style={{ transform: mobileOpen === "solutions" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
+            </button>
+          </div>
           {mobileOpen === "solutions" && NAV_CLIENT.map(({ label, href }) => (
             <Link key={href} href={href} style={{ padding: "12px 16px", color: "var(--color-ink-2)", textDecoration: "none", fontSize: 15, fontWeight: 500, borderBottom: "1px solid var(--color-border)" }}>
               {label}
@@ -196,13 +251,19 @@ export default function Nav() {
           ))}
 
           {/* Carrières section */}
-          <button
-            onClick={() => setMobileOpen(mobileOpen === "carrieres" ? null : "carrieres")}
-            aria-expanded={mobileOpen === "carrieres"}
-            style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 0", background: "none", border: "none", cursor: "pointer", color: "var(--color-career)", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", borderBottom: "1px solid var(--color-border)" }}
-          >
-            Carrières <ChevronDown size={14} aria-hidden="true" style={{ transform: mobileOpen === "carrieres" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
-          </button>
+          <div style={{ display: "flex", alignItems: "center", borderBottom: "1px solid var(--color-border)" }}>
+            <Link href="/carrieres" style={{ flex: 1, padding: "14px 0", color: "var(--color-career)", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none" }}>
+              Carrières
+            </Link>
+            <button
+              onClick={() => setMobileOpen(mobileOpen === "carrieres" ? null : "carrieres")}
+              aria-expanded={mobileOpen === "carrieres"}
+              aria-label="Sous-menu Carrières"
+              style={{ padding: "14px 4px 14px 16px", background: "none", border: "none", cursor: "pointer", color: "var(--color-career)" }}
+            >
+              <ChevronDown size={14} aria-hidden="true" style={{ transform: mobileOpen === "carrieres" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
+            </button>
+          </div>
           {mobileOpen === "carrieres" && NAV_CAREER.map(({ label, href }) => (
             <Link key={href} href={href} style={{ padding: "12px 16px", color: "var(--color-ink-2)", textDecoration: "none", fontSize: 15, fontWeight: 500, borderBottom: "1px solid var(--color-border)" }}>
               {label}
@@ -213,7 +274,7 @@ export default function Nav() {
             À propos
           </Link>
 
-          <Link href="/contact" style={{ marginTop: 20, display: "flex", justifyContent: "center", alignItems: "center", gap: 8, background: "var(--color-accent)", color: "#fff", padding: "14px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none" }}>
+          <Link href="/solutions/contact" style={{ marginTop: 20, display: "flex", justifyContent: "center", alignItems: "center", gap: 8, background: "var(--color-accent)", color: "#fff", padding: "14px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none" }}>
             Parlons de votre projet <ArrowRight size={15} aria-hidden="true" />
           </Link>
           <Link href="/carrieres/offres" style={{ marginTop: 10, display: "flex", justifyContent: "center", alignItems: "center", gap: 8, background: "var(--color-career-bg)", color: "var(--color-career)", padding: "12px", borderRadius: 10, fontSize: 14, fontWeight: 700, textDecoration: "none" }}>
