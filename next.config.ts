@@ -21,8 +21,6 @@ const nextConfig: NextConfig = {
       { source: '/methodologie', destination: '/solutions/methodologie', permanent: true },
       { source: '/realisations', destination: '/solutions/realisations', permanent: true },
       { source: '/contact', destination: '/solutions/contact', permanent: true },
-      // /carrieres est un point d'entrée : la page d'accueil Carrières est « Pourquoi nous rejoindre »
-      { source: '/carrieres', destination: '/carrieres/pourquoi-nous-rejoindre', permanent: false },
       { source: '/formation', destination: '/carrieres/formation', permanent: true },
     ]
   },

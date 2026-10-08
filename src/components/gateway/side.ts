@@ -3,7 +3,7 @@ export type Side = "pro" | "fun"
 /** Page d'arrivée de chaque côté. */
 export const DEST: Record<Side, string> = {
   pro: "/solutions",
-  fun: "/carrieres/pourquoi-nous-rejoindre",
+  fun: "/carrieres",
 }
 
 export const STORAGE_KEY = "koncept-side"

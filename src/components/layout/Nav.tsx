@@ -151,7 +151,7 @@ export default function Nav() {
             onMouseLeave={closeDropdown}
           >
             <Link
-              href="/carrieres/pourquoi-nous-rejoindre"
+              href="/carrieres"
               aria-expanded={active === "carrieres"}
               aria-haspopup="true"
               style={{
@@ -231,13 +231,19 @@ export default function Nav() {
       {menuOpen && (
         <nav aria-label="Menu mobile" style={{ background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)", padding: "16px 24px 28px", display: "flex", flexDirection: "column" }}>
           {/* Solutions section */}
-          <button
-            onClick={() => setMobileOpen(mobileOpen === "solutions" ? null : "solutions")}
-            aria-expanded={mobileOpen === "solutions"}
-            style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 0", background: "none", border: "none", cursor: "pointer", color: "#60a5fa", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", borderBottom: "1px solid var(--color-border)" }}
-          >
-            Solutions <ChevronDown size={14} aria-hidden="true" style={{ transform: mobileOpen === "solutions" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
-          </button>
+          <div style={{ display: "flex", alignItems: "center", borderBottom: "1px solid var(--color-border)" }}>
+            <Link href="/solutions" style={{ flex: 1, padding: "14px 0", color: "#60a5fa", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none" }}>
+              Solutions
+            </Link>
+            <button
+              onClick={() => setMobileOpen(mobileOpen === "solutions" ? null : "solutions")}
+              aria-expanded={mobileOpen === "solutions"}
+              aria-label="Sous-menu Solutions"
+              style={{ padding: "14px 4px 14px 16px", background: "none", border: "none", cursor: "pointer", color: "#60a5fa" }}
+            >
+              <ChevronDown size={14} aria-hidden="true" style={{ transform: mobileOpen === "solutions" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
+            </button>
+          </div>
           {mobileOpen === "solutions" && NAV_CLIENT.map(({ label, href }) => (
             <Link key={href} href={href} style={{ padding: "12px 16px", color: "var(--color-ink-2)", textDecoration: "none", fontSize: 15, fontWeight: 500, borderBottom: "1px solid var(--color-border)" }}>
               {label}
@@ -245,13 +251,19 @@ export default function Nav() {
           ))}
 
           {/* Carrières section */}
-          <button
-            onClick={() => setMobileOpen(mobileOpen === "carrieres" ? null : "carrieres")}
-            aria-expanded={mobileOpen === "carrieres"}
-            style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 0", background: "none", border: "none", cursor: "pointer", color: "var(--color-career)", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", borderBottom: "1px solid var(--color-border)" }}
-          >
-            Carrières <ChevronDown size={14} aria-hidden="true" style={{ transform: mobileOpen === "carrieres" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
-          </button>
+          <div style={{ display: "flex", alignItems: "center", borderBottom: "1px solid var(--color-border)" }}>
+            <Link href="/carrieres" style={{ flex: 1, padding: "14px 0", color: "var(--color-career)", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none" }}>
+              Carrières
+            </Link>
+            <button
+              onClick={() => setMobileOpen(mobileOpen === "carrieres" ? null : "carrieres")}
+              aria-expanded={mobileOpen === "carrieres"}
+              aria-label="Sous-menu Carrières"
+              style={{ padding: "14px 4px 14px 16px", background: "none", border: "none", cursor: "pointer", color: "var(--color-career)" }}
+            >
+              <ChevronDown size={14} aria-hidden="true" style={{ transform: mobileOpen === "carrieres" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
+            </button>
+          </div>
           {mobileOpen === "carrieres" && NAV_CAREER.map(({ label, href }) => (
             <Link key={href} href={href} style={{ padding: "12px 16px", color: "var(--color-ink-2)", textDecoration: "none", fontSize: 15, fontWeight: 500, borderBottom: "1px solid var(--color-border)" }}>
               {label}

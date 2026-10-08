@@ -35,7 +35,7 @@ export default function Footer() {
 
           {/* Solutions */}
           <div>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#60a5fa", marginBottom: 16 }}>Solutions</p>
+            <Link href="/solutions" style={{ display: "block", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#60a5fa", marginBottom: 16, textDecoration: "none" }}>Solutions</Link>
             <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
               {NAV_CLIENT.map(({ label, href }) => (
                 <Link key={href} href={href} style={{ color: "var(--color-ink-2)", textDecoration: "none", fontSize: 13, fontWeight: 500, padding: "5px 0", transition: "color 0.15s" }}
@@ -56,7 +56,7 @@ export default function Footer() {
 
           {/* Carrières */}
           <div>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 16 }}>Carrières</p>
+            <Link href="/carrieres" style={{ display: "block", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 16, textDecoration: "none" }}>Carrières</Link>
             <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
               {NAV_CAREER.map(({ label, href }) => (
                 <Link key={href} href={href} style={{ color: "var(--color-ink-2)", textDecoration: "none", fontSize: 13, fontWeight: 500, padding: "5px 0", transition: "color 0.15s" }}

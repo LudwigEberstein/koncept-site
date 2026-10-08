@@ -154,7 +154,7 @@ export default function APropos() {
               >
                 Parlons de votre projet <ArrowRight size={15} />
               </Link>
-              <Link href="/carrieres/pourquoi-nous-rejoindre"
+              <Link href="/carrieres"
                 style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-career-bg)", color: "var(--color-career)", padding: "13px 24px", borderRadius: 10, fontSize: 14, fontWeight: 700, textDecoration: "none", border: "1px solid var(--color-career-border)", transition: "background 0.15s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg-hover)" }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
@@ -400,7 +400,7 @@ export default function APropos() {
               <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.75, marginBottom: 32, maxWidth: "40ch" }}>
                 La qualité de nos projets passe par la qualité de vie de nos équipes. Ce n&apos;est pas un discours RH — c&apos;est notre modèle.
               </p>
-              <Link href="/carrieres/pourquoi-nous-rejoindre"
+              <Link href="/carrieres"
                 style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--color-career)", fontSize: 14, fontWeight: 700, textDecoration: "none", border: "1px solid var(--color-career-border)", padding: "12px 20px", borderRadius: 9, transition: "background 0.15s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent" }}
@@ -473,7 +473,7 @@ export default function APropos() {
             >
               Parlons de votre projet <ArrowRight size={15} />
             </Link>
-            <Link href="/carrieres/pourquoi-nous-rejoindre"
+            <Link href="/carrieres"
               style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--color-career)", padding: "15px 28px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", border: "1px solid var(--color-career-border)", transition: "background 0.15s" }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent" }}
