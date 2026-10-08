@@ -137,7 +137,7 @@ export default function Gateway() {
         </svg>
         <div className="gw-scan" />
 
-        <div className="gw-glass" style={{ bottom: "5%", left: "6vw", animationDelay: "-4s", minWidth: 230 }} aria-hidden="true">
+        <div className="gw-glass" style={{ bottom: "6%", left: "19vw", animationDelay: "-4s", minWidth: 230 }} aria-hidden="true">
           <span className="gw-ok">Pipeline en production</span>
           <b>42 services</b>
           <span style={{ fontFamily: "ui-monospace, Consolas, monospace", fontSize: 11 }}>$ deploy --env prod ✓</span>

@@ -28,7 +28,8 @@ export default function Nav() {
   const isCareerPage = pathname.startsWith("/carrieres")
   const ctaHref = isCareerPage ? "/carrieres/offres" : "/contact"
   const ctaLabel = isCareerPage ? "Voir les offres" : "Parlons de votre projet"
-  const homeHref = isCareerPage ? "/carrieres" : "/solutions"
+  // Le logo ramène à l'écran de choix Solutions / Carrières
+  const homeHref = "/?choisir"
 
   // L'écran d'accueil (choix Solutions / Carrières) occupe tout l'écran : pas de header
   if (pathname === "/") return null
@@ -155,9 +156,6 @@ export default function Nav() {
 
           {/* CTA — pushed right */}
           <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 14 }}>
-            <Link href="/?choisir" style={{ color: "var(--color-ink-2)", fontSize: 12, fontWeight: 500, textDecoration: "none", whiteSpace: "nowrap" }}>
-              ⇄ Changer de côté
-            </Link>
             <Link href={ctaHref} style={{
               background: isCareerPage ? "var(--color-career-dark)" : "var(--color-accent)",
               color: "#fff", padding: "9px 18px",
@@ -215,10 +213,6 @@ export default function Nav() {
               {label}
             </Link>
           ))}
-
-          <Link href="/?choisir" style={{ padding: "14px 0", color: "var(--color-ink-2)", textDecoration: "none", fontSize: 14, fontWeight: 500, borderBottom: "1px solid var(--color-border)" }}>
-            ⇄ Changer de côté
-          </Link>
 
           <Link href="/a-propos" style={{ padding: "14px 0", color: "var(--color-ink)", textDecoration: "none", fontSize: 15, fontWeight: 500, borderBottom: "1px solid var(--color-border)" }}>
             À propos

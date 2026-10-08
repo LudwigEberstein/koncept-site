@@ -18,11 +18,11 @@
   --color-soft-ink-2:    #BBBBB7;
   --color-soft-border:   rgba(240, 237, 232, 0.14);
 
-  /* Career track — distinct from client red accent */
-  --color-career:            #4ade80;
-  --color-career-dark:       #16a34a;
-  --color-career-bg:         rgba(74, 222, 128, 0.06);
-  --color-career-bg-hover:   rgba(74, 222, 128, 0.18);
-  --color-career-border:     rgba(74, 222, 128, 0.22);
-  --color-career-border-hover: rgba(74, 222, 128, 0.4);
+  /* Career track — même rouge Koncept que l'accent (clair pour le texte sur fond sombre) */
+  --color-career:            #ff5a5a;
+  --color-career-dark:       #D42020;
+  --color-career-bg:         rgba(212, 32, 32, 0.10);
+  --color-career-bg-hover:   rgba(212, 32, 32, 0.22);
+  --color-career-border:     rgba(212, 32, 32, 0.30);
+  --color-career-border-hover: rgba(212, 32, 32, 0.55);
 }
