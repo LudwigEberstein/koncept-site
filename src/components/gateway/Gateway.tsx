@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -43,6 +43,7 @@ export default function Gateway() {
   const [dim, setDim] = useState<Side | null>(null)
   const [ready, setReady] = useState(false)
   const net = useMemo(buildNetwork, [])
+  const choosing = useRef(false) // évite les doubles clics (plusieurs cercles + navigations)
 
   // Visiteur de retour : on l'envoie directement du côté choisi (sauf demande explicite de changer).
   useEffect(() => {
@@ -68,6 +69,8 @@ export default function Gateway() {
     // clic « normal » uniquement : ctrl/cmd-clic, clic milieu… gardent le comportement d'un lien
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
     e.preventDefault()
+    if (choosing.current) return
+    choosing.current = true
     try { localStorage.setItem(STORAGE_KEY, side) } catch { /* ignore */ }
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -93,8 +96,10 @@ export default function Gateway() {
       // on garde le cercle tant que la nouvelle page n'est pas affichée (compilation lente en dev, réseau lent…)
       const startedAt = Date.now()
       const wait = setInterval(() => {
-        if (window.location.pathname === "/" && Date.now() - startedAt < 6000) return
+        const arrived = window.location.pathname !== "/"
+        if (!arrived && Date.now() - startedAt < 6000) return
         clearInterval(wait)
+        if (!arrived) choosing.current = false
         setTimeout(() => {
           circle.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 450, fill: "forwards" }).onfinish = () => circle.remove()
         }, 250)
@@ -172,9 +177,12 @@ export default function Gateway() {
         <div className="gw-marq" aria-hidden="true"><span>REJOINS L&apos;AVENTURE ★ ON RECRUTE ★ REJOINS L&apos;AVENTURE ★ ON RECRUTE ★&nbsp;</span></div>
         <div className="gw-bg gw-vig" />
         <div className="gw-figure" aria-hidden="true">
-          {/* GIF animé : <img> plutôt que next/image (qui n'optimise pas les GIF) */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/culture/luchador.gif" alt="" />
+          {/* GIF animé (<img> : next/image n'optimise pas les GIF), image fixe si l'utilisateur réduit les animations */}
+          <picture>
+            <source media="(prefers-reduced-motion: reduce)" srcSet="/culture/luchador-static.png" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/culture/luchador.gif" alt="" />
+          </picture>
         </div>
 
         <div className="gw-inner">

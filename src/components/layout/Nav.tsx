@@ -40,7 +40,7 @@ function ActivePill({ section }: { section: Section }) {
       {/* liseré posé sur la bordure basse du header */}
       <motion.span
         animate={{ backgroundColor: fg, boxShadow: `0 0 12px 1px rgba(${rgb},0.8)` }}
-        style={{ position: "absolute", left: 10, right: 10, bottom: -18, height: 2, borderRadius: 2 }}
+        style={{ position: "absolute", left: 10, right: 10, top: "calc(50% + var(--nav-h) / 2 - 2px)", height: 2, borderRadius: 2 }}
       />
     </motion.span>
   )
@@ -62,12 +62,12 @@ export default function Nav() {
 
   useEffect(() => { setMenuOpen(false); setActive(null) }, [pathname])
 
-  const isCareerPage = pathname.startsWith("/carrieres")
+  const section = getSection(pathname)
+  const isCareerPage = section === "carrieres"
   const ctaHref = isCareerPage ? "/carrieres/offres" : "/solutions/contact"
   const ctaLabel = isCareerPage ? "Voir les offres" : "Parlons de votre projet"
   // Le logo ramène à l'écran de choix Solutions / Carrières
   const homeHref = "/?choisir"
-  const section = getSection(pathname)
 
   // L'écran d'accueil (choix Solutions / Carrières) occupe tout l'écran : pas de header
   if (pathname === "/") return null
@@ -82,6 +82,7 @@ export default function Nav() {
 
   return (
     <header style={{
+      ["--nav-h" as string]: "68px", // hauteur du header : source unique (barre + liseré de l'onglet actif)
       position: "sticky", top: 0, zIndex: 50,
       background: scrolled ? "rgba(13,13,13,0.95)" : "rgba(13,13,13,0.8)",
       backdropFilter: "blur(20px)",
@@ -89,7 +90,7 @@ export default function Nav() {
       borderBottom: "1px solid var(--color-border)",
       transition: "background 0.3s",
     }}>
-      <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", height: 68, display: "flex", alignItems: "center", gap: 8 }}>
+      <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", height: "var(--nav-h)", display: "flex", alignItems: "center", gap: 8 }}>
 
         {/* Logo */}
         <Link href={homeHref} style={{ display: "flex", alignItems: "center", textDecoration: "none", flexShrink: 0, marginRight: 16 }}>
