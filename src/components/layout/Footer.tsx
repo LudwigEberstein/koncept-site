@@ -64,10 +64,6 @@ export default function Footer() {
                   onMouseLeave={e => (e.currentTarget.style.color = "var(--color-ink-2)")}
                 >{label}</Link>
               ))}
-              <Link href="/carrieres/candidature" style={{ color: "var(--color-ink-2)", textDecoration: "none", fontSize: 13, fontWeight: 500, padding: "5px 0", transition: "color 0.15s" }}
-                onMouseEnter={e => (e.currentTarget.style.color = "var(--color-ink)")}
-                onMouseLeave={e => (e.currentTarget.style.color = "var(--color-ink-2)")}
-              >Candidature spontanée</Link>
             </div>
           </div>
 

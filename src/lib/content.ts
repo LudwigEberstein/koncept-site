@@ -182,6 +182,7 @@ export const NAV_CAREER = [
   { label: "Vie chez Koncept", href: "/carrieres/vie" },
   { label: "Formation", href: "/carrieres/formation" },
   { label: "Offres d'emploi", href: "/carrieres/offres" },
+  { label: "Candidature spontanée", href: "/carrieres/candidature" },
 ] as const
 
 export const IMAGES = {
