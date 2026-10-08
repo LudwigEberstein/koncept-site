@@ -2,11 +2,14 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Linkedin } from "lucide-react"
 import { SITE, NAV_CLIENT, NAV_CAREER, IMAGES } from "@/lib/content"
 import { YearClient } from "./YearClient"
 
 export default function Footer() {
+  const pathname = usePathname()
+  if (pathname === "/") return null
   return (
     <footer style={{ background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
       <div style={{ maxWidth: 1320, margin: "0 auto", padding: "56px 24px 32px" }}>

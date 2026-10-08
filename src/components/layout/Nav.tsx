@@ -28,6 +28,10 @@ export default function Nav() {
   const isCareerPage = pathname.startsWith("/carrieres")
   const ctaHref = isCareerPage ? "/carrieres/offres" : "/contact"
   const ctaLabel = isCareerPage ? "Voir les offres" : "Parlons de votre projet"
+  const homeHref = isCareerPage ? "/carrieres" : "/solutions"
+
+  // L'écran d'accueil (choix Solutions / Carrières) occupe tout l'écran : pas de header
+  if (pathname === "/") return null
 
   function openDropdown(id: DropdownId) {
     if (timeoutRef.current) clearTimeout(timeoutRef.current)
@@ -49,7 +53,7 @@ export default function Nav() {
       <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", height: 68, display: "flex", alignItems: "center", gap: 8 }}>
 
         {/* Logo */}
-        <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", flexShrink: 0, marginRight: 16 }}>
+        <Link href={homeHref} style={{ display: "flex", alignItems: "center", textDecoration: "none", flexShrink: 0, marginRight: 16 }}>
           <Image src={IMAGES.logo} alt={`${SITE.name} — accueil`} width={120} height={30} style={{ height: 30, width: "auto", objectFit: "contain" }} priority />
         </Link>
 
@@ -150,7 +154,10 @@ export default function Nav() {
           </Link>
 
           {/* CTA — pushed right */}
-          <div style={{ marginLeft: "auto" }}>
+          <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 14 }}>
+            <Link href="/?choisir" style={{ color: "var(--color-ink-2)", fontSize: 12, fontWeight: 500, textDecoration: "none", whiteSpace: "nowrap" }}>
+              ⇄ Changer de côté
+            </Link>
             <Link href={ctaHref} style={{
               background: isCareerPage ? "var(--color-career-dark)" : "var(--color-accent)",
               color: "#fff", padding: "9px 18px",
@@ -208,6 +215,10 @@ export default function Nav() {
               {label}
             </Link>
           ))}
+
+          <Link href="/?choisir" style={{ padding: "14px 0", color: "var(--color-ink-2)", textDecoration: "none", fontSize: 14, fontWeight: 500, borderBottom: "1px solid var(--color-border)" }}>
+            ⇄ Changer de côté
+          </Link>
 
           <Link href="/a-propos" style={{ padding: "14px 0", color: "var(--color-ink)", textDecoration: "none", fontSize: 15, fontWeight: 500, borderBottom: "1px solid var(--color-border)" }}>
             À propos

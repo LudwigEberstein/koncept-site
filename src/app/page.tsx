@@ -1,28 +1,12 @@
 import type { Metadata } from 'next'
-import HomeHero from '@/components/home/HomeHero'
-import HomeStats from '@/components/home/HomeStats'
-import HomeBifurcation from '@/components/home/HomeBifurcation'
-import HomeSectorMarquee from '@/components/home/HomeSectorMarquee'
-import HomeExpertises from '@/components/home/HomeExpertises'
-import HomeTechStack from '@/components/home/HomeTechStack'
-import HomeAbout from '@/components/home/HomeAbout'
-import HomeJoinCTA from '@/components/home/HomeJoinCTA'
+import Gateway from '@/components/gateway/Gateway'
+import { SITE } from '@/lib/content'
 
 export const metadata: Metadata = {
-  title: 'Accueil',
+  title: { absolute: `${SITE.name} | ESN à Toulouse - Java, .NET, DevOps` },
+  alternates: { canonical: 'https://koncept-is.fr' },
 }
 
 export default function Home() {
-  return (
-    <>
-      <HomeHero />
-      <HomeStats />
-      <HomeBifurcation />
-      <HomeExpertises />
-      <HomeSectorMarquee />
-      <HomeTechStack />
-      <HomeAbout />
-      <HomeJoinCTA />
-    </>
-  )
+  return <Gateway />
 }
