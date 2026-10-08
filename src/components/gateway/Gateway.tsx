@@ -1,16 +1,12 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useMemo, useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { SITE, IMAGES } from "@/lib/content"
+import { DEST, STORAGE_KEY, type Side } from "./side"
 import "./gateway.css"
-
-type Side = "pro" | "fun"
-
-const DEST: Record<Side, string> = { pro: "/solutions", fun: "/carrieres/pourquoi-nous-rejoindre" }
-const STORAGE_KEY = "koncept-side"
 const CIRCLE_BG: Record<Side, string> = {
   pro: "#3b82f6",
   fun: "linear-gradient(135deg, #D42020, #8f1010)",
@@ -41,22 +37,8 @@ export default function Gateway() {
   const router = useRouter()
   const [x, setX] = useState(50)
   const [dim, setDim] = useState<Side | null>(null)
-  const [ready, setReady] = useState(false)
   const net = useMemo(buildNetwork, [])
   const choosing = useRef(false) // évite les doubles clics (plusieurs cercles + navigations)
-
-  // Visiteur de retour : on l'envoie directement du côté choisi (sauf demande explicite de changer).
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY) as Side | null
-      const wantsChoice = new URLSearchParams(window.location.search).has("choisir")
-      if (saved && DEST[saved] && !wantsChoice) {
-        router.replace(DEST[saved])
-        return
-      }
-    } catch { /* stockage indisponible : on affiche le choix */ }
-    setReady(true)
-  }, [router])
 
   function hover(side: Side | null) {
     setDim(side === "pro" ? "fun" : side === "fun" ? "pro" : null)
@@ -112,7 +94,7 @@ export default function Gateway() {
   return (
     <div
       className={`gw${dim ? ` gw-dim-${dim}` : ""}`}
-      style={{ ["--gw-x" as string]: x, visibility: ready ? "visible" : "hidden" }}
+      style={{ ["--gw-x" as string]: x }}
       onMouseLeave={() => hover(null)}
     >
       <h1 className="gw-sr">{SITE.name} — ESN à Toulouse : solutions IT pour les entreprises et carrières pour les développeurs</h1>

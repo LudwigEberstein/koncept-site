@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import HomeHero from '@/components/home/HomeHero'
 import HomeStats from '@/components/home/HomeStats'
-import HomeBifurcation from '@/components/home/HomeBifurcation'
 import HomeSectorMarquee from '@/components/home/HomeSectorMarquee'
 import HomeExpertises from '@/components/home/HomeExpertises'
 import HomeTechStack from '@/components/home/HomeTechStack'
@@ -19,7 +18,6 @@ export default function Home() {
     <>
       <HomeHero />
       <HomeStats />
-      <HomeBifurcation />
       <HomeExpertises />
       <HomeSectorMarquee />
       <HomeTechStack />

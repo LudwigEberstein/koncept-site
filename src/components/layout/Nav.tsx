@@ -105,18 +105,19 @@ export default function Nav() {
             onMouseEnter={() => openDropdown("solutions")}
             onMouseLeave={closeDropdown}
           >
-            <button
+            <Link
+              href="/solutions"
               aria-expanded={active === "solutions"}
               aria-haspopup="true"
               style={{
                 display: "flex", alignItems: "center", gap: 5, padding: "8px 12px",
                 position: "relative", isolation: "isolate", borderRadius: 8, background: active === "solutions" && section !== "solutions" ? "rgba(59,130,246,0.1)" : "transparent",
-                border: "none", cursor: "pointer", color: active === "solutions" || section === "solutions" ? SECTION_COLORS.solutions.fg : "var(--color-ink-2)",
+                border: "none", cursor: "pointer", textDecoration: "none", color: active === "solutions" || section === "solutions" ? SECTION_COLORS.solutions.fg : "var(--color-ink-2)",
                 fontSize: 13, fontWeight: section === "solutions" ? 700 : 600, transition: "color 0.2s, background 0.15s",
               }}>
               {section === "solutions" && <ActivePill section="solutions" />}
               Solutions <ChevronDown size={13} aria-hidden="true" style={{ transition: "transform 0.2s", transform: active === "solutions" ? "rotate(180deg)" : "none" }} />
-            </button>
+            </Link>
 
             {active === "solutions" && (
               <div role="menu" onMouseEnter={() => openDropdown("solutions")} onMouseLeave={closeDropdown}
@@ -149,18 +150,19 @@ export default function Nav() {
             onMouseEnter={() => openDropdown("carrieres")}
             onMouseLeave={closeDropdown}
           >
-            <button
+            <Link
+              href="/carrieres/pourquoi-nous-rejoindre"
               aria-expanded={active === "carrieres"}
               aria-haspopup="true"
               style={{
                 display: "flex", alignItems: "center", gap: 5, padding: "8px 12px",
                 position: "relative", isolation: "isolate", borderRadius: 8, background: active === "carrieres" && section !== "carrieres" ? "var(--color-career-bg)" : "transparent",
-                border: "none", cursor: "pointer", color: active === "carrieres" || section === "carrieres" ? SECTION_COLORS.carrieres.fg : "var(--color-ink-2)",
+                border: "none", cursor: "pointer", textDecoration: "none", color: active === "carrieres" || section === "carrieres" ? SECTION_COLORS.carrieres.fg : "var(--color-ink-2)",
                 fontSize: 13, fontWeight: section === "carrieres" ? 700 : 600, transition: "color 0.2s, background 0.15s",
               }}>
               {section === "carrieres" && <ActivePill section="carrieres" />}
               Carrières <ChevronDown size={13} aria-hidden="true" style={{ transition: "transform 0.2s", transform: active === "carrieres" ? "rotate(180deg)" : "none" }} />
-            </button>
+            </Link>
 
             {active === "carrieres" && (
               <div role="menu" onMouseEnter={() => openDropdown("carrieres")} onMouseLeave={closeDropdown}

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Gateway from '@/components/gateway/Gateway'
+import { RETURNING_VISITOR_REDIRECT } from '@/components/gateway/side'
 import { SITE } from '@/lib/content'
 
 export const metadata: Metadata = {
@@ -8,5 +9,10 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
-  return <Gateway />
+  return (
+    <>
+      <script dangerouslySetInnerHTML={{ __html: RETURNING_VISITOR_REDIRECT }} />
+      <Gateway />
+    </>
+  )
 }

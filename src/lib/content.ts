@@ -172,6 +172,7 @@ export const JOBS = [
 
 // Navigation — two distinct tracks
 export const NAV_CLIENT = [
+  { label: "Vue d'ensemble", href: "/solutions" },
   { label: "Expertises", href: "/solutions/expertises" },
   { label: "Secteurs", href: "/solutions/secteurs" },
   { label: "Méthodologie", href: "/solutions/methodologie" },
