@@ -43,7 +43,7 @@ export default function HomeExpertises() {
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }} className="expertises-grid">
           {EXPERTISES.map((exp, i) => (
-            <motion.div key={exp.slug}
+            <motion.div key={exp.slug} className="glass-card"
               style={{ padding: "28px 28px", borderRadius: 14, border: "1px solid var(--color-border)", background: "var(--color-bg-2)", display: "flex", flexDirection: "column", gap: 14, cursor: "default", transition: "border-color 0.2s" }}
               initial={reduce ? false : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

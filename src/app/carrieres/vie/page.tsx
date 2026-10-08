@@ -6,6 +6,8 @@ import { ArrowRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import { CollaboratorCard, type Collaborator } from "@/components/CollaboratorCard"
 import { makeFadeUp } from "@/lib/motion"
+import HeroSection from "@/components/ui/HeroDecor"
+import CtaBand from "@/components/ui/CtaBand"
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 
@@ -129,7 +131,7 @@ export default function Vie() {
   return (
     <>
       {/* ── Hero ── */}
-      <section style={{ paddingTop: 140, paddingBottom: 80, background: "var(--color-bg)", borderBottom: "1px solid var(--color-border)" }}>
+      <HeroSection side="career" next="bg" paddingTop={140} paddingBottom={80}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.p
             style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
@@ -150,7 +152,7 @@ export default function Vie() {
             On travaille sur des projets exigeants — et on vit bien entre les deux. Pas parce qu&apos;on y est obligés, mais parce qu&apos;on est des gens qui partagent les mêmes passions.
           </motion.p>
         </div>
-      </section>
+      </HeroSection>
 
       {/* ── Une journée chez Koncept ── */}
       <section style={{ padding: "96px 0", background: "var(--color-bg)" }}>
@@ -198,7 +200,7 @@ export default function Vie() {
           </motion.div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} className="events-grid">
             {EVENTS.map((ev, i) => (
-              <motion.div key={ev.title}
+              <motion.div className="glass-card" key={ev.title}
                 style={{ padding: "36px 32px", borderRadius: 16, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)", display: "flex", flexDirection: "column" }}
                 {...fadeUp(i * 0.1)}
               >
@@ -233,7 +235,7 @@ export default function Vie() {
           </motion.div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 14 }} className="perks-grid">
             {PERKS.map((perk, i) => (
-              <motion.div key={perk.label}
+              <motion.div className="glass-card" key={perk.label}
                 style={{ padding: "24px 22px", borderRadius: 14, border: "1px solid var(--color-border)", background: "var(--color-bg-2)" }}
                 {...fadeUp(i * 0.06)}
               >
@@ -269,34 +271,10 @@ export default function Vie() {
       </section>
 
       {/* ── CTA ── */}
-      <section style={{ padding: "80px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 40, flexWrap: "wrap" }}>
-          <div>
-            <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(22px, 2.5vw, 36px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 8 }}>
-              Ça ressemble à ce que tu cherches ?
-            </p>
-            <p style={{ color: "var(--color-ink-2)", fontSize: 15 }}>
-              Jette un œil aux offres ouvertes — ou écris-nous directement.
-            </p>
-          </div>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <Link href="/carrieres/offres"
-              style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-career-dark)", color: "#fff", padding: "15px 28px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", transition: "filter 0.15s" }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.1)" }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}
-            >
-              Voir les offres <ArrowRight size={15} />
-            </Link>
-            <Link href="/carrieres/candidature"
-              style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--color-career)", padding: "15px 28px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", border: "1px solid var(--color-career-border)", transition: "background 0.15s" }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent" }}
-            >
-              Candidature spontanée
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CtaBand side="career" prev="bg2" title="Ça ressemble à ce que tu cherches ?" text="Jette un œil aux offres ouvertes — ou écris-nous directement."
+        primary={{ label: "Voir les offres", href: "/carrieres/offres" }}
+        secondary={{ label: "Candidature spontanée", href: "/carrieres/candidature" }}
+      />
 
       <style>{`
         @media(max-width:1023px){

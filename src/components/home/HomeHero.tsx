@@ -5,12 +5,13 @@ import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import { IMAGES } from "@/lib/content"
+import { HeroDecor, HeroEdge, EDGE_H } from "@/components/ui/HeroDecor"
 
 export default function HomeHero() {
   const reduce = useReducedMotion()
   return (
-    <section id="accueil" style={{ minHeight: "100dvh", display: "flex", alignItems: "center", position: "relative", overflow: "hidden", paddingTop: 40 }}>
-      <div style={{ position: "absolute", top: "10%", right: "5%", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(212,32,32,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
+    <section id="accueil" style={{ minHeight: "100dvh", display: "flex", alignItems: "center", position: "relative", zIndex: 2, isolation: "isolate", overflow: "hidden", marginBottom: -1, paddingTop: 40, paddingBottom: EDGE_H }}>
+      <HeroDecor side="pro" />
       <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }} className="hero-grid">
         <div>
           <motion.p style={{ color: "var(--color-accent)", fontSize: 12, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 24 }}
@@ -61,6 +62,8 @@ export default function HomeHero() {
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(212,32,32,0.18) 0%, transparent 50%)", pointerEvents: "none" }} />
         </motion.div>
       </div>
+
+      <HeroEdge next="bg2" side="pro" />
 
       <style>{`
         .hero-grid { }

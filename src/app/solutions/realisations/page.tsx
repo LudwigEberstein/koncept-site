@@ -4,6 +4,8 @@ import { useState } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "motion/react"
 import { X, ArrowRight, ChevronRight } from "lucide-react"
 import Link from "next/link"
+import HeroSection from "@/components/ui/HeroDecor"
+import CtaBand from "@/components/ui/CtaBand"
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -169,7 +171,7 @@ export default function Realisations() {
   return (
     <>
       {/* ── Hero ── */}
-      <section style={{ paddingTop: 140, paddingBottom: 80, background: "var(--color-bg)", borderBottom: "1px solid var(--color-border)" }}>
+      <HeroSection side="pro" next="bg" paddingTop={140} paddingBottom={80}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }} className="hero-grid">
           <div>
             <motion.p
@@ -201,7 +203,7 @@ export default function Realisations() {
               { value: "7", label: "secteurs couverts", sub: "aéro, banque, santé…" },
               { value: "87 %", label: "de clients qui renouvellent", sub: "taux mesuré sur 3 ans" },
             ].map(s => (
-              <div key={s.label} style={{ padding: "28px 22px", borderRadius: 14, border: "1px solid var(--color-border)", background: "var(--color-bg-2)", textAlign: "center" }}>
+              <div className="glass-card" key={s.label} style={{ padding: "28px 22px", borderRadius: 14, border: "1px solid var(--color-border)", background: "var(--color-bg-2)", textAlign: "center" }}>
                 <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 800, color: "var(--color-accent)", letterSpacing: "-0.03em" }}>{s.value}</p>
                 <p style={{ fontSize: 12, fontWeight: 700, color: "var(--color-ink)", marginTop: 5 }}>{s.label}</p>
                 <p style={{ color: "var(--color-ink-2)", fontSize: 11, marginTop: 3 }}>{s.sub}</p>
@@ -209,7 +211,7 @@ export default function Realisations() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </HeroSection>
 
       {/* ── Filter + Grid ── */}
       <section style={{ padding: "80px 0 120px", background: "var(--color-bg)" }}>
@@ -340,25 +342,9 @@ export default function Realisations() {
       </section>
 
       {/* ── CTA ── */}
-      <section style={{ padding: "80px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 40, flexWrap: "wrap" }}>
-          <div>
-            <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(22px, 2.5vw, 36px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 8 }}>
-              Votre projet ressemble à l&apos;un de ces cas ?
-            </p>
-            <p style={{ color: "var(--color-ink-2)", fontSize: 15 }}>
-              Parlons-en. On peut estimer ensemble faisabilité et charge.
-            </p>
-          </div>
-          <Link href="/solutions/contact"
-            style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-accent)", color: "#fff", padding: "16px 32px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", transition: "filter 0.15s", whiteSpace: "nowrap" }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.12)" }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}
-          >
-            Parlons de votre projet <ArrowRight size={15} />
-          </Link>
-        </div>
-      </section>
+      <CtaBand side="pro" prev="bg" title="Votre projet ressemble à l'un de ces cas ?" text="Parlons-en. On peut estimer ensemble faisabilité et charge."
+        primary={{ label: "Parlons de votre projet", href: "/solutions/contact" }}
+      />
 
       {/* ── Detail modal ── */}
       <AnimatePresence>
