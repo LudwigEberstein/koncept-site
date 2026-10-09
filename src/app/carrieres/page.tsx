@@ -5,6 +5,8 @@ import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import { makeFadeUp } from "@/lib/motion"
+import HeroSection from "@/components/ui/HeroSection"
+import CtaBand from "@/components/ui/CtaBand"
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 
@@ -112,7 +114,7 @@ export default function Carrieres() {
   return (
     <>
       {/* ── Hero ── */}
-      <section style={{ paddingTop: 140, paddingBottom: 88, background: "var(--color-bg)", borderBottom: "1px solid var(--color-border)" }}>
+      <HeroSection side="career" next="bg2" paddingTop={140} paddingBottom={88}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }} className="hero-grid">
           <div>
             <motion.p
@@ -186,7 +188,7 @@ export default function Carrieres() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </HeroSection>
 
       {/* ── Pourquoi Koncept ── */}
       <section style={{ padding: "96px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
@@ -199,7 +201,7 @@ export default function Carrieres() {
           </motion.div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }} className="why-grid">
             {WHY_US.map((item, i) => (
-              <motion.div key={item.title}
+              <motion.div className="glass-card" key={item.title}
                 style={{ padding: "32px 28px", borderRadius: 16, border: "1px solid var(--color-border)", background: "var(--color-bg-3)", position: "relative", overflow: "hidden" }}
                 {...fadeUp(i * 0.07)}
                 whileHover={{ borderColor: "var(--color-career-border-hover)" }}
@@ -284,10 +286,8 @@ export default function Carrieres() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }} className="nav-grid">
             {SUB_PAGES.map((page, i) => (
               <motion.div key={page.href} {...fadeUp(i * 0.08)}>
-                <Link href={page.href}
+                <Link className="glass-card" href={page.href}
                   style={{ display: "flex", flexDirection: "column", gap: 12, padding: "28px 24px", borderRadius: 14, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)", textDecoration: "none", height: "100%", transition: "border-color 0.18s, background 0.18s" }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-career-border-hover)"; (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-career-border)"; (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
                 >
                   <span style={{ fontSize: 24 }}>{page.emoji}</span>
                   <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 16, fontWeight: 700, color: "var(--color-ink)" }}>{page.label}</p>
@@ -299,6 +299,13 @@ export default function Carrieres() {
           </div>
         </div>
       </section>
+
+      <CtaBand side="career" prev="bg"
+        title="Prêt·e à devenir Koncepteur·se ?"
+        text="Des missions ambitieuses, une équipe soudée, un suivi de carrière sérieux — et de l'humour."
+        primary={{ label: "Voir les offres d'emploi", href: "/carrieres/offres" }}
+        secondary={{ label: "Candidature spontanée", href: "/carrieres/candidature" }}
+      />
 
       <style>{`
         @media(max-width:1023px){

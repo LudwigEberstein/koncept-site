@@ -1,10 +1,11 @@
 'use client'
 
 import { useState } from "react"
-import Link from "next/link"
-import { ArrowRight, CheckCircle } from "lucide-react"
+import { CheckCircle } from "lucide-react"
 import { motion, useReducedMotion, AnimatePresence } from "motion/react"
 import RevealSection from "@/components/ui/RevealSection"
+import HeroSection from "@/components/ui/HeroSection"
+import CtaBand from "@/components/ui/CtaBand"
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 
@@ -151,7 +152,7 @@ function DomainPanel({ domain, reduce }: { domain: typeof DOMAINS[number]; reduc
         <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: domain.color, marginBottom: 28 }}>Notre expertise</p>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }} className="expertise-grid">
           {domain.expertise.map((ex, i) => (
-            <motion.div key={ex.title}
+            <motion.div className="glass-card" key={ex.title}
               style={{ padding: "28px 28px", borderRadius: 14, border: "1px solid var(--color-border)", background: "var(--color-bg-3)", borderLeft: `3px solid ${domain.color}` }}
               initial={reduce ? false : { opacity: 0, x: -12 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -221,7 +222,7 @@ export default function Expertises() {
   return (
     <>
       {/* ── Hero ── */}
-      <section style={{ background: "var(--color-bg)", borderBottom: "1px solid var(--color-border)", paddingTop: 140, paddingBottom: 80 }}>
+      <HeroSection side="pro" next="bg" nextColor="rgba(13,13,13,0.96)" paddingTop={140} paddingBottom={80}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.div style={{ maxWidth: "72ch" }}
             initial={reduce ? false : { opacity: 0, y: 20 }}
@@ -259,7 +260,7 @@ export default function Expertises() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </HeroSection>
 
       {/* ── Domain tab selector (sticky) ── */}
       <div style={{ position: "sticky", top: 68, zIndex: 40, background: "rgba(13,13,13,0.96)", backdropFilter: "blur(16px)", borderBottom: "1px solid var(--color-border)" }}>
@@ -358,7 +359,7 @@ export default function Expertises() {
               { title: "Interlocuteur technique unique", desc: "Vous avez un point de contact qui comprend votre stack, votre dette technique et vos enjeux métier. Pas un commercial relais." },
               { title: "Engagement sur les résultats", desc: "On travaille en forfait ou en régie avec des jalons clairs. Si le projet dérape, on en parle immédiatement — on ne cache pas les problèmes." },
             ].map((item, i) => (
-              <motion.div key={item.title}
+              <motion.div className="glass-card" key={item.title}
                 style={{ padding: "32px 28px", borderRadius: 14, border: "1px solid var(--color-border)", background: "var(--color-bg-2)" }}
                 initial={reduce ? false : { opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -375,25 +376,9 @@ export default function Expertises() {
       </section>
 
       {/* ── CTA ── */}
-      <section style={{ padding: "80px 24px", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr auto", gap: 48, alignItems: "center" }} className="cta-row">
-          <div>
-            <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(24px, 3vw, 44px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 12 }}>
-              Un cadrage technique sans engagement sous 48h.
-            </h2>
-            <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.7 }}>
-              Décrivez votre problème. On vous revient avec une analyse honnête et une proposition de collaboration adaptée.
-            </p>
-          </div>
-          <Link href="/solutions/contact"
-            style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "var(--color-accent)", color: "#fff", padding: "18px 32px", borderRadius: 12, fontSize: 15, fontWeight: 700, textDecoration: "none", whiteSpace: "nowrap", transition: "filter 0.15s, transform 0.15s" }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.1)"; (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)" }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)"; (e.currentTarget as HTMLElement).style.transform = "translateY(0)" }}
-          >
-            Parler à un expert <ArrowRight size={16} />
-          </Link>
-        </div>
-      </section>
+      <CtaBand side="pro" prev="bg" title="Un cadrage technique sans engagement sous 48h." text="Décrivez votre problème. On vous revient avec une analyse honnête et une proposition de collaboration adaptée."
+        primary={{ label: "Parler à un expert", href: "/solutions/contact" }}
+      />
 
       <style>{`
         @media(max-width:1023px){
@@ -408,7 +393,6 @@ export default function Expertises() {
           .missions-grid{grid-template-columns:1fr !important}
           .diff-grid{grid-template-columns:1fr !important}
           .cert-grid{grid-template-columns:1fr !important;gap:40px !important}
-          .cta-row{grid-template-columns:1fr !important}
         }
       `}</style>
     </>

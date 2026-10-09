@@ -7,6 +7,7 @@ import { useState } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "motion/react"
 import { JOBS } from "@/lib/content"
 import { makeFadeUp } from "@/lib/motion"
+import HeroSection from "@/components/ui/HeroSection"
 
 // ─── Enriched jobs ───────────────────────────────────────────────────────────
 
@@ -52,7 +53,7 @@ export default function Offres() {
   return (
     <>
       {/* ── Hero ── */}
-      <section style={{ paddingTop: 140, paddingBottom: 80, background: "var(--color-bg)", borderBottom: "1px solid var(--color-border)" }}>
+      <HeroSection side="career" next="bg" paddingTop={140} paddingBottom={80}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.p
             style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
@@ -80,7 +81,7 @@ export default function Offres() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </HeroSection>
 
       {/* ── Listings ── */}
       <section style={{ padding: "80px 0", background: "var(--color-bg)" }}>
@@ -221,7 +222,7 @@ export default function Offres() {
           </motion.div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 14, marginBottom: 40 }} className="profiles-grid">
             {SPONTANEOUS_PROFILES.map((p, i) => (
-              <motion.div key={p.tech}
+              <motion.div className="glass-card" key={p.tech}
                 style={{ padding: "24px 22px", borderRadius: 14, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)" }}
                 {...fadeUp(i * 0.08)}
               >

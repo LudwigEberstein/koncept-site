@@ -4,6 +4,8 @@ import { useState } from "react"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { motion, AnimatePresence, useReducedMotion } from "motion/react"
+import HeroSection from "@/components/ui/HeroSection"
+import CtaBand from "@/components/ui/CtaBand"
 
 // ─── Enriched sector data ───────────────────────────────────────────────────
 
@@ -202,7 +204,7 @@ export default function Secteurs() {
   return (
     <>
       {/* ── Hero ── */}
-      <section style={{ paddingTop: 140, paddingBottom: 72, background: "var(--color-bg)", borderBottom: "1px solid var(--color-border)" }}>
+      <HeroSection side="pro" next="bg" paddingTop={140} paddingBottom={72}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.p
             style={{ color: "var(--color-accent)", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
@@ -223,7 +225,7 @@ export default function Secteurs() {
             On ne découvre pas votre secteur le premier jour. Nos équipes connaissent vos contraintes, votre vocabulaire, vos enjeux réglementaires — avant même de commencer.
           </motion.p>
         </div>
-      </section>
+      </HeroSection>
 
       {/* ── Sector switcher ── */}
       <section style={{ padding: "80px 0 96px", background: "var(--color-bg)" }}>
@@ -304,7 +306,7 @@ export default function Secteurs() {
 
                 {/* Enjeux + Ce qu'on fait */}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 24 }} className="two-col">
-                  <div style={{ padding: "28px 28px", borderRadius: 14, border: "1px solid var(--color-border)", background: "var(--color-bg-2)" }}>
+                  <div className="glass-card" style={{ padding: "28px 28px", borderRadius: 14, border: "1px solid var(--color-border)", background: "var(--color-bg-2)" }}>
                     <p style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: active.color, marginBottom: 16 }}>Enjeux métier</p>
                     <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
                       {active.enjeux.map(e => (
@@ -394,26 +396,9 @@ export default function Secteurs() {
       </section>
 
       {/* ── CTA bas de page ── */}
-      <section style={{ padding: "80px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 40, flexWrap: "wrap" }}>
-          <div>
-            <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(22px, 2.5vw, 36px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 8 }}>
-              Votre secteur n&apos;est pas listé ?
-            </p>
-            <p style={{ color: "var(--color-ink-2)", fontSize: 15, maxWidth: "52ch" }}>
-              Notre capacité d&apos;adaptation est notre vraie force. On s&apos;intègre à des contextes métier variés.
-              Un échange de 30 minutes pour qualifier votre besoin.
-            </p>
-          </div>
-          <Link href="/solutions/contact"
-            style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-accent)", color: "#fff", padding: "16px 32px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", whiteSpace: "nowrap", transition: "filter 0.15s" }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.1)" }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}
-          >
-            Parlons de votre secteur <ArrowRight size={15} />
-          </Link>
-        </div>
-      </section>
+      <CtaBand side="pro" prev="bg2" title="Votre secteur n'est pas listé ?" text="Notre capacité d'adaptation est notre vraie force. On s'intègre à des contextes métier variés. Un échange de 30 minutes pour qualifier votre besoin."
+        primary={{ label: "Parlons de votre secteur", href: "/solutions/contact" }}
+      />
 
       <style>{`
         @media(max-width:1023px){

@@ -3,6 +3,8 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
+import HeroSection from "@/components/ui/HeroSection"
+import CtaBand from "@/components/ui/CtaBand"
 
 const STEPS = [
   {
@@ -238,7 +240,7 @@ export default function Methodologie() {
   return (
     <>
       {/* Hero */}
-      <section style={{ paddingTop: 140, paddingBottom: 80, background: "var(--color-bg)", borderBottom: "1px solid var(--color-border)" }}>
+      <HeroSection side="pro" next="bg2" paddingTop={140} paddingBottom={80}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.p
             style={{ color: "var(--color-accent)", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
@@ -277,7 +279,7 @@ export default function Methodologie() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </HeroSection>
 
       {/* Stats bar */}
       <section style={{ background: "var(--color-bg-2)", borderBottom: "1px solid var(--color-border)", padding: "28px 0" }}>
@@ -429,7 +431,7 @@ export default function Methodologie() {
 
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {COMMITMENTS.map((c, i) => (
-                <motion.div key={c.label}
+                <motion.div className="glass-card" key={c.label}
                   style={{ display: "flex", gap: 20, padding: "24px 28px", borderRadius: 14, border: "1px solid var(--color-border)", background: "var(--color-bg-3)", alignItems: "flex-start" }}
                   initial={reduce ? false : { opacity: 0, x: 24 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -451,35 +453,10 @@ export default function Methodologie() {
       </section>
 
       {/* Bottom CTA band */}
-      <section style={{ padding: "72px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 40, flexWrap: "wrap" }}>
-          <div>
-            <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(22px, 2.5vw, 36px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 8 }}>
-              Prêt à cadrer votre prochain projet ?
-            </p>
-            <p style={{ color: "var(--color-ink-2)", fontSize: 15, maxWidth: "52ch" }}>
-              Un premier échange de 30 minutes suffit à qualifier le périmètre, les enjeux et la faisabilité.
-              Sans engagement.
-            </p>
-          </div>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <Link href="/solutions/contact"
-              style={{ display: "inline-flex", alignItems: "center", gap: 9, background: "var(--color-accent)", color: "#fff", padding: "15px 32px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", whiteSpace: "nowrap", transition: "filter 0.15s" }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.1)" }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}
-            >
-              Démarrer la découverte <ArrowRight size={15} />
-            </Link>
-            <Link href="/solutions/expertises"
-              style={{ display: "inline-flex", alignItems: "center", gap: 9, background: "transparent", color: "var(--color-ink)", padding: "15px 32px", borderRadius: 10, fontSize: 15, fontWeight: 600, textDecoration: "none", border: "1px solid var(--color-border)", whiteSpace: "nowrap", transition: "border-color 0.15s" }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-ink)" }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-border)" }}
-            >
-              Voir nos expertises
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CtaBand side="pro" prev="bg2" title="Prêt à cadrer votre prochain projet ?" text="Un premier échange de 30 minutes suffit à qualifier le périmètre, les enjeux et la faisabilité. Sans engagement."
+        primary={{ label: "Démarrer la découverte", href: "/solutions/contact" }}
+        secondary={{ label: "Voir nos expertises", href: "/solutions/expertises" }}
+      />
 
       <style>{`
         @media(max-width:1023px){

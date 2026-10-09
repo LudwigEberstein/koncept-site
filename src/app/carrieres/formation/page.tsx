@@ -1,10 +1,10 @@
 'use client'
 
-import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import { makeFadeUp } from "@/lib/motion"
+import HeroSection from "@/components/ui/HeroSection"
+import CtaBand from "@/components/ui/CtaBand"
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 
@@ -87,7 +87,7 @@ export default function Formation() {
   return (
     <>
       {/* ── Hero ── */}
-      <section style={{ paddingTop: 140, paddingBottom: 80, background: "var(--color-bg)", borderBottom: "1px solid var(--color-border)" }}>
+      <HeroSection side="career" next="bg2" paddingTop={140} paddingBottom={80}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }} className="hero-grid">
           <div>
             <motion.p
@@ -119,7 +119,7 @@ export default function Formation() {
               { value: "30 min", label: "veille/semaine", sub: "Temps libre dédié" },
               { value: "Hebdo", label: "kata club", sub: "Sessions techniques internes" },
             ].map(s => (
-              <div key={s.label} style={{ padding: "28px 22px", borderRadius: 14, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)", textAlign: "center" }}>
+              <div className="glass-card" key={s.label} style={{ padding: "28px 22px", borderRadius: 14, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)", textAlign: "center" }}>
                 <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 800, color: "var(--color-career)", letterSpacing: "-0.03em" }}>{s.value}</p>
                 <p style={{ fontSize: 12, fontWeight: 700, color: "var(--color-ink)", marginTop: 5 }}>{s.label}</p>
                 <p style={{ color: "var(--color-ink-2)", fontSize: 11, marginTop: 3 }}>{s.sub}</p>
@@ -127,7 +127,7 @@ export default function Formation() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </HeroSection>
 
       {/* ── Ce qu'on prend en charge ── */}
       <section style={{ padding: "96px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
@@ -140,7 +140,7 @@ export default function Formation() {
           </motion.div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }} className="covers-grid">
             {WHAT_WE_COVER.map((item, i) => (
-              <motion.div key={item.label}
+              <motion.div className="glass-card" key={item.label}
                 style={{ display: "flex", gap: 18, padding: "28px 28px", borderRadius: 14, border: "1px solid var(--color-border)", background: "var(--color-bg-3)", alignItems: "flex-start" }}
                 {...fadeUp(i * 0.08)}
               >
@@ -263,27 +263,9 @@ export default function Formation() {
       </section>
 
       {/* ── CTA ── */}
-      <section style={{ padding: "80px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 40, flexWrap: "wrap" }}>
-          <div>
-            <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(22px, 2.5vw, 36px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 8 }}>
-              Envie de progresser avec nous ?
-            </p>
-            <p style={{ color: "var(--color-ink-2)", fontSize: 15 }}>
-              On construit ta trajectoire ensemble dès l&apos;entretien.
-            </p>
-          </div>
-          <div style={{ display: "flex", gap: 12 }}>
-            <Link href="/carrieres/offres"
-              style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-career-dark)", color: "#fff", padding: "15px 28px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", transition: "filter 0.15s" }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.1)" }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}
-            >
-              Voir les offres <ArrowRight size={15} />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CtaBand side="career" prev="bg" title="Envie de progresser avec nous ?" text="On construit ta trajectoire ensemble dès l'entretien."
+        primary={{ label: "Voir les offres", href: "/carrieres/offres" }}
+      />
 
       <style>{`
         @media(max-width:1023px){

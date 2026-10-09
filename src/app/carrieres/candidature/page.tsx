@@ -5,6 +5,7 @@ import Image from "next/image"
 import { ArrowRight, Mail, Linkedin } from "lucide-react"
 import { motion } from "motion/react"
 import { SITE } from "@/lib/content"
+import HeroSection from "@/components/ui/HeroSection"
 
 export default function Candidature() {
   const [form, setForm] = useState({ prenom: "", nom: "", email: "", poste: "", message: "" })
@@ -28,7 +29,7 @@ export default function Candidature() {
 
   return (
     <>
-      <section style={{ paddingTop: 140, paddingBottom: 64, background: "var(--color-bg)", borderBottom: "1px solid var(--color-border)" }}>
+      <HeroSection side="career" next="bg" paddingTop={140} paddingBottom={64}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.p style={{ color: "var(--color-career)", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
@@ -43,7 +44,7 @@ export default function Candidature() {
             Pas de poste qui correspond exactement ? Envoyez-nous quand même votre profil. On est toujours attentifs aux bonnes personnes.
           </motion.p>
         </div>
-      </section>
+      </HeroSection>
 
       <section style={{ padding: "80px 0", background: "var(--color-bg)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 380px", gap: 64, alignItems: "start" }} className="contact-grid">

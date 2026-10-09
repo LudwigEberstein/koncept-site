@@ -5,6 +5,7 @@ import Image from "next/image"
 import { ArrowRight, MapPin, Mail, Phone, Linkedin } from "lucide-react"
 import { motion, AnimatePresence } from "motion/react"
 import { SITE } from "@/lib/content"
+import HeroSection from "@/components/ui/HeroSection"
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
@@ -105,7 +106,7 @@ export default function Contact() {
   return (
     <>
       {/* ── Hero ── */}
-      <section style={{ paddingTop: 140, paddingBottom: 72, background: "var(--color-bg)", borderBottom: "1px solid var(--color-border)" }}>
+      <HeroSection side="pro" next="bg" paddingTop={140} paddingBottom={72}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.p
             style={{ color: "var(--color-accent)", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
@@ -143,7 +144,7 @@ export default function Contact() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </HeroSection>
 
       {/* ── Main ── */}
       <section style={{ padding: "80px 0 96px", background: "var(--color-bg)" }}>

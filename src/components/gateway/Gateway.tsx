@@ -6,27 +6,11 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { SITE, IMAGES } from "@/lib/content"
 import { DEST, STORAGE_KEY, type Side } from "./side"
+import { buildNetwork } from "@/lib/network"
 import "./gateway.css"
 const CIRCLE_BG: Record<Side, string> = {
   pro: "#3b82f6",
   fun: "linear-gradient(135deg, #D42020, #8f1010)",
-}
-
-/** Réseau décoratif (côté Solutions) : positions pseudo-aléatoires mais déterministes. */
-function buildNetwork() {
-  let seed = 7
-  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647
-  const nodes = Array.from({ length: 22 }, () => ({ x: Math.round(40 + rnd() * 720), y: Math.round(40 + rnd() * 820) }))
-  const edges: [number, number][] = []
-  nodes.forEach((a, i) => {
-    nodes
-      .map((b, j) => ({ j, d: Math.hypot(a.x - b.x, a.y - b.y) }))
-      .filter(o => o.j > i)
-      .sort((p, q) => p.d - q.d)
-      .slice(0, 2)
-      .forEach(o => edges.push([i, o.j]))
-  })
-  return { nodes, edges }
 }
 
 function isNarrow() {
@@ -37,7 +21,7 @@ export default function Gateway() {
   const router = useRouter()
   const [x, setX] = useState(50)
   const [dim, setDim] = useState<Side | null>(null)
-  const net = useMemo(buildNetwork, [])
+  const net = useMemo(() => buildNetwork({ seed: 7, count: 22, x: [40, 720], y: [40, 820] }), [])
   const choosing = useRef(false) // évite les doubles clics (plusieurs cercles + navigations)
 
   function hover(side: Side | null) {

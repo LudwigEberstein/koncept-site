@@ -6,6 +6,8 @@ import { ArrowRight, Linkedin } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import { IMAGES, SITE, VALUES, CAREER_EVENTS } from "@/lib/content"
 import { makeFadeUp } from "@/lib/motion"
+import HeroSection from "@/components/ui/HeroSection"
+import CtaBand from "@/components/ui/CtaBand"
 
 // ─── Local enriched data ────────────────────────────────────────────────────
 
@@ -123,7 +125,7 @@ export default function APropos() {
   return (
     <>
       {/* ── Hero ── */}
-      <section style={{ paddingTop: 140, paddingBottom: 80, background: "var(--color-bg)", borderBottom: "1px solid var(--color-border)" }}>
+      <HeroSection side="career" decor="net" next="bg" paddingTop={140} paddingBottom={80}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }} className="hero-grid">
           <div>
             <motion.p
@@ -170,7 +172,7 @@ export default function APropos() {
             <Image src={IMAGES.team} alt="L'équipe Koncept IS" fill sizes="(max-width: 1023px) 100vw, 50vw" style={{ objectFit: "cover" }} />
           </motion.div>
         </div>
-      </section>
+      </HeroSection>
 
       {/* ── 1. Histoire — timeline ── */}
       <section style={{ padding: "96px 0", background: "var(--color-bg)" }}>
@@ -215,7 +217,7 @@ export default function APropos() {
           </motion.div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }} className="stats-grid">
             {KEY_STATS.map((s, i) => (
-              <motion.div key={s.label}
+              <motion.div className="glass-card" key={s.label}
                 style={{ padding: "32px 28px", borderRadius: 16, border: "1px solid var(--color-border)", background: "var(--color-bg-3)" }}
                 {...fadeUp(i * 0.07)}
               >
@@ -279,7 +281,7 @@ export default function APropos() {
           </motion.div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }} className="values-grid">
             {VALUES.map((v, i) => (
-              <motion.div key={v.title}
+              <motion.div className="glass-card" key={v.title}
                 style={{ padding: "36px 28px", borderRadius: 16, border: "1px solid var(--color-border)", background: "var(--color-bg-3)", position: "relative", overflow: "hidden" }}
                 {...fadeUp(i * 0.09)}
                 whileHover={{ borderColor: "rgba(212,32,32,0.4)" }}
@@ -455,34 +457,10 @@ export default function APropos() {
       </section>
 
       {/* ── CTA final ── */}
-      <section style={{ padding: "80px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 40, flexWrap: "wrap" }}>
-          <div>
-            <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(22px, 2.5vw, 36px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 8 }}>
-              Travaillons ensemble.
-            </p>
-            <p style={{ color: "var(--color-ink-2)", fontSize: 15 }}>
-              Un échange de 30 minutes pour qualifier votre projet — sans engagement.
-            </p>
-          </div>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <Link href="/solutions/contact"
-              style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-accent)", color: "#fff", padding: "15px 28px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", transition: "filter 0.15s" }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.1)" }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}
-            >
-              Parlons de votre projet <ArrowRight size={15} />
-            </Link>
-            <Link href="/carrieres"
-              style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "var(--color-career)", padding: "15px 28px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none", border: "1px solid var(--color-career-border)", transition: "background 0.15s" }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent" }}
-            >
-              Rejoindre l&apos;équipe <ArrowRight size={15} />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CtaBand side="career" prev="bg" word="ENSEMBLE" title="Travaillons ensemble." text="Un échange de 30 minutes pour qualifier votre projet — sans engagement."
+        primary={{ label: "Parlons de votre projet", href: "/solutions/contact" }}
+        secondary={{ label: "Rejoindre l'équipe", href: "/carrieres" }}
+      />
 
       <style>{`
         .flip-card:hover .flip-card-inner{transform:rotateY(180deg)}
