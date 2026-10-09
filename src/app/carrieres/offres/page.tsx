@@ -229,15 +229,25 @@ export default function Offres() {
       {/* ── Profils recherchés en spontané ── */}
       <section style={{ padding: "80px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24 }}>
           <motion.div {...fadeUp()}>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>En veille permanente</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
-              Pas de poste listé ?<br />On cherche peut-être ton profil quand même.
+              Pas de poste listé ?<br />On cherche peut-être<br />ton profil quand même.
             </h2>
             <p style={{ color: "var(--color-ink-2)", fontSize: 15, maxWidth: "56ch", lineHeight: 1.7, marginBottom: 40 }}>
               Ces profils sont en veille permanente chez nous. Si tu corresponds, envoie une candidature spontanée — Valentine la lit vraiment.
             </p>
           </motion.div>
+          {/* Mamie : à droite de l'en-tête, dans le flux (ne rallonge pas la section, ne recouvre aucun texte) */}
+          <div className="grandma-figure" aria-hidden="true">
+            <picture>
+              <source media="(prefers-reduced-motion: reduce)" srcSet="/culture/grandma-static.png" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/culture/grandma.gif" alt="" loading="lazy" />
+            </picture>
+          </div>
+          </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 14, marginBottom: 40 }} className="profiles-grid">
             {SPONTANEOUS_PROFILES.map((p, i) => (
               <motion.div className="glass-card" key={p.tech}
