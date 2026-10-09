@@ -129,7 +129,7 @@ export const TECH = [
 export const TEAM = [
   { name: "Gérard", role: "Président", img: "https://picsum.photos/seed/gerard-koncept-president/300/300" },
   { name: "Valentine", role: "Directrice RH", img: "https://picsum.photos/seed/valentine-koncept-rh/300/300" },
-  { name: "Aurélie", role: "Responsable Commercial", img: "https://picsum.photos/seed/aurelie-koncept-commercial/300/300" },
+  { name: "Aurélie", role: "Directrice Commerciale", img: "https://picsum.photos/seed/aurelie-koncept-commercial/300/300" },
 ] as const
 
 export const VALUES = [

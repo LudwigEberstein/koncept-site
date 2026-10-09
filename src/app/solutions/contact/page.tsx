@@ -22,7 +22,7 @@ const REQUEST_TYPES: { id: Exclude<RequestType, "">; label: string; desc: string
 const CONTACTS: Record<Exclude<RequestType, "">, { name: string; role: string; img: string; intro: string }> = {
   projet: {
     name: "Aurélie",
-    role: "Responsable Commercial",
+    role: "Directrice Commerciale",
     img: "https://picsum.photos/seed/aurelie-koncept-commercial/120/120",
     intro: "Je qualifie votre besoin et vous propose la bonne équipe. Premier échange gratuit, sans engagement.",
   },

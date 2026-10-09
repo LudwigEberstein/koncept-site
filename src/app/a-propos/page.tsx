@@ -59,7 +59,7 @@ const DIRIGEANTS = [
     role: "Président KONCEPT",
     img: "/team/gerard-front.png",
     imgBack: "/team/gerard-back.png",
-    bio: "Co-fondateur de Koncept IS, Gérard a bâti l'ESN sur un principe simple : que chaque client soit suivi par quelqu'un qui comprend son métier en profondeur.",
+    bio: "Fondateur de Koncept IS, Gérard a bâti l'ESN sur un principe simple : que chaque client soit suivi par quelqu'un qui comprend son métier en profondeur.",
     quote: "On ne veut pas être la plus grande ESN de Toulouse. On veut être la meilleure pour nos clients.",
   },
   {
@@ -72,7 +72,7 @@ const DIRIGEANTS = [
   },
   {
     name: "Aurélie",
-    role: "Responsable Commerciale",
+    role: "Directrice Commerciale",
     img: "/team/aurelie-front.jpg",
     imgBack: "/team/aurelie-back.jpg",
     bio: "Aurélie est l'interlocutrice de confiance des DSI et directeurs de projet. Elle porte la promesse Koncept à chaque avant-vente.",
