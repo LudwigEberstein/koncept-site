@@ -192,8 +192,8 @@ export default function Carrieres() {
       </section>
 
       {/* ── ADN Koncept ── */}
-      <section style={{ padding: "96px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+      <section className="dna-section" style={{ position: "relative", overflow: "hidden", padding: "96px 0 340px", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
+        <div style={{ position: "relative", zIndex: 1, maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.div {...fadeUp()}>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>L&apos;ADN Koncept</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
@@ -217,6 +217,14 @@ export default function Carrieres() {
               </motion.div>
             ))}
           </div>
+        </div>
+        {/* Mona Lisa : fondue dans le fond (blend), halo rouge, ancrée en bas à droite */}
+        <div className="mona-figure" aria-hidden="true">
+          <picture>
+            <source media="(prefers-reduced-motion: reduce)" srcSet="/culture/monalisa-static.png" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/culture/monalisa.gif" alt="" loading="lazy" />
+          </picture>
         </div>
       </section>
 
