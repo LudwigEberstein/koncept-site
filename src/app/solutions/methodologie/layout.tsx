@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Méthodologie',
-  description: 'Découverte, cadrage, conception, développement, tests, mise en production : les 7 étapes de notre méthodologie pour des livraisons fiables.',
+  description: 'Comprendre votre besoin, proposer les bons profils, suivre nos consultants : la façon de travailler de Koncept IS, ESN à taille humaine.',
   alternates: { canonical: 'https://koncept-is.fr/solutions/methodologie' },
 }
 

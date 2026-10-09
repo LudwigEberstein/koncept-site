@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Expertises',
-  description: 'Java Spring Boot, .NET, DevOps Kubernetes : les trois domaines techniques de Koncept IS. Missions DSI, certifications, stacks de référence.',
+  description: 'Développement logiciel Java, .NET et Angular, intégration continue, bases de données, accompagnement fonctionnel et pilotage : les compétences de Koncept IS.',
   alternates: { canonical: 'https://koncept-is.fr/solutions/expertises' },
 }
 

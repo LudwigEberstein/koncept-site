@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE.name}`,
     default: `${SITE.name} | ESN à Toulouse - Java, .NET, DevOps`,
   },
-  description: "ESN toulousaine de 50 experts. Développement Java, .NET et Angular, conseil DevOps et transformation digitale pour 7 secteurs d'activité.",
+  description: "ESN toulousaine à taille humaine : développement logiciel Java, .NET et Angular, accompagnement technique et fonctionnel de vos projets.",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

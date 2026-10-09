@@ -11,7 +11,7 @@ export default function Footer() {
   const pathname = usePathname()
   if (pathname === "/") return null
   return (
-    <footer style={{ background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
+    <footer data-side={pathname.startsWith("/solutions") ? "pro" : undefined} style={{ background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
       <div style={{ maxWidth: 1320, margin: "0 auto", padding: "56px 24px 32px" }}>
 
         {/* Top row */}
@@ -20,7 +20,7 @@ export default function Footer() {
           <div>
             <Image src={IMAGES.logo} alt="Koncept IS" width={120} height={28} style={{ height: 28, width: "auto", objectFit: "contain", marginBottom: 16 }} />
             <p style={{ color: "var(--color-ink-2)", fontSize: 13, lineHeight: 1.7, marginBottom: 16 }}>
-              ESN toulousaine spécialisée en développement Java, .NET et DevOps. Partenaire de votre transformation digitale depuis 2014.
+              ESN toulousaine à taille humaine. Développement logiciel et accompagnement technique et fonctionnel depuis 2014.
             </p>
             <p style={{ color: "var(--color-ink-2)", fontSize: 13, lineHeight: 1.65 }}>
               {SITE.address.street}<br />
@@ -35,7 +35,7 @@ export default function Footer() {
 
           {/* Solutions */}
           <div>
-            <Link href="/solutions" style={{ display: "block", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#60a5fa", marginBottom: 16, textDecoration: "none" }}>Solutions</Link>
+            <Link href="/solutions" style={{ display: "block", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-pro)", marginBottom: 16, textDecoration: "none" }}>Solutions</Link>
             <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
               {NAV_CLIENT.map(({ label, href }) => (
                 <Link key={href} href={href} style={{ color: "var(--color-ink-2)", textDecoration: "none", fontSize: 13, fontWeight: 500, padding: "5px 0", transition: "color 0.15s" }}
@@ -88,7 +88,7 @@ export default function Footer() {
         <div style={{ borderTop: "1px solid var(--color-border)", paddingTop: 24, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
           <p style={{ color: "var(--color-ink-2)", fontSize: 12 }}>
             &copy; <YearClient /> Koncept IS — ESN Toulousaine. Site par{" "}
-            <a href="https://devantia.vercel.app" style={{ color: "var(--color-accent)", textDecoration: "none" }}>Devantia</a>.
+            <a href="https://devantia.vercel.app" style={{ color: "var(--color-accent-text)", textDecoration: "none" }}>Devantia</a>.
             <span className="konami-footer-hint" aria-hidden="true" title="Psst…" style={{ marginLeft: 14, opacity: 0.22, letterSpacing: "0.12em", fontSize: 11, userSelect: "none" }}>↑ ↑ ↓ ↓ ← → ← → B A</span>
           </p>
           <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer"

@@ -2,7 +2,7 @@
 
 export const SITE = {
   name: "Koncept",
-  tagline: "On transforme votre IT.",
+  tagline: "Les bonnes compétences, au bon moment.",
   address: {
     street: "3, Avenue de l'Europe",
     building: "Parc Technologique du Canal - Bâtiment C",
@@ -10,120 +10,63 @@ export const SITE = {
   },
   linkedin: "https://www.linkedin.com/company/konceptkomet",
   email: "contact@koncept-is.fr",
-  phone: "05 61 00 00 00",
-  phoneHref: "tel:0561000000",
 } as const
 
-export const STATS = [
-  { value: "50", label: "collaborateurs" },
-  { value: "€3.2M", label: "de chiffre d'affaires" },
-  { value: "7", label: "secteurs d'activité" },
-  { value: "2014", label: "fondée à Toulouse" },
+/**
+ * Affiche les pastilles « À valider » sur les contenus non confirmés par le métier (univers Solutions).
+ * Passer à false une fois les contenus validés : les pastilles disparaissent partout.
+ */
+export const SHOW_VALIDATION_MARKERS = true
+
+/** Ce qui différencie Koncept — formulé sans chiffre ni promesse contractuelle. */
+export const DIFFERENTIATORS = [
+  { title: "Proximité", desc: "Un interlocuteur direct chez Koncept, qui connaît votre contexte et vos équipes." },
+  { title: "Les bons profils", desc: "Des consultants dont les compétences correspondent réellement à votre besoin." },
+  { title: "Souplesse et réactivité", desc: "Votre besoin évolue : nous nous adaptons, simplement et rapidement." },
+  { title: "Consultants accompagnés", desc: "Un suivi humain et technique de chaque consultant pendant sa mission." },
+  { title: "Relation durable", desc: "Un échange simple et direct, pensé pour durer au-delà d'une première mission." },
 ] as const
 
-export const SECTORS = [
-  {
-    name: "Aéronautique",
-    slug: "aeronautique",
-    desc: "Systèmes embarqués, MES, simulateurs de vol, chaîne de production numérique. Nos équipes interviennent chez les leaders du secteur en Occitanie.",
-    tags: ["Java", "C++", ".NET", "DevOps"],
-  },
-  {
-    name: "Banque & Finance",
-    slug: "banque",
-    desc: "Core banking, conformité réglementaire (DSP2, RGPD), portails clients, automatisation des processus métier.",
-    tags: ["Java", "Spring Boot", "Angular", "API REST"],
-  },
-  {
-    name: "Télécommunications",
-    slug: "telecom",
-    desc: "BSS/OSS, facturation, portails abonnés, orchestration réseau. Des solutions robustes pour des volumes critiques.",
-    tags: ["Java", "Microservices", "Cloud", "DevOps"],
-  },
-  {
-    name: "Services IT",
-    slug: "services-it",
-    desc: "Éditeurs logiciels, intégrateurs, hébergeurs. Nous renforçons vos équipes sur des cycles courts ou longs.",
-    tags: ["React", "Node.js", "CI/CD", "Docker"],
-  },
-  {
-    name: "Robotique",
-    slug: "robotique",
-    desc: "Interfaces de pilotage, logiciels de contrôle, jumeaux numériques. Nous connectons le monde physique au digital.",
-    tags: ["C++", "Python", "ROS", "IoT"],
-  },
-  {
-    name: "Transport & Mobilité",
-    slug: "transport",
-    desc: "Billettique, supervision de flottes, systèmes embarqués. Des solutions fiables pour des environnements exigeants.",
-    tags: [".NET", "Angular", "SQL", "Azure"],
-  },
-  {
-    name: "Secteur public",
-    slug: "secteur-public",
-    desc: "Dématérialisation, portails citoyens, systèmes d'information métier. Expérience des contraintes réglementaires et des marchés publics.",
-    tags: ["Java", ".NET", "PostgreSQL", "Sécurité"],
-  },
-] as const
-
+/** Grandes familles de compétences (technologies validées). */
 export const EXPERTISES = [
   {
-    title: "Développement Web & Mobile",
-    slug: "web-mobile",
-    short: "Full-stack sur mesure",
-    desc: "Applications métier, portails clients, sites transactionnels. Nous couvrons le cycle complet : architecture, développement, recette, livraison.",
-    stack: ["Java", "Spring Boot", ".NET", "Angular", "React", "Node.js"],
-    icon: "code",
+    slug: "developpement",
+    title: "Développement web & logiciel",
+    short: "Applications",
+    desc: "Conception, développement, modernisation et maintenance d'applications web, backend et frontend.",
+    stack: ["Java", "Spring Boot", ".NET", "C#", "Angular", "React", "TypeScript", "JavaScript", "Flutter", "Python"],
   },
   {
-    title: "Architecture applicative",
-    slug: "architecture",
-    short: "Conception & urbanisation SI",
-    desc: "Audit de l'existant, définition des cibles techniques, microservices, API-first. Nous structurons vos systèmes pour qu'ils scalent.",
-    stack: ["Microservices", "API REST", "Event-driven", "DDD"],
-    icon: "layers",
+    slug: "integration",
+    title: "DevOps & intégration continue",
+    short: "DevOps",
+    desc: "Automatisation des builds, des tests et des déploiements pour fiabiliser la livraison des applications.",
+    stack: ["Azure DevOps", "Git", "GitLab CI/CD", "Jenkins", "Docker", "CI/CD", "Ansible", "Linux"],
   },
   {
-    title: "Cloud & Infrastructure",
-    slug: "cloud",
-    short: "Cloud privé & public",
-    desc: "Migration cloud, infrastructure as code, optimisation des coûts, conformité RGPD. Azure, AWS ou on-premise selon vos contraintes.",
-    stack: ["Azure", "AWS", "Docker", "Kubernetes", "Terraform"],
-    icon: "cloud",
+    slug: "donnees",
+    title: "Bases de données & gestion des données",
+    short: "Données",
+    desc: "Conception, modélisation, interrogation et évolution des bases de données au service des applications.",
+    stack: ["SQL", "MySQL", "SQL Server", "PostgreSQL", "Oracle", "MongoDB", "NoSQL"],
   },
   {
-    title: "DevOps & Industrialisation",
-    slug: "devops",
-    short: "CI/CD & automatisation",
-    desc: "Pipelines de déploiement continu, monitoring, qualité du code, sécurité intégrée (DevSecOps). Nous réduisons votre time-to-market.",
-    stack: ["Jenkins", "GitLab CI", "SonarQube", "Ansible", "Prometheus"],
-    icon: "git",
-  },
-  {
-    title: "Data & Interopérabilité",
-    slug: "data",
-    short: "Données & intégration",
-    desc: "Modélisation, ETL, APIs d'échange, data warehousing. Nous rendons vos données exploitables et vos systèmes interconnectés.",
-    stack: ["MySQL", "PostgreSQL", "Kafka", "Elasticsearch", "Power BI"],
-    icon: "database",
-  },
-  {
-    title: "Sécurité & Conformité",
-    slug: "securite",
-    short: "ISO 27001 · RGPD · OWASP",
-    desc: "Certifiés ISO 27001:2013 depuis 2020. Sécurité intégrée dès la conception : tests de vulnérabilité, revue de code, conformité réglementaire.",
-    stack: ["ISO 27001", "OWASP", "RGPD", "Pentest", "SIEM"],
-    icon: "shield",
+    slug: "accompagnement",
+    title: "Accompagnement fonctionnel & pilotage",
+    short: "Métier & pilotage",
+    desc: "Analyse des besoins, cadrage fonctionnel, coordination des équipes et pilotage de projets en environnement agile.",
+    stack: ["AMOA", "Agile / Scrum", "SAFe", "Recette fonctionnelle"],
   },
 ] as const
 
-export const TECH = [
-  { name: "Java", src: "https://koncept-is.fr/wp-content/uploads/2025/07/java.png" },
-  { name: "Spring Boot", src: "https://koncept-is.fr/wp-content/uploads/2025/07/spring-boot.png" },
-  { name: "Microsoft .NET", src: "https://koncept-is.fr/wp-content/uploads/2025/07/ms-dotnet.png" },
-  { name: "Angular", src: "https://koncept-is.fr/wp-content/uploads/2025/07/angular.png" },
-  { name: "Jenkins", src: "https://koncept-is.fr/wp-content/uploads/2025/07/jenkins.png" },
-  { name: "MySQL", src: "https://koncept-is.fr/wp-content/uploads/2025/07/mysql.png" },
+/** Secteurs d'intervention (libellés et descriptions validés). */
+export const SECTORS = [
+  { slug: "aeronautique", name: "Aéronautique", enjeu: "Développement et évolution d'applications dans des environnements techniques exigeants." },
+  { slug: "banque", name: "Banque & Assurance", enjeu: "Développement et maintenance de solutions applicatives au service des activités métiers." },
+  { slug: "telecom", name: "Télécommunications", enjeu: "Développement et évolution d'applications au sein de systèmes d'information complexes." },
+  { slug: "editeurs", name: "Éditeurs de logiciels & services numériques", enjeu: "Renfort des équipes techniques et fonctionnelles pour concevoir et faire évoluer leurs solutions." },
+  { slug: "transport", name: "Transport & Mobilité", enjeu: "Développement de solutions de gestion et de suivi de flottes de véhicules, avec traitement de volumes importants de données et d'événements." },
+  { slug: "recherche-public", name: "Recherche & secteur public", enjeu: "Accompagnement de projets applicatifs dans des environnements scientifiques et institutionnels." },
 ] as const
 
 export const VALUES = [

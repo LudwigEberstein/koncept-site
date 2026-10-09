@@ -7,7 +7,6 @@ interface HeroSectionProps {
   /** Fond de la section qui suit le héros (la diagonale se fond dedans). */
   next: NextBg
   /** Couleur exacte de l'élément qui suit, si ce n'est pas --color-bg / --color-bg-2. */
-  nextColor?: string
   /** Motif du fond : réseau (défaut côté Solutions) ou code (défaut côté Carrières). */
   decor?: Decor
   paddingTop?: number
@@ -21,7 +20,7 @@ interface HeroSectionProps {
  * Section héros d'une page : fond + halo/texture + diagonale. Remplace le <section> d'ouverture.
  * Elle porte seule le contexte d'empilement (isolation) nécessaire au calque décoratif.
  */
-export default function HeroSection({ side, next, nextColor, decor, paddingTop = 140, paddingBottom = 80, id, children, style }: HeroSectionProps) {
+export default function HeroSection({ side, next, decor, paddingTop = 140, paddingBottom = 80, id, children, style }: HeroSectionProps) {
   return (
     <section
       id={id}
@@ -34,7 +33,7 @@ export default function HeroSection({ side, next, nextColor, decor, paddingTop =
     >
       <HeroDecor side={side} decor={decor ?? (side === "pro" ? "net" : "code")} />
       {children}
-      <HeroEdge next={next} nextColor={nextColor} side={side} />
+      <HeroEdge next={next} side={side} />
     </section>
   )
 }

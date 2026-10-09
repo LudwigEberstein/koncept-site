@@ -94,7 +94,7 @@ type Props = {
 export function CollaboratorCard({ data, accentColor, variant = "career" }: Props) {
   const accent = accentColor ?? (variant === "career" ? "var(--color-career)" : "var(--color-accent)")
   const accentBg = variant === "career" ? "var(--color-career-bg)" : "var(--color-accent-2)"
-  const accentBorder = variant === "career" ? "var(--color-career-border)" : "rgba(212,32,32,0.25)"
+  const accentBorder = variant === "career" ? "var(--color-career-border)" : "rgba(var(--color-accent-rgb), 0.25)"
 
   return (
     <article
@@ -159,7 +159,7 @@ export function CollaboratorCard({ data, accentColor, variant = "career" }: Prop
           <p style={{ fontSize: 13, color: "var(--color-ink-2)", lineHeight: 1.7 }}>{data.parcours}</p>
         </Section>
 
-        <Section label="Stack technique" accent={accent}>
+        <Section label="Outils & compétences" accent={accent}>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 6, paddingTop: 2 }}>
             {data.stack.map(s => (
               <span

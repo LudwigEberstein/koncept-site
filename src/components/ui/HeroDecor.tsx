@@ -67,10 +67,9 @@ export function HeroDecor({ side, decor }: { side: Side; decor: Decor }) {
 }
 
 /**
- * Bord en diagonale vers la section suivante, rempli de sa couleur (`next`, ou `nextColor` si la
- * section suivante a un fond particulier, ex. une barre translucide), + liseré lumineux.
+ * Bord en diagonale vers la section suivante, rempli de sa couleur (`next`), + liseré lumineux.
  */
-export function HeroEdge({ next, nextColor, side }: { next: NextBg; nextColor?: string; side: Side }) {
+export function HeroEdge({ next, side }: { next: NextBg; side: Side }) {
   return (
     <svg className={`hd-edge hd-${side}`} viewBox="0 0 100 100" preserveAspectRatio="none" style={{ height: EDGE_H }} aria-hidden="true">
       <defs>
@@ -81,7 +80,7 @@ export function HeroEdge({ next, nextColor, side }: { next: NextBg; nextColor?: 
           <stop offset="1" stopColor="transparent" />
         </linearGradient>
       </defs>
-      <polygon points="0,100 100,0 100,100" fill={nextColor ?? `var(--color-${next === "bg" ? "bg" : "bg-2"})`} />
+      <polygon points="0,100 100,0 100,100" fill={`var(--color-${next === "bg" ? "bg" : "bg-2"})`} />
       <line x1="0" y1="98" x2="100" y2="-2" stroke={`url(#hd-edge-${side})`} strokeWidth="2.2" vectorEffect="non-scaling-stroke" />
     </svg>
   )

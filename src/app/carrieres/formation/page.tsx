@@ -10,12 +10,12 @@ import Container from "@/components/ui/Container"
 // ─── Data ───────────────────────────────────────────────────────────────────
 
 const WHAT_WE_COVER = [
-  { icon: "🎓", label: "Certifications", desc: "AWS, Azure, GCP, CKA (Kubernetes), Oracle Java, GitLab CI, Scrum Master, ISTQB. Koncept prend en charge l'intégralité du coût." },
-  { icon: "🎤", label: "Conférences", desc: "Conférences et meetups toulousains, pour rester connecté à la communauté tech locale. Les frais d'inscription sont pris en charge." },
-  { icon: "📚", label: "Livres techniques", desc: "Amazon wish-list technique = budget formation. Clean Code, DDD, Designing Data-Intensive Applications — on commande." },
+  { icon: "🎓", label: "Certifications", desc: "Cloud (AWS, Azure, GCP), Kubernetes, Java, Scrum Master, Product Owner, gestion de projet, analyse métier… Koncept prend en charge l'intégralité du coût." },
+  { icon: "🎤", label: "Conférences", desc: "Conférences et meetups toulousains (tech, agile, produit), pour rester connecté à la communauté locale. Les frais d'inscription sont pris en charge." },
+  { icon: "📚", label: "Livres", desc: "Une wish-list de livres = budget formation. Clean Code, DDD, mais aussi Scrum Guide, Lean Startup, Team Topologies — on commande." },
   { icon: "🖥", label: "Plateformes en ligne", desc: "Udemy, Pluralsight, et les licences d'outils d'IA. Accès financé par Koncept pour monter en compétence en ligne." },
-  { icon: "⚡", label: "Kata club interne", desc: "Sessions hebdo volontaires : algos, design patterns, archi logicielle. Présentés par les seniors à tour de rôle." },
-  { icon: "🔬", label: "Veille technologique", desc: "30 min/semaine de veille libre pendant les heures de travail. Ce qu'on découvre est partagé en équipe." },
+  { icon: "⚡", label: "Kata club interne", desc: "Sessions hebdo volontaires, ouvertes à tous les métiers : code, agilité, cadrage. Présentées à tour de rôle." },
+  { icon: "🔬", label: "Veille", desc: "30 min/semaine de veille libre pendant les heures de travail. Ce qu'on découvre est partagé en équipe." },
 ]
 
 const PATHS: { id: string; title: string; emoji: string; color: string; desc: string; steps: { year: string; label: string }[] }[] = [
@@ -23,7 +23,7 @@ const PATHS: { id: string; title: string; emoji: string; color: string; desc: st
     id: "expert",
     title: "Expert technique",
     emoji: "⚡",
-    color: "#3b82f6",
+    color: "#2B50F0",
     desc: "Tu veux rester dans le code, aller de plus en plus loin dans la maîtrise technique. On fait de toi une référence sur ta stack.",
     steps: [
       { year: "0–1 an", label: "Développeur confirmé — prise en main des projets" },
@@ -47,13 +47,13 @@ const PATHS: { id: string; title: string; emoji: string; color: string; desc: st
   },
   {
     id: "management",
-    title: "Agilité & Pilotage",
+    title: "Fonctionnel & Pilotage",
     emoji: "◎",
     color: "#f59e0b",
-    desc: "Tu veux animer une équipe, cadrer un produit, piloter des projets. On t'accompagne vers un rôle de Scrum Master, de Product Owner, puis de chef de projet.",
+    desc: "Tu viens du fonctionnel, ou tu veux animer une équipe, cadrer un produit, piloter des projets. On t'accompagne vers Scrum Master, Product Owner, puis chef de projet.",
     steps: [
-      { year: "0–2 ans", label: "Dev senior — légitimité technique indispensable d'abord" },
-      { year: "3–4 ans", label: "Lead / référent — premier rôle d'animation d'équipe" },
+      { year: "0–2 ans", label: "Business Analyst — analyse du besoin, cadrage, recette" },
+      { year: "3–4 ans", label: "Référent fonctionnel — premier rôle d'animation d'équipe" },
       { year: "4–5 ans", label: "Scrum Master / Product Owner — animation, backlog, cadrage" },
       { year: "5+ ans", label: "Chef de projet — pilotage des équipes et des clients" },
     ],
@@ -62,13 +62,17 @@ const PATHS: { id: string; title: string; emoji: string; color: string; desc: st
 
 const CERTIFS = [
   { name: "AWS Solutions Architect", level: "Associate → Professional", color: "#f59e0b" },
-  { name: "Azure Fundamentals → Expert", level: "AZ-900 → AZ-305", color: "#3b82f6" },
+  { name: "Azure Fundamentals → Expert", level: "AZ-900 → AZ-305", color: "#2B50F0" },
   { name: "Google Cloud Professional", level: "Associate → Professional", color: "#34a853" },
   { name: "Kubernetes (CKA/CKAD)", level: "Linux Foundation", color: "#06b6d4" },
   { name: "Oracle Java Certified", level: "OCA → OCP", color: "#f97316" },
   { name: "GitLab CI/CD", level: "Associate → Professional", color: "#8b5cf6" },
   { name: "Scrum Master / SAFe", level: "PSM I/II · SAFe Agilist", color: "#D42020" },
   { name: "ISTQB", level: "Foundation → Advanced", color: "#64748b" },
+  { name: "Product Owner", level: "PSPO I/II · SAFe POPM", color: "#ec4899" },
+  { name: "Gestion de projet", level: "PMP · PRINCE2", color: "#14b8a6" },
+  { name: "Analyse métier", level: "IIBA : ECBA → CBAP", color: "#a855f7" },
+  { name: "ITIL 4", level: "Foundation", color: "#eab308" },
 ]
 
 const KATA_SESSIONS = [
@@ -76,6 +80,8 @@ const KATA_SESSIONS = [
   { label: "Design Patterns", desc: "GoF, patterns d'entreprise, anti-patterns. Avec des exemples tirés des vrais projets Koncept." },
   { label: "Architecture & DDD", desc: "Event storming, bounded contexts, CQRS/ES. Le niveau au-dessus du code propre." },
   { label: "DevSecOps", desc: "Threat modeling, SAST/DAST, secrets management. La sécurité n'est pas une option." },
+  { label: "Agilité & facilitation", desc: "Rétrospectives, ateliers, user story mapping. Pour mieux travailler ensemble, pas seulement mieux coder." },
+  { label: "Cadrage & produit", desc: "Product discovery, priorisation, écriture de user stories. Le lien entre le besoin et le code." },
 ]
 
 // ─── Page ───────────────────────────────────────────────────────────────────
@@ -106,7 +112,7 @@ export default function Formation() {
               style={{ color: "var(--color-ink-2)", fontSize: 17, lineHeight: 1.75, maxWidth: "48ch" }}
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.1 }}
             >
-              Un budget formation dédié à chaque collaborateur, disponible dès le premier jour. Sans condition d&apos;ancienneté. Sans justification excessive. Parce qu&apos;un développeur qui monte en compétences, c&apos;est tout le monde qui gagne.
+              Un budget formation dédié à chaque collaborateur, disponible dès le premier jour. Sans condition d&apos;ancienneté. Sans justification excessive. Parce qu&apos;un Koncepteur qui monte en compétences, c&apos;est tout le monde qui gagne.
             </motion.p>
           </div>
           <motion.div
@@ -115,9 +121,9 @@ export default function Formation() {
           >
             {[
               { value: "Dédié", label: "budget formation", sub: "Dès le 1er jour" },
-              { value: "100 %", label: "certifs financées", sub: "Sans plafond par certif" },
+              { value: "100 %", label: "certifs financées", sub: "Prises en charge par Koncept" },
               { value: "30 min", label: "veille/semaine", sub: "Temps libre dédié" },
-              { value: "Hebdo", label: "kata club", sub: "Sessions techniques internes" },
+              { value: "Hebdo", label: "kata club", sub: "Sessions internes ouvertes à tous" },
             ].map(s => (
               <div className="glass-card" key={s.label} style={{ padding: "28px 22px", borderRadius: 14, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)", textAlign: "center" }}>
                 <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 800, color: "var(--color-career)", letterSpacing: "-0.03em" }}>{s.value}</p>
@@ -165,7 +171,7 @@ export default function Formation() {
               Achievement unlocked.
             </h2>
             <p style={{ color: "var(--color-ink-2)", fontSize: 15, maxWidth: "52ch", lineHeight: 1.7, marginBottom: 48 }}>
-              Sans plafond par certification. Sans condition de rester après la certif. On part du principe qu&apos;un dev certifié qui reste est plus utile qu&apos;un dev non-certifié qui part.
+              Sans condition de rester après la certif. On part du principe qu&apos;un Koncepteur certifié qui reste est plus utile qu&apos;un non-certifié qui part.
             </p>
           </motion.div>
           {/* Einstein : à droite de l'en-tête, il « sort » de derrière la grille de certifications */}
@@ -198,10 +204,10 @@ export default function Formation() {
           <motion.div {...fadeUp()} style={{ position: "relative" }}>
             <Eyebrow tone="career">Kata Club</Eyebrow>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
-              Une session technique<br />chaque semaine.
+              Une session<br />chaque semaine.
             </h2>
             <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.75, marginBottom: 24 }}>
-              Tous les jeudis, 1h de session technique volontaire. Pas de slides, pas de cours théorique — du code, un écran partagé, et de la discussion franche entre pairs. Présentées à tour de rôle par les seniors.
+              Tous les jeudis, 1h de session volontaire, ouverte à tous les métiers. Pas de slides, pas de cours théorique — du code, un atelier, un écran partagé, et de la discussion franche entre pairs. Présentées à tour de rôle.
             </p>
             <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.75 }}>
               Environ 60 % des Koncepteurs participent régulièrement. C&apos;est l&apos;endroit où les meilleures pratiques se transmettent vraiment.

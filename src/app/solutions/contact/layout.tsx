@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Démarrez un projet, postulez ou proposez un partenariat. L\'équipe Koncept IS vous répond sous 24h depuis Toulouse. Formulaire adaptatif selon votre besoin.',
+  description: 'Projet, candidature ou partenariat : contactez l\'équipe Koncept IS à Toulouse. Un formulaire adapté à votre demande.',
   alternates: { canonical: 'https://koncept-is.fr/solutions/contact' },
 }
 

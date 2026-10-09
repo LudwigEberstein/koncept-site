@@ -7,6 +7,8 @@
   --color-ink-2:     #A8A8A5;
   --color-accent:    #D42020;
   --color-accent-2:  rgba(212, 32, 32, 0.15);
+  --color-accent-rgb: 212, 32, 32;
+  --color-accent-text: #D42020;   /* accent utilisé pour du texte (plus clair en portée « pro ») */
   --color-border:    rgba(240, 237, 232, 0.10);
   --color-border-2:  rgba(240, 237, 232, 0.16);
 
@@ -25,4 +27,21 @@
   --color-career-bg-hover:   rgba(212, 32, 32, 0.22);
   --color-career-border:     rgba(212, 32, 32, 0.30);
   --color-career-border-hover: rgba(212, 32, 32, 0.55);
+
+  /* Pro track (Solutions) — cobalt Koncept ; source unique de la palette bleue */
+  --color-pro:               #7C97FF;   /* clair : texte sur fond sombre */
+  --color-pro-dark:          #2B50F0;   /* plein : fonds, boutons, bordures, grands titres */
+  --color-pro-deep:          #1B35B8;   /* profond : bandeaux */
+  --color-pro-soft:          #B4C4FF;   /* très clair : éclats */
+  --color-pro-rgb:           43, 80, 240;
+  --color-pro-light-rgb:     124, 151, 255;
+  --color-pro-deep-rgb:      27, 53, 184;
+}
+
+/* Portée Solutions : l'accent du site devient le cobalt (posée par solutions/layout.tsx, Nav et Footer) */
+[data-side="pro"] {
+  --color-accent:      var(--color-pro-dark);
+  --color-accent-2:    rgba(43, 80, 240, 0.15);
+  --color-accent-rgb:  var(--color-pro-rgb);
+  --color-accent-text: var(--color-pro);
 }
