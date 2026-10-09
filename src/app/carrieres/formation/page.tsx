@@ -61,7 +61,7 @@ const PATHS: { id: string; title: string; emoji: string; color: string; desc: st
 const CERTIFS = [
   { name: "AWS Solutions Architect", level: "Associate → Professional", color: "#f59e0b" },
   { name: "Azure Fundamentals → Expert", level: "AZ-900 → AZ-305", color: "#3b82f6" },
-  { name: "Google Cloud Professional", level: "Associate → Professional", color: "var(--color-career-dark)" },
+  { name: "Google Cloud Professional", level: "Associate → Professional", color: "#34a853" },
   { name: "Kubernetes (CKA/CKAD)", level: "Linux Foundation", color: "#06b6d4" },
   { name: "Oracle Java Certified", level: "OCA → OCP", color: "#f97316" },
   { name: "GitLab CI/CD", level: "Associate → Professional", color: "#8b5cf6" },
