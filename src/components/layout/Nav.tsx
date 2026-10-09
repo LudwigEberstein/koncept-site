@@ -60,7 +60,13 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  useEffect(() => { setMenuOpen(false); setActive(null) }, [pathname])
+  // Navigation : on referme menu et sous-menus (ajustement d'état pendant le rendu, plutôt que dans un effet)
+  const [lastPathname, setLastPathname] = useState(pathname)
+  if (pathname !== lastPathname) {
+    setLastPathname(pathname)
+    setMenuOpen(false)
+    setActive(null)
+  }
 
   const section = getSection(pathname)
   const isCareerPage = section === "carrieres"

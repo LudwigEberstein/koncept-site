@@ -1,9 +1,11 @@
 'use client'
 
-import { motion, useReducedMotion } from "motion/react"
-import { makeFadeUp } from "@/lib/motion"
+import { motion } from "motion/react"
+import { useFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
+import Eyebrow from "@/components/ui/Eyebrow"
+import Container from "@/components/ui/Container"
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 
@@ -79,9 +81,8 @@ const KATA_SESSIONS = [
 // ─── Page ───────────────────────────────────────────────────────────────────
 
 export default function Formation() {
-  const reduce = useReducedMotion()
 
-  const fadeUp = (delay = 0) => makeFadeUp(reduce, delay)
+  const fadeUp = useFadeUp()
 
   return (
     <>
@@ -130,9 +131,9 @@ export default function Formation() {
 
       {/* ── Prise en charge ── */}
       <section style={{ padding: "96px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Formation</p>
+            <Eyebrow tone="career">Formation</Eyebrow>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
               Prise en charge,<br />ta formation sera.
             </h2>
@@ -151,15 +152,15 @@ export default function Formation() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── Certifications ── */}
       <section style={{ padding: "80px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24 }}>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Certifications</p>
+            <Eyebrow tone="career">Certifications</Eyebrow>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
               Achievement unlocked.
             </h2>
@@ -171,7 +172,7 @@ export default function Formation() {
           <div className="einstein-figure" aria-hidden="true">
             <picture>
               <source media="(prefers-reduced-motion: reduce)" srcSet="/culture/einstein-static.png" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
+              { }
               <img src="/culture/einstein.gif" alt="" loading="lazy" />
             </picture>
           </div>
@@ -188,14 +189,14 @@ export default function Formation() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── Kata Club ── */}
       <section style={{ padding: "80px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }} className="kata-grid">
           <motion.div {...fadeUp()} style={{ position: "relative" }}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Kata Club</p>
+            <Eyebrow tone="career">Kata Club</Eyebrow>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
               Une session technique<br />chaque semaine.
             </h2>
@@ -227,9 +228,9 @@ export default function Formation() {
 
       {/* ── Trajectoires ── */}
       <section style={{ padding: "96px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Évolution de carrière</p>
+            <Eyebrow tone="career">Évolution de carrière</Eyebrow>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
               Choose your destiny !
             </h2>
@@ -265,7 +266,7 @@ export default function Formation() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── CTA ── */}

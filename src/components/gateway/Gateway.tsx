@@ -146,7 +146,7 @@ export default function Gateway() {
           {/* GIF animé (<img> : next/image n'optimise pas les GIF), image fixe si l'utilisateur réduit les animations */}
           <picture>
             <source media="(prefers-reduced-motion: reduce)" srcSet="/culture/luchador-static.png" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
+            { }
             <img src="/culture/luchador.gif" alt="" />
           </picture>
         </div>

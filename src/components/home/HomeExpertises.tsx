@@ -4,6 +4,7 @@ import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import { EXPERTISES } from "@/lib/content"
+import Container from "@/components/ui/Container"
 
 const ICONS: Record<string, string> = {
   code: "⌨️", layers: "🏗️", cloud: "☁️", git: "⚙️", database: "🗄️", shield: "🔒",
@@ -13,7 +14,7 @@ export default function HomeExpertises() {
   const reduce = useReducedMotion()
   return (
     <section style={{ padding: "96px 0", background: "var(--color-bg)" }}>
-      <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+      <Container>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 52, flexWrap: "wrap", gap: 20 }}>
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 16 }}
@@ -64,7 +65,7 @@ export default function HomeExpertises() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </Container>
 
       <style>{`@media(max-width:1023px){.expertises-grid{grid-template-columns:repeat(2,1fr) !important}}@media(max-width:639px){.expertises-grid{grid-template-columns:1fr !important}}`}</style>
     </section>

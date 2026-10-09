@@ -2,12 +2,15 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Linkedin } from "lucide-react"
-import { motion, useReducedMotion } from "motion/react"
+import { ArrowRight } from "lucide-react"
+import LinkedinIcon from "@/components/ui/LinkedinIcon"
+import { motion } from "motion/react"
 import { IMAGES, SITE, VALUES, CAREER_EVENTS } from "@/lib/content"
-import { makeFadeUp } from "@/lib/motion"
+import { useFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
+import Eyebrow from "@/components/ui/Eyebrow"
+import Container from "@/components/ui/Container"
 
 // ─── Local enriched data ────────────────────────────────────────────────────
 
@@ -117,9 +120,8 @@ const PORTRAITS = [
 // ─── Page ───────────────────────────────────────────────────────────────────
 
 export default function APropos() {
-  const reduce = useReducedMotion()
 
-  const fadeUp = (delay = 0) => makeFadeUp(reduce, delay)
+  const fadeUp = useFadeUp()
 
   return (
     <>
@@ -175,9 +177,9 @@ export default function APropos() {
 
       {/* ── 1. Histoire — timeline ── */}
       <section style={{ padding: "96px 0", background: "var(--color-bg)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-accent)", marginBottom: 12 }}>Notre histoire</p>
+            <Eyebrow>Notre histoire</Eyebrow>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
               Dix ans construits<br />pierre par pierre.
             </h2>
@@ -202,14 +204,14 @@ export default function APropos() {
               ))}
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── 2. Chiffres clés ── */}
       <section style={{ padding: "80px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-accent)", marginBottom: 12 }}>Chiffres clés</p>
+            <Eyebrow>Chiffres clés</Eyebrow>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 48 }}>
               Des chiffres qui parlent d&apos;eux-mêmes.
             </h2>
@@ -226,15 +228,15 @@ export default function APropos() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── 3. Vision (section mise en avant — palier gris clair) ── */}
       <section style={{ padding: "96px 0", background: "var(--color-soft-bg)", color: "var(--color-soft-ink)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 80, alignItems: "center" }} className="vision-grid">
             <motion.div {...fadeUp()}>
-              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-accent)", marginBottom: 16 }}>Notre vision</p>
+              <Eyebrow mb={16}>Notre vision</Eyebrow>
               <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.08, marginBottom: 24, color: "var(--color-soft-ink)" }}>
                 Rendre chaque client<br />autonome et&nbsp;<span style={{ color: "var(--color-accent)" }}>performant.</span>
               </h2>
@@ -266,14 +268,14 @@ export default function APropos() {
               ))}
             </motion.div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── 4. Valeurs ── */}
       <section style={{ padding: "80px 0", background: "var(--color-bg-2)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-accent)", marginBottom: 12 }}>Nos valeurs</p>
+            <Eyebrow>Nos valeurs</Eyebrow>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 52 }}>
               Ce qui guide chaque décision.
             </h2>
@@ -294,14 +296,14 @@ export default function APropos() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── 5. Équipe dirigeante ── */}
       <section style={{ padding: "96px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-accent)", marginBottom: 12 }}>Équipe dirigeante</p>
+            <Eyebrow>Équipe dirigeante</Eyebrow>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 52 }}>
               Les personnes derrière Koncept.
             </h2>
@@ -343,20 +345,20 @@ export default function APropos() {
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "var(--color-ink)" }}
                     onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "var(--color-ink-2)" }}
                   >
-                    <Linkedin size={13} /> LinkedIn
+                    <LinkedinIcon size={13} /> LinkedIn
                   </a>
                 </div>
               </motion.div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── 6. Portraits collaborateurs ── */}
       <section style={{ padding: "80px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-accent)", marginBottom: 12 }}>Portraits</p>
+            <Eyebrow>Portraits</Eyebrow>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 52 }}>
               Ils font Koncept<br />au quotidien.
             </h2>
@@ -395,15 +397,15 @@ export default function APropos() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── 7. Vie de l'entreprise ── */}
       <section style={{ padding: "96px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 80, alignItems: "start" }} className="life-grid">
             <motion.div {...fadeUp()} style={{ position: "sticky", top: 100 }}>
-              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Vie de l&apos;entreprise</p>
+              <Eyebrow tone="career">Vie de l&apos;entreprise</Eyebrow>
               <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: 20 }}>
                 On travaille bien<br />parce qu&apos;on vit bien.
               </h2>
@@ -461,7 +463,7 @@ export default function APropos() {
               ))}
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── CTA final ── */}

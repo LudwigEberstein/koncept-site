@@ -126,24 +126,11 @@ export const TECH = [
   { name: "MySQL", src: "https://koncept-is.fr/wp-content/uploads/2025/07/mysql.png" },
 ] as const
 
-export const TEAM = [
-  { name: "Gérard", role: "Président", img: "https://picsum.photos/seed/gerard-koncept-president/300/300" },
-  { name: "Valentine", role: "Directrice RH", img: "https://picsum.photos/seed/valentine-koncept-rh/300/300" },
-  { name: "Aurélie", role: "Directrice Commerciale", img: "https://picsum.photos/seed/aurelie-koncept-commercial/300/300" },
-] as const
-
 export const VALUES = [
   { title: "Proximité", desc: "Un interlocuteur unique, disponible, qui connaît votre activité et s'implique comme s'il faisait partie de votre équipe." },
   { title: "Confiance", desc: "Des engagements tenus, des délais respectés. On ne vous vend pas ce qu'on ne peut pas livrer." },
   { title: "Échange", desc: "Partage de connaissances, transparence sur les difficultés, communication franche à chaque étape du projet." },
   { title: "Partage", desc: "Une culture de l'entraide en interne comme avec nos clients. Ce qui est appris ici bénéficie à tout le monde." },
-] as const
-
-export const CAREER_TRAITS = [
-  { label: "Anticonformiste", desc: "On s'affranchit des codes qui n'ont pas de sens. Ce qui compte, c'est la qualité du travail et l'épanouissement des équipes." },
-  { label: "Engagé", desc: "Chaque Koncepteur s'implique sur ses missions comme s'il en était l'entrepreneur. Votre réussite est notre fierté." },
-  { label: "Respectueux", desc: "Bienveillance et écoute attentive sont des valeurs non-négociables chez nous, vers l'interne comme vers les clients." },
-  { label: "Tolérant", desc: "Un environnement ouvert, sans jugement, où la diversité des profils et des parcours est une richesse." },
 ] as const
 
 export const CAREER_EVENTS = [
@@ -200,6 +187,5 @@ export const NAV_CAREER = [
 
 export const IMAGES = {
   logo: "https://koncept-is.fr/wp-content/uploads/2025/07/logo-koncept-web.png",
-  hero: "https://koncept-is.fr/wp-content/uploads/2025/07/Koncept-solutions-IT-aeronautique.png",
   team: "https://koncept-is.fr/wp-content/uploads/2025/07/Koncept-equipe.png",
 } as const

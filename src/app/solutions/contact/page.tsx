@@ -2,10 +2,12 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { ArrowRight, MapPin, Mail, Phone, Linkedin } from "lucide-react"
+import { ArrowRight, MapPin, Mail, Phone } from "lucide-react"
+import LinkedinIcon from "@/components/ui/LinkedinIcon"
 import { motion, AnimatePresence } from "motion/react"
 import { SITE } from "@/lib/content"
 import HeroSection from "@/components/ui/HeroSection"
+import Container from "@/components/ui/Container"
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
@@ -107,7 +109,7 @@ export default function Contact() {
     <>
       {/* ── Hero ── */}
       <HeroSection side="pro" next="bg" paddingTop={140} paddingBottom={72}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.p
             style={{ color: "var(--color-accent)", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
@@ -143,7 +145,7 @@ export default function Contact() {
               </div>
             ))}
           </motion.div>
-        </div>
+        </Container>
       </HeroSection>
 
       {/* ── Main ── */}
@@ -362,7 +364,7 @@ export default function Contact() {
                 { icon: <MapPin size={15} />, label: "Adresse", value: `${SITE.address.street}, ${SITE.address.city}`, href: undefined },
                 { icon: <Mail size={15} />, label: "Email", value: SITE.email, href: `mailto:${SITE.email}` },
                 { icon: <Phone size={15} />, label: "Téléphone", value: SITE.phone, href: SITE.phoneHref },
-                { icon: <Linkedin size={15} />, label: "LinkedIn", value: "Suivez Koncept IS", href: SITE.linkedin },
+                { icon: <LinkedinIcon size={15} />, label: "LinkedIn", value: "Suivez Koncept IS", href: SITE.linkedin },
               ].map(item => (
                 <div key={item.label} style={{ display: "flex", gap: 12, alignItems: "center", padding: "14px 16px", borderRadius: 10, border: "1px solid var(--color-border)", background: "var(--color-bg-2)" }}>
                   <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(212,32,32,0.08)", color: "var(--color-accent)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -389,7 +391,7 @@ export default function Contact() {
 
       {/* ── Alternatives bar ── */}
       <section style={{ padding: "56px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 16, fontWeight: 700, marginBottom: 20, color: "var(--color-ink-2)" }}>
             Vous n&apos;avez pas le temps de remplir un formulaire ?
           </p>
@@ -413,10 +415,10 @@ export default function Contact() {
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-accent)" }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-border)" }}
             >
-              <Linkedin size={14} style={{ color: "var(--color-accent)" }} /> Envoyer un message LinkedIn
+              <LinkedinIcon size={14} style={{ color: "var(--color-accent)" }} /> Envoyer un message LinkedIn
             </a>
           </div>
-        </div>
+        </Container>
       </section>
 
       <style>{`

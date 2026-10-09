@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Linkedin } from "lucide-react"
+import LinkedinIcon from "@/components/ui/LinkedinIcon"
 import { SITE, NAV_CLIENT, NAV_CAREER, IMAGES } from "@/lib/content"
 import { YearClient } from "./YearClient"
 
@@ -97,7 +97,7 @@ export default function Footer() {
             onMouseEnter={e => (e.currentTarget.style.color = "var(--color-ink)")}
             onMouseLeave={e => (e.currentTarget.style.color = "var(--color-ink-2)")}
           >
-            <Linkedin size={14} aria-hidden="true" /> LinkedIn
+            <LinkedinIcon size={14} aria-hidden="true" /> LinkedIn
           </a>
         </div>
       </div>
