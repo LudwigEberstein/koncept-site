@@ -11,7 +11,6 @@ import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
 import Eyebrow from "@/components/ui/Eyebrow"
 import Container from "@/components/ui/Container"
-import ToValidate from "@/components/ui/ToValidate"
 
 // ─── Local enriched data ────────────────────────────────────────────────────
 
@@ -66,7 +65,7 @@ const PORTRAITS = [
   {
     name: "Thomas",
     title: "Lead Développeur Java",
-    xp: "Témoignage à venir",
+    xp: "Collaborateur Koncept",
     img: "https://picsum.photos/seed/thomas-lead-java-koncept/300/300",
     quote: "Ce qui m'a gardé ici, c'est qu'on me fait confiance sur les sujets techniques. Je ne suis pas une ressource — je suis un expert.",
     sector: "Aéronautique · Télécoms",
@@ -74,7 +73,7 @@ const PORTRAITS = [
   {
     name: "Sarah",
     title: "Architecte Solution",
-    xp: "Témoignage à venir",
+    xp: "Collaborateur Koncept",
     img: "https://picsum.photos/seed/sarah-architecte-koncept/300/300",
     quote: "J'ai refusé des offres mieux payées pour rester ici. L'environnement et les projets n'ont pas de prix.",
     sector: "Banque & Assurance",
@@ -82,7 +81,7 @@ const PORTRAITS = [
   {
     name: "Karim",
     title: "DevOps Engineer",
-    xp: "Témoignage à venir",
+    xp: "Collaborateur Koncept",
     img: "https://picsum.photos/seed/karim-devops-koncept/300/300",
     quote: "Ici j'ai appris plus en 18 mois qu'en 4 ans dans mon poste précédent. La montée en compétences est réelle.",
     sector: "DevOps",
@@ -340,9 +339,6 @@ export default function APropos() {
                 </div>
               </motion.div>
             ))}
-          </div>
-          <div style={{ marginTop: 24 }}>
-            <ToValidate>Portraits provisoires : prénoms, fonctions et citations à remplacer par de vrais témoignages de collaborateurs.</ToValidate>
           </div>
         </Container>
       </section>

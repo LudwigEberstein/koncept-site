@@ -55,11 +55,6 @@ export default function Realisations() {
               </motion.article>
             ))}
           </div>
-          <div style={{ marginTop: 28 }}>
-            <ToValidate>
-              Références à confirmer : accord de chaque client pour être cité, puis contexte, intervention, technologies et résultat réels. Les chiffres, durées et tailles d&apos;équipe de l&apos;ancienne version ont été retirés faute de validation.
-            </ToValidate>
-          </div>
         </Container>
       </section>
 
