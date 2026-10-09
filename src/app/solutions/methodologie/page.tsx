@@ -46,7 +46,7 @@ export default function Methodologie() {
 
   return (
     <>
-      <HeroSection side="pro" next="bg2" paddingTop={140} paddingBottom={72}>
+      <HeroSection side="pro" next="bg" paddingTop={140} paddingBottom={72}>
         <Container>
           <motion.div style={{ maxWidth: "64ch" }}
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
