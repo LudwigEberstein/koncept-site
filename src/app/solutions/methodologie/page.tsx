@@ -6,19 +6,18 @@ import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
 import Container from "@/components/ui/Container"
 import Eyebrow from "@/components/ui/Eyebrow"
-import ToValidate from "@/components/ui/ToValidate"
 
 const STEPS = [
-  { title: "Comprendre votre besoin", desc: "Nous prenons le temps d'échanger sur votre contexte, vos équipes et vos attentes avant de proposer quoi que ce soit." },
-  { title: "Proposer les bons profils", desc: "Nous sélectionnons des consultants dont les compétences et la personnalité correspondent à votre environnement." },
-  { title: "Accueillir le consultant", desc: "Nous veillons à une prise de poste fluide, chez vous comme pour le consultant." },
-  { title: "Suivre dans la durée", desc: "Nous restons en contact avec vous et avec nos consultants pour nous assurer que la mission se passe bien." },
-  { title: "Nous adapter", desc: "Votre besoin évolue ? Nous en parlons simplement et ajustons l'accompagnement avec réactivité." },
+  { title: "Comprendre votre besoin", desc: "Échanger sur votre contexte, vos objectifs et vos contraintes pour identifier la réponse adaptée." },
+  { title: "Proposer la bonne approche", desc: "Mobiliser les compétences nécessaires, en assistance technique ou dans le cadre d'un projet confié." },
+  { title: "Démarrer dans de bonnes conditions", desc: "Organiser le lancement de la mission ou du projet, en clarifiant les rôles et les attentes de chacun." },
+  { title: "Assurer un suivi régulier", desc: "Nous restons en contact avec vos équipes et nos consultants tout au long de la mission. Ce suivi régulier nous permet d'identifier rapidement les besoins et de maintenir une relation de proximité." },
+  { title: "Évoluer avec vos besoins", desc: "Ajuster notre accompagnement en fonction des évolutions du contexte, des priorités et des projets." },
 ] as const
 
 const MODES = [
-  { title: "Assistance technique", desc: "Un ou plusieurs consultants rejoignent vos équipes, sur une compétence précise et pour la durée dont vous avez besoin.", validate: null },
-  { title: "Projet confié", desc: "Koncept prend en charge la réalisation d'un périmètre défini avec vous.", validate: "Mode d'intervention à confirmer avec l'équipe commerciale." },
+  { title: "Assistance technique", desc: "Nos consultants intègrent vos équipes pour apporter les compétences techniques ou fonctionnelles dont vous avez besoin, sur la durée adaptée à votre projet." },
+  { title: "Projets au forfait", desc: "Nous prenons en charge la réalisation de projets ou de périmètres définis ensemble, avec des objectifs, des livrables et des modalités de suivi convenus en amont." },
 ] as const
 
 export default function Methodologie() {
@@ -37,7 +36,7 @@ export default function Methodologie() {
               Une relation simple,<br /><span style={{ color: "var(--color-accent)" }}>un suivi de près.</span>
             </h1>
             <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.65, maxWidth: "52ch" }}>
-              Pas de grand processus : une écoute attentive, les bons profils et une présence régulière auprès de vous comme de nos consultants.
+              Une approche pragmatique, des échanges directs et un accompagnement adapté à vos projets.
             </p>
           </motion.div>
         </Container>
@@ -75,7 +74,6 @@ export default function Methodologie() {
               >
                 <h3 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 20, fontWeight: 700 }}>{m.title}</h3>
                 <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.65 }}>{m.desc}</p>
-                {m.validate && <div><ToValidate variant="pill">{m.validate}</ToValidate></div>}
               </motion.div>
             ))}
           </div>

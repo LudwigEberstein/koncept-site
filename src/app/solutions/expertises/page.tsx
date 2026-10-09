@@ -48,19 +48,6 @@ export default function Expertises() {
                     ))}
                   </div>
                 </div>
-                {exp.roles.length > 0 && (
-                  <div>
-                    <p style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-accent)", marginBottom: 10 }}>Métiers</p>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                      {exp.roles.map(r => (
-                        <span key={r} style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(var(--side-rgb), 0.12)", border: "1px solid rgba(var(--side-rgb), 0.55)", borderRadius: 9999, padding: "6px 14px", fontSize: 13, fontWeight: 700, color: "var(--color-ink)" }}>
-                          <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--color-accent)" }} />
-                          {r}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </motion.article>
             ))}
           </div>

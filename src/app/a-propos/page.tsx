@@ -5,12 +5,13 @@ import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import LinkedinIcon from "@/components/ui/LinkedinIcon"
 import { motion } from "motion/react"
-import { IMAGES, SITE, VALUES, CAREER_EVENTS } from "@/lib/content"
+import { IMAGES, SITE, VALUES, CAREER_EVENTS, DIFFERENTIATORS } from "@/lib/content"
 import { useFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
 import Eyebrow from "@/components/ui/Eyebrow"
 import Container from "@/components/ui/Container"
+import ToValidate from "@/components/ui/ToValidate"
 
 // ─── Local enriched data ────────────────────────────────────────────────────
 
@@ -18,42 +19,13 @@ const MILESTONES = [
   {
     year: "2014",
     label: "Fondation à Toulouse",
-    desc: "Gérard fonde Koncept IS avec une conviction : faire une ESN différente, centrée sur l'humain et l'expertise technique.",
+    desc: "Gérard fonde Koncept IS avec une conviction : faire une ESN différente, à taille humaine, centrée sur la relation avec ses clients et ses consultants.",
   },
   {
-    year: "2016",
-    label: "Premiers grands comptes",
-    desc: "Airbus, Thales, Société Générale. Les premiers clients stratégiques valident la promesse qualité.",
+    year: "Aujourd'hui",
+    label: "La même priorité",
+    desc: "La proximité avec nos clients et l'accompagnement de nos consultants restent au cœur de notre façon de travailler.",
   },
-  {
-    year: "2018",
-    label: "Cap des 30 collaborateurs",
-    desc: "Croissance maîtrisée. On choisit de ne recruter que des profils confirmés — jamais au détriment de la qualité.",
-  },
-  {
-    year: "2020",
-    label: "Certification ISO 27001",
-    desc: "Reconnaissance de notre engagement sécurité — une exigence de nos clients, et notre propre conviction depuis le premier jour.",
-  },
-  {
-    year: "2022",
-    label: "€3M de chiffre d'affaires",
-    desc: "Un cap symbolique franchi sans levée de fonds, ni croissance externe. 100 % organique.",
-  },
-  {
-    year: "2024",
-    label: "10 ans d'existence",
-    desc: "Cinquante collaborateurs, sept secteurs, et la même culture depuis le premier jour.",
-  },
-]
-
-const KEY_STATS = [
-  { value: "50+", label: "collaborateurs", sub: "en CDI à Toulouse" },
-  { value: "€3.2M", label: "chiffre d'affaires", sub: "100 % croissance organique" },
-  { value: "7", label: "secteurs couverts", sub: "aéronautique, banque, télécom…" },
-  { value: "10 ans", label: "d'expérience", sub: "fondée en 2014" },
-  { value: "ISO 27001", label: "certifié", sub: "depuis 2020" },
-  { value: "98%", label: "satisfaction client", sub: "sur les projets au forfait" },
 ]
 
 const DIRIGEANTS = [
@@ -75,7 +47,7 @@ const DIRIGEANTS = [
     pos: "50% 8%", // photo portrait (3:4) : on ancre sur le visage, pas sur le centre
     fit: 0.86, // dézoom : part de la largeur de la carte occupée par la photo, le reste est prolongé en flou
     posBack: "50% 10%",
-    bio: "Valentine a construit la culture Koncept de l'intérieur depuis 2015. Son obsession : que chaque Koncepteur trouve sa place et s'y épanouisse vraiment.",
+    bio: "Valentine construit la culture Koncept de l'intérieur. Son obsession : que chaque Koncepteur trouve sa place et s'y épanouisse vraiment.",
     quote: "On recrute des gens, pas des compétences. Les compétences, ça s'apprend. La personnalité, non.",
   },
   {
@@ -94,7 +66,7 @@ const PORTRAITS = [
   {
     name: "Thomas",
     title: "Lead Développeur Java",
-    xp: "8 ans chez Koncept",
+    xp: "Témoignage à venir",
     img: "https://picsum.photos/seed/thomas-lead-java-koncept/300/300",
     quote: "Ce qui m'a gardé ici, c'est qu'on me fait confiance sur les sujets techniques. Je ne suis pas une ressource — je suis un expert.",
     sector: "Aéronautique · Télécoms",
@@ -102,18 +74,18 @@ const PORTRAITS = [
   {
     name: "Sarah",
     title: "Architecte Solution",
-    xp: "5 ans chez Koncept",
+    xp: "Témoignage à venir",
     img: "https://picsum.photos/seed/sarah-architecte-koncept/300/300",
     quote: "J'ai refusé des offres mieux payées pour rester ici. L'environnement et les projets n'ont pas de prix.",
-    sector: "Banque · Services IT",
+    sector: "Banque & Assurance",
   },
   {
     name: "Karim",
     title: "DevOps Engineer",
-    xp: "3 ans chez Koncept",
+    xp: "Témoignage à venir",
     img: "https://picsum.photos/seed/karim-devops-koncept/300/300",
     quote: "Ici j'ai appris plus en 18 mois qu'en 4 ans dans mon poste précédent. La montée en compétences est réelle.",
-    sector: "Cloud · Infrastructure",
+    sector: "DevOps",
   },
 ]
 
@@ -145,7 +117,7 @@ export default function APropos() {
               style={{ color: "var(--color-ink-2)", fontSize: 17, lineHeight: 1.75, maxWidth: "50ch", marginBottom: 36 }}
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.1 }}
             >
-              Fondée à Toulouse en 2014, Koncept IS a choisi la taille humaine. 50 collaborateurs, 7 secteurs, et une seule obsession : que vos projets aboutissent.
+              Fondée à Toulouse en 2014, Koncept IS est une ESN à taille humaine. Notre priorité : la proximité avec nos clients et l'accompagnement de nos consultants.
             </motion.p>
             <motion.div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.18 }}
@@ -181,52 +153,28 @@ export default function APropos() {
           <motion.div {...fadeUp()}>
             <Eyebrow>Notre histoire</Eyebrow>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
-              Dix ans construits<br />pierre par pierre.
+              Une ESN toulousaine,<br />à taille humaine.
             </h2>
           </motion.div>
 
           {/* Horizontal timeline */}
           <div style={{ position: "relative" }}>
             {/* Connecting line */}
-            <div style={{ position: "absolute", top: 20, left: 20, right: 20, height: 2, background: "linear-gradient(to right, var(--color-accent), #3b82f6)", opacity: 0.3, zIndex: 0 }} className="timeline-line" />
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 0 }} className="timeline-grid">
+            <div style={{ position: "absolute", top: 20, left: 20, width: "min(760px, calc(100% - 40px))", height: 2, background: "linear-gradient(to right, var(--color-accent), #3b82f6)", opacity: 0.3, zIndex: 0 }} className="timeline-line" />
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 0, maxWidth: 820 }} className="timeline-grid">
               {MILESTONES.map((m, i) => (
                 <motion.div key={m.year}
-                  style={{ paddingTop: 52, paddingRight: i < 5 ? 24 : 0, position: "relative" }}
+                  style={{ paddingTop: 52, paddingRight: i < MILESTONES.length - 1 ? 24 : 0, position: "relative" }}
                   {...fadeUp(i * 0.08)}
                 >
                   {/* Dot */}
-                  <div style={{ position: "absolute", top: 12, left: 0, width: 16, height: 16, borderRadius: "50%", background: i === 0 ? "var(--color-accent)" : "var(--color-bg-3)", border: `2px solid ${i === 5 ? "#3b82f6" : "var(--color-accent)"}`, zIndex: 1 }} />
+                  <div style={{ position: "absolute", top: 12, left: 0, width: 16, height: 16, borderRadius: "50%", background: i === 0 ? "var(--color-accent)" : "var(--color-bg-3)", border: `2px solid ${i === MILESTONES.length - 1 ? "#3b82f6" : "var(--color-accent)"}`, zIndex: 1 }} />
                   <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 22, fontWeight: 800, color: "var(--color-accent)", letterSpacing: "-0.03em", marginBottom: 4 }}>{m.year}</p>
                   <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 13, fontWeight: 700, marginBottom: 8 }}>{m.label}</p>
-                  <p style={{ color: "var(--color-ink-2)", fontSize: 12, lineHeight: 1.65 }}>{m.desc}</p>
+                  <p style={{ color: "var(--color-ink-2)", fontSize: 14, lineHeight: 1.65 }}>{m.desc}</p>
                 </motion.div>
               ))}
             </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* ── 2. Chiffres clés ── */}
-      <section style={{ padding: "80px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
-        <Container>
-          <motion.div {...fadeUp()}>
-            <Eyebrow>Chiffres clés</Eyebrow>
-            <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 48 }}>
-              Des chiffres qui parlent d&apos;eux-mêmes.
-            </h2>
-          </motion.div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }} className="stats-grid">
-            {KEY_STATS.map((s, i) => (
-              <motion.div className="glass-card" key={s.label}
-                style={{ padding: "32px 28px", borderRadius: 16, border: "1px solid var(--color-border)", background: "var(--color-bg-3)" }}
-                {...fadeUp(i * 0.07)}
-              >
-                <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 44px)", fontWeight: 800, color: "var(--color-accent)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 6 }}>{s.value}</p>
-                <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 16, fontWeight: 700, marginBottom: 4 }}>{s.label}</p>
-                <p style={{ color: "var(--color-ink-2)", fontSize: 12 }}>{s.sub}</p>
-              </motion.div>
-            ))}
           </div>
         </Container>
       </section>
@@ -238,27 +186,23 @@ export default function APropos() {
             <motion.div {...fadeUp()}>
               <Eyebrow mb={16}>Notre vision</Eyebrow>
               <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.08, marginBottom: 24, color: "var(--color-soft-ink)" }}>
-                Rendre chaque client<br />autonome et&nbsp;<span style={{ color: "var(--color-accent)" }}>performant.</span>
+                Une relation simple,<br />directe et&nbsp;<span style={{ color: "var(--color-accent)" }}>durable.</span>
               </h2>
               <p style={{ color: "var(--color-soft-ink-2)", fontSize: 15, lineHeight: 1.8 }}>
-                On ne cherche pas à créer de la dépendance. Notre succès se mesure à la capacité de nos clients à voler de leurs propres ailes à la fin de chaque projet.
+                Nous croyons à une relation de proximité : des interlocuteurs identifiés, des consultants bien choisis et suivis, et des échanges simples avec nos clients comme avec nos équipes.
               </p>
             </motion.div>
             <motion.div
               style={{ display: "flex", flexDirection: "column", gap: 16 }}
               {...fadeUp(0.1)}
             >
-              {[
-                { icon: "⚙", title: "Expertise technique de haut niveau", desc: "Des architectes et développeurs seniors sur chaque mission critique. Pas de juniors livrés à eux-mêmes chez vos équipes." },
-                { icon: "🤝", title: "Partenaire, pas prestataire", desc: "On s'implique dans vos succès et vos difficultés. Un client en difficulté, c'est notre problème — pas seulement le sien." },
-                { icon: "📐", title: "Méthode rigoureuse, résultats mesurables", desc: "Chaque engagement est suivi, mesuré, documenté. La confiance se construit sur la transparence, pas les belles paroles." },
-              ].map((item, i) => (
+              {DIFFERENTIATORS.slice(0, 3).map((item, i) => (
                 <motion.div key={item.title}
                   style={{ display: "flex", gap: 20, padding: "24px 28px", borderRadius: 14, border: "1px solid var(--color-soft-border)", background: "var(--color-soft-bg-2)", alignItems: "flex-start" }}
                   {...fadeUp(0.1 + i * 0.08)}
                 >
-                  <div style={{ width: 40, height: 40, borderRadius: 10, background: "rgba(212,32,32,0.12)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0 }}>
-                    {item.icon}
+                  <div style={{ width: 40, height: 40, borderRadius: 10, background: "rgba(212,32,32,0.12)", color: "var(--color-accent)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 14, fontWeight: 800, flexShrink: 0 }}>
+                    {String(i + 1).padStart(2, "0")}
                   </div>
                   <div>
                     <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 15, fontWeight: 700, marginBottom: 5, color: "var(--color-soft-ink)" }}>{item.title}</p>
@@ -397,6 +341,9 @@ export default function APropos() {
               </motion.div>
             ))}
           </div>
+          <div style={{ marginTop: 24 }}>
+            <ToValidate>Portraits provisoires : prénoms, fonctions et citations à remplacer par de vrais témoignages de collaborateurs.</ToValidate>
+          </div>
         </Container>
       </section>
 
@@ -467,7 +414,7 @@ export default function APropos() {
       </section>
 
       {/* ── CTA final ── */}
-      <CtaBand side="career" prev="bg" word="ENSEMBLE" title="Travaillons ensemble." text="Un échange de 30 minutes pour qualifier votre projet — sans engagement."
+      <CtaBand side="career" prev="bg" word="ENSEMBLE" title="Travaillons ensemble." text="Parlez-nous de votre besoin : nous vous répondons simplement et directement."
         primary={{ label: "Parlons de votre projet", href: "/solutions/contact" }}
         secondary={{ label: "Rejoindre l'équipe", href: "/carrieres" }}
       />
@@ -475,7 +422,7 @@ export default function APropos() {
       <style>{`
         .flip-card:hover .flip-card-inner{transform:rotateY(180deg)}
         @media(max-width:1280px){
-          .timeline-grid{grid-template-columns:repeat(3,1fr) !important}
+          .timeline-grid{grid-template-columns:repeat(2,1fr) !important}
           .timeline-line{display:none !important}
         }
         @media(max-width:1023px){
@@ -486,7 +433,6 @@ export default function APropos() {
         }
         @media(max-width:767px){
           .timeline-grid{grid-template-columns:repeat(2,1fr) !important}
-          .stats-grid{grid-template-columns:repeat(2,1fr) !important}
           .values-grid{grid-template-columns:repeat(2,1fr) !important}
           .portrait-row{grid-template-columns:1fr !important}
           .portrait-inner{grid-template-columns:1fr !important}
@@ -495,7 +441,6 @@ export default function APropos() {
         @media(max-width:479px){
           .timeline-grid{grid-template-columns:1fr !important}
           .team-grid{grid-template-columns:1fr !important}
-          .stats-grid{grid-template-columns:1fr !important}
           .values-grid{grid-template-columns:1fr !important}
         }
       `}</style>

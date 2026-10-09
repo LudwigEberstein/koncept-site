@@ -29,7 +29,7 @@ export const DIFFERENTIATORS = [
   { title: "Relation durable", desc: "Un échange simple et direct, pensé pour durer au-delà d'une première mission." },
 ] as const
 
-/** Grandes familles de compétences (technologies validées) ; `roles` = métiers, à distinguer des compétences. */
+/** Grandes familles de compétences (technologies validées). */
 export const EXPERTISES = [
   {
     slug: "developpement",
@@ -37,7 +37,6 @@ export const EXPERTISES = [
     short: "Applications",
     desc: "Conception, développement, modernisation et maintenance d'applications web, backend et frontend.",
     stack: ["Java", "Spring Boot", ".NET", "C#", "Angular", "React", "TypeScript", "JavaScript", "Flutter", "Python"],
-    roles: [],
   },
   {
     slug: "integration",
@@ -45,7 +44,6 @@ export const EXPERTISES = [
     short: "DevOps",
     desc: "Automatisation des builds, des tests et des déploiements pour fiabiliser la livraison des applications.",
     stack: ["Azure DevOps", "Git", "GitLab CI/CD", "Jenkins", "Docker", "CI/CD", "Ansible", "Linux"],
-    roles: [],
   },
   {
     slug: "donnees",
@@ -53,7 +51,6 @@ export const EXPERTISES = [
     short: "Données",
     desc: "Conception, modélisation, interrogation et évolution des bases de données au service des applications.",
     stack: ["SQL", "MySQL", "SQL Server", "PostgreSQL", "Oracle", "MongoDB", "NoSQL"],
-    roles: [],
   },
   {
     slug: "accompagnement",
@@ -61,7 +58,6 @@ export const EXPERTISES = [
     short: "Métier & pilotage",
     desc: "Analyse des besoins, cadrage fonctionnel, coordination des équipes et pilotage de projets en environnement agile.",
     stack: ["AMOA", "Agile / Scrum", "SAFe", "Recette fonctionnelle"],
-    roles: ["Business Analyst", "Product Owner", "Scrum Master", "Chef de projet"],
   },
 ] as const
 

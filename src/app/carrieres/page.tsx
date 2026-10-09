@@ -21,8 +21,8 @@ const WHY_US: { shape: Shape; title: string; desc: string }[] = [
   },
   {
     shape: "triangle",
-    title: "Ton manager code",
-    desc: "Ton référent technique est un senior qui a bossé sur des projets similaires — pas un commercial qui lit ton CV entre deux appels.",
+    title: "Un suivi qui te connaît",
+    desc: "Un interlocuteur chez Koncept t'accompagne pendant ta mission : on prend de tes nouvelles, on t'écoute et on ajuste quand il le faut.",
   },
   {
     shape: "square",
@@ -31,18 +31,18 @@ const WHY_US: { shape: Shape; title: string; desc: string }[] = [
   },
   {
     shape: "circle",
-    title: "Des projets techniques sérieux",
-    desc: "Aéronautique, banque, télécoms, robotique. Des stacks modernes, des contraintes réelles, des enjeux qui forcent à progresser.",
+    title: "Des projets variés",
+    desc: "Aéronautique, banque et assurance, télécoms, transport… Des contextes exigeants, des enjeux réels, des projets qui font progresser.",
   },
   {
     shape: "triangle",
-    title: "50 personnes. Valentine connaît ton prénom.",
+    title: "Taille humaine. Valentine connaît ton prénom.",
     desc: "Taille humaine voulue, maintenue. Tu n'es pas un ticket Jira dans le système RH. Quelqu'un se soucie vraiment de comment ça va.",
   },
   {
     shape: "square",
-    title: "On est des devs avant d'être une ESN",
-    desc: "Gaming, moto, café, katas de code. La culture technique est réelle ici — pas un argument de recrutement.",
+    title: "Une vraie culture d'équipe",
+    desc: "Gaming, moto, café, katas de code. L'esprit d'équipe est réel ici — pas un argument de recrutement.",
   },
 ]
 
@@ -126,14 +126,14 @@ export default function Carrieres() {
               style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(38px, 5.5vw, 80px)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 24 }}
               initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
             >
-              On cherche des devs.<br /><span style={{ color: "var(--color-career)" }}>Pas des profils.</span>
+              On cherche des talents.<br /><span style={{ color: "var(--color-career)" }}>Pas des profils.</span>
             </motion.h1>
             <motion.p
               style={{ color: "var(--color-ink-2)", fontSize: 17, lineHeight: 1.75, maxWidth: "48ch", marginBottom: 36 }}
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.1 }}
             >
               Pas de process RH kafkaïen. Pas de grille de compétences à remplir.
-              Si tu es passionné, honnête et que tu veux bosser sur de vraies problématiques techniques — on veut te rencontrer.
+              Si tu es passionné, honnête et que tu veux t'investir sur de vrais projets, techniques ou fonctionnels — on veut te rencontrer.
             </motion.p>
             <motion.div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 32 }}
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.15 }}
@@ -288,7 +288,7 @@ export default function Carrieres() {
 
       <CtaBand side="career" prev="bg"
         title="Prêt·e à devenir Koncepteur·se ?"
-        text="Des missions ambitieuses, une équipe soudée, un suivi de carrière sérieux — et de l'humour."
+        text="Des missions variées, une équipe soudée, un accompagnement de proximité — et de l'humour."
         primary={{ label: "Voir les offres d'emploi", href: "/carrieres/offres" }}
         secondary={{ label: "Candidature spontanée", href: "/carrieres/candidature" }}
       />
