@@ -159,7 +159,7 @@ export function CollaboratorCard({ data, accentColor, variant = "career" }: Prop
           <p style={{ fontSize: 13, color: "var(--color-ink-2)", lineHeight: 1.7 }}>{data.parcours}</p>
         </Section>
 
-        <Section label="Stack technique" accent={accent}>
+        <Section label="Outils & compétences" accent={accent}>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 6, paddingTop: 2 }}>
             {data.stack.map(s => (
               <span

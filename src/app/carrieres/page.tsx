@@ -42,7 +42,7 @@ const WHY_US: { shape: Shape; title: string; desc: string }[] = [
   {
     shape: "square",
     title: "Une vraie culture d'équipe",
-    desc: "Gaming, moto, café, katas de code. L'esprit d'équipe est réel ici — pas un argument de recrutement.",
+    desc: "Gaming, moto, café, katas et ateliers. L'esprit d'équipe est réel ici — pas un argument de recrutement.",
   },
 ]
 
@@ -70,30 +70,30 @@ const DNA_ITEMS = [
   {
     icon: Pizza,
     label: "Vendredi pizza",
-    desc: "Si les PRs sont mergées à l'heure, c'est pizza. L'incentive qui marche à tous les coups depuis 2016.",
+    desc: "Si le sprint est bouclé à l'heure, c'est pizza. L'incentive qui marche à tous les coups depuis 2016.",
   },
   {
     icon: Terminal,
-    label: "Code katas",
-    desc: "Sessions hebdo volontaires — algos, patterns, archi. Pas de slides : du code, un écran partagé, et de la discussion franche.",
+    label: "Katas & ateliers",
+    desc: "Sessions hebdo volontaires, ouvertes à tous — algos, archi, mais aussi agilité et cadrage. Pas de slides : un écran partagé, des ateliers, et de la discussion franche.",
   },
 ]
 
 const PORTRAITS = [
   {
     name: "Thomas",
-    title: "Lead Dev Java · 8 ans",
+    title: "Développeur Java",
     quote: "Ce qui m'a gardé ici, c'est qu'on me fait confiance sur les sujets techniques. Je ne suis pas une ressource — je suis un expert.",
   },
   {
     name: "Sarah",
-    title: "Architecte Solution · 5 ans",
+    title: "Architecte Solution",
     quote: "J'ai refusé des offres mieux payées pour rester. L'environnement et les projets n'ont pas de prix.",
   },
   {
-    name: "Karim",
-    title: "DevOps Engineer · 3 ans",
-    quote: "J'ai appris plus en 18 mois ici qu'en 4 ans dans mon poste précédent. La montée en compétences est réelle.",
+    name: "Camille",
+    title: "Scrum Master",
+    quote: "Ici, on me demande mon avis sur la façon de faire avancer l'équipe, pas seulement d'animer des cérémonies. L'agilité, c'est du bon sens et de l'écoute.",
   },
 ]
 
@@ -199,10 +199,10 @@ export default function Carrieres() {
           <motion.div {...fadeUp()}>
             <Eyebrow tone="career">L&apos;ADN Koncept</Eyebrow>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
-              Entre deux commits,<br />on a une vraie vie.
+              Entre deux deploys,<br />on a une vraie vie.
             </h2>
             <p style={{ color: "var(--color-ink-2)", fontSize: 16, lineHeight: 1.7, maxWidth: "56ch", marginBottom: 52 }}>
-              La culture geek n&apos;est pas un argument de recrutement : c&apos;est ce qui se passe entre deux pull requests, au déjeuner et le vendredi soir.
+              La culture geek n&apos;est pas un argument de recrutement : c&apos;est ce qui se passe entre deux deploys, au déjeuner et le vendredi soir.
             </p>
           </motion.div>
           {/* Mona Lisa : à droite de l'en-tête, dans le flux (ne rallonge pas la section, ne recouvre aucun texte) */}

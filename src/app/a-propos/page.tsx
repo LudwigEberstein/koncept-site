@@ -79,12 +79,12 @@ const PORTRAITS = [
     sector: "Banque & Assurance",
   },
   {
-    name: "Karim",
-    title: "DevOps Engineer",
-    xp: "Collaborateur Koncept",
-    img: "https://picsum.photos/seed/karim-devops-koncept/300/300",
-    quote: "Ici j'ai appris plus en 18 mois qu'en 4 ans dans mon poste précédent. La montée en compétences est réelle.",
-    sector: "DevOps",
+    name: "Camille",
+    title: "Scrum Master",
+    xp: "Collaboratrice Koncept",
+    img: "https://picsum.photos/seed/camille-scrum-koncept/300/300",
+    quote: "Ici, on me demande mon avis sur la façon de faire avancer l'équipe, pas seulement d'animer des cérémonies. L'agilité, c'est du bon sens et de l'écoute.",
+    sector: "Agilité & pilotage",
   },
 ]
 

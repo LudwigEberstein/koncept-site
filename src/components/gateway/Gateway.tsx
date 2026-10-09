@@ -82,7 +82,7 @@ export default function Gateway() {
       style={{ ["--gw-x" as string]: x }}
       onMouseLeave={() => hover(null)}
     >
-      <h1 className="gw-sr">{SITE.name} — ESN à Toulouse : solutions IT pour les entreprises et carrières pour les développeurs</h1>
+      <h1 className="gw-sr">{SITE.name} — ESN à Toulouse : solutions IT pour les entreprises et carrières pour les métiers de l'IT</h1>
 
       <div className="gw-logo">
         <Image src={IMAGES.logo} alt={SITE.name} width={120} height={30} priority />

@@ -14,10 +14,10 @@ import Container from "@/components/ui/Container"
 // ─── Enriched jobs ───────────────────────────────────────────────────────────
 
 const PROCESS = [
-      { step: "1. Échange RH", desc: "30 min avec Valentine. On se présente, on voit si le feeling passe.", duration: "J+2" },
-      { step: "2. Entretien technique", desc: "1h avec un lead dev. Discussion archi, revue de code, exercice pratique.", duration: "J+7" },
-      { step: "3. Rencontre équipe", desc: "Rencontre informelle avec l'équipe. Pas d'épreuve — juste voir si ça matche.", duration: "J+12" },
-      { step: "4. Offre", desc: "Si tout est bon, on te fait une offre sans te laisser mariner. Pas de suspense artificiel.", duration: "J+14" },
+  { step: "1. Échange RH", desc: "30 min avec Valentine. On se présente, on voit si le feeling passe." },
+  { step: "2. Entretien métier", desc: "45 min avec un référent de ton domaine, technique ou fonctionnel. On parle de ton parcours et de cas concrets." },
+  { step: "3. Entretien manager", desc: "30 min avec ton futur manager. Si tout colle, l'offre se fait dans ce même entretien." },
+  { step: "4. Un café avec la team", desc: "Pour finir de te convaincre, viens prendre un café avec l'équipe. Pas d'épreuve : juste voir si ça matche." },
 ]
 
 const ENRICHED_JOBS = [
@@ -60,6 +60,8 @@ const SPONTANEOUS_PROFILES = [
   { tech: ".NET / C#", icon: "◆", desc: "Développeur ou architecte .NET pour des projets industriels et bancaires." },
   { tech: "DevOps / Cloud", icon: "⚡", desc: "Kubernetes, Terraform, CI/CD. Les profils DevOps sérieux sont rares — et recherchés." },
   { tech: "Frontend React / Angular", icon: "▣", desc: "Senior frontend sur des applications métier complexes, pas des landing pages." },
+  { tech: "Business Analyst / Product Owner", icon: "◈", desc: "Pour faire le lien entre les besoins métier et les équipes techniques." },
+  { tech: "Scrum Master / Chef de projet", icon: "◎", desc: "Pour animer, coordonner et faire avancer les équipes et les projets." },
 ]
 
 // ─── Page ───────────────────────────────────────────────────────────────────
@@ -208,7 +210,6 @@ export default function Offres() {
                                 <div key={p.step} style={{ padding: "16px 18px", borderRadius: 10, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)" }}>
                                   <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
                                     <div style={{ width: 22, height: 22, borderRadius: 6, background: "rgba(var(--color-career),0.15)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, color: "var(--color-career)", flexShrink: 0 }}>{j + 1}</div>
-                                    <span style={{ fontSize: 10, fontWeight: 700, color: "var(--color-career)" }}>{p.duration}</span>
                                   </div>
                                   <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 12, fontWeight: 700, marginBottom: 5 }}>{p.step.replace(/^\d\.\s/, "")}</p>
                                   <p style={{ fontSize: 11, color: "var(--color-ink-2)", lineHeight: 1.55 }}>{p.desc}</p>
@@ -249,7 +250,7 @@ export default function Offres() {
             </picture>
           </div>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 14, marginBottom: 40 }} className="profiles-grid">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, marginBottom: 40 }} className="profiles-grid">
             {SPONTANEOUS_PROFILES.map((p, i) => (
               <motion.div className="glass-card" key={p.tech}
                 style={{ padding: "24px 22px", borderRadius: 14, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)" }}

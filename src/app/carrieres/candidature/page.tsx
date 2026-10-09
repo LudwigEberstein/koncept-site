@@ -81,7 +81,7 @@ export default function Candidature() {
                 </div>
                 <div>
                   <label style={{ display: "block", fontSize: 12, fontWeight: 600, marginBottom: 7, color: "var(--color-ink-2)" }}>Poste visé / domaine d'expertise</label>
-                  <input name="poste" type="text" value={form.poste} onChange={handleChange} required placeholder="ex: Développeur Java Senior, DevOps..." style={inputStyle}
+                  <input name="poste" type="text" value={form.poste} onChange={handleChange} required placeholder="ex: Développeur Java, Business Analyst, Scrum Master..." style={inputStyle}
                     onFocus={e => { e.currentTarget.style.borderColor = "var(--color-career)" }}
                     onBlur={e => { e.currentTarget.style.borderColor = "var(--color-border-2)" }} />
                 </div>

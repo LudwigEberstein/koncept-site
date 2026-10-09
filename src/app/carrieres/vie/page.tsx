@@ -109,15 +109,15 @@ const COLLABORATORS: Collaborator[] = [
     advice: "Prépare un exemple concret d'une décision technique que tu regrettes. C'est ce genre de recul qu'on valorise. On n'embauche pas des gens qui ont toujours raison — on embauche des gens qui apprennent vite.",
   },
   {
-    name: "Karim",
-    role: "DevOps Engineer",
-    seniority: "3 ans chez Koncept",
-    img: "https://picsum.photos/seed/karim-devops-koncept/400/300",
-    parcours: "Adminsys reconverti DevOps, Karim a passé 4 ans dans l'infra bancaire avant de rejoindre Koncept. Il est maintenant référent Kubernetes sur plusieurs missions, tout en participant activement au kata club interne.",
-    stack: ["Kubernetes", "Terraform", "ArgoCD", "Prometheus", "Grafana", "Python", "Bash"],
-    favProject: "La migration d'une plateforme monolithique vers du k8s multi-tenant — 3 mois de préparation, 48h de bascule, zéro incident en prod. On a eu les mains qui tremblaient, mais ça a tenu.",
-    lovesKoncept: "J'ai appris plus en 18 mois ici qu'en 4 ans dans mon poste précédent. Et les 2 jours de télétravail sans justification à fournir, ça semble rien mais ça change tout sur la durée.",
-    advice: "Mets en avant ce que tu as cassé autant que ce que tu as construit. Un bon inginfra sait pourquoi les choses tombent. Si tu n'as jamais rien cassé, c'est soit que tu n'as rien fait d'ambitieux, soit que tu ne t'en souviens pas.",
+    name: "Camille",
+    role: "Scrum Master",
+    seniority: "Collaboratrice Koncept",
+    img: "https://picsum.photos/seed/camille-scrum-koncept/400/300",
+    parcours: "Passée par la gestion de projet puis l'analyse fonctionnelle, Camille s'est tournée vers l'agilité. Elle accompagne aujourd'hui des équipes sur plusieurs missions, tout en participant au kata club interne.",
+    stack: ["Scrum", "Kanban", "SAFe", "Jira", "Rétrospectives", "Facilitation"],
+    favProject: "L'accompagnement d'une équipe qui venait de changer de mode de fonctionnement : au début, personne ne croyait aux rétrospectives. À la fin, c'est l'équipe qui les réclamait.",
+    lovesKoncept: "On me fait confiance pour choisir comment accompagner une équipe, et j'ai des collègues d'autres métiers avec qui échanger. Les 2 jours de télétravail sans justification à fournir, ça change tout sur la durée.",
+    advice: "Viens avec des exemples concrets de situations difficiles que tu as vécues en équipe, et de ce que tu en as appris. Un bon Scrum Master sait écouter avant de proposer.",
   },
 ]
 
@@ -266,7 +266,7 @@ export default function Vie() {
               Ils font Koncept au quotidien.
             </h2>
             <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.75, maxWidth: "52ch", marginBottom: 48 }}>
-              Pas des témoignages marketing. Des vrais retours de devs, sur leur parcours, leur stack, et pourquoi ils sont encore là.
+              Pas des témoignages marketing. Des vrais retours de Koncepteurs, sur leur parcours, leur métier, et pourquoi ils sont encore là.
             </p>
           </motion.div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} className="portraits-grid">
