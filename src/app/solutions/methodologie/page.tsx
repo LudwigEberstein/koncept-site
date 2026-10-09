@@ -1,6 +1,8 @@
 'use client'
 
-import { motion } from "motion/react"
+import { useEffect, useRef, useState } from "react"
+import { Package, Users } from "lucide-react"
+import { AnimatePresence, motion, useReducedMotion } from "motion/react"
 import { useFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
@@ -16,12 +18,31 @@ const STEPS = [
 ] as const
 
 const MODES = [
-  { title: "Assistance technique", desc: "Nos consultants intègrent vos équipes pour apporter les compétences techniques ou fonctionnelles dont vous avez besoin, sur la durée adaptée à votre projet." },
-  { title: "Projets au forfait", desc: "Nous prenons en charge la réalisation de projets ou de périmètres définis ensemble, avec des objectifs, des livrables et des modalités de suivi convenus en amont." },
+  { title: "Assistance technique", icon: Users, desc: "Nos consultants intègrent vos équipes pour apporter les compétences techniques ou fonctionnelles dont vous avez besoin, sur la durée adaptée à votre projet." },
+  { title: "Projets au forfait", icon: Package, desc: "Nous prenons en charge la réalisation de projets ou de périmètres définis ensemble, avec des objectifs, des livrables et des modalités de suivi convenus en amont." },
 ] as const
+
+const pad = (n: number) => String(n).padStart(2, "0")
 
 export default function Methodologie() {
   const fadeUp = useFadeUp()
+  const reduce = useReducedMotion()
+  const [active, setActive] = useState(0)
+  const stepRefs = useRef<(HTMLElement | null)[]>([])
+
+  // L'étape qui croise le milieu de l'écran devient l'étape active
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(Number((entry.target as HTMLElement).dataset.index))
+        }
+      },
+      { rootMargin: "-45% 0px -45% 0px" },
+    )
+    stepRefs.current.forEach(el => el && observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <>
@@ -42,26 +63,44 @@ export default function Methodologie() {
         </Container>
       </HeroSection>
 
-      <section style={{ padding: "80px 0", background: "var(--color-bg)" }}>
-        <Container maxWidth={900}>
-          {STEPS.map((step, i) => (
-            <motion.div key={step.title} {...fadeUp()} style={{ display: "grid", gridTemplateColumns: "56px 1fr", gap: 0 }}>
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <div style={{ width: 40, height: 40, borderRadius: "50%", background: "var(--color-accent)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 13, fontWeight: 800, color: "#fff" }}>
-                  {String(i + 1).padStart(2, "0")}
-                </div>
-                {i < STEPS.length - 1 && <div style={{ width: 2, flexGrow: 1, background: "linear-gradient(to bottom, rgba(212,32,32,0.5), rgba(212,32,32,0.1))", marginTop: 8, minHeight: 28 }} />}
+      <section style={{ padding: "72px 0 40px", background: "var(--color-bg)" }}>
+        <Container>
+          <div className="mth-layout">
+            <div className="mth-counter" aria-hidden="true">
+              <div className="mth-num-wrap">
+                <AnimatePresence mode="popLayout" initial={false}>
+                  <motion.span key={active} className="mth-num"
+                    initial={reduce ? false : { opacity: 0, y: 28 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={reduce ? { opacity: 0 } : { opacity: 0, y: -28 }}
+                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    {pad(active + 1)}
+                  </motion.span>
+                </AnimatePresence>
               </div>
-              <div style={{ paddingBottom: i < STEPS.length - 1 ? 36 : 0, paddingTop: 6 }}>
-                <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 22, fontWeight: 800, letterSpacing: "-0.02em", marginBottom: 6 }}>{step.title}</h2>
-                <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.65, maxWidth: "58ch" }}>{step.desc}</p>
+              <div className="mth-of">sur {pad(STEPS.length)}</div>
+              <div className="mth-bars">
+                {STEPS.map((s, i) => <span key={s.title} className={i <= active ? "on" : ""} />)}
               </div>
-            </motion.div>
-          ))}
+            </div>
+
+            <ol className="mth-steps">
+              {STEPS.map((step, i) => (
+                <li key={step.title} ref={el => { stepRefs.current[i] = el }} data-index={i}
+                  className={`mth-step${i === active ? " is-active" : ""}`}
+                >
+                  <span className="mth-step-tag">Étape {pad(i + 1)}</span>
+                  <h2>{step.title}</h2>
+                  <p>{step.desc}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
         </Container>
       </section>
 
-      <section style={{ padding: "72px 0 88px", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
+      <section style={{ padding: "56px 0 88px", background: "var(--color-bg)" }}>
         <Container>
           <motion.div {...fadeUp()} style={{ marginBottom: 32 }}>
             <Eyebrow>Modes d&apos;intervention</Eyebrow>
@@ -70,8 +109,9 @@ export default function Methodologie() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 340px), 1fr))", gap: 16 }}>
             {MODES.map((m, i) => (
               <motion.div key={m.title} className="glass-card" {...fadeUp(i * 0.08)}
-                style={{ padding: "30px 28px", borderRadius: 16, border: "1px solid var(--color-border)", display: "flex", flexDirection: "column", gap: 12 }}
+                style={{ padding: "30px 28px", borderRadius: 16, border: "1px solid var(--color-border)", borderTop: "2px solid var(--color-accent)", display: "flex", flexDirection: "column", gap: 12 }}
               >
+                <m.icon size={24} aria-hidden="true" style={{ color: "var(--color-accent)" }} />
                 <h3 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 20, fontWeight: 700 }}>{m.title}</h3>
                 <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.65 }}>{m.desc}</p>
               </motion.div>
@@ -80,11 +120,40 @@ export default function Methodologie() {
         </Container>
       </section>
 
-      <CtaBand side="pro" prev="bg2" title="Échangeons sur votre besoin."
+      <CtaBand side="pro" prev="bg" title="Échangeons sur votre besoin."
         text="Un premier échange suffit pour voir si nous pouvons vous aider."
         primary={{ label: "Nous contacter", href: "/solutions/contact" }}
         secondary={{ label: "Voir nos expertises", href: "/solutions/expertises" }}
       />
+
+      <style>{`
+        .mth-layout { display: grid; grid-template-columns: 240px 1fr; gap: 56px; align-items: start; }
+        .mth-counter { position: sticky; top: 130px; padding-right: 28px; border-right: 1px solid var(--color-border); }
+        .mth-num-wrap { position: relative; height: 150px; overflow: hidden; }
+        .mth-num { display: block; font-family: var(--font-display, Outfit, sans-serif); font-size: 150px; font-weight: 800; line-height: 1; letter-spacing: -0.05em; color: var(--color-bg); -webkit-text-stroke: 4px var(--color-accent); paint-order: stroke fill; }
+        .mth-of { margin-top: 12px; font-size: 13px; font-weight: 600; color: var(--color-ink-2); }
+        .mth-bars { display: flex; gap: 5px; margin-top: 14px; }
+        .mth-bars span { flex: 1; height: 3px; border-radius: 2px; background: var(--color-border-2); transition: background .35s; }
+        .mth-bars span.on { background: var(--color-accent); }
+        .mth-steps { list-style: none; margin: 0; padding: 0; }
+        .mth-step { min-height: 44vh; display: flex; flex-direction: column; justify-content: center; padding: 28px 32px; margin-bottom: 14px; border-radius: 16px; border: 1px solid transparent; opacity: .38; transition: opacity .4s, border-color .4s, background .4s; }
+        .mth-step.is-active { opacity: 1; border-color: var(--color-accent); background: rgba(212,32,32,.06); }
+        .mth-step-tag { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 12px; }
+        .mth-step h2 { font-family: var(--font-display, Outfit, sans-serif); font-size: clamp(24px, 2.6vw, 34px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.12; margin: 0 0 12px; }
+        .mth-step p { color: var(--color-ink-2); font-size: 16px; line-height: 1.7; max-width: 52ch; margin: 0; }
+        @media (max-width: 767px) {
+          .mth-layout { grid-template-columns: 1fr; gap: 0; }
+          .mth-counter { top: 68px; z-index: 5; display: flex; align-items: center; gap: 14px; padding: 10px 0; border-right: 0; border-bottom: 1px solid var(--color-border); background: var(--color-bg); }
+          .mth-num-wrap { height: 52px; width: 76px; flex: none; }
+          .mth-num { font-size: 52px; -webkit-text-stroke-width: 3px; }
+          .mth-of { margin: 0; }
+          .mth-bars { margin: 0 0 0 auto; width: 90px; }
+          .mth-step { min-height: 0; padding: 24px 20px; opacity: .5; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .mth-step, .mth-bars span { transition: none; }
+        }
+      `}</style>
     </>
   )
 }
