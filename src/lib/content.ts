@@ -65,15 +65,14 @@ export const EXPERTISES = [
   },
 ] as const
 
-/** Environnements d'intervention (enjeux formulés de façon générale, à valider avec le métier). */
+/** Secteurs d'intervention (libellés et descriptions validés). */
 export const SECTORS = [
-  { slug: "aeronautique", name: "Aéronautique", enjeu: "Fiabilité, traçabilité et longs cycles de validation." },
-  { slug: "banque", name: "Banque & Finance", enjeu: "Sécurité des données, conformité et continuité de service." },
-  { slug: "telecom", name: "Télécommunications", enjeu: "Forts volumes, disponibilité des services et évolutions rapides." },
-  { slug: "services-it", name: "Services IT", enjeu: "Renfort d'équipes pour éditeurs, intégrateurs et hébergeurs." },
-  { slug: "robotique", name: "Robotique", enjeu: "Interfaces de pilotage et logiciels de contrôle de systèmes industriels." },
-  { slug: "transport", name: "Transport & Mobilité", enjeu: "Supervision, exploitation en temps réel et information voyageurs." },
-  { slug: "secteur-public", name: "Secteur public", enjeu: "Dématérialisation, accessibilité et cadre des marchés publics." },
+  { slug: "aeronautique", name: "Aéronautique", enjeu: "Développement et évolution d'applications dans des environnements techniques exigeants." },
+  { slug: "banque", name: "Banque & Assurance", enjeu: "Développement et maintenance de solutions applicatives au service des activités métiers." },
+  { slug: "telecom", name: "Télécommunications", enjeu: "Développement et évolution d'applications au sein de systèmes d'information complexes." },
+  { slug: "editeurs", name: "Éditeurs de logiciels & services numériques", enjeu: "Renfort des équipes techniques et fonctionnelles pour concevoir et faire évoluer leurs solutions." },
+  { slug: "transport", name: "Transport & Mobilité", enjeu: "Développement de solutions de gestion et de suivi de flottes de véhicules, avec traitement de volumes importants de données et d'événements." },
+  { slug: "recherche-public", name: "Recherche & secteur public", enjeu: "Accompagnement de projets applicatifs dans des environnements scientifiques et institutionnels." },
 ] as const
 
 export const TECH = [

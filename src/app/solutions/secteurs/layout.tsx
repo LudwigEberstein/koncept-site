@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Secteurs',
-  description: 'Les secteurs dans lesquels les consultants de Koncept IS interviennent : aéronautique, banque, télécoms, services IT, robotique, transport, secteur public.',
+  description: 'Les secteurs dans lesquels les consultants de Koncept IS interviennent : aéronautique, banque et assurance, télécoms, éditeurs de logiciels, transport et mobilité, recherche et secteur public.',
   alternates: { canonical: 'https://koncept-is.fr/solutions/secteurs' },
 }
 

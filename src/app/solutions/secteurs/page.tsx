@@ -7,7 +7,6 @@ import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
 import Container from "@/components/ui/Container"
 import Eyebrow from "@/components/ui/Eyebrow"
-import ToValidate from "@/components/ui/ToValidate"
 
 export default function Secteurs() {
   const fadeUp = useFadeUp()
@@ -25,7 +24,7 @@ export default function Secteurs() {
               Les environnements<br /><span style={{ color: "var(--color-accent)" }}>où nous intervenons.</span>
             </h1>
             <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.65, maxWidth: "52ch" }}>
-              Chaque secteur a ses contraintes. Nos consultants s&apos;y adaptent et s&apos;appuient sur votre connaissance du métier.
+              Nos consultants accompagnent des entreprises et organisations de différents secteurs, en s&apos;adaptant aux enjeux techniques et métiers de leurs projets.
             </p>
           </motion.div>
         </Container>
@@ -33,7 +32,7 @@ export default function Secteurs() {
 
       <section style={{ padding: "72px 0 88px", background: "var(--color-bg)" }}>
         <Container>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 270px), 1fr))", gap: 14 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 340px), 1fr))", gap: 14 }}>
             {SECTORS.map((s, i) => (
               <motion.div key={s.slug} className="glass-card" {...fadeUp(i * 0.05)}
                 style={{ padding: "26px 24px", borderRadius: 14, border: "1px solid var(--color-border)", display: "flex", flexDirection: "column", gap: 10 }}
@@ -43,9 +42,6 @@ export default function Secteurs() {
                 <p style={{ color: "var(--color-ink-2)", fontSize: 14, lineHeight: 1.6 }}>{s.enjeu}</p>
               </motion.div>
             ))}
-          </div>
-          <div style={{ marginTop: 28 }}>
-            <ToValidate>Liste des secteurs et enjeux à confirmer. Les descriptions sont volontairement générales : aucune réglementation ni spécialité n&apos;est revendiquée tant qu&apos;elle n&apos;est pas validée.</ToValidate>
           </div>
         </Container>
       </section>
