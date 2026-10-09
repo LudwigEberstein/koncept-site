@@ -7,6 +7,7 @@ import { makeFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
 import SquidShape, { type Shape } from "@/components/ui/SquidShape"
+import KonamiHint from "@/components/ui/KonamiHint"
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 
@@ -159,6 +160,7 @@ export default function Carrieres() {
                 <span key={p} style={{ fontSize: 12, fontWeight: 500, color: "var(--color-ink-2)", background: "var(--color-bg-2)", border: "1px solid var(--color-border)", padding: "5px 12px", borderRadius: 9999 }}>{p}</span>
               ))}
             </motion.div>
+            <KonamiHint />
           </div>
 
         </div>

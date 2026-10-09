@@ -108,6 +108,20 @@
 .quest-mark { display: inline-block; height: 1.05em; width: auto; vertical-align: -.14em; margin-right: .22em; filter: drop-shadow(0 0 14px rgba(212,32,32,.55)); animation: hd-bob 2.2s ease-in-out infinite; }
 @keyframes hd-bob { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-.07em) } }
 
+/* ===== Indice du code Konami (touches de clavier) ===== */
+.konami-hint { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; margin: 26px 0 0; }
+.konami-hint-label { font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--color-ink); }
+.konami-hint-keys { display: inline-flex; gap: 5px; flex-wrap: wrap; }
+.konami-hint kbd {
+  display: inline-grid; place-items: center; min-width: 32px; height: 32px; padding: 0 8px; border-radius: 8px;
+  font: 800 14px/1 ui-monospace, Consolas, monospace; color: #ff6b6b;
+  background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+  border: 1px solid rgba(var(--side-rgb, 212,32,32), .75); border-bottom-width: 3px; box-shadow: 0 0 14px rgba(var(--side-rgb, 212,32,32), .25);
+  animation: hd-key 3.6s ease-in-out infinite;
+}
+@keyframes hd-key { 0%, 12%, 100% { transform: translateY(0) } 6% { transform: translateY(2px); border-bottom-width: 1px } }
+@media (hover: none), (max-width: 767px) { .konami-hint { display: none; } }
+
 /* ===== Easter egg : code Konami ===== */
 .konami { position: fixed; inset: 0; z-index: 2147483000; pointer-events: none; overflow: hidden; }
 .konami-rain span { position: absolute; top: -12%; color: var(--color-accent, #D42020); opacity: .9; animation: hd-fall 3.4s cubic-bezier(.4,.1,.6,1) forwards; }
@@ -124,7 +138,7 @@
   .cta-band-big { bottom: 36px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hd-code pre, .cta-band-big > span, .quest-mark, .konami-rain span { animation: none; }
+  .hd-code pre, .cta-band-big > span, .quest-mark, .konami-rain span, .konami-hint kbd { animation: none; }
   .konami-rain { display: none; }
   .hd-packets { display: none; }
   .glass-card, .glass-card:hover { transition: none !important; transform: none !important; }
