@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Outfit, Inter } from 'next/font/google'
 import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
+import KonamiCode from '@/components/layout/KonamiCode'
 import { SITE } from '@/lib/content'
 import './globals.css'
 
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main>{children}</main>
         <Footer />
+        <KonamiCode />
       </body>
     </html>
   )

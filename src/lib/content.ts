@@ -128,9 +128,8 @@ export const TECH = [
 
 export const TEAM = [
   { name: "Gérard", role: "Président", img: "https://picsum.photos/seed/gerard-koncept-president/300/300" },
-  { name: "Guillaume", role: "Directeur", img: "https://picsum.photos/seed/guillaume-koncept-director/300/300" },
   { name: "Valentine", role: "Directrice RH", img: "https://picsum.photos/seed/valentine-koncept-rh/300/300" },
-  { name: "Aurélie", role: "Responsable Commercial", img: "https://picsum.photos/seed/aurelie-koncept-commercial/300/300" },
+  { name: "Aurélie", role: "Directrice Commerciale", img: "https://picsum.photos/seed/aurelie-koncept-commercial/300/300" },
 ] as const
 
 export const VALUES = [
@@ -148,9 +147,9 @@ export const CAREER_TRAITS = [
 ] as const
 
 export const CAREER_EVENTS = [
-  { title: "Déjeuners mensuels", freq: "Mensuel", desc: "Accueil des nouveaux, point RH, retrouvailles entre collègues de différentes missions." },
-  { title: "Soirées trimestrielles", freq: "Trimestriel", desc: "Des moments de décompression et de cohésion pour l'ensemble des équipes." },
-  { title: "Weekend annuel", freq: "Annuel", desc: "Un séminaire de cohésion mémorable pour renforcer les liens et les ambitions communes." },
+  { title: "Weekend d'agence", freq: "Annuel", desc: "Un weekend par an où toute l'agence se retrouve pour de la cohésion, des activités et de vrais moments hors projets." },
+  { title: "Soirée de Noël", freq: "Décembre", desc: "On clôt l'année tous ensemble autour d'un bon repas." },
+  { title: "Barbecue d'été", freq: "L'été", desc: "Quand il fait beau, on sort les grills pour un moment détendu entre collègues." },
 ] as const
 
 export const JOBS = [
@@ -168,6 +167,20 @@ export const JOBS = [
       "Curiosité, rigueur, esprit d'équipe",
     ],
   },
+  {
+    title: "Scrum Master confirmé",
+    location: "Toulouse",
+    type: "CDI",
+    sector: "Aéronautique / Télécoms",
+    desc: "Vous accompagnerez une ou plusieurs équipes de développement chez l'un de nos clients grands comptes : animation des cérémonies Scrum, suppression des blocages, amélioration continue de la livraison.",
+    stack: ["Scrum", "Kanban", "Jira", "Confluence", "Agilité à l'échelle"],
+    profile: [
+      "Expérience confirmée comme Scrum Master (équipes de développement logiciel)",
+      "Certification Scrum Master (PSM ou équivalent) appréciée",
+      "À l'aise avec les équipes techniques et les interlocuteurs métier",
+      "Pédagogie, écoute, sens du collectif",
+    ],
+  },
 ] as const
 
 // Navigation — two distinct tracks
@@ -180,7 +193,7 @@ export const NAV_CLIENT = [
 
 export const NAV_CAREER = [
   { label: "Vie chez Koncept", href: "/carrieres/vie" },
-  { label: "Formation", href: "/carrieres/formation" },
+  { label: "Formation et évolution", href: "/carrieres/formation" },
   { label: "Offres d'emploi", href: "/carrieres/offres" },
   { label: "Candidature spontanée", href: "/carrieres/candidature" },
 ] as const

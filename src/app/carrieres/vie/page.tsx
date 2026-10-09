@@ -1,7 +1,7 @@
 'use client'
 
-import Image from "next/image"
 import { motion, useReducedMotion } from "motion/react"
+import { Coffee, Users, Code2, Utensils, Beer, Mountain, TreePine, Flame, Home, CreditCard, HeartPulse, GraduationCap, Car, Bot, Gamepad2, MapPin } from "lucide-react"
 import { CollaboratorCard, type Collaborator } from "@/components/CollaboratorCard"
 import { makeFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
@@ -11,76 +11,76 @@ import CtaBand from "@/components/ui/CtaBand"
 
 const DAILY_LIFE = [
   {
-    icon: "☕",
+    icon: Coffee,
     time: "9h00",
     label: "Café du matin",
     desc: "La machine Nespresso dans la cuisine est sacrée. Personne ne se parle vraiment avant le deuxième café — c'est une règle non-écrite depuis 2015. L'ordre des capsules est sujet à débat régulier.",
   },
   {
-    icon: "🧩",
-    time: "9h15",
+    icon: Users,
+    time: "9h30",
     label: "Stand-up",
     desc: "15 minutes max. On dit ce qu'on fait, ce qui bloque, et ce dont on a besoin. Pas de PowerPoint, pas de reporting. Si ça dépasse 15 min, quelqu'un sort une alarme.",
   },
   {
-    icon: "⌨️",
+    icon: Code2,
     time: "10h → 12h",
     label: "Deep work",
     desc: "Bloc de concentration protégé. Pas de meetings non-urgents, Slack en silencieux. C'est là que le vrai travail se passe — et tout le monde le sait.",
   },
   {
-    icon: "🎮",
+    icon: Utensils,
     time: "12h30",
-    label: "Gaming lunch",
-    desc: "FIFA, Rocket League, Mario Kart selon l'humeur. Le classement interne est affiché dans la cuisine. Les discussions sur les choix de formation des équipes peuvent durer jusqu'à 14h.",
+    label: "Déjeuner",
+    desc: "On file chercher un truc aux food trucks du coin et on partage un repas. Discussions sur tout et sur rien : on refait le monde autour d'un kebab.",
   },
   {
-    icon: "💬",
+    icon: Code2,
     time: "Après-midi",
-    label: "Code reviews & pair prog",
-    desc: "Les PRs sont relues sérieusement — avec des commentaires qui apprennent quelque chose. Le pair programming est encouragé sur les sujets complexes, pas imposé à la chaîne.",
+    label: "Deep work",
+    desc: "Même principe que le matin : un second bloc de concentration, sans interruption inutile.",
   },
   {
-    icon: "🏍",
+    icon: Beer,
     time: "18h+",
-    label: "Afterworks & balades",
-    desc: "Le jeudi soir ou le vendredi, selon l'envie. Pour les motards, des weekends balade sont organisés. Pour les autres, bar, ciné, ou retour direct à la maison — aucune pression.",
+    label: "Après le boulot",
+    desc: "Ça dépend des jours. Le jeudi, c'est « jeudi mousse » aux Marins d'Eau Douce, juste à côté des locaux. Le mercredi, ça peut être escalade. Aucune pression : chacun fait comme il veut.",
   },
 ]
 
 const EVENTS = [
   {
-    freq: "Mensuel",
-    emoji: "🍕",
-    title: "Déjeuner mensuel",
-    desc: "Accueil des nouveaux arrivants, point RH, retrouvailles entre collègues dispersés sur différentes missions. On mange bien, on parle vrai, on rigole.",
-    details: ["Accueil des nouveaux · Tour de table", "Point sur les missions en cours", "Pizza ou restaurant selon le mois", "Gaming ou jeux de société en dessert"],
+    freq: "Une fois par an",
+    icon: Mountain,
+    title: "Weekend d'agence",
+    desc: "Le grand rendez-vous de l'année : toute l'agence part ensemble le temps d'un weekend. De la cohésion, de l'aventure et de vrais moments en dehors des projets.",
+    details: ["Toute l'agence réunie", "Activités en équipe", "Soirée et bonne humeur"],
   },
   {
-    freq: "Trimestriel",
-    emoji: "🎯",
-    title: "Soirée trimestrielle",
-    desc: "Des moments de décompression et de cohésion pour l'ensemble des équipes. Escape game, bowling, soirée jeux, restau — chaque trimestre une surprise différente.",
-    details: ["Escape game · Bowling · Laser game", "Soirée dégustation / restau", "Tournoi gaming organisé", "Bilan trimestriel décontracté"],
+    freq: "Décembre",
+    icon: TreePine,
+    title: "Soirée de Noël",
+    desc: "On clôt l'année tous ensemble, autour d'un bon repas. L'occasion de se retrouver, de se raconter l'année et de souffler avant les fêtes.",
+    details: ["Toute l'équipe", "Repas partagé", "Bilan de l'année, sans PowerPoint"],
   },
   {
-    freq: "Annuel",
-    emoji: "🏔",
-    title: "Weekend annuel",
-    desc: "Le grand rendez-vous de l'année. Tout le monde, tous ensemble, pendant un weekend complet. Séminaire de cohésion avec une bonne dose d'aventure.",
-    details: ["Weekend de 2 nuits (loge offert)", "Activité outdoor — ski, randonnée, accrobranche", "Soirée gala / déguisements", "Bilan annuel et vision N+1"],
+    freq: "L'été",
+    icon: Flame,
+    title: "Barbecue d'été",
+    desc: "Quand il fait beau, on sort les grills. Un moment détendu pour se retrouver, discuter et profiter, loin des écrans.",
+    details: ["Toute l'équipe", "Grillades et boissons fraîches", "Jeux et discussions"],
   },
 ]
 
 const PERKS = [
-  { icon: "🏠", label: "Télétravail partiel", desc: "2 jours/semaine en télétravail, sans justification. La confiance est la règle par défaut." },
-  { icon: "🍽", label: "Carte Swile", desc: "Tickets restaurant avec participation employeur généreuse. Le midi ne devrait pas être un sujet de stress." },
-  { icon: "🏥", label: "Mutuelle Alan", desc: "Mutuelle 100% digitale, prise en charge à 60% par Koncept. Carte de tiers payant immédiate." },
-  { icon: "📚", label: "1 500 €/an de formation", desc: "Budget formation disponible dès le premier jour. Certifs, confs, livres, MOOCs — tu choisis." },
-  { icon: "🚗", label: "Parking + vélo", desc: "Parking gratuit sur site. Arceaux vélo sécurisés. Indemnité kilométrique vélo disponible." },
-  { icon: "🤖", label: "Outils premium", desc: "GitHub Copilot, JetBrains IDEs, accès Pluralsight. Les bons outils ne sont pas une option." },
-  { icon: "🎮", label: "Gaming setup", desc: "PS5, Switch, PC gaming en salle de repos. Pour décompresser vrai." },
-  { icon: "📍", label: "Centre de Toulouse", desc: "Parc Technologique du Canal. Accessible tramway ligne T1, à 20 min du centre." },
+  { icon: Home, label: "Télétravail partiel", desc: "2 jours/semaine en télétravail, sans justification. La confiance est la règle par défaut." },
+  { icon: CreditCard, label: "Carte Swile", desc: "Tickets restaurant avec participation employeur généreuse. Le midi ne devrait pas être un sujet de stress." },
+  { icon: HeartPulse, label: "Mutuelle prise en charge", desc: "Une complémentaire santé financée à 100 % par Koncept. Carte de tiers payant immédiate." },
+  { icon: GraduationCap, label: "Budget formation dédié", desc: "Un budget dédié à ta formation, disponible dès le premier jour. Certifs, confs, livres, MOOCs — tu choisis." },
+  { icon: Car, label: "Parking + vélo", desc: "Parking gratuit sur site. Arceaux vélo sécurisés. Indemnité kilométrique vélo disponible." },
+  { icon: Bot, label: "Outils premium", desc: "Claude Code, ChatGPT, la suite Microsoft complète et le partage de documents sur SharePoint. Les bons outils ne sont pas une option." },
+  { icon: Gamepad2, label: "Gaming", desc: "Jeux vidéo et jeux de société entre collègues : on aime jouer, et ça se voit." },
+  { icon: MapPin, label: "Centre de Toulouse", desc: "Parc Technologique du Canal. Accessible tramway ligne T1, à 20 min du centre." },
 ]
 
 const COLLABORATORS: Collaborator[] = [
@@ -155,26 +155,31 @@ export default function Vie() {
       {/* ── Une journée chez Koncept ── */}
       <section style={{ padding: "96px 0", background: "var(--color-bg)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
-          <motion.div {...fadeUp()} style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24 }}>
-            <div>
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24 }}>
+            <motion.div {...fadeUp()}>
               <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Le quotidien</p>
               <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
                 Une journée chez Koncept,<br />honnêtement.
               </h2>
+            </motion.div>
+            {/* Mario : à droite de l'en-tête, dans le flux (ne rallonge pas la section, ne recouvre aucun texte) */}
+            <div className="mario-figure" aria-hidden="true">
+              <picture>
+                <source media="(prefers-reduced-motion: reduce)" srcSet="/culture/mario-flappybird-static.png" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/culture/mario-flappybird.gif" alt="" loading="lazy" />
+              </picture>
             </div>
-            <div className="sticker-mario" style={{ position: "relative", width: 130, height: 78, flexShrink: 0, transform: "rotate(-3deg)", marginBottom: 56 }}>
-              <Image src="/culture/mario-flappybird.gif" alt="Clin d'œil gaming Koncept" fill unoptimized sizes="130px" style={{ objectFit: "cover", borderRadius: 10, border: "1px solid var(--color-border-2)" }} />
-            </div>
-          </motion.div>
+          </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }} className="daily-grid">
             {DAILY_LIFE.map((item, i) => (
-              <motion.div key={item.label}
+              <motion.div key={item.time}
                 style={{ display: "flex", gap: 20, padding: "24px 28px", borderRadius: 14, border: "1px solid var(--color-border)", background: "var(--color-bg-2)", alignItems: "flex-start" }}
                 {...fadeUp(i * 0.07)}
               >
                 <div style={{ flexShrink: 0, textAlign: "center" }}>
-                  <span style={{ fontSize: 24, display: "block", marginBottom: 6 }}>{item.icon}</span>
+                  <item.icon size={24} aria-hidden="true" style={{ display: "block", margin: "0 auto 8px", color: "var(--side2)" }} />
                   <span style={{ fontSize: 10, fontWeight: 700, color: "var(--color-career)", letterSpacing: "0.04em" }}>{item.time}</span>
                 </div>
                 <div>
@@ -195,6 +200,9 @@ export default function Vie() {
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
               Les rendez-vous qui font<br />l&apos;ADN Koncept.
             </h2>
+            <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.75, maxWidth: "56ch", marginTop: -32, marginBottom: 48 }}>
+              Tout est organisé par Valentine, notre DRH préférée — la maman de Koncept.
+            </p>
           </motion.div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} className="events-grid">
             {EVENTS.map((ev, i) => (
@@ -203,7 +211,7 @@ export default function Vie() {
                 {...fadeUp(i * 0.1)}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
-                  <span style={{ fontSize: 28 }}>{ev.emoji}</span>
+                  <ev.icon size={28} aria-hidden="true" style={{ color: "var(--side2)" }} />
                   <span style={{ background: "rgba(var(--color-career),0.15)", color: "var(--color-career)", borderRadius: 6, padding: "3px 10px", fontSize: 11, fontWeight: 700, letterSpacing: "0.06em" }}>{ev.freq}</span>
                 </div>
                 <h3 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 22, fontWeight: 800, marginBottom: 12 }}>{ev.title}</h3>
@@ -237,7 +245,7 @@ export default function Vie() {
                 style={{ padding: "24px 22px", borderRadius: 14, border: "1px solid var(--color-border)", background: "var(--color-bg-2)" }}
                 {...fadeUp(i * 0.06)}
               >
-                <span style={{ fontSize: 22, display: "block", marginBottom: 12 }}>{perk.icon}</span>
+                <perk.icon size={22} aria-hidden="true" style={{ display: "block", marginBottom: 14, color: "var(--side2)" }} />
                 <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 14, fontWeight: 700, marginBottom: 6 }}>{perk.label}</p>
                 <p style={{ color: "var(--color-ink-2)", fontSize: 12, lineHeight: 1.65 }}>{perk.desc}</p>
               </motion.div>
@@ -284,7 +292,6 @@ export default function Vie() {
           .events-grid{grid-template-columns:1fr !important}
           .perks-grid{grid-template-columns:repeat(2,1fr) !important}
           .portraits-grid{grid-template-columns:1fr !important}
-          .sticker-mario{display:none !important}
         }
         @media(max-width:479px){
           .perks-grid{grid-template-columns:1fr !important}

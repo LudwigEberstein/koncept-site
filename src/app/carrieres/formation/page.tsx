@@ -1,6 +1,5 @@
 'use client'
 
-import Image from "next/image"
 import { motion, useReducedMotion } from "motion/react"
 import { makeFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
@@ -10,11 +9,11 @@ import CtaBand from "@/components/ui/CtaBand"
 
 const WHAT_WE_COVER = [
   { icon: "🎓", label: "Certifications", desc: "AWS, Azure, GCP, CKA (Kubernetes), Oracle Java, GitLab CI, Scrum Master, ISTQB. Koncept prend en charge l'intégralité du coût." },
-  { icon: "🎤", label: "Conférences", desc: "Devoxx Paris, MiXiT Lyon, Paris Web, KubeCon, Breizhcamp. Budget déplacement + hébergement inclus." },
+  { icon: "🎤", label: "Conférences", desc: "Conférences et meetups toulousains, pour rester connecté à la communauté tech locale. Les frais d'inscription sont pris en charge." },
   { icon: "📚", label: "Livres techniques", desc: "Amazon wish-list technique = budget formation. Clean Code, DDD, Designing Data-Intensive Applications — on commande." },
-  { icon: "🖥", label: "Plateformes en ligne", desc: "Pluralsight, Udemy, O'Reilly Learning. Accès illimité financé par Koncept pour les formations en ligne." },
+  { icon: "🖥", label: "Plateformes en ligne", desc: "Udemy, Pluralsight, et les licences d'outils d'IA. Accès financé par Koncept pour monter en compétence en ligne." },
   { icon: "⚡", label: "Kata club interne", desc: "Sessions hebdo volontaires : algos, design patterns, archi logicielle. Présentés par les seniors à tour de rôle." },
-  { icon: "🔬", label: "Veille technologique", desc: "30 min/semaine de veille libre pendant les heures de travail. Tech radar Thoughtworks discuté en équipe chaque trimestre." },
+  { icon: "🔬", label: "Veille technologique", desc: "30 min/semaine de veille libre pendant les heures de travail. Ce qu'on découvre est partagé en équipe." },
 ]
 
 const PATHS: { id: string; title: string; emoji: string; color: string; desc: string; steps: { year: string; label: string }[] }[] = [
@@ -46,15 +45,15 @@ const PATHS: { id: string; title: string; emoji: string; color: string; desc: st
   },
   {
     id: "management",
-    title: "Management & Encadrement",
+    title: "Agilité & Pilotage",
     emoji: "◎",
     color: "#f59e0b",
-    desc: "Tu veux encadrer, faire grandir les autres, gérer des équipes. On t'accompagne vers un rôle de manager technique ou de directeur de projet.",
+    desc: "Tu veux animer une équipe, cadrer un produit, piloter des projets. On t'accompagne vers un rôle de Scrum Master, de Product Owner, puis de chef de projet.",
     steps: [
       { year: "0–2 ans", label: "Dev senior — légitimité technique indispensable d'abord" },
-      { year: "3–4 ans", label: "Lead / référent — premier rôle d'encadrement informel" },
-      { year: "4–5 ans", label: "Manager de proximité — suivi, onboarding, évaluations" },
-      { year: "5+ ans", label: "Directeur technique — équipes, clients, stratégie" },
+      { year: "3–4 ans", label: "Lead / référent — premier rôle d'animation d'équipe" },
+      { year: "4–5 ans", label: "Scrum Master / Product Owner — animation, backlog, cadrage" },
+      { year: "5+ ans", label: "Chef de projet — pilotage des équipes et des clients" },
     ],
   },
 ]
@@ -62,7 +61,7 @@ const PATHS: { id: string; title: string; emoji: string; color: string; desc: st
 const CERTIFS = [
   { name: "AWS Solutions Architect", level: "Associate → Professional", color: "#f59e0b" },
   { name: "Azure Fundamentals → Expert", level: "AZ-900 → AZ-305", color: "#3b82f6" },
-  { name: "Google Cloud Professional", level: "Associate → Professional", color: "var(--color-career-dark)" },
+  { name: "Google Cloud Professional", level: "Associate → Professional", color: "#34a853" },
   { name: "Kubernetes (CKA/CKAD)", level: "Linux Foundation", color: "#06b6d4" },
   { name: "Oracle Java Certified", level: "OCA → OCP", color: "#f97316" },
   { name: "GitLab CI/CD", level: "Associate → Professional", color: "#8b5cf6" },
@@ -94,7 +93,7 @@ export default function Formation() {
               style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
             >
-              Carrières · Formation & Évolution
+              Carrières · Formation et évolution
             </motion.p>
             <motion.h1
               style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(36px, 5.5vw, 76px)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 24 }}
@@ -106,7 +105,7 @@ export default function Formation() {
               style={{ color: "var(--color-ink-2)", fontSize: 17, lineHeight: 1.75, maxWidth: "48ch" }}
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.1 }}
             >
-              1 500 €/an de budget formation par collaborateur, disponible dès le premier jour. Sans condition d&apos;ancienneté. Sans justification excessive. Parce qu&apos;un développeur qui monte en compétences, c&apos;est tout le monde qui gagne.
+              Un budget formation dédié à chaque collaborateur, disponible dès le premier jour. Sans condition d&apos;ancienneté. Sans justification excessive. Parce qu&apos;un développeur qui monte en compétences, c&apos;est tout le monde qui gagne.
             </motion.p>
           </div>
           <motion.div
@@ -114,7 +113,7 @@ export default function Formation() {
             initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.65, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
           >
             {[
-              { value: "1 500 €", label: "budget/an par dev", sub: "Dès le 1er jour" },
+              { value: "Dédié", label: "budget formation", sub: "Dès le 1er jour" },
               { value: "100 %", label: "certifs financées", sub: "Sans plafond par certif" },
               { value: "30 min", label: "veille/semaine", sub: "Temps libre dédié" },
               { value: "Hebdo", label: "kata club", sub: "Sessions techniques internes" },
@@ -129,13 +128,13 @@ export default function Formation() {
         </div>
       </HeroSection>
 
-      {/* ── Ce qu'on prend en charge ── */}
+      {/* ── Prise en charge ── */}
       <section style={{ padding: "96px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.div {...fadeUp()}>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Formation</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
-              Ce qu&apos;on prend en charge.
+              Prise en charge,<br />ta formation sera.
             </h2>
           </motion.div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }} className="covers-grid">
@@ -158,15 +157,25 @@ export default function Formation() {
       {/* ── Certifications ── */}
       <section style={{ padding: "80px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24 }}>
           <motion.div {...fadeUp()}>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Certifications</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
-              Koncept paie ces certifications.
+              Achievement unlocked.
             </h2>
             <p style={{ color: "var(--color-ink-2)", fontSize: 15, maxWidth: "52ch", lineHeight: 1.7, marginBottom: 48 }}>
               Sans plafond par certification. Sans condition de rester après la certif. On part du principe qu&apos;un dev certifié qui reste est plus utile qu&apos;un dev non-certifié qui part.
             </p>
           </motion.div>
+          {/* Einstein : à droite de l'en-tête, il « sort » de derrière la grille de certifications */}
+          <div className="einstein-figure" aria-hidden="true">
+            <picture>
+              <source media="(prefers-reduced-motion: reduce)" srcSet="/culture/einstein-static.png" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/culture/einstein.gif" alt="" loading="lazy" />
+            </picture>
+          </div>
+          </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }} className="certifs-grid">
             {CERTIFS.map((c, i) => (
               <motion.div key={c.name}
@@ -186,9 +195,6 @@ export default function Formation() {
       <section style={{ padding: "80px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }} className="kata-grid">
           <motion.div {...fadeUp()} style={{ position: "relative" }}>
-            <div className="sticker-einstein" style={{ position: "absolute", top: -28, right: 0, width: 84, height: 84, transform: "rotate(5deg)" }}>
-              <Image src="/culture/einstein.gif" alt="La culture geek Koncept" fill unoptimized sizes="84px" style={{ objectFit: "cover", borderRadius: 12, border: "1px solid var(--color-career-border)", boxShadow: "0 8px 20px rgba(0,0,0,0.35)" }} />
-            </div>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Kata Club</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
               Une session technique<br />chaque semaine.
@@ -225,7 +231,7 @@ export default function Formation() {
           <motion.div {...fadeUp()}>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Évolution de carrière</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
-              Trois trajectoires.<br />Aucune voie imposée.
+              Choose your destiny !
             </h2>
             <p style={{ color: "var(--color-ink-2)", fontSize: 16, lineHeight: 1.75, maxWidth: "58ch", marginBottom: 56 }}>
               Pas de promotion automatique au management. Pas de plafond sur la voie technique. On construit ensemble ta trajectoire selon ce qui te motive — pas selon un organigramme préétabli.
@@ -278,7 +284,6 @@ export default function Formation() {
           .hero-grid{grid-template-columns:1fr !important;gap:48px !important}
           .covers-grid{grid-template-columns:1fr !important}
           .certifs-grid{grid-template-columns:repeat(2,1fr) !important}
-          .sticker-einstein{display:none !important}
         }
         @media(max-width:479px){
           .certifs-grid{grid-template-columns:1fr !important}

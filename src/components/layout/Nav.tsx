@@ -181,11 +181,6 @@ export default function Nav() {
                     {label}
                   </Link>
                 ))}
-                <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", marginTop: 12, paddingTop: 12 }}>
-                  <Link href="/carrieres/offres" role="menuitem" style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-career)", fontSize: 13, fontWeight: 700, textDecoration: "none" }}>
-                    Voir les offres d&apos;emploi <ArrowRight size={13} aria-hidden="true" />
-                  </Link>
-                </div>
               </div>
             )}
           </div>

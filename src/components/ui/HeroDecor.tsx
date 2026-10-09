@@ -24,7 +24,7 @@ $ git checkout -b ma-nouvelle-carriere
 $ npm run bonheur
 $ git push origin main --force-with-love
 
-// 1 500 € / an de formation
+// budget dédié à la formation
 await certification.passer("AWS");
 `
 

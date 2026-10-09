@@ -1,15 +1,22 @@
 'use client'
 
 import Link from "next/link"
-import Image from "next/image"
-import { ArrowRight, MapPin, Briefcase, ChevronDown, ChevronUp } from "lucide-react"
+import { ArrowRight, MapPin, Briefcase, ChevronDown, ChevronUp, Home, Wallet } from "lucide-react"
 import { useState } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "motion/react"
 import { JOBS } from "@/lib/content"
 import { makeFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
+import QuestMark from "@/components/ui/QuestMark"
 
 // ─── Enriched jobs ───────────────────────────────────────────────────────────
+
+const PROCESS = [
+      { step: "1. Échange RH", desc: "30 min avec Valentine. On se présente, on voit si le feeling passe.", duration: "J+2" },
+      { step: "2. Entretien technique", desc: "1h avec un lead dev. Discussion archi, revue de code, exercice pratique.", duration: "J+7" },
+      { step: "3. Rencontre équipe", desc: "Rencontre informelle avec l'équipe. Pas d'épreuve — juste voir si ça matche.", duration: "J+12" },
+      { step: "4. Offre", desc: "Si tout est bon, offre dans les 48h. Pas de délai artificiel.", duration: "J+14" },
+]
 
 const ENRICHED_JOBS = [
   {
@@ -18,7 +25,7 @@ const ENRICHED_JOBS = [
     badge: "Nouveau",
     badgeColor: "var(--color-career)",
     remote: "2j/semaine",
-    salary: "45–65 K€",
+    salary: "35–40 K€",
     intro: "On cherche un dev JS fullstack passionné pour rejoindre une équipe chez l'un de nos clients grands comptes. Pas un dev de plus dans un open space — quelqu'un qui veut s'investir, proposer des architectures, et laisser sa marque sur un vrai produit.",
     daily: [
       "Feature development en React/Node.js sur un produit B2B utilisé par 50k+ utilisateurs",
@@ -26,12 +33,23 @@ const ENRICHED_JOBS = [
       "Participation aux rétrospectives et aux décisions d'architecture",
       "Kata club Koncept le jeudi — volontaire mais chaleureusement encouragé",
     ],
-    process: [
-      { step: "1. Échange RH", desc: "30 min avec Valentine. On se présente, on voit si le feeling passe.", duration: "J+2" },
-      { step: "2. Entretien technique", desc: "1h avec un lead dev. Discussion archi, revue de code, exercice pratique.", duration: "J+7" },
-      { step: "3. Rencontre équipe", desc: "Rencontre informelle avec l'équipe. Pas d'épreuve — juste voir si ça matche.", duration: "J+12" },
-      { step: "4. Offre", desc: "Si tout est bon, offre dans les 48h. Pas de délai artificiel.", duration: "J+14" },
+    process: PROCESS,
+  },
+  {
+    ...JOBS[1],
+    id: "scrum-master",
+    badge: "Nouveau",
+    badgeColor: "var(--color-career)",
+    remote: "2j/semaine",
+    salary: "40–45 K€",
+    intro: "On cherche un·e Scrum Master confirmé·e pour accompagner des équipes de développement chez l'un de nos clients grands comptes. Quelqu'un qui sait faire vivre l'agilité au quotidien — sans dogme, avec du bon sens et de l'écoute.",
+    daily: [
+      "Animation des cérémonies Scrum : daily, planning, review, rétrospective",
+      "Identification et suppression des blocages de l'équipe, en lien avec le Product Owner",
+      "Suivi des indicateurs de livraison et amélioration continue des pratiques",
+      "Retours d'expérience partagés avec les autres Scrum Masters et le kata club Koncept",
     ],
+    process: PROCESS,
   },
 ]
 
@@ -65,7 +83,7 @@ export default function Offres() {
             style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(38px, 6vw, 88px)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 24 }}
             initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
           >
-            Des missions.<br /><span style={{ color: "var(--color-career)" }}>Pas des placards.</span>
+            <QuestMark />Nouvelle quête<br /><span style={{ color: "var(--color-career)" }}>disponible.</span>
           </motion.h1>
           <motion.p
             style={{ color: "var(--color-ink-2)", fontSize: 17, lineHeight: 1.7, maxWidth: "56ch", marginBottom: 32 }}
@@ -109,8 +127,8 @@ export default function Offres() {
                       <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
                         <span style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-ink-2)", fontSize: 13 }}><MapPin size={13} />{job.location}</span>
                         <span style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-ink-2)", fontSize: 13 }}><Briefcase size={13} />{job.type}</span>
-                        <span style={{ color: "var(--color-ink-2)", fontSize: 13 }}>🏠 {job.remote} télétravail</span>
-                        <span style={{ color: "var(--color-career)", fontSize: 13, fontWeight: 600 }}>💰 {job.salary}</span>
+                        <span style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-ink-2)", fontSize: 13 }}><Home size={13} />{job.remote} télétravail</span>
+                        <span style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-career)", fontSize: 13, fontWeight: 600 }}><Wallet size={13} />{job.salary}</span>
                       </div>
                     </div>
                     <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
@@ -211,15 +229,25 @@ export default function Offres() {
       {/* ── Profils recherchés en spontané ── */}
       <section style={{ padding: "80px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24 }}>
           <motion.div {...fadeUp()}>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>En veille permanente</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
-              Pas de poste listé ?<br />On cherche peut-être ton profil quand même.
+              Pas de poste listé ?<br />On cherche peut-être<br />ton profil quand même.
             </h2>
             <p style={{ color: "var(--color-ink-2)", fontSize: 15, maxWidth: "56ch", lineHeight: 1.7, marginBottom: 40 }}>
               Ces profils sont en veille permanente chez nous. Si tu corresponds, envoie une candidature spontanée — Valentine la lit vraiment.
             </p>
           </motion.div>
+          {/* Mamie : à droite de l'en-tête, dans le flux (ne rallonge pas la section, ne recouvre aucun texte) */}
+          <div className="grandma-figure" aria-hidden="true">
+            <picture>
+              <source media="(prefers-reduced-motion: reduce)" srcSet="/culture/grandma-static.png" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/culture/grandma.gif" alt="" loading="lazy" />
+            </picture>
+          </div>
+          </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 14, marginBottom: 40 }} className="profiles-grid">
             {SPONTANEOUS_PROFILES.map((p, i) => (
               <motion.div className="glass-card" key={p.tech}
@@ -235,9 +263,6 @@ export default function Offres() {
           <motion.div {...fadeUp(0.1)}
             style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, padding: "32px 36px", borderRadius: 16, border: "1px solid var(--color-border)", background: "var(--color-bg-3)", flexWrap: "wrap", position: "relative" }}
           >
-            <div className="sticker-monalisa" style={{ position: "absolute", top: -22, left: -18, width: 72, height: 72, transform: "rotate(-8deg)" }}>
-              <Image src="/culture/monalisa.gif" alt="L'humour Koncept depuis le premier jour" fill unoptimized sizes="72px" style={{ objectFit: "cover", borderRadius: 10, border: "1px solid var(--color-border-2)", boxShadow: "0 8px 20px rgba(0,0,0,0.35)" }} />
-            </div>
             <div>
               <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 20, fontWeight: 800, marginBottom: 6 }}>Ton profil n&apos;est pas listé ?</p>
               <p style={{ color: "var(--color-ink-2)", fontSize: 14 }}>Envoie-nous quand même. On est curieux des profils atypiques.</p>
@@ -263,7 +288,6 @@ export default function Offres() {
           .daily-grid{grid-template-columns:1fr !important}
           .profiles-grid{grid-template-columns:repeat(2,1fr) !important}
           .process-grid{grid-template-columns:repeat(2,1fr) !important}
-          .sticker-monalisa{display:none !important}
         }
         @media(max-width:479px){
           .profiles-grid{grid-template-columns:1fr !important}
