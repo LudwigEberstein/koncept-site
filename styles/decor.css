@@ -113,9 +113,12 @@
 .mona-figure { position: relative; flex: 0 0 280px; margin-bottom: 52px; pointer-events: none; }
 .mona-figure img, .mario-figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: right bottom; mix-blend-mode: lighten; -webkit-mask: linear-gradient(180deg, #000 80%, transparent 100%); mask: linear-gradient(180deg, #000 80%, transparent 100%); }
 /* Mario / Flappy Bird / plante piranha (en-tête « Le quotidien », /carrieres/vie) : même principe, dans le flux, à droite */
-.mario-figure { position: relative; flex: 0 0 400px; aspect-ratio: 788 / 369; margin: -40px 0 56px; pointer-events: none; }
-.mario-figure img { object-position: right center; -webkit-mask: none; mask: none; }
-@media (max-width: 767px) { .mona-figure, .mario-figure { display: none; } }
+/* Le tuyau « sort » de derrière les cartes : le bas du GIF (pied du tuyau) déborde de 10 px sous le haut de la grille, dont les cartes passent par-dessus. */
+.mario-figure { position: relative; flex: 0 0 580px; aspect-ratio: 788 / 369; margin: -64px 0 -10px; pointer-events: none; }
+.mario-figure img { object-position: right bottom; -webkit-mask: linear-gradient(#000, #000); mask: linear-gradient(#000, #000); } /* un masque (même plein) est nécessaire : sans lui Chrome n'applique pas le mix-blend-mode au GIF */
+.daily-grid > * { position: relative; z-index: 1; }
+@media (max-width: 767px) { .mona-figure { display: none; } }
+@media (max-width: 1099px) { .mario-figure { display: none; } }
 
 /* ===== Indice du code Konami (touches de clavier) ===== */
 .konami-hint { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; margin: 26px 0 0; }

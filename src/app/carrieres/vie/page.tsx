@@ -155,13 +155,13 @@ export default function Vie() {
       {/* ── Une journée chez Koncept ── */}
       <section style={{ padding: "96px 0", background: "var(--color-bg)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
-          <motion.div {...fadeUp()} style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24 }}>
-            <div>
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24 }}>
+            <motion.div {...fadeUp()}>
               <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Le quotidien</p>
               <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
                 Une journée chez Koncept,<br />honnêtement.
               </h2>
-            </div>
+            </motion.div>
             {/* Mario : à droite de l'en-tête, dans le flux (ne rallonge pas la section, ne recouvre aucun texte) */}
             <div className="mario-figure" aria-hidden="true">
               <picture>
@@ -170,7 +170,7 @@ export default function Vie() {
                 <img src="/culture/mario-flappybird.gif" alt="" loading="lazy" />
               </picture>
             </div>
-          </motion.div>
+          </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }} className="daily-grid">
             {DAILY_LIFE.map((item, i) => (
