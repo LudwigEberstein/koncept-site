@@ -59,6 +59,8 @@ const DIRIGEANTS = [
     role: "Président KONCEPT",
     img: "/team/gerard-front.png",
     imgBack: "/team/gerard-back.png",
+    pos: "50% 10%",
+    posBack: "50% 10%",
     bio: "Fondateur de Koncept IS, Gérard a bâti l'ESN sur un principe simple : que chaque client soit suivi par quelqu'un qui comprend son métier en profondeur.",
     quote: "On ne veut pas être la plus grande ESN de Toulouse. On veut être la meilleure pour nos clients.",
   },
@@ -67,6 +69,8 @@ const DIRIGEANTS = [
     role: "Directrice des Ressources Humaines",
     img: "/team/valentine-front.jpg",
     imgBack: "/team/valentine-back.jpg",
+    pos: "50% 8%", // photo portrait (3:4) : on ancre sur le visage, pas sur le centre
+    posBack: "50% 10%",
     bio: "Valentine a construit la culture Koncept de l'intérieur depuis 2015. Son obsession : que chaque Koncepteur trouve sa place et s'y épanouisse vraiment.",
     quote: "On recrute des gens, pas des compétences. Les compétences, ça s'apprend. La personnalité, non.",
   },
@@ -75,6 +79,8 @@ const DIRIGEANTS = [
     role: "Directrice Commerciale",
     img: "/team/aurelie-front.jpg",
     imgBack: "/team/aurelie-back.jpg",
+    pos: "50% 10%",
+    posBack: "50% 0%", // visage tout en haut de la photo
     bio: "Aurélie est l'interlocutrice de confiance des DSI et directeurs de projet. Elle porte la promesse Koncept à chaque avant-vente.",
     quote: "Je ne signe pas un contrat si je ne suis pas convaincue qu'on peut le tenir.",
   },
@@ -308,10 +314,10 @@ export default function APropos() {
                 <div className="flip-card" style={{ height: 300, width: "100%", position: "relative", perspective: 1200 }}>
                   <div className="flip-card-inner" style={{ position: "absolute", inset: 0, transformStyle: "preserve-3d", transition: "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)" }}>
                     <div className="flip-card-face" style={{ position: "absolute", inset: 0, backfaceVisibility: "hidden", overflow: "hidden" }}>
-                      <Image src={m.img} alt={m.name} fill sizes="(max-width: 767px) 100vw, 33vw" style={{ objectFit: "cover", filter: "grayscale(15%)" }} />
+                      <Image src={m.img} alt={m.name} fill sizes="(max-width: 767px) 100vw, 33vw" style={{ objectFit: "cover", objectPosition: m.pos, filter: "grayscale(15%)" }} />
                     </div>
                     <div className="flip-card-face flip-card-back" style={{ position: "absolute", inset: 0, backfaceVisibility: "hidden", transform: "rotateY(180deg)", overflow: "hidden" }}>
-                      <Image src={m.imgBack} alt={`${m.name} — coulisses`} fill sizes="(max-width: 767px) 100vw, 33vw" style={{ objectFit: "cover", filter: "grayscale(15%)" }} />
+                      <Image src={m.imgBack} alt={`${m.name} — coulisses`} fill sizes="(max-width: 767px) 100vw, 33vw" style={{ objectFit: "cover", objectPosition: m.posBack, filter: "grayscale(15%)" }} />
                     </div>
                   </div>
                 </div>
