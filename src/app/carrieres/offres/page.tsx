@@ -17,7 +17,7 @@ const PROCESS = [
       { step: "1. Échange RH", desc: "30 min avec Valentine. On se présente, on voit si le feeling passe.", duration: "J+2" },
       { step: "2. Entretien technique", desc: "1h avec un lead dev. Discussion archi, revue de code, exercice pratique.", duration: "J+7" },
       { step: "3. Rencontre équipe", desc: "Rencontre informelle avec l'équipe. Pas d'épreuve — juste voir si ça matche.", duration: "J+12" },
-      { step: "4. Offre", desc: "Si tout est bon, offre dans les 48h. Pas de délai artificiel.", duration: "J+14" },
+      { step: "4. Offre", desc: "Si tout est bon, on te fait une offre sans te laisser mariner. Pas de suspense artificiel.", duration: "J+14" },
 ]
 
 const ENRICHED_JOBS = [
@@ -95,7 +95,7 @@ export default function Offres() {
           <motion.div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.18 }}
           >
-            {["CDI uniquement", "Toulouse", "2j télétravail/semaine", "Réponse sous 48h"].map(p => (
+            {["CDI uniquement", "Toulouse", "2j télétravail/semaine", "Un vrai retour humain"].map(p => (
               <span key={p} style={{ fontSize: 12, fontWeight: 500, color: "var(--color-ink-2)", background: "var(--color-bg-2)", border: "1px solid var(--color-border)", padding: "5px 12px", borderRadius: 9999 }}>{p}</span>
             ))}
           </motion.div>

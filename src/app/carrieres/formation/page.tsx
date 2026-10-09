@@ -115,7 +115,7 @@ export default function Formation() {
           >
             {[
               { value: "Dédié", label: "budget formation", sub: "Dès le 1er jour" },
-              { value: "100 %", label: "certifs financées", sub: "Sans plafond par certif" },
+              { value: "100 %", label: "certifs financées", sub: "Prises en charge par Koncept" },
               { value: "30 min", label: "veille/semaine", sub: "Temps libre dédié" },
               { value: "Hebdo", label: "kata club", sub: "Sessions techniques internes" },
             ].map(s => (
@@ -165,7 +165,7 @@ export default function Formation() {
               Achievement unlocked.
             </h2>
             <p style={{ color: "var(--color-ink-2)", fontSize: 15, maxWidth: "52ch", lineHeight: 1.7, marginBottom: 48 }}>
-              Sans plafond par certification. Sans condition de rester après la certif. On part du principe qu&apos;un dev certifié qui reste est plus utile qu&apos;un dev non-certifié qui part.
+              Sans condition de rester après la certif. On part du principe qu&apos;un dev certifié qui reste est plus utile qu&apos;un dev non-certifié qui part.
             </p>
           </motion.div>
           {/* Einstein : à droite de l'en-tête, il « sort » de derrière la grille de certifications */}
