@@ -1,17 +1,15 @@
 'use client'
 
 import Link from "next/link"
-import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
-import { IMAGES } from "@/lib/content"
 import HeroSection from "@/components/ui/HeroSection"
 
 export default function HomeHero() {
   const reduce = useReducedMotion()
   return (
     <HeroSection id="accueil" side="pro" next="bg2" paddingTop={140} paddingBottom={80}>
-      <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }} className="hero-grid">
+      <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", width: "100%", display: "grid", gridTemplateColumns: "minmax(0, 720px)", gap: 64, alignItems: "center" }} className="hero-grid">
         <div>
           <motion.p style={{ color: "var(--color-accent)", fontSize: 12, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 24 }}
             initial={reduce ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
@@ -53,18 +51,11 @@ export default function HomeHero() {
           </motion.div>
         </div>
 
-        <motion.div style={{ position: "relative", borderRadius: 20, overflow: "hidden", aspectRatio: "4/3" }} className="hero-img"
-          initial={reduce ? false : { opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <Image src={IMAGES.hero} alt="Koncept - solutions IT pour l'aéronautique et l'industrie toulousaine" fill sizes="50vw" priority style={{ objectFit: "cover" }} />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(212,32,32,0.18) 0%, transparent 50%)", pointerEvents: "none" }} />
-        </motion.div>
       </div>
 
       <style>{`
         .hero-grid { }
-        @media (max-width: 767px) { .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; padding-top: 32px !important; } .hero-img { aspect-ratio: 16/9 !important; } }
+        @media (max-width: 767px) { .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; padding-top: 32px !important; } }
       `}</style>
     </HeroSection>
   )
