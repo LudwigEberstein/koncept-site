@@ -50,11 +50,11 @@ const DAILY_LIFE = [
 
 const EVENTS = [
   {
-    freq: "Une fois par an",
-    icon: Mountain,
-    title: "Weekend d'agence",
-    desc: "Le grand rendez-vous de l'année : toute l'agence part ensemble le temps d'un weekend. De la cohésion, de l'aventure et de vrais moments en dehors des projets.",
-    details: ["Toute l'agence réunie", "Activités en équipe", "Soirée et bonne humeur"],
+    freq: "L'été",
+    icon: Flame,
+    title: "Barbecue d'été",
+    desc: "Quand il fait beau, on sort les grills. Un moment détendu pour se retrouver, discuter et profiter, loin des écrans.",
+    details: ["Toute l'équipe", "Grillades et boissons fraîches", "Jeux et discussions"],
   },
   {
     freq: "Décembre",
@@ -64,11 +64,11 @@ const EVENTS = [
     details: ["Toute l'équipe", "Repas partagé", "Bilan de l'année, sans PowerPoint"],
   },
   {
-    freq: "L'été",
-    icon: Flame,
-    title: "Barbecue d'été",
-    desc: "Quand il fait beau, on sort les grills. Un moment détendu pour se retrouver, discuter et profiter, loin des écrans.",
-    details: ["Toute l'équipe", "Grillades et boissons fraîches", "Jeux et discussions"],
+    freq: "Une fois par an",
+    icon: Mountain,
+    title: "Weekend d'agence",
+    desc: "Le grand rendez-vous de l'année : toute l'agence part ensemble le temps d'un weekend. De la cohésion, de l'aventure et de vrais moments en dehors des projets.",
+    details: ["Toute l'agence réunie", "Activités en équipe", "Soirée et bonne humeur"],
   },
 ]
 
@@ -206,13 +206,14 @@ export default function Vie() {
           </motion.div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} className="events-grid">
             {EVENTS.map((ev, i) => (
-              <motion.div className="glass-card" key={ev.title}
-                style={{ padding: "36px 32px", borderRadius: 16, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)", display: "flex", flexDirection: "column" }}
+              <motion.div className="hud-card" key={ev.title}
+                style={{ padding: "34px 32px 30px", display: "flex", flexDirection: "column" }}
                 {...fadeUp(i * 0.1)}
               >
+                <i className="cn1" aria-hidden="true" /><i className="cn2" aria-hidden="true" />
+                <div className="hud-head" aria-hidden="true"><span>Événement {String(i + 1).padStart(2, "0")}</span><span>{ev.freq}</span></div>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
                   <ev.icon size={28} aria-hidden="true" style={{ color: "var(--side2)" }} />
-                  <span style={{ background: "rgba(var(--color-career),0.15)", color: "var(--color-career)", borderRadius: 6, padding: "3px 10px", fontSize: 11, fontWeight: 700, letterSpacing: "0.06em" }}>{ev.freq}</span>
                 </div>
                 <h3 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 22, fontWeight: 800, marginBottom: 12 }}>{ev.title}</h3>
                 <p style={{ color: "var(--color-ink-2)", fontSize: 14, lineHeight: 1.7, marginBottom: 24, flex: 1 }}>{ev.desc}</p>
@@ -224,6 +225,7 @@ export default function Vie() {
                     </div>
                   ))}
                 </div>
+                <div className="hud-xp" aria-hidden="true"><i /></div>
               </motion.div>
             ))}
           </div>
