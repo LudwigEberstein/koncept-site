@@ -162,6 +162,14 @@ export default function Vie() {
                 Une journée chez Koncept,<br />honnêtement.
               </h2>
             </div>
+            {/* Mario : à droite de l'en-tête, dans le flux (ne rallonge pas la section, ne recouvre aucun texte) */}
+            <div className="mario-figure" aria-hidden="true">
+              <picture>
+                <source media="(prefers-reduced-motion: reduce)" srcSet="/culture/mario-flappybird-static.png" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/culture/mario-flappybird.gif" alt="" loading="lazy" />
+              </picture>
+            </div>
           </motion.div>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }} className="daily-grid">

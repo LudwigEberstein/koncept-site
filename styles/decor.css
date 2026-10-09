@@ -111,8 +111,11 @@
 /* ===== Mona Lisa guitariste (en-tête de la section ADN, /carrieres) : tout à droite, dans le flux ; le noir du GIF se fond dans le fond ===== */
 .dna-head { display: flex; align-items: stretch; justify-content: space-between; gap: 32px; }
 .mona-figure { position: relative; flex: 0 0 280px; margin-bottom: 52px; pointer-events: none; }
-.mona-figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: right bottom; mix-blend-mode: lighten; -webkit-mask: linear-gradient(180deg, #000 80%, transparent 100%); mask: linear-gradient(180deg, #000 80%, transparent 100%); }
-@media (max-width: 767px) { .mona-figure { display: none; } }
+.mona-figure img, .mario-figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: right bottom; mix-blend-mode: lighten; -webkit-mask: linear-gradient(180deg, #000 80%, transparent 100%); mask: linear-gradient(180deg, #000 80%, transparent 100%); }
+/* Mario / Flappy Bird / plante piranha (en-tête « Le quotidien », /carrieres/vie) : même principe, dans le flux, à droite */
+.mario-figure { position: relative; flex: 0 0 400px; aspect-ratio: 788 / 369; margin: -40px 0 56px; pointer-events: none; }
+.mario-figure img { object-position: right center; -webkit-mask: none; mask: none; }
+@media (max-width: 767px) { .mona-figure, .mario-figure { display: none; } }
 
 /* ===== Indice du code Konami (touches de clavier) ===== */
 .konami-hint { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; margin: 26px 0 0; }
