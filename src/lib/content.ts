@@ -71,15 +71,6 @@ export const SECTORS = [
   { slug: "recherche-public", name: "Recherche & secteur public", enjeu: "Accompagnement de projets applicatifs dans des environnements scientifiques et institutionnels." },
 ] as const
 
-export const TECH = [
-  { name: "Java", src: "https://koncept-is.fr/wp-content/uploads/2025/07/java.png" },
-  { name: "Spring Boot", src: "https://koncept-is.fr/wp-content/uploads/2025/07/spring-boot.png" },
-  { name: "Microsoft .NET", src: "https://koncept-is.fr/wp-content/uploads/2025/07/ms-dotnet.png" },
-  { name: "Angular", src: "https://koncept-is.fr/wp-content/uploads/2025/07/angular.png" },
-  { name: "Jenkins", src: "https://koncept-is.fr/wp-content/uploads/2025/07/jenkins.png" },
-  { name: "MySQL", src: "https://koncept-is.fr/wp-content/uploads/2025/07/mysql.png" },
-] as const
-
 export const VALUES = [
   { title: "Proximité", desc: "Un interlocuteur unique, disponible, qui connaît votre activité et s'implique comme s'il faisait partie de votre équipe." },
   { title: "Confiance", desc: "Des engagements tenus, des délais respectés. On ne vous vend pas ce qu'on ne peut pas livrer." },

@@ -1,38 +1,34 @@
 'use client'
 
-import Image from "next/image"
-import { motion, useReducedMotion } from "motion/react"
-import { TECH } from "@/lib/content"
-import RevealSection from "@/components/ui/RevealSection"
+import { motion } from "motion/react"
+import { EXPERTISES } from "@/lib/content"
+import { useFadeUp } from "@/lib/motion"
 import Container from "@/components/ui/Container"
+import Eyebrow from "@/components/ui/Eyebrow"
+
+// Technologies issues des familles techniques (la famille « accompagnement » ne contient pas de technologies) :
+// une seule source de vérité, donc toujours cohérent avec la page Expertises.
+const TECHNOLOGIES = Array.from(new Set(EXPERTISES.filter(e => e.slug !== "accompagnement").flatMap(e => e.stack)))
 
 export default function HomeTechStack() {
-  const reduce = useReducedMotion()
+  const fadeUp = useFadeUp()
   return (
-    <section style={{ padding: "72px 0", background: "var(--color-bg)" }}>
+    <section style={{ padding: "0 0 88px", background: "var(--color-bg)" }}>
       <Container>
-        <RevealSection>
-          <p style={{ color: "var(--color-ink-2)", fontSize: 12, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 36, textAlign: "center" }}>
-            Technologies de nos missions
-          </p>
-        </RevealSection>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 16 }} className="tech-grid">
-          {TECH.map(({ name, src }, i) => (
-            <motion.div key={name}
-              style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, padding: "24px 16px", borderRadius: 12, border: "1px solid var(--color-border)", background: "var(--color-bg-2)" }}
-              initial={reduce ? false : { opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.07, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ borderColor: "rgba(var(--color-accent-rgb), 0.4)", scale: 1.04 }}
+        <motion.div {...fadeUp()} style={{ textAlign: "center", marginBottom: 28 }}>
+          <Eyebrow>Technologies de nos missions</Eyebrow>
+        </motion.div>
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, maxWidth: 980, margin: "0 auto" }}>
+          {TECHNOLOGIES.map((name, i) => (
+            <motion.span key={name} {...fadeUp(Math.min(i, 12) * 0.03)}
+              style={{ padding: "8px 16px", borderRadius: 9999, border: "1px solid var(--color-border-2)", background: "var(--color-bg-2)", fontSize: 13, fontWeight: 600, color: "var(--color-ink-2)" }}
+              whileHover={{ borderColor: "rgba(var(--color-accent-rgb), 0.7)", color: "#F0EDE8" }}
             >
-              <Image src={src} alt={name} width={120} height={36} style={{ height: 36, width: "auto", objectFit: "contain", filter: "brightness(0) invert(1) opacity(0.7)" }} />
-              <span style={{ fontSize: 12, fontWeight: 500, color: "var(--color-ink-2)", textAlign: "center" }}>{name}</span>
-            </motion.div>
+              {name}
+            </motion.span>
           ))}
         </div>
       </Container>
-      <style>{`@media(max-width:767px){.tech-grid{grid-template-columns:repeat(3,1fr) !important}}`}</style>
     </section>
   )
 }
