@@ -110,7 +110,6 @@
 
 /* ===== Indice du code Konami (touches de clavier) ===== */
 .konami-hint { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; margin: 26px 0 0; }
-.konami-hint-label { font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--color-ink); }
 .konami-hint-keys { display: inline-flex; gap: 5px; flex-wrap: wrap; }
 .konami-hint kbd {
   display: inline-grid; place-items: center; min-width: 32px; height: 32px; padding: 0 8px; border-radius: 8px;
@@ -120,7 +119,7 @@
   animation: hd-key 3.6s ease-in-out infinite;
 }
 @keyframes hd-key { 0%, 12%, 100% { transform: translateY(0) } 6% { transform: translateY(2px); border-bottom-width: 1px } }
-@media (hover: none), (max-width: 767px) { .konami-hint { display: none; } }
+@media (hover: none), (max-width: 767px) { .konami-hint, .konami-footer-hint { display: none !important; } }
 
 /* ===== Easter egg : code Konami ===== */
 .konami { position: fixed; inset: 0; z-index: 2147483000; pointer-events: none; overflow: hidden; }
