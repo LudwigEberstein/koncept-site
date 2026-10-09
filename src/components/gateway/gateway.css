@@ -59,7 +59,9 @@
   -webkit-mask: linear-gradient(115deg, transparent 20%, #000 75%); mask: linear-gradient(115deg, transparent 20%, #000 75%);
 }
 .gw-marq { position: absolute; left: -10%; width: 130%; top: 46%; transform: translateY(-50%) rotate(-9deg); white-space: nowrap; overflow: hidden; opacity: .13; font-weight: 800; font-size: clamp(70px, 11vw, 170px); letter-spacing: -.04em; line-height: 1; pointer-events: none; }
-.gw-marq span { display: inline-block; color: transparent; -webkit-text-stroke: 2px #ff4a4a; animation: gw-marq 26s linear infinite; }
+.gw-marq svg { display: inline-block; height: 1em; width: auto; margin: 0 .5em; vertical-align: -.22em; color: #ff4a4a; overflow: visible; }
+.gw-marq .unit { display: inline-block; }
+.gw-marq > span { display: inline-block; color: transparent; -webkit-text-stroke: 2px #ff4a4a; animation: gw-marq 26s linear infinite; }
 @keyframes gw-marq { to { transform: translateX(-50%) } }
 .gw-vig { background: linear-gradient(90deg, rgba(11,5,6,.85), transparent 45%), linear-gradient(0deg, rgba(11,5,6,.9), transparent 30%); }
 /* le noir du GIF se fond dans la scène (lighten) */
@@ -123,5 +125,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .gw, .gw-half, .gw-cta { transition: none; }
-  .gw-scan, .gw-glass, .gw-blob, .gw-marq span, .gw-ok::before { animation: none; }
+  .gw-scan, .gw-glass, .gw-blob, .gw-marq > span, .gw-ok::before { animation: none; }
 }

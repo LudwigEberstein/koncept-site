@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation"
 import { SITE, IMAGES } from "@/lib/content"
 import { DEST, STORAGE_KEY, type Side } from "./side"
 import { buildNetwork } from "@/lib/network"
+import KBolt from "@/components/ui/KBolt"
 import "./gateway.css"
 const CIRCLE_BG: Record<Side, string> = {
   pro: "#3b82f6",
@@ -140,7 +141,7 @@ export default function Gateway() {
       >
         <div className="gw-bg"><div className="gw-blob gw-b1" /><div className="gw-blob gw-b2" /></div>
         <div className="gw-bg gw-dots" />
-        <div className="gw-marq" aria-hidden="true"><span>REJOINS L&apos;AVENTURE ★ ON RECRUTE ★ REJOINS L&apos;AVENTURE ★ ON RECRUTE ★&nbsp;</span></div>
+        <div className="gw-marq" aria-hidden="true"><span>{Array.from({ length: 2 }, (_, i) => <span key={i} className="unit">REJOINS L&apos;AVENTURE<KBolt />ON RECRUTE<KBolt /></span>)}</span></div>
         <div className="gw-bg gw-vig" />
         <div className="gw-figure" aria-hidden="true">
           {/* GIF animé (<img> : next/image n'optimise pas les GIF), image fixe si l'utilisateur réduit les animations */}
@@ -153,7 +154,7 @@ export default function Gateway() {
 
         <div className="gw-inner">
           <div className="gw-tag">Carrières · Candidats</div>
-          <h2 className="gw-title">Viens <em>coder</em><br />avec nous.</h2>
+          <h2 className="gw-title">Ton talent,<br />notre <em>Koncept</em>.</h2>
           <p className="gw-txt">Des missions qui ont du sens, une équipe soudée, et un café qui t&apos;attend. Rejoins l&apos;aventure.</p>
           <span className="gw-cta">Rejoindre l&apos;équipe →</span>
         </div>
