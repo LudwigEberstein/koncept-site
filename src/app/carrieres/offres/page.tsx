@@ -7,6 +7,7 @@ import { motion, AnimatePresence, useReducedMotion } from "motion/react"
 import { JOBS } from "@/lib/content"
 import { makeFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
+import QuestMark from "@/components/ui/QuestMark"
 
 // ─── Enriched jobs ───────────────────────────────────────────────────────────
 
@@ -82,7 +83,7 @@ export default function Offres() {
             style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(38px, 6vw, 88px)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 24 }}
             initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
           >
-            Des missions.<br /><span style={{ color: "var(--color-career)" }}>Pas des placards.</span>
+            <QuestMark />Nouvelle quête<br /><span style={{ color: "var(--color-career)" }}>disponible.</span>
           </motion.h1>
           <motion.p
             style={{ color: "var(--color-ink-2)", fontSize: 17, lineHeight: 1.7, maxWidth: "56ch", marginBottom: 32 }}

@@ -89,6 +89,7 @@ export default function Footer() {
           <p style={{ color: "var(--color-ink-2)", fontSize: 12 }}>
             &copy; <YearClient /> Koncept IS — ESN Toulousaine. Site par{" "}
             <a href="https://devantia.vercel.app" style={{ color: "var(--color-accent)", textDecoration: "none" }}>Devantia</a>.
+            <span aria-hidden="true" title="Psst…" style={{ marginLeft: 14, opacity: 0.22, letterSpacing: "0.12em", fontSize: 11, userSelect: "none" }}>↑ ↑ ↓ ↓ ← → ← → B A</span>
           </p>
           <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer"
             aria-label="Koncept IS sur LinkedIn"

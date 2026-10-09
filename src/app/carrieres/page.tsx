@@ -1,7 +1,7 @@
 'use client'
 
 import Link from "next/link"
-import { ArrowRight, Coffee, Gamepad2, Bike, Dices, Pizza, Terminal, BookOpen, ClipboardList, Mail, Heart } from "lucide-react"
+import { ArrowRight, Play, Coffee, Gamepad2, Bike, Dices, Pizza, Terminal, BookOpen, ClipboardList, Mail, Heart } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import { makeFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
@@ -13,7 +13,7 @@ import SquidShape, { type Shape } from "@/components/ui/SquidShape"
 const WHY_US: { shape: Shape; title: string; desc: string }[] = [
   {
     shape: "circle",
-    title: "Pas de bait & switch",
+    title: "Le gâteau n'est pas un mensonge.",
     desc: "On ne te vend pas un projet sexy pour t'envoyer ailleurs. Ce qu'on te présente en entretien, c'est ce sur quoi tu travailles.",
   },
   {
@@ -136,12 +136,12 @@ export default function Carrieres() {
             <motion.div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 32 }}
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.15 }}
             >
-              <Link href="/carrieres/offres"
+              <Link href="/carrieres/offres" aria-label="Voir les offres d'emploi"
                 style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-career-dark)", color: "#fff", padding: "14px 24px", borderRadius: 10, fontSize: 14, fontWeight: 700, textDecoration: "none", transition: "filter 0.15s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.1)" }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}
               >
-                Voir les offres <ArrowRight size={15} />
+                <Play size={14} fill="currentColor" aria-hidden="true" /> Appuie sur Start
               </Link>
               <Link href="/carrieres/candidature"
                 style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-career-bg)", color: "var(--color-career)", padding: "14px 24px", borderRadius: 10, fontSize: 14, fontWeight: 700, textDecoration: "none", border: "1px solid var(--color-career-border)", transition: "background 0.15s" }}
