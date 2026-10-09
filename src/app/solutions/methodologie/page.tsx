@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
+import Container from "@/components/ui/Container"
 
 const STEPS = [
   {
@@ -241,7 +242,7 @@ export default function Methodologie() {
     <>
       {/* Hero */}
       <HeroSection side="pro" next="bg2" paddingTop={140} paddingBottom={80}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.p
             style={{ color: "var(--color-accent)", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
@@ -278,7 +279,7 @@ export default function Methodologie() {
               </a>
             ))}
           </motion.div>
-        </div>
+        </Container>
       </HeroSection>
 
       {/* Stats bar */}
@@ -295,7 +296,7 @@ export default function Methodologie() {
 
       {/* 7 steps */}
       <section style={{ padding: "96px 0", background: "var(--color-bg)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
             {STEPS.map((step, i) => (
               <motion.div
@@ -389,12 +390,12 @@ export default function Methodologie() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Engagements */}
       <section style={{ padding: "96px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 80, alignItems: "start" }} className="engage-grid">
             <div style={{ position: "sticky", top: 100 }}>
               <motion.p
@@ -449,7 +450,7 @@ export default function Methodologie() {
               ))}
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Bottom CTA band */}

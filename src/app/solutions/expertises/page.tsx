@@ -6,6 +6,7 @@ import { motion, useReducedMotion, AnimatePresence } from "motion/react"
 import RevealSection from "@/components/ui/RevealSection"
 import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
+import Container from "@/components/ui/Container"
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 
@@ -223,7 +224,7 @@ export default function Expertises() {
     <>
       {/* ── Hero ── */}
       <HeroSection side="pro" next="bg" nextColor="rgba(13,13,13,0.96)" paddingTop={140} paddingBottom={80}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.div style={{ maxWidth: "72ch" }}
             initial={reduce ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -259,7 +260,7 @@ export default function Expertises() {
               </button>
             ))}
           </motion.div>
-        </div>
+        </Container>
       </HeroSection>
 
       {/* ── Domain tab selector (sticky) ── */}
@@ -284,16 +285,16 @@ export default function Expertises() {
 
       {/* ── Active domain content ── */}
       <section style={{ padding: "80px 0", background: "var(--color-bg)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <AnimatePresence mode="wait">
             <DomainPanel key={active} domain={domain} reduce={reduce} />
           </AnimatePresence>
-        </div>
+        </Container>
       </section>
 
       {/* ── ISO / Certifications ── */}
       <section style={{ padding: "72px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <RevealSection>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }} className="cert-grid">
               <div>
@@ -342,12 +343,12 @@ export default function Expertises() {
               </div>
             </div>
           </RevealSection>
-        </div>
+        </Container>
       </section>
 
       {/* ── Why Koncept vs. big ESN ── */}
       <section style={{ padding: "72px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <RevealSection>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(24px, 2.5vw, 38px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 40 }}>
               Pourquoi Koncept plutôt qu'une grande ESN ?
@@ -372,7 +373,7 @@ export default function Expertises() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── CTA ── */}

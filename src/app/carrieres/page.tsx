@@ -2,12 +2,14 @@
 
 import Link from "next/link"
 import { ArrowRight, Play, Coffee, Gamepad2, Bike, Dices, Pizza, Terminal, BookOpen, ClipboardList, Mail, Heart } from "lucide-react"
-import { motion, useReducedMotion } from "motion/react"
-import { makeFadeUp } from "@/lib/motion"
+import { motion } from "motion/react"
+import { useFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
 import SquidShape, { type Shape } from "@/components/ui/SquidShape"
 import KonamiHint from "@/components/ui/KonamiHint"
+import Eyebrow from "@/components/ui/Eyebrow"
+import Container from "@/components/ui/Container"
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 
@@ -105,9 +107,8 @@ const SUB_PAGES = [
 // ─── Page ───────────────────────────────────────────────────────────────────
 
 export default function Carrieres() {
-  const reduce = useReducedMotion()
 
-  const fadeUp = (delay = 0) => makeFadeUp(reduce, delay)
+  const fadeUp = useFadeUp()
 
   return (
     <>
@@ -168,9 +169,9 @@ export default function Carrieres() {
 
       {/* ── Pourquoi Koncept ── */}
       <section style={{ padding: "96px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Pourquoi nous</p>
+            <Eyebrow tone="career">Pourquoi nous</Eyebrow>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
               Concrètement, pourquoi Koncept<br />plutôt qu&apos;une autre ESN ?
             </h2>
@@ -188,15 +189,15 @@ export default function Carrieres() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── ADN Koncept ── */}
       <section className="dna-section" style={{ padding: "96px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <div className="dna-head">
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>L&apos;ADN Koncept</p>
+            <Eyebrow tone="career">L&apos;ADN Koncept</Eyebrow>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
               Entre deux commits,<br />on a une vraie vie.
             </h2>
@@ -208,7 +209,7 @@ export default function Carrieres() {
           <div className="mona-figure" aria-hidden="true">
             <picture>
               <source media="(prefers-reduced-motion: reduce)" srcSet="/culture/monalisa-static.png" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
+              { }
               <img src="/culture/monalisa.gif" alt="" loading="lazy" />
             </picture>
           </div>
@@ -227,14 +228,14 @@ export default function Carrieres() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── Portraits ── */}
       <section style={{ padding: "80px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Portraits</p>
+            <Eyebrow tone="career">Portraits</Eyebrow>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 48 }}>
               Ils ont choisi Koncept.<br />Ils ont choisi de rester.
             </h2>
@@ -257,12 +258,12 @@ export default function Carrieres() {
               </motion.figure>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── Nav sous-pages ── */}
       <section style={{ padding: "80px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.h2 {...fadeUp()}
             style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(24px, 3vw, 40px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 40 }}
           >
@@ -282,7 +283,7 @@ export default function Carrieres() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       <CtaBand side="career" prev="bg"

@@ -6,6 +6,7 @@ import { X, ArrowRight, ChevronRight } from "lucide-react"
 import Link from "next/link"
 import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
+import Container from "@/components/ui/Container"
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -215,7 +216,7 @@ export default function Realisations() {
 
       {/* ── Filter + Grid ── */}
       <section style={{ padding: "80px 0 120px", background: "var(--color-bg)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
 
           {/* Filters */}
           <motion.div
@@ -338,7 +339,7 @@ export default function Realisations() {
               </button>
             </div>
           )}
-        </div>
+        </Container>
       </section>
 
       {/* ── CTA ── */}

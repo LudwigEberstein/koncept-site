@@ -1,10 +1,12 @@
 'use client'
 
 import { useState } from "react"
-import { ArrowRight, Mail, Linkedin } from "lucide-react"
+import { ArrowRight, Mail } from "lucide-react"
+import LinkedinIcon from "@/components/ui/LinkedinIcon"
 import { motion } from "motion/react"
 import { SITE } from "@/lib/content"
 import HeroSection from "@/components/ui/HeroSection"
+import Container from "@/components/ui/Container"
 
 export default function Candidature() {
   const [form, setForm] = useState({ prenom: "", nom: "", email: "", poste: "", message: "" })
@@ -29,7 +31,7 @@ export default function Candidature() {
   return (
     <>
       <HeroSection side="career" next="bg" paddingTop={140} paddingBottom={64}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.p style={{ color: "var(--color-career)", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
             Carrières · Candidature
@@ -42,7 +44,7 @@ export default function Candidature() {
             initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.1 }}>
             Pas de poste qui correspond exactement ? Envoyez-nous quand même votre profil. On est toujours attentifs aux bonnes personnes.
           </motion.p>
-        </div>
+        </Container>
       </HeroSection>
 
       <section style={{ padding: "80px 0", background: "var(--color-bg)" }}>
@@ -111,7 +113,7 @@ export default function Candidature() {
             </div>
             {[
               { icon: <Mail size={16} />, label: "Email RH", val: SITE.email, href: `mailto:${SITE.email}` },
-              { icon: <Linkedin size={16} />, label: "LinkedIn", val: "Suivez-nous", href: SITE.linkedin },
+              { icon: <LinkedinIcon size={16} />, label: "LinkedIn", val: "Suivez-nous", href: SITE.linkedin },
             ].map(item => (
               <div key={item.label} style={{ display: "flex", gap: 14, padding: "20px 20px", borderRadius: 12, border: "1px solid var(--color-border)", background: "var(--color-bg-2)", alignItems: "center" }}>
                 <div style={{ width: 38, height: 38, borderRadius: 9, background: "var(--color-career-bg)", color: "var(--color-career)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{item.icon}</div>

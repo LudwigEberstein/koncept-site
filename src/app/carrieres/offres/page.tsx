@@ -3,11 +3,13 @@
 import Link from "next/link"
 import { ArrowRight, MapPin, Briefcase, ChevronDown, ChevronUp, Home, Wallet } from "lucide-react"
 import { useState } from "react"
-import { motion, AnimatePresence, useReducedMotion } from "motion/react"
+import { motion, AnimatePresence } from "motion/react"
 import { JOBS } from "@/lib/content"
-import { makeFadeUp } from "@/lib/motion"
+import { useFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
 import QuestMark from "@/components/ui/QuestMark"
+import Eyebrow from "@/components/ui/Eyebrow"
+import Container from "@/components/ui/Container"
 
 // ─── Enriched jobs ───────────────────────────────────────────────────────────
 
@@ -63,16 +65,15 @@ const SPONTANEOUS_PROFILES = [
 // ─── Page ───────────────────────────────────────────────────────────────────
 
 export default function Offres() {
-  const reduce = useReducedMotion()
   const [expanded, setExpanded] = useState<string | null>(ENRICHED_JOBS[0]?.id ?? null)
 
-  const fadeUp = (delay = 0) => makeFadeUp(reduce, delay)
+  const fadeUp = useFadeUp()
 
   return (
     <>
       {/* ── Hero ── */}
       <HeroSection side="career" next="bg" paddingTop={140} paddingBottom={80}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.p
             style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
@@ -98,12 +99,12 @@ export default function Offres() {
               <span key={p} style={{ fontSize: 12, fontWeight: 500, color: "var(--color-ink-2)", background: "var(--color-bg-2)", border: "1px solid var(--color-border)", padding: "5px 12px", borderRadius: 9999 }}>{p}</span>
             ))}
           </motion.div>
-        </div>
+        </Container>
       </HeroSection>
 
       {/* ── Listings ── */}
       <section style={{ padding: "80px 0", background: "var(--color-bg)" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
+        <Container maxWidth={1100}>
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             {ENRICHED_JOBS.map((job, i) => {
               const isOpen = expanded === job.id
@@ -223,15 +224,15 @@ export default function Offres() {
               )
             })}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── Profils recherchés en spontané ── */}
       <section style={{ padding: "80px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
+        <Container maxWidth={1100}>
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24 }}>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>En veille permanente</p>
+            <Eyebrow tone="career">En veille permanente</Eyebrow>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
               Pas de poste listé ?<br />On cherche peut-être<br />ton profil quand même.
             </h2>
@@ -243,7 +244,7 @@ export default function Offres() {
           <div className="grandma-figure" aria-hidden="true">
             <picture>
               <source media="(prefers-reduced-motion: reduce)" srcSet="/culture/grandma-static.png" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
+              { }
               <img src="/culture/grandma.gif" alt="" loading="lazy" />
             </picture>
           </div>
@@ -275,7 +276,7 @@ export default function Offres() {
               Candidature spontanée <ArrowRight size={14} />
             </Link>
           </motion.div>
-        </div>
+        </Container>
       </section>
 
       <style>{`

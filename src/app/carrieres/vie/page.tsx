@@ -1,11 +1,13 @@
 'use client'
 
-import { motion, useReducedMotion } from "motion/react"
+import { motion } from "motion/react"
 import { Coffee, Users, Code2, Utensils, Beer, Mountain, TreePine, Flame, Home, CreditCard, HeartPulse, GraduationCap, Car, Bot, Gamepad2, MapPin } from "lucide-react"
 import { CollaboratorCard, type Collaborator } from "@/components/CollaboratorCard"
-import { makeFadeUp } from "@/lib/motion"
+import { useFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
+import Eyebrow from "@/components/ui/Eyebrow"
+import Container from "@/components/ui/Container"
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 
@@ -122,15 +124,14 @@ const COLLABORATORS: Collaborator[] = [
 // ─── Page ───────────────────────────────────────────────────────────────────
 
 export default function Vie() {
-  const reduce = useReducedMotion()
 
-  const fadeUp = (delay = 0) => makeFadeUp(reduce, delay)
+  const fadeUp = useFadeUp()
 
   return (
     <>
       {/* ── Hero ── */}
       <HeroSection side="career" next="bg" paddingTop={140} paddingBottom={80}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.p
             style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
@@ -149,15 +150,15 @@ export default function Vie() {
           >
             On travaille sur des projets exigeants — et on vit bien entre les deux. Pas parce qu&apos;on y est obligés, mais parce qu&apos;on est des gens qui partagent les mêmes passions.
           </motion.p>
-        </div>
+        </Container>
       </HeroSection>
 
       {/* ── Une journée chez Koncept ── */}
       <section style={{ padding: "96px 0", background: "var(--color-bg)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24 }}>
             <motion.div {...fadeUp()}>
-              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Le quotidien</p>
+              <Eyebrow tone="career">Le quotidien</Eyebrow>
               <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
                 Une journée chez Koncept,<br />honnêtement.
               </h2>
@@ -166,7 +167,7 @@ export default function Vie() {
             <div className="mario-figure" aria-hidden="true">
               <picture>
                 <source media="(prefers-reduced-motion: reduce)" srcSet="/culture/mario-flappybird-static.png" />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
+                { }
                 <img src="/culture/mario-flappybird.gif" alt="" loading="lazy" />
               </picture>
             </div>
@@ -189,14 +190,14 @@ export default function Vie() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── Events ── */}
       <section style={{ padding: "96px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Les events</p>
+            <Eyebrow tone="career">Les events</Eyebrow>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
               Les rendez-vous qui font<br />l&apos;ADN Koncept.
             </h2>
@@ -229,14 +230,14 @@ export default function Vie() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── Avantages ── */}
       <section style={{ padding: "96px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Avantages</p>
+            <Eyebrow tone="career">Avantages</Eyebrow>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
               Les petites choses qui<br />font la différence.
             </h2>
@@ -253,14 +254,14 @@ export default function Vie() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── Portraits collaborateurs ── */}
       <section style={{ padding: "96px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.div {...fadeUp()}>
-            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Portraits</p>
+            <Eyebrow tone="career">Portraits</Eyebrow>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 12 }}>
               Ils font Koncept au quotidien.
             </h2>
@@ -275,7 +276,7 @@ export default function Vie() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── CTA ── */}

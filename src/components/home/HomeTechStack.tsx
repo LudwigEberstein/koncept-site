@@ -4,12 +4,13 @@ import Image from "next/image"
 import { motion, useReducedMotion } from "motion/react"
 import { TECH } from "@/lib/content"
 import RevealSection from "@/components/ui/RevealSection"
+import Container from "@/components/ui/Container"
 
 export default function HomeTechStack() {
   const reduce = useReducedMotion()
   return (
     <section style={{ padding: "72px 0", background: "var(--color-bg)" }}>
-      <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+      <Container>
         <RevealSection>
           <p style={{ color: "var(--color-ink-2)", fontSize: 12, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 36, textAlign: "center" }}>
             Technologies maitrisées
@@ -30,7 +31,7 @@ export default function HomeTechStack() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </Container>
       <style>{`@media(max-width:767px){.tech-grid{grid-template-columns:repeat(3,1fr) !important}}`}</style>
     </section>
   )

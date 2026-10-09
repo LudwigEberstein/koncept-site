@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react"
 import { motion, AnimatePresence, useReducedMotion } from "motion/react"
 import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
+import Container from "@/components/ui/Container"
 
 // ─── Enriched sector data ───────────────────────────────────────────────────
 
@@ -205,7 +206,7 @@ export default function Secteurs() {
     <>
       {/* ── Hero ── */}
       <HeroSection side="pro" next="bg" paddingTop={140} paddingBottom={72}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.p
             style={{ color: "var(--color-accent)", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
@@ -224,12 +225,12 @@ export default function Secteurs() {
           >
             On ne découvre pas votre secteur le premier jour. Nos équipes connaissent vos contraintes, votre vocabulaire, vos enjeux réglementaires — avant même de commencer.
           </motion.p>
-        </div>
+        </Container>
       </HeroSection>
 
       {/* ── Sector switcher ── */}
       <section style={{ padding: "80px 0 96px", background: "var(--color-bg)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 48, alignItems: "start" }} className="sector-layout">
 
             {/* Sidebar nav */}
@@ -363,12 +364,12 @@ export default function Secteurs() {
               </motion.div>
             </AnimatePresence>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── Overview strip — all 7 sectors mini-cards ── */}
       <section style={{ padding: "64px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+        <Container>
           <motion.p
             style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-ink-2)", marginBottom: 24 }}
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.4 }}
@@ -392,7 +393,7 @@ export default function Secteurs() {
               </motion.button>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* ── CTA bas de page ── */}
