@@ -23,7 +23,7 @@ src/
     gateway/            écran d'accueil « choisir son côté » (Solutions / Carrières)
     layout/             Nav, Footer, KonamiCode, SpotlightCards, YearClient
     home/               sections de la page d'accueil Solutions
-    ui/                 primitives partagées : Container, Eyebrow, HeroSection, HeroDecor, CtaBand, LinkedinIcon, RevealSection...
+    ui/                 primitives partagées : Container, Eyebrow, HeroSection, HeroDecor, CtaBand, LinkedinIcon, ToValidate...
     CollaboratorCard.tsx fiche collaborateur réutilisable
   lib/
     content.ts          données statiques du site (nav, jobs, stats...)

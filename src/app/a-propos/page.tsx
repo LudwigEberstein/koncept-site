@@ -159,7 +159,7 @@ export default function APropos() {
           {/* Horizontal timeline */}
           <div style={{ position: "relative" }}>
             {/* Connecting line */}
-            <div style={{ position: "absolute", top: 20, left: 20, width: "min(760px, calc(100% - 40px))", height: 2, background: "linear-gradient(to right, var(--color-accent), #3b82f6)", opacity: 0.3, zIndex: 0 }} className="timeline-line" />
+            <div style={{ position: "absolute", top: 20, left: 20, width: "min(760px, calc(100% - 40px))", height: 2, background: "linear-gradient(to right, var(--color-accent), var(--color-pro-dark))", opacity: 0.3, zIndex: 0 }} className="timeline-line" />
             <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 0, maxWidth: 820 }} className="timeline-grid">
               {MILESTONES.map((m, i) => (
                 <motion.div key={m.year}
@@ -167,7 +167,7 @@ export default function APropos() {
                   {...fadeUp(i * 0.08)}
                 >
                   {/* Dot */}
-                  <div style={{ position: "absolute", top: 12, left: 0, width: 16, height: 16, borderRadius: "50%", background: i === 0 ? "var(--color-accent)" : "var(--color-bg-3)", border: `2px solid ${i === MILESTONES.length - 1 ? "#3b82f6" : "var(--color-accent)"}`, zIndex: 1 }} />
+                  <div style={{ position: "absolute", top: 12, left: 0, width: 16, height: 16, borderRadius: "50%", background: i === 0 ? "var(--color-accent)" : "var(--color-bg-3)", border: `2px solid ${i === MILESTONES.length - 1 ? "var(--color-pro-dark)" : "var(--color-accent)"}`, zIndex: 1 }} />
                   <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 22, fontWeight: 800, color: "var(--color-accent-text)", letterSpacing: "-0.03em", marginBottom: 4 }}>{m.year}</p>
                   <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 13, fontWeight: 700, marginBottom: 8 }}>{m.label}</p>
                   <p style={{ color: "var(--color-ink-2)", fontSize: 14, lineHeight: 1.65 }}>{m.desc}</p>

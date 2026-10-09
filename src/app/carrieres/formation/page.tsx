@@ -23,7 +23,7 @@ const PATHS: { id: string; title: string; emoji: string; color: string; desc: st
     id: "expert",
     title: "Expert technique",
     emoji: "⚡",
-    color: "#3b82f6",
+    color: "#2B50F0",
     desc: "Tu veux rester dans le code, aller de plus en plus loin dans la maîtrise technique. On fait de toi une référence sur ta stack.",
     steps: [
       { year: "0–1 an", label: "Développeur confirmé — prise en main des projets" },
@@ -62,7 +62,7 @@ const PATHS: { id: string; title: string; emoji: string; color: string; desc: st
 
 const CERTIFS = [
   { name: "AWS Solutions Architect", level: "Associate → Professional", color: "#f59e0b" },
-  { name: "Azure Fundamentals → Expert", level: "AZ-900 → AZ-305", color: "#3b82f6" },
+  { name: "Azure Fundamentals → Expert", level: "AZ-900 → AZ-305", color: "#2B50F0" },
   { name: "Google Cloud Professional", level: "Associate → Professional", color: "#34a853" },
   { name: "Kubernetes (CKA/CKAD)", level: "Linux Foundation", color: "#06b6d4" },
   { name: "Oracle Java Certified", level: "OCA → OCP", color: "#f97316" },

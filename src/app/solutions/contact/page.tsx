@@ -2,10 +2,10 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { ArrowRight, MapPin, Mail, Phone } from "lucide-react"
+import { ArrowRight, MapPin, Mail } from "lucide-react"
 import LinkedinIcon from "@/components/ui/LinkedinIcon"
 import { motion, AnimatePresence } from "motion/react"
-import { SITE } from "@/lib/content"
+import { IMAGES, SITE } from "@/lib/content"
 import HeroSection from "@/components/ui/HeroSection"
 import Container from "@/components/ui/Container"
 
@@ -21,29 +21,33 @@ const REQUEST_TYPES: { id: Exclude<RequestType, "">; label: string; desc: string
 ]
 
 // Contact person per type
-const CONTACTS: Record<Exclude<RequestType, "">, { name: string; role: string; img: string; intro: string }> = {
+const CONTACTS: Record<Exclude<RequestType, "">, { name: string; role: string; img: string; pos: string; intro: string }> = {
   projet: {
     name: "Aurélie",
     role: "Directrice Commerciale",
-    img: "https://picsum.photos/seed/aurelie-koncept-commercial/120/120",
+    img: "/team/aurelie-front.jpg",
+    pos: "50% 10%",
     intro: "Je comprends votre besoin et vous propose les bons profils.",
   },
   candidature: {
     name: "Valentine",
     role: "Directrice RH",
-    img: "https://picsum.photos/seed/valentine-koncept-rh/120/120",
+    img: "/team/valentine-front.jpg",
+    pos: "50% 8%",
     intro: "Je lis chaque candidature avec attention. Même sans poste ouvert, n'hésitez pas à nous écrire.",
   },
   partenariat: {
     name: "Gérard",
     role: "Président",
-    img: "https://picsum.photos/seed/gerard-koncept-president/120/120",
+    img: "/team/gerard-front.png",
+    pos: "50% 10%",
     intro: "Je traite directement les propositions de partenariat.",
   },
   autre: {
     name: "L'équipe Koncept",
     role: "Contact général",
-    img: "https://picsum.photos/seed/koncept-team-contact/120/120",
+    img: IMAGES.team,
+    pos: "50% 50%",
     intro: "Quelle que soit votre demande, quelqu'un de notre équipe vous répondra.",
   },
 }
@@ -151,7 +155,7 @@ export default function Contact() {
                 </p>
                 {contact && (
                   <div style={{ marginTop: 28, display: "inline-flex", alignItems: "center", gap: 14, padding: "14px 20px", borderRadius: 12, border: "1px solid var(--color-border)", background: "var(--color-bg-3)" }}>
-                    <Image src={contact.img} alt={contact.name} width={40} height={40} style={{ borderRadius: "50%", objectFit: "cover" }} />
+                    <Image src={contact.img} alt={contact.name} width={40} height={40} style={{ borderRadius: "50%", objectFit: "cover", objectPosition: contact.pos }} />
                     <div style={{ textAlign: "left" }}>
                       <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 14, fontWeight: 700 }}>{contact.name}</p>
                       <p style={{ color: "var(--color-ink-2)", fontSize: 12 }}>{contact.role}</p>
@@ -293,7 +297,7 @@ export default function Contact() {
                   style={{ padding: "28px 24px", borderRadius: 16, border: "1px solid rgba(var(--color-accent-rgb), 0.2)", background: "rgba(var(--color-accent-rgb), 0.04)" }}
                 >
                   <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 14 }}>
-                    <Image src={contact.img} alt={contact.name} width={52} height={52} style={{ borderRadius: "50%", objectFit: "cover", border: "2px solid var(--color-border)" }} />
+                    <Image src={contact.img} alt={contact.name} width={52} height={52} style={{ borderRadius: "50%", objectFit: "cover", objectPosition: contact.pos, border: "2px solid var(--color-border)" }} />
                     <div>
                       <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 16, fontWeight: 700 }}>{contact.name}</p>
                       <p style={{ color: "var(--color-accent-text)", fontSize: 11, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", marginTop: 2 }}>{contact.role}</p>
@@ -346,7 +350,6 @@ export default function Contact() {
               {[
                 { icon: <MapPin size={15} />, label: "Adresse", value: `${SITE.address.street}, ${SITE.address.city}`, href: undefined },
                 { icon: <Mail size={15} />, label: "Email", value: SITE.email, href: `mailto:${SITE.email}` },
-                { icon: <Phone size={15} />, label: "Téléphone", value: SITE.phone, href: SITE.phoneHref },
                 { icon: <LinkedinIcon size={15} />, label: "LinkedIn", value: "Suivez Koncept IS", href: SITE.linkedin },
               ].map(item => (
                 <div key={item.label} style={{ display: "flex", gap: 12, alignItems: "center", padding: "14px 16px", borderRadius: 10, border: "1px solid var(--color-border)", background: "var(--color-bg-2)" }}>
@@ -385,13 +388,6 @@ export default function Contact() {
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-border)" }}
             >
               <Mail size={14} style={{ color: "var(--color-accent-text)" }} /> Écrire directement à {SITE.email}
-            </a>
-            <a href={SITE.phoneHref}
-              style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "12px 20px", borderRadius: 9, border: "1px solid var(--color-border)", background: "var(--color-bg-3)", fontSize: 13, fontWeight: 600, color: "var(--color-ink)", textDecoration: "none", transition: "border-color 0.15s" }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-accent)" }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-border)" }}
-            >
-              <Phone size={14} style={{ color: "var(--color-accent-text)" }} /> Appeler le {SITE.phone}
             </a>
             <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer"
               style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "12px 20px", borderRadius: 9, border: "1px solid var(--color-border)", background: "var(--color-bg-3)", fontSize: 13, fontWeight: 600, color: "var(--color-ink)", textDecoration: "none", transition: "border-color 0.15s" }}

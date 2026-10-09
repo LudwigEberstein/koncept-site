@@ -10,8 +10,6 @@ export const SITE = {
   },
   linkedin: "https://www.linkedin.com/company/konceptkomet",
   email: "contact@koncept-is.fr",
-  phone: "05 61 00 00 00",
-  phoneHref: "tel:0561000000",
 } as const
 
 /**
