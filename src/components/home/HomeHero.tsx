@@ -20,7 +20,7 @@ export default function HomeHero() {
             initial={reduce ? false : { opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           >
-            Les bonnes compétences,<br /><span style={{ color: "var(--color-accent-text)" }}>au bon moment.</span>
+            Les bonnes compétences,<br /><span style={{ color: "var(--color-accent)" }}>au bon moment.</span>
           </motion.h1>
 
           <motion.p style={{ fontSize: "clamp(16px, 1.5vw, 19px)", lineHeight: 1.65, color: "var(--color-ink-2)", maxWidth: "52ch", margin: "0 0 40px" }}

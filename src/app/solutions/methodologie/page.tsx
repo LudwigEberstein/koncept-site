@@ -54,7 +54,7 @@ export default function Methodologie() {
           >
             <Eyebrow mb={20}>Méthodologie</Eyebrow>
             <h1 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(38px, 6vw, 80px)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 24 }}>
-              Une relation simple,<br /><span style={{ color: "var(--color-accent-text)" }}>un suivi de près.</span>
+              Une relation simple,<br /><span style={{ color: "var(--color-accent)" }}>un suivi de près.</span>
             </h1>
             <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.65, maxWidth: "52ch" }}>
               Une approche pragmatique, des échanges directs et un accompagnement adapté à vos projets.

@@ -20,7 +20,7 @@ export default function HomeAbout() {
         <motion.div {...fadeUp(0.08)}>
           <Eyebrow>Qui sommes-nous</Eyebrow>
           <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 44px)", fontWeight: 800, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 20 }}>
-            Une vraie équipe,<br /><span style={{ color: "var(--color-accent-text)" }}>à Toulouse.</span>
+            Une vraie équipe,<br /><span style={{ color: "var(--color-accent)" }}>à Toulouse.</span>
           </h2>
           <p style={{ color: "var(--color-ink-2)", fontSize: 16, lineHeight: 1.7, marginBottom: 28, maxWidth: "48ch" }}>
             Koncept est une ESN toulousaine fondée en 2014. Nous accompagnons des entreprises avec des consultants que nous connaissons et que nous suivons.
