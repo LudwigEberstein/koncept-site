@@ -15,7 +15,7 @@ const MILESTONES = [
   {
     year: "2014",
     label: "Fondation à Toulouse",
-    desc: "Gérard et Guillaume créent Koncept IS avec une conviction : faire une ESN différente, centrée sur l'humain et l'expertise technique.",
+    desc: "Gérard fonde Koncept IS avec une conviction : faire une ESN différente, centrée sur l'humain et l'expertise technique.",
   },
   {
     year: "2016",
@@ -61,14 +61,6 @@ const DIRIGEANTS = [
     imgBack: "/team/gerard-back.png",
     bio: "Co-fondateur de Koncept IS, Gérard a bâti l'ESN sur un principe simple : que chaque client soit suivi par quelqu'un qui comprend son métier en profondeur.",
     quote: "On ne veut pas être la plus grande ESN de Toulouse. On veut être la meilleure pour nos clients.",
-  },
-  {
-    name: "Guillaume",
-    role: "Directeur KONCEPT",
-    img: "/team/guillaume-front.png",
-    imgBack: "/team/guillaume-back.jpg",
-    bio: "15 ans d'expérience en architecture logicielle. Guillaume supervise les choix techniques et s'assure que la qualité ne soit jamais sacrifiée à la vitesse.",
-    quote: "Un projet bien cadré en amont, c'est 80 % des problèmes évités en production.",
   },
   {
     name: "Valentine",
@@ -307,7 +299,7 @@ export default function APropos() {
               Les personnes derrière Koncept.
             </h2>
           </motion.div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20 }} className="team-grid">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }} className="team-grid">
             {DIRIGEANTS.map((m, i) => (
               <motion.div key={m.name}
                 style={{ borderRadius: 16, overflow: "hidden", border: "1px solid var(--color-border)", background: "var(--color-bg-2)", display: "flex", flexDirection: "column" }}

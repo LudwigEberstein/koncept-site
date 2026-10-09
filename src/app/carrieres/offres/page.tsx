@@ -1,8 +1,7 @@
 'use client'
 
 import Link from "next/link"
-import Image from "next/image"
-import { ArrowRight, MapPin, Briefcase, ChevronDown, ChevronUp } from "lucide-react"
+import { ArrowRight, MapPin, Briefcase, ChevronDown, ChevronUp, Home, Wallet } from "lucide-react"
 import { useState } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "motion/react"
 import { JOBS } from "@/lib/content"
@@ -11,6 +10,13 @@ import HeroSection from "@/components/ui/HeroSection"
 
 // ─── Enriched jobs ───────────────────────────────────────────────────────────
 
+const PROCESS = [
+      { step: "1. Échange RH", desc: "30 min avec Valentine. On se présente, on voit si le feeling passe.", duration: "J+2" },
+      { step: "2. Entretien technique", desc: "1h avec un lead dev. Discussion archi, revue de code, exercice pratique.", duration: "J+7" },
+      { step: "3. Rencontre équipe", desc: "Rencontre informelle avec l'équipe. Pas d'épreuve — juste voir si ça matche.", duration: "J+12" },
+      { step: "4. Offre", desc: "Si tout est bon, offre dans les 48h. Pas de délai artificiel.", duration: "J+14" },
+]
+
 const ENRICHED_JOBS = [
   {
     ...JOBS[0],
@@ -18,7 +24,7 @@ const ENRICHED_JOBS = [
     badge: "Nouveau",
     badgeColor: "var(--color-career)",
     remote: "2j/semaine",
-    salary: "45–65 K€",
+    salary: "35–40 K€",
     intro: "On cherche un dev JS fullstack passionné pour rejoindre une équipe chez l'un de nos clients grands comptes. Pas un dev de plus dans un open space — quelqu'un qui veut s'investir, proposer des architectures, et laisser sa marque sur un vrai produit.",
     daily: [
       "Feature development en React/Node.js sur un produit B2B utilisé par 50k+ utilisateurs",
@@ -26,12 +32,23 @@ const ENRICHED_JOBS = [
       "Participation aux rétrospectives et aux décisions d'architecture",
       "Kata club Koncept le jeudi — volontaire mais chaleureusement encouragé",
     ],
-    process: [
-      { step: "1. Échange RH", desc: "30 min avec Valentine. On se présente, on voit si le feeling passe.", duration: "J+2" },
-      { step: "2. Entretien technique", desc: "1h avec un lead dev. Discussion archi, revue de code, exercice pratique.", duration: "J+7" },
-      { step: "3. Rencontre équipe", desc: "Rencontre informelle avec l'équipe. Pas d'épreuve — juste voir si ça matche.", duration: "J+12" },
-      { step: "4. Offre", desc: "Si tout est bon, offre dans les 48h. Pas de délai artificiel.", duration: "J+14" },
+    process: PROCESS,
+  },
+  {
+    ...JOBS[1],
+    id: "scrum-master",
+    badge: "Nouveau",
+    badgeColor: "var(--color-career)",
+    remote: "2j/semaine",
+    salary: "40–45 K€",
+    intro: "On cherche un·e Scrum Master confirmé·e pour accompagner des équipes de développement chez l'un de nos clients grands comptes. Quelqu'un qui sait faire vivre l'agilité au quotidien — sans dogme, avec du bon sens et de l'écoute.",
+    daily: [
+      "Animation des cérémonies Scrum : daily, planning, review, rétrospective",
+      "Identification et suppression des blocages de l'équipe, en lien avec le Product Owner",
+      "Suivi des indicateurs de livraison et amélioration continue des pratiques",
+      "Retours d'expérience partagés avec les autres Scrum Masters et le kata club Koncept",
     ],
+    process: PROCESS,
   },
 ]
 
@@ -109,8 +126,8 @@ export default function Offres() {
                       <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
                         <span style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-ink-2)", fontSize: 13 }}><MapPin size={13} />{job.location}</span>
                         <span style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-ink-2)", fontSize: 13 }}><Briefcase size={13} />{job.type}</span>
-                        <span style={{ color: "var(--color-ink-2)", fontSize: 13 }}>🏠 {job.remote} télétravail</span>
-                        <span style={{ color: "var(--color-career)", fontSize: 13, fontWeight: 600 }}>💰 {job.salary}</span>
+                        <span style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-ink-2)", fontSize: 13 }}><Home size={13} />{job.remote} télétravail</span>
+                        <span style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-career)", fontSize: 13, fontWeight: 600 }}><Wallet size={13} />{job.salary}</span>
                       </div>
                     </div>
                     <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
@@ -235,9 +252,6 @@ export default function Offres() {
           <motion.div {...fadeUp(0.1)}
             style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, padding: "32px 36px", borderRadius: 16, border: "1px solid var(--color-border)", background: "var(--color-bg-3)", flexWrap: "wrap", position: "relative" }}
           >
-            <div className="sticker-monalisa" style={{ position: "absolute", top: -22, left: -18, width: 72, height: 72, transform: "rotate(-8deg)" }}>
-              <Image src="/culture/monalisa.gif" alt="L'humour Koncept depuis le premier jour" fill unoptimized sizes="72px" style={{ objectFit: "cover", borderRadius: 10, border: "1px solid var(--color-border-2)", boxShadow: "0 8px 20px rgba(0,0,0,0.35)" }} />
-            </div>
             <div>
               <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 20, fontWeight: 800, marginBottom: 6 }}>Ton profil n&apos;est pas listé ?</p>
               <p style={{ color: "var(--color-ink-2)", fontSize: 14 }}>Envoie-nous quand même. On est curieux des profils atypiques.</p>
@@ -263,7 +277,6 @@ export default function Offres() {
           .daily-grid{grid-template-columns:1fr !important}
           .profiles-grid{grid-template-columns:repeat(2,1fr) !important}
           .process-grid{grid-template-columns:repeat(2,1fr) !important}
-          .sticker-monalisa{display:none !important}
         }
         @media(max-width:479px){
           .profiles-grid{grid-template-columns:1fr !important}

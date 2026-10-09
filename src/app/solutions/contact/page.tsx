@@ -59,7 +59,7 @@ const NEXT_STEPS: Record<Exclude<RequestType, "">, { step: string; desc: string 
     { step: "Entretien technique", desc: "Si le profil correspond, un entretien avec l'équipe technique — en présentiel ou visio." },
   ],
   partenariat: [
-    { step: "Réponse sous 48h", desc: "Gérard ou Guillaume reviendra vers vous pour évaluer la pertinence d'un échange." },
+    { step: "Réponse sous 48h", desc: "Gérard ou Aurélie reviendra vers vous pour évaluer la pertinence d'un échange." },
     { step: "Présentation mutuelle", desc: "On prend le temps de se connaître avant tout engagement — modèle, clients, valeurs." },
     { step: "Proposition de collaboration", desc: "Si les synergies sont réelles, on construit ensemble un cadre de partenariat adapté." },
   ],
