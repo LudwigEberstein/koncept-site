@@ -111,7 +111,7 @@ export default function Contact() {
       <HeroSection side="pro" next="bg" paddingTop={140} paddingBottom={72}>
         <Container>
           <motion.p
-            style={{ color: "var(--color-accent)", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
+            style={{ color: "var(--color-accent-text)", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
           >
             Contact
@@ -120,7 +120,7 @@ export default function Contact() {
             style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(38px, 6vw, 88px)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 24 }}
             initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
           >
-            Parlons de<br /><span style={{ color: "var(--color-accent)" }}>votre projet.</span>
+            Parlons de<br /><span style={{ color: "var(--color-accent-text)" }}>votre projet.</span>
           </motion.h1>
           <motion.p
             style={{ color: "var(--color-ink-2)", fontSize: 17, lineHeight: 1.7, maxWidth: "52ch", marginBottom: 0 }}
@@ -139,10 +139,10 @@ export default function Contact() {
           <div>
             {submitted ? (
               <motion.div
-                style={{ background: "var(--color-bg-2)", border: "1px solid rgba(212,32,32,0.3)", borderRadius: 20, padding: "56px 48px", textAlign: "center" }}
+                style={{ background: "var(--color-bg-2)", border: "1px solid rgba(var(--color-accent-rgb), 0.3)", borderRadius: 20, padding: "56px 48px", textAlign: "center" }}
                 initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div style={{ width: 60, height: 60, borderRadius: "50%", background: "rgba(212,32,32,0.12)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px", color: "var(--color-accent)", fontSize: 26 }}>✓</div>
+                <div style={{ width: 60, height: 60, borderRadius: "50%", background: "rgba(var(--color-accent-rgb), 0.12)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px", color: "var(--color-accent-text)", fontSize: 26 }}>✓</div>
                 <h3 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 28, fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 12 }}>
                   Message bien reçu.
                 </h3>
@@ -165,7 +165,7 @@ export default function Contact() {
                 {/* Step 1 — Type */}
                 <div>
                   <p style={{ ...labelStyle, fontSize: 13, marginBottom: 12 }}>
-                    <span style={{ color: "var(--color-accent)", fontWeight: 800 }}>01</span>&nbsp; Quel est l&apos;objet de votre demande ?
+                    <span style={{ color: "var(--color-accent-text)", fontWeight: 800 }}>01</span>&nbsp; Quel est l&apos;objet de votre demande ?
                   </p>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10 }} className="type-grid">
                     {REQUEST_TYPES.map(rt => {
@@ -174,10 +174,10 @@ export default function Contact() {
                         <button key={rt.id} type="button" onClick={() => setType(rt.id)}
                           style={{
                             padding: "16px 12px", borderRadius: 12, border: `1px solid ${isSelected ? "var(--color-accent)" : "var(--color-border)"}`,
-                            background: isSelected ? "rgba(212,32,32,0.08)" : "var(--color-bg-2)",
+                            background: isSelected ? "rgba(var(--color-accent-rgb), 0.08)" : "var(--color-bg-2)",
                             cursor: "pointer", textAlign: "left", transition: "all 0.15s",
                           }}
-                          onMouseEnter={e => { if (!isSelected) (e.currentTarget as HTMLElement).style.borderColor = "rgba(212,32,32,0.35)" }}
+                          onMouseEnter={e => { if (!isSelected) (e.currentTarget as HTMLElement).style.borderColor = "rgba(var(--color-accent-rgb), 0.35)" }}
                           onMouseLeave={e => { if (!isSelected) (e.currentTarget as HTMLElement).style.borderColor = "var(--color-border)" }}
                         >
                           <span style={{ fontSize: 16, display: "block", marginBottom: 8 }}>{rt.icon}</span>
@@ -202,7 +202,7 @@ export default function Contact() {
                     >
                       <div style={{ height: 1, background: "var(--color-border)" }} />
                       <p style={{ ...labelStyle, fontSize: 13, marginBottom: 0 }}>
-                        <span style={{ color: "var(--color-accent)", fontWeight: 800 }}>02</span>&nbsp; Dites-nous en plus sur vous
+                        <span style={{ color: "var(--color-accent-text)", fontWeight: 800 }}>02</span>&nbsp; Dites-nous en plus sur vous
                       </p>
 
                       {/* Name */}
@@ -290,13 +290,13 @@ export default function Contact() {
                 <motion.div key={type}
                   initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                  style={{ padding: "28px 24px", borderRadius: 16, border: "1px solid rgba(212,32,32,0.2)", background: "rgba(212,32,32,0.04)" }}
+                  style={{ padding: "28px 24px", borderRadius: 16, border: "1px solid rgba(var(--color-accent-rgb), 0.2)", background: "rgba(var(--color-accent-rgb), 0.04)" }}
                 >
                   <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 14 }}>
                     <Image src={contact.img} alt={contact.name} width={52} height={52} style={{ borderRadius: "50%", objectFit: "cover", border: "2px solid var(--color-border)" }} />
                     <div>
                       <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 16, fontWeight: 700 }}>{contact.name}</p>
-                      <p style={{ color: "var(--color-accent)", fontSize: 11, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", marginTop: 2 }}>{contact.role}</p>
+                      <p style={{ color: "var(--color-accent-text)", fontSize: 11, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", marginTop: 2 }}>{contact.role}</p>
                     </div>
                   </div>
                   <p style={{ color: "var(--color-ink-2)", fontSize: 13, lineHeight: 1.7, fontStyle: "italic" }}>"{contact.intro}"</p>
@@ -327,7 +327,7 @@ export default function Contact() {
                   <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                     {nextSteps.map((s, i) => (
                       <div key={s.step} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
-                        <div style={{ width: 26, height: 26, borderRadius: 7, background: "rgba(212,32,32,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 11, fontWeight: 800, color: "var(--color-accent)" }}>
+                        <div style={{ width: 26, height: 26, borderRadius: 7, background: "rgba(var(--color-accent-rgb), 0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 11, fontWeight: 800, color: "var(--color-accent-text)" }}>
                           {i + 1}
                         </div>
                         <div>
@@ -350,7 +350,7 @@ export default function Contact() {
                 { icon: <LinkedinIcon size={15} />, label: "LinkedIn", value: "Suivez Koncept IS", href: SITE.linkedin },
               ].map(item => (
                 <div key={item.label} style={{ display: "flex", gap: 12, alignItems: "center", padding: "14px 16px", borderRadius: 10, border: "1px solid var(--color-border)", background: "var(--color-bg-2)" }}>
-                  <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(212,32,32,0.08)", color: "var(--color-accent)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(var(--color-accent-rgb), 0.08)", color: "var(--color-accent-text)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                     {item.icon}
                   </div>
                   <div>
@@ -358,7 +358,7 @@ export default function Contact() {
                     {item.href ? (
                       <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer"
                         style={{ fontSize: 13, color: "var(--color-ink)", textDecoration: "none", transition: "color 0.15s" }}
-                        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "var(--color-accent)" }}
+                        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "var(--color-accent-text)" }}
                         onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "var(--color-ink)" }}
                       >{item.value}</a>
                     ) : (
@@ -384,21 +384,21 @@ export default function Contact() {
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-accent)" }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-border)" }}
             >
-              <Mail size={14} style={{ color: "var(--color-accent)" }} /> Écrire directement à {SITE.email}
+              <Mail size={14} style={{ color: "var(--color-accent-text)" }} /> Écrire directement à {SITE.email}
             </a>
             <a href={SITE.phoneHref}
               style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "12px 20px", borderRadius: 9, border: "1px solid var(--color-border)", background: "var(--color-bg-3)", fontSize: 13, fontWeight: 600, color: "var(--color-ink)", textDecoration: "none", transition: "border-color 0.15s" }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-accent)" }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-border)" }}
             >
-              <Phone size={14} style={{ color: "var(--color-accent)" }} /> Appeler le {SITE.phone}
+              <Phone size={14} style={{ color: "var(--color-accent-text)" }} /> Appeler le {SITE.phone}
             </a>
             <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer"
               style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "12px 20px", borderRadius: 9, border: "1px solid var(--color-border)", background: "var(--color-bg-3)", fontSize: 13, fontWeight: 600, color: "var(--color-ink)", textDecoration: "none", transition: "border-color 0.15s" }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-accent)" }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-border)" }}
             >
-              <LinkedinIcon size={14} style={{ color: "var(--color-accent)" }} /> Envoyer un message LinkedIn
+              <LinkedinIcon size={14} style={{ color: "var(--color-accent-text)" }} /> Envoyer un message LinkedIn
             </a>
           </div>
         </Container>

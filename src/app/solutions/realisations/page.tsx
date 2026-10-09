@@ -27,7 +27,7 @@ export default function Realisations() {
           >
             <Eyebrow mb={20}>Réalisations</Eyebrow>
             <h1 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(38px, 6vw, 80px)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 24 }}>
-              Nos interventions,<br /><span style={{ color: "var(--color-accent)" }}>concrètement.</span>
+              Nos interventions,<br /><span style={{ color: "var(--color-accent-text)" }}>concrètement.</span>
             </h1>
             <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.65, maxWidth: "52ch" }}>
               Pour chaque référence : le contexte, ce que nous avons fait, les technologies et le résultat.

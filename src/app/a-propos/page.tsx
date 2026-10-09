@@ -101,7 +101,7 @@ export default function APropos() {
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }} className="hero-grid">
           <div>
             <motion.p
-              style={{ color: "var(--color-accent)", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
+              style={{ color: "var(--color-accent-text)", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
             >
               À propos de Koncept IS
@@ -110,7 +110,7 @@ export default function APropos() {
               style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(36px, 5.5vw, 80px)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 24 }}
               initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
             >
-              Une équipe,<br />pas <span style={{ color: "var(--color-accent)" }}>une usine.</span>
+              Une équipe,<br />pas <span style={{ color: "var(--color-accent-text)" }}>une usine.</span>
             </motion.h1>
             <motion.p
               style={{ color: "var(--color-ink-2)", fontSize: 17, lineHeight: 1.75, maxWidth: "50ch", marginBottom: 36 }}
@@ -168,7 +168,7 @@ export default function APropos() {
                 >
                   {/* Dot */}
                   <div style={{ position: "absolute", top: 12, left: 0, width: 16, height: 16, borderRadius: "50%", background: i === 0 ? "var(--color-accent)" : "var(--color-bg-3)", border: `2px solid ${i === MILESTONES.length - 1 ? "#3b82f6" : "var(--color-accent)"}`, zIndex: 1 }} />
-                  <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 22, fontWeight: 800, color: "var(--color-accent)", letterSpacing: "-0.03em", marginBottom: 4 }}>{m.year}</p>
+                  <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 22, fontWeight: 800, color: "var(--color-accent-text)", letterSpacing: "-0.03em", marginBottom: 4 }}>{m.year}</p>
                   <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 13, fontWeight: 700, marginBottom: 8 }}>{m.label}</p>
                   <p style={{ color: "var(--color-ink-2)", fontSize: 14, lineHeight: 1.65 }}>{m.desc}</p>
                 </motion.div>
@@ -185,7 +185,7 @@ export default function APropos() {
             <motion.div {...fadeUp()}>
               <Eyebrow mb={16}>Notre vision</Eyebrow>
               <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.08, marginBottom: 24, color: "var(--color-soft-ink)" }}>
-                Une relation simple,<br />directe et&nbsp;<span style={{ color: "var(--color-accent)" }}>durable.</span>
+                Une relation simple,<br />directe et&nbsp;<span style={{ color: "var(--color-accent-text)" }}>durable.</span>
               </h2>
               <p style={{ color: "var(--color-soft-ink-2)", fontSize: 15, lineHeight: 1.8 }}>
                 Nous croyons à une relation de proximité : des interlocuteurs identifiés, des consultants bien choisis et suivis, et des échanges simples avec nos clients comme avec nos équipes.
@@ -200,7 +200,7 @@ export default function APropos() {
                   style={{ display: "flex", gap: 20, padding: "24px 28px", borderRadius: 14, border: "1px solid var(--color-soft-border)", background: "var(--color-soft-bg-2)", alignItems: "flex-start" }}
                   {...fadeUp(0.1 + i * 0.08)}
                 >
-                  <div style={{ width: 40, height: 40, borderRadius: 10, background: "rgba(212,32,32,0.12)", color: "var(--color-accent)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 14, fontWeight: 800, flexShrink: 0 }}>
+                  <div style={{ width: 40, height: 40, borderRadius: 10, background: "rgba(212,32,32,0.12)", color: "var(--color-accent-text)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 14, fontWeight: 800, flexShrink: 0 }}>
                     {String(i + 1).padStart(2, "0")}
                   </div>
                   <div>
@@ -231,7 +231,7 @@ export default function APropos() {
                 whileHover={{ borderColor: "rgba(212,32,32,0.4)" }}
               >
                 <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: "var(--color-accent)", opacity: 0.7 }} />
-                <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 52, fontWeight: 800, color: "var(--color-accent)", opacity: 0.08, lineHeight: 1, marginBottom: -16, letterSpacing: "-0.04em" }}>
+                <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 52, fontWeight: 800, color: "var(--color-accent-text)", opacity: 0.08, lineHeight: 1, marginBottom: -16, letterSpacing: "-0.04em" }}>
                   {String(i + 1).padStart(2, "0")}
                 </p>
                 <h3 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 22, fontWeight: 800, letterSpacing: "-0.02em", marginBottom: 12 }}>{v.title}</h3>
@@ -278,7 +278,7 @@ export default function APropos() {
                 </div>
                 <div style={{ padding: "24px 24px 28px", display: "flex", flexDirection: "column", gap: 0, flexGrow: 1 }}>
                   <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 18, fontWeight: 800, letterSpacing: "-0.02em" }}>{m.name}</p>
-                  <p style={{ color: "var(--color-accent)", fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginTop: 4, marginBottom: 12 }}>{m.role}</p>
+                  <p style={{ color: "var(--color-accent-text)", fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginTop: 4, marginBottom: 12 }}>{m.role}</p>
                   <p style={{ color: "var(--color-ink-2)", fontSize: 12, lineHeight: 1.7, marginBottom: 16 }}>{m.bio}</p>
                   <blockquote style={{ borderLeft: "2px solid var(--color-accent)", paddingLeft: 12, margin: "0 0 16px", flexGrow: 1 }}>
                     <p style={{ color: "var(--color-ink-2)", fontSize: 12, lineHeight: 1.65, fontStyle: "italic" }}>"{m.quote}"</p>

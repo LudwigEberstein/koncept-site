@@ -21,7 +21,7 @@ export default function Secteurs() {
           >
             <Eyebrow mb={20}>Secteurs</Eyebrow>
             <h1 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(38px, 6vw, 80px)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 24 }}>
-              Les environnements<br /><span style={{ color: "var(--color-accent)" }}>où nous intervenons.</span>
+              Les environnements<br /><span style={{ color: "var(--color-accent-text)" }}>où nous intervenons.</span>
             </h1>
             <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.65, maxWidth: "52ch" }}>
               Nos consultants accompagnent des entreprises et organisations de différents secteurs, en s&apos;adaptant aux enjeux techniques et métiers de leurs projets.

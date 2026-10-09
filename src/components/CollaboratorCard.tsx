@@ -94,7 +94,7 @@ type Props = {
 export function CollaboratorCard({ data, accentColor, variant = "career" }: Props) {
   const accent = accentColor ?? (variant === "career" ? "var(--color-career)" : "var(--color-accent)")
   const accentBg = variant === "career" ? "var(--color-career-bg)" : "var(--color-accent-2)"
-  const accentBorder = variant === "career" ? "var(--color-career-border)" : "rgba(212,32,32,0.25)"
+  const accentBorder = variant === "career" ? "var(--color-career-border)" : "rgba(var(--color-accent-rgb), 0.25)"
 
   return (
     <article

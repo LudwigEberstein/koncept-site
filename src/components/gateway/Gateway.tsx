@@ -10,7 +10,7 @@ import { buildNetwork } from "@/lib/network"
 import KBolt from "@/components/ui/KBolt"
 import "./gateway.css"
 const CIRCLE_BG: Record<Side, string> = {
-  pro: "#3b82f6",
+  pro: "#2B50F0",
   fun: "linear-gradient(135deg, #D42020, #8f1010)",
 }
 
@@ -102,13 +102,13 @@ export default function Gateway() {
         <div className="gw-bg gw-grid" />
         <svg className="gw-net" viewBox="0 0 800 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           {edges.map(([i, j]) => (
-            <line key={`l${i}-${j}`} x1={nodes[i].x} y1={nodes[i].y} x2={nodes[j].x} y2={nodes[j].y} stroke="rgba(96,165,250,.28)" strokeWidth="1" />
+            <line key={`l${i}-${j}`} x1={nodes[i].x} y1={nodes[i].y} x2={nodes[j].x} y2={nodes[j].y} stroke="rgba(124,151,255,.28)" strokeWidth="1" />
           ))}
           {nodes.map((n, i) => (
-            <circle key={`n${i}`} cx={n.x} cy={n.y} r={i % 5 === 0 ? 7 : 3.5} fill={i % 5 === 0 ? "#0a1830" : "#60a5fa"} stroke="#60a5fa" strokeWidth={i % 5 === 0 ? 1.5 : 0} />
+            <circle key={`n${i}`} cx={n.x} cy={n.y} r={i % 5 === 0 ? 7 : 3.5} fill={i % 5 === 0 ? "#0a1830" : "#7C97FF"} stroke="#7C97FF" strokeWidth={i % 5 === 0 ? 1.5 : 0} />
           ))}
           {edges.filter((_, k) => k % 3 === 0).map(([i, j], k) => (
-            <circle key={`p${i}-${j}`} r="2.6" fill="#9cc5ff">
+            <circle key={`p${i}-${j}`} r="2.6" fill="#b4c4ff">
               <animateMotion dur={`${3 + (k % 4)}s`} repeatCount="indefinite" begin={`${(-k * 0.7).toFixed(1)}s`} path={`M${nodes[i].x},${nodes[i].y} L${nodes[j].x},${nodes[j].y}`} />
             </circle>
           ))}

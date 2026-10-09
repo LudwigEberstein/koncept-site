@@ -13,7 +13,7 @@ type Section = "solutions" | "carrieres" | "apropos"
 
 // Couleur de chaque partie du site (texte, teinte du halo)
 const SECTION_COLORS: Record<Section, { fg: string; rgb: string }> = {
-  solutions: { fg: "#60a5fa", rgb: "59,130,246" },
+  solutions: { fg: "#7C97FF", rgb: "43,80,240" },
   carrieres: { fg: "#ff5a5a", rgb: "212,32,32" },
   apropos: { fg: "#f0ede8", rgb: "240,237,232" },
 }
@@ -87,7 +87,7 @@ export default function Nav() {
   }
 
   return (
-    <header style={{
+    <header data-side={section === "solutions" ? "pro" : undefined} style={{
       ["--nav-h" as string]: "68px", // hauteur du header : source unique (barre + liseré de l'onglet actif)
       position: "sticky", top: 0, zIndex: 50,
       background: scrolled ? "rgba(13,13,13,0.95)" : "rgba(13,13,13,0.8)",
@@ -117,7 +117,7 @@ export default function Nav() {
               aria-haspopup="true"
               style={{
                 display: "flex", alignItems: "center", gap: 5, padding: "8px 12px",
-                position: "relative", isolation: "isolate", borderRadius: 8, background: active === "solutions" && section !== "solutions" ? "rgba(59,130,246,0.1)" : "transparent",
+                position: "relative", isolation: "isolate", borderRadius: 8, background: active === "solutions" && section !== "solutions" ? "rgba(43,80,240,0.1)" : "transparent",
                 border: "none", cursor: "pointer", textDecoration: "none", color: active === "solutions" || section === "solutions" ? SECTION_COLORS.solutions.fg : "var(--color-ink-2)",
                 fontSize: 13, fontWeight: section === "solutions" ? 700 : 600, transition: "color 0.2s, background 0.15s",
               }}>
@@ -133,7 +133,7 @@ export default function Nav() {
                   borderRadius: 14, padding: 20, minWidth: 280, boxShadow: "0 24px 64px rgba(0,0,0,0.6)",
                   zIndex: 100,
                 }}>
-                <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#60a5fa", marginBottom: 12 }}>Nos solutions</p>
+                <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#7C97FF", marginBottom: 12 }}>Nos solutions</p>
                 {NAV_CLIENT.map(({ label, href }) => (
                   <Link key={href} href={href} role="menuitem" style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 10px", borderRadius: 8, color: "var(--color-ink-2)", textDecoration: "none", fontSize: 13, fontWeight: 500, transition: "all 0.15s" }}
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; (e.currentTarget as HTMLElement).style.color = "var(--color-ink)" }}
@@ -143,7 +143,7 @@ export default function Nav() {
                   </Link>
                 ))}
                 <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", marginTop: 12, paddingTop: 12 }}>
-                  <Link href="/solutions/contact" role="menuitem" style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-accent)", fontSize: 13, fontWeight: 700, textDecoration: "none" }}>
+                  <Link href="/solutions/contact" role="menuitem" style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-accent-text)", fontSize: 13, fontWeight: 700, textDecoration: "none" }}>
                     Demander un devis <ArrowRight size={13} aria-hidden="true" />
                   </Link>
                 </div>
@@ -233,14 +233,14 @@ export default function Nav() {
         <nav aria-label="Menu mobile" style={{ background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)", padding: "16px 24px 28px", display: "flex", flexDirection: "column" }}>
           {/* Solutions section */}
           <div style={{ display: "flex", alignItems: "center", borderBottom: "1px solid var(--color-border)" }}>
-            <Link href="/solutions" style={{ flex: 1, padding: "14px 0", color: "#60a5fa", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none" }}>
+            <Link href="/solutions" style={{ flex: 1, padding: "14px 0", color: "#7C97FF", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none" }}>
               Solutions
             </Link>
             <button
               onClick={() => setMobileOpen(mobileOpen === "solutions" ? null : "solutions")}
               aria-expanded={mobileOpen === "solutions"}
               aria-label="Sous-menu Solutions"
-              style={{ padding: "14px 4px 14px 16px", background: "none", border: "none", cursor: "pointer", color: "#60a5fa" }}
+              style={{ padding: "14px 4px 14px 16px", background: "none", border: "none", cursor: "pointer", color: "#7C97FF" }}
             >
               <ChevronDown size={14} aria-hidden="true" style={{ transform: mobileOpen === "solutions" ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
             </button>

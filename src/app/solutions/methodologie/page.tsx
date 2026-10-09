@@ -54,7 +54,7 @@ export default function Methodologie() {
           >
             <Eyebrow mb={20}>Méthodologie</Eyebrow>
             <h1 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(38px, 6vw, 80px)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 24 }}>
-              Une relation simple,<br /><span style={{ color: "var(--color-accent)" }}>un suivi de près.</span>
+              Une relation simple,<br /><span style={{ color: "var(--color-accent-text)" }}>un suivi de près.</span>
             </h1>
             <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.65, maxWidth: "52ch" }}>
               Une approche pragmatique, des échanges directs et un accompagnement adapté à vos projets.
@@ -111,7 +111,7 @@ export default function Methodologie() {
               <motion.div key={m.title} className="glass-card" {...fadeUp(i * 0.08)}
                 style={{ padding: "30px 28px", borderRadius: 16, border: "1px solid var(--color-border)", borderTop: "2px solid var(--color-accent)", display: "flex", flexDirection: "column", gap: 12 }}
               >
-                <m.icon size={24} aria-hidden="true" style={{ color: "var(--color-accent)" }} />
+                <m.icon size={24} aria-hidden="true" style={{ color: "var(--color-accent-text)" }} />
                 <h3 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 20, fontWeight: 700 }}>{m.title}</h3>
                 <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.65 }}>{m.desc}</p>
               </motion.div>
@@ -137,8 +137,8 @@ export default function Methodologie() {
         .mth-bars span.on { background: var(--color-accent); }
         .mth-steps { list-style: none; margin: 0; padding: 0; }
         .mth-step { padding: 22px 28px; margin-bottom: 10px; border-radius: 16px; border: 1px solid transparent; opacity: .38; transition: opacity .4s, border-color .4s, background .4s; }
-        .mth-step.is-active { opacity: 1; border-color: var(--color-accent); background: rgba(212,32,32,.06); }
-        .mth-step-tag { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 8px; }
+        .mth-step.is-active { opacity: 1; border-color: var(--color-accent); background: rgba(var(--color-accent-rgb), .06); }
+        .mth-step-tag { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--color-accent-text); margin-bottom: 8px; }
         .mth-step h2 { font-family: var(--font-display, Outfit, sans-serif); font-size: clamp(24px, 2.6vw, 34px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.12; margin: 0 0 8px; }
         .mth-step p { color: var(--color-ink-2); font-size: 15px; line-height: 1.65; max-width: 52ch; margin: 0; }
         @media (max-width: 767px) {
