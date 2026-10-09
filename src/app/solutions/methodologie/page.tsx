@@ -136,11 +136,11 @@ export default function Methodologie() {
         .mth-bars span { flex: 1; height: 3px; border-radius: 2px; background: var(--color-border-2); transition: background .35s; }
         .mth-bars span.on { background: var(--color-accent); }
         .mth-steps { list-style: none; margin: 0; padding: 0; }
-        .mth-step { min-height: 44vh; display: flex; flex-direction: column; justify-content: center; padding: 28px 32px; margin-bottom: 14px; border-radius: 16px; border: 1px solid transparent; opacity: .38; transition: opacity .4s, border-color .4s, background .4s; }
+        .mth-step { padding: 22px 28px; margin-bottom: 10px; border-radius: 16px; border: 1px solid transparent; opacity: .38; transition: opacity .4s, border-color .4s, background .4s; }
         .mth-step.is-active { opacity: 1; border-color: var(--color-accent); background: rgba(212,32,32,.06); }
-        .mth-step-tag { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 12px; }
-        .mth-step h2 { font-family: var(--font-display, Outfit, sans-serif); font-size: clamp(24px, 2.6vw, 34px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.12; margin: 0 0 12px; }
-        .mth-step p { color: var(--color-ink-2); font-size: 16px; line-height: 1.7; max-width: 52ch; margin: 0; }
+        .mth-step-tag { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 8px; }
+        .mth-step h2 { font-family: var(--font-display, Outfit, sans-serif); font-size: clamp(24px, 2.6vw, 34px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.12; margin: 0 0 8px; }
+        .mth-step p { color: var(--color-ink-2); font-size: 15px; line-height: 1.65; max-width: 52ch; margin: 0; }
         @media (max-width: 767px) {
           .mth-layout { grid-template-columns: 1fr; gap: 0; }
           .mth-counter { top: 68px; z-index: 5; display: flex; align-items: center; gap: 14px; padding: 10px 0; border-right: 0; border-bottom: 1px solid var(--color-border); background: var(--color-bg); }
@@ -148,7 +148,7 @@ export default function Methodologie() {
           .mth-num { font-size: 52px; -webkit-text-stroke-width: 3px; }
           .mth-of { margin: 0; }
           .mth-bars { margin: 0 0 0 auto; width: 90px; }
-          .mth-step { min-height: 0; padding: 24px 20px; opacity: .5; }
+          .mth-step { padding: 18px 16px; opacity: .5; }
         }
         @media (prefers-reduced-motion: reduce) {
           .mth-step, .mth-bars span { transition: none; }
