@@ -5,7 +5,7 @@ import Image from "next/image"
 import { ArrowRight, Mail, Linkedin } from "lucide-react"
 import { motion } from "motion/react"
 import { SITE } from "@/lib/content"
-import HeroSection from "@/components/ui/HeroDecor"
+import HeroSection from "@/components/ui/HeroSection"
 
 export default function Candidature() {
   const [form, setForm] = useState({ prenom: "", nom: "", email: "", poste: "", message: "" })

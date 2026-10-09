@@ -6,7 +6,7 @@ import { ArrowRight, Linkedin } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import { IMAGES, SITE, VALUES, CAREER_EVENTS } from "@/lib/content"
 import { makeFadeUp } from "@/lib/motion"
-import HeroSection from "@/components/ui/HeroDecor"
+import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
 
 // ─── Local enriched data ────────────────────────────────────────────────────
@@ -125,7 +125,7 @@ export default function APropos() {
   return (
     <>
       {/* ── Hero ── */}
-      <HeroSection side="career" next="bg" paddingTop={140} paddingBottom={80}>
+      <HeroSection side="career" decor="net" next="bg" paddingTop={140} paddingBottom={80}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }} className="hero-grid">
           <div>
             <motion.p

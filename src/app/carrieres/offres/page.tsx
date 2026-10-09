@@ -7,7 +7,7 @@ import { useState } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "motion/react"
 import { JOBS } from "@/lib/content"
 import { makeFadeUp } from "@/lib/motion"
-import HeroSection from "@/components/ui/HeroDecor"
+import HeroSection from "@/components/ui/HeroSection"
 
 // ─── Enriched jobs ───────────────────────────────────────────────────────────
 

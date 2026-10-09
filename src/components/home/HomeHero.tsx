@@ -5,13 +5,12 @@ import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import { IMAGES } from "@/lib/content"
-import { HeroDecor, HeroEdge, EDGE_H } from "@/components/ui/HeroDecor"
+import HeroSection from "@/components/ui/HeroSection"
 
 export default function HomeHero() {
   const reduce = useReducedMotion()
   return (
-    <section id="accueil" style={{ minHeight: "100dvh", display: "flex", alignItems: "center", position: "relative", zIndex: 2, isolation: "isolate", overflow: "hidden", marginBottom: -1, paddingTop: 40, paddingBottom: EDGE_H }}>
-      <HeroDecor side="pro" />
+    <HeroSection id="accueil" side="pro" next="bg2" paddingTop={140} paddingBottom={80}>
       <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }} className="hero-grid">
         <div>
           <motion.p style={{ color: "var(--color-accent)", fontSize: 12, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 24 }}
@@ -63,12 +62,10 @@ export default function HomeHero() {
         </motion.div>
       </div>
 
-      <HeroEdge next="bg2" side="pro" />
-
       <style>{`
         .hero-grid { }
         @media (max-width: 767px) { .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; padding-top: 32px !important; } .hero-img { aspect-ratio: 16/9 !important; } }
       `}</style>
-    </section>
+    </HeroSection>
   )
 }

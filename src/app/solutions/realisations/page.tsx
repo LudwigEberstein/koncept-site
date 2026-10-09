@@ -4,7 +4,7 @@ import { useState } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "motion/react"
 import { X, ArrowRight, ChevronRight } from "lucide-react"
 import Link from "next/link"
-import HeroSection from "@/components/ui/HeroDecor"
+import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
 
 // ─── Types ────────────────────────────────────────────────────────────────────

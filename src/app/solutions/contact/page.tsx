@@ -5,7 +5,7 @@ import Image from "next/image"
 import { ArrowRight, MapPin, Mail, Phone, Linkedin } from "lucide-react"
 import { motion, AnimatePresence } from "motion/react"
 import { SITE } from "@/lib/content"
-import HeroSection from "@/components/ui/HeroDecor"
+import HeroSection from "@/components/ui/HeroSection"
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 

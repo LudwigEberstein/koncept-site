@@ -49,8 +49,6 @@ export default function HomeExpertises() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.5, delay: i * 0.07, ease: [0.16, 1, 0.3, 1] }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(212,32,32,0.3)" }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-border)" }}
             >
               <div style={{ fontSize: 22 }}>{ICONS[exp.icon]}</div>
               <div>

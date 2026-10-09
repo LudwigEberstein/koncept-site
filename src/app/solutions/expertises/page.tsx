@@ -1,11 +1,10 @@
 'use client'
 
 import { useState } from "react"
-import Link from "next/link"
-import { ArrowRight, CheckCircle } from "lucide-react"
+import { CheckCircle } from "lucide-react"
 import { motion, useReducedMotion, AnimatePresence } from "motion/react"
 import RevealSection from "@/components/ui/RevealSection"
-import HeroSection from "@/components/ui/HeroDecor"
+import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
 
 // ─── Data ───────────────────────────────────────────────────────────────────
@@ -223,7 +222,7 @@ export default function Expertises() {
   return (
     <>
       {/* ── Hero ── */}
-      <HeroSection side="pro" next="bg" paddingTop={140} paddingBottom={80}>
+      <HeroSection side="pro" next="bg" nextColor="rgba(13,13,13,0.96)" paddingTop={140} paddingBottom={80}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.div style={{ maxWidth: "72ch" }}
             initial={reduce ? false : { opacity: 0, y: 20 }}
@@ -394,7 +393,6 @@ export default function Expertises() {
           .missions-grid{grid-template-columns:1fr !important}
           .diff-grid{grid-template-columns:1fr !important}
           .cert-grid{grid-template-columns:1fr !important;gap:40px !important}
-          .cta-row{grid-template-columns:1fr !important}
         }
       `}</style>
     </>

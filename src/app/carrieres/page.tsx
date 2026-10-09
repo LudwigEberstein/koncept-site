@@ -5,7 +5,7 @@ import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import { makeFadeUp } from "@/lib/motion"
-import HeroSection from "@/components/ui/HeroDecor"
+import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
 
 // ─── Data ───────────────────────────────────────────────────────────────────
@@ -288,8 +288,6 @@ export default function Carrieres() {
               <motion.div key={page.href} {...fadeUp(i * 0.08)}>
                 <Link className="glass-card" href={page.href}
                   style={{ display: "flex", flexDirection: "column", gap: 12, padding: "28px 24px", borderRadius: 14, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)", textDecoration: "none", height: "100%", transition: "border-color 0.18s, background 0.18s" }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-career-border-hover)"; (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-career-border)"; (e.currentTarget as HTMLElement).style.background = "var(--color-career-bg)" }}
                 >
                   <span style={{ fontSize: 24 }}>{page.emoji}</span>
                   <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 16, fontWeight: 700, color: "var(--color-ink)" }}>{page.label}</p>

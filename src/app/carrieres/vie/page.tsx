@@ -1,12 +1,10 @@
 'use client'
 
-import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import { CollaboratorCard, type Collaborator } from "@/components/CollaboratorCard"
 import { makeFadeUp } from "@/lib/motion"
-import HeroSection from "@/components/ui/HeroDecor"
+import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
 
 // ─── Data ───────────────────────────────────────────────────────────────────
