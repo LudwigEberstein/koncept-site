@@ -13,7 +13,7 @@ export default function HomeTechStack() {
       <Container>
         <RevealSection>
           <p style={{ color: "var(--color-ink-2)", fontSize: 12, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 36, textAlign: "center" }}>
-            Technologies maitrisées
+            Technologies de nos missions
           </p>
         </RevealSection>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 16 }} className="tech-grid">

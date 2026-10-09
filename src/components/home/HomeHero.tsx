@@ -14,20 +14,20 @@ export default function HomeHero() {
           <motion.p style={{ color: "var(--color-accent)", fontSize: 12, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 24 }}
             initial={reduce ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          >ESN Toulousaine</motion.p>
+          >ESN à taille humaine · Toulouse</motion.p>
 
           <motion.h1 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(44px, 5.5vw, 80px)", fontWeight: 800, lineHeight: 1.05, letterSpacing: "-0.03em", margin: "0 0 28px" }}
             initial={reduce ? false : { opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           >
-            On transforme<br /><span style={{ color: "var(--color-accent)" }}>votre IT.</span>
+            Les bonnes compétences,<br /><span style={{ color: "var(--color-accent)" }}>au bon moment.</span>
           </motion.h1>
 
           <motion.p style={{ fontSize: "clamp(16px, 1.5vw, 19px)", lineHeight: 1.65, color: "var(--color-ink-2)", maxWidth: "52ch", margin: "0 0 40px" }}
             initial={reduce ? false : { opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
           >
-            50 experts Java, .NET et DevOps basés à Toulouse, engagés dans votre transformation digitale depuis 2014.
+            Koncept met à votre service des consultants en développement logiciel et en accompagnement technique et fonctionnel, avec un interlocuteur proche et réactif.
           </motion.p>
 
           <motion.div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}
@@ -46,7 +46,7 @@ export default function HomeHero() {
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(240,237,232,0.35)" }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-border-2)" }}
             >
-              Notre offre
+              Nos expertises
             </Link>
           </motion.div>
         </div>

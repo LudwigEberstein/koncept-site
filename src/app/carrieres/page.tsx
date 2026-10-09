@@ -65,7 +65,7 @@ const DNA_ITEMS = [
   {
     icon: Dices,
     label: "Board games",
-    desc: "Codenames, Pandemic, Terraforming Mars. La boîte dans la cuisine sert plus souvent qu'il n'y paraît — et on a même un vrai maître du jeu dans les effectifs.",
+    desc: "Codenames, Pandemic, Terraforming Mars. La boîte dans la cuisine sert plus souvent qu'il n'y paraît — et on a même un vrai maître du jeu dans les effectifs : Alexis.",
   },
   {
     icon: Pizza,

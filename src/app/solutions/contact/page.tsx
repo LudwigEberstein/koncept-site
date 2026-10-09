@@ -26,49 +26,49 @@ const CONTACTS: Record<Exclude<RequestType, "">, { name: string; role: string; i
     name: "Aurélie",
     role: "Directrice Commerciale",
     img: "https://picsum.photos/seed/aurelie-koncept-commercial/120/120",
-    intro: "Je qualifie votre besoin et vous propose la bonne équipe. Premier échange gratuit, sans engagement.",
+    intro: "Je comprends votre besoin et vous propose les bons profils.",
   },
   candidature: {
     name: "Valentine",
     role: "Directrice RH",
     img: "https://picsum.photos/seed/valentine-koncept-rh/120/120",
-    intro: "Je lis chaque candidature avec attention. Même sans poste ouvert, un bon profil nous intéresse toujours.",
+    intro: "Je lis chaque candidature avec attention. Même sans poste ouvert, n'hésitez pas à nous écrire.",
   },
   partenariat: {
     name: "Gérard",
     role: "Président",
     img: "https://picsum.photos/seed/gerard-koncept-president/120/120",
-    intro: "Je traite directement les propositions de partenariat. Venez avec vos idées — on est ouverts.",
+    intro: "Je traite directement les propositions de partenariat.",
   },
   autre: {
     name: "L'équipe Koncept",
-    role: "On vous répond sous 24h",
+    role: "Contact général",
     img: "https://picsum.photos/seed/koncept-team-contact/120/120",
-    intro: "Quelle que soit votre demande, quelqu'un de notre équipe vous répondra sous 24h ouvrés.",
+    intro: "Quelle que soit votre demande, quelqu'un de notre équipe vous répondra.",
   },
 }
 
 // What happens next per type
 const NEXT_STEPS: Record<Exclude<RequestType, "">, { step: string; desc: string }[]> = {
   projet: [
-    { step: "Réponse sous 24h", desc: "Aurélie vous rappelle ou vous écrit pour confirmer la réception et planifier un créneau." },
-    { step: "Échange de 30 min", desc: "Un premier appel pour comprendre votre contexte, votre stack, vos contraintes et votre timeline." },
-    { step: "Proposition sous 5 jours", desc: "Si le projet est qualifié, vous recevez une proposition technique et commerciale détaillée." },
+    { step: "Prise de contact", desc: "Aurélie revient vers vous pour confirmer la réception de votre demande." },
+    { step: "Échange sur votre besoin", desc: "Un premier échange pour comprendre votre contexte, vos contraintes et le profil recherché." },
+    { step: "Proposition adaptée", desc: "Nous vous proposons des profils et des modalités d'intervention adaptés." },
   ],
   candidature: [
-    { step: "Lecture sous 48h", desc: "Valentine lit chaque candidature. Pas de réponse automatique — un retour humain systématique." },
-    { step: "Échange téléphonique", desc: "Un premier appel de 20 minutes pour vous connaître et vous présenter Koncept." },
-    { step: "Entretien technique", desc: "Si le profil correspond, un entretien avec l'équipe technique — en présentiel ou visio." },
+    { step: "Lecture de votre candidature", desc: "Valentine lit chaque candidature et vous répond personnellement." },
+    { step: "Premier échange", desc: "Un échange pour faire connaissance et vous présenter Koncept." },
+    { step: "Rencontre avec l'équipe", desc: "Si le profil correspond, un entretien avec l'équipe technique." },
   ],
   partenariat: [
-    { step: "Réponse sous 48h", desc: "Gérard ou Aurélie reviendra vers vous pour évaluer la pertinence d'un échange." },
-    { step: "Présentation mutuelle", desc: "On prend le temps de se connaître avant tout engagement — modèle, clients, valeurs." },
-    { step: "Proposition de collaboration", desc: "Si les synergies sont réelles, on construit ensemble un cadre de partenariat adapté." },
+    { step: "Prise de contact", desc: "Gérard ou Aurélie revient vers vous pour évaluer l'intérêt d'un échange." },
+    { step: "Présentation mutuelle", desc: "Nous prenons le temps de nous connaître avant tout engagement." },
+    { step: "Cadre de collaboration", desc: "Si les synergies sont réelles, nous définissons ensemble un cadre adapté." },
   ],
   autre: [
-    { step: "Réponse sous 24h", desc: "Un membre de l'équipe vous répond directement, sans formulaire intermédiaire." },
-    { step: "Mise en relation", desc: "On vous oriente vers la bonne personne selon votre demande." },
-    { step: "Suite selon votre besoin", desc: "On s'adapte à votre rythme et vos contraintes." },
+    { step: "Réponse directe", desc: "Un membre de l'équipe vous répond directement." },
+    { step: "Mise en relation", desc: "Nous vous orientons vers la bonne personne selon votre demande." },
+    { step: "Suite selon votre besoin", desc: "Nous nous adaptons à votre rythme et à vos contraintes." },
   ],
 }
 
@@ -123,28 +123,11 @@ export default function Contact() {
             Parlons de<br /><span style={{ color: "var(--color-accent)" }}>votre projet.</span>
           </motion.h1>
           <motion.p
-            style={{ color: "var(--color-ink-2)", fontSize: 17, lineHeight: 1.7, maxWidth: "52ch", marginBottom: 36 }}
+            style={{ color: "var(--color-ink-2)", fontSize: 17, lineHeight: 1.7, maxWidth: "52ch", marginBottom: 0 }}
             initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.1 }}
           >
-            Projet IT, candidature ou simple question — un humain vous répond. Pas un chatbot, pas un ticket.
+            Projet, candidature ou simple question : écrivez-nous, quelqu'un de l'équipe vous répond.
           </motion.p>
-
-          {/* Trust signals */}
-          <motion.div
-            style={{ display: "flex", flexWrap: "wrap", gap: 10 }}
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.2 }}
-          >
-            {[
-              { icon: "⏱", label: "Réponse sous 24h ouvrés" },
-              { icon: "☎", label: "Premier échange de 30 min gratuit" },
-              { icon: "🔒", label: "Vos données restent confidentielles" },
-            ].map(t => (
-              <div key={t.label} style={{ display: "flex", alignItems: "center", gap: 8, padding: "7px 14px", borderRadius: 9999, border: "1px solid var(--color-border)", background: "var(--color-bg-2)", fontSize: 12, fontWeight: 500, color: "var(--color-ink-2)" }}>
-                <span style={{ fontSize: 13 }}>{t.icon}</span>
-                {t.label}
-              </div>
-            ))}
-          </motion.div>
         </Container>
       </HeroSection>
 
@@ -164,7 +147,7 @@ export default function Contact() {
                   Message bien reçu.
                 </h3>
                 <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.75, maxWidth: "44ch", margin: "0 auto" }}>
-                  {contact ? `${contact.name} vous recontactera sous 24h ouvrés. En attendant, n'hésitez pas à parcourir nos expertises.` : "Notre équipe vous recontactera sous 24h ouvrés."}
+                  {contact ? `${contact.name} vous recontactera prochainement. En attendant, n'hésitez pas à parcourir nos expertises.` : "Notre équipe vous recontactera prochainement."}
                 </p>
                 {contact && (
                   <div style={{ marginTop: 28, display: "inline-flex", alignItems: "center", gap: 14, padding: "14px 20px", borderRadius: 12, border: "1px solid var(--color-border)", background: "var(--color-bg-3)" }}>
