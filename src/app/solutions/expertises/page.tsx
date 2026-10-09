@@ -7,7 +7,6 @@ import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
 import Container from "@/components/ui/Container"
 import Eyebrow from "@/components/ui/Eyebrow"
-import ToValidate from "@/components/ui/ToValidate"
 
 export default function Expertises() {
   const fadeUp = useFadeUp()
@@ -25,7 +24,7 @@ export default function Expertises() {
               Des compétences<br /><span style={{ color: "var(--color-accent)" }}>techniques et fonctionnelles.</span>
             </h1>
             <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.65, maxWidth: "52ch" }}>
-              Quatre familles de compétences, au service de vos projets : du développement au pilotage.
+              Quatre familles de compétences, au service de vos projets : du développement au pilotage, en passant par la livraison et les données.
             </p>
           </motion.div>
         </Container>
@@ -41,16 +40,29 @@ export default function Expertises() {
                 <span style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 12, fontWeight: 800, color: "var(--side2)", letterSpacing: "0.06em" }}>{String(i + 1).padStart(2, "0")}</span>
                 <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 24, fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.15 }}>{exp.title}</h2>
                 <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.65, flex: 1 }}>{exp.desc}</p>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                  {exp.stack.map(t => (
-                    <span key={t} style={{ background: "var(--color-bg-3)", border: "1px solid var(--color-border)", borderRadius: 6, padding: "4px 10px", fontSize: 12, fontWeight: 600, color: "var(--color-ink-2)" }}>{t}</span>
-                  ))}
+                <div>
+                  <p style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-ink-2)", marginBottom: 10 }}>Compétences</p>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                    {exp.stack.map(t => (
+                      <span key={t} style={{ background: "var(--color-bg-3)", border: "1px solid var(--color-border)", borderRadius: 6, padding: "4px 10px", fontSize: 12, fontWeight: 600, color: "var(--color-ink-2)" }}>{t}</span>
+                    ))}
+                  </div>
                 </div>
+                {exp.roles.length > 0 && (
+                  <div>
+                    <p style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-accent)", marginBottom: 10 }}>Métiers</p>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                      {exp.roles.map(r => (
+                        <span key={r} style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(var(--side-rgb), 0.12)", border: "1px solid rgba(var(--side-rgb), 0.55)", borderRadius: 9999, padding: "6px 14px", fontSize: 13, fontWeight: 700, color: "var(--color-ink)" }}>
+                          <span aria-hidden="true" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--color-accent)" }} />
+                          {r}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </motion.article>
             ))}
-          </div>
-          <div style={{ marginTop: 28 }}>
-            <ToValidate>Périmètre technique à confirmer par l&apos;équipe (technologies, niveaux de maîtrise, autres compétences à ajouter ou à retirer). Seules les technologies déjà présentes sur l&apos;ancien site sont citées.</ToValidate>
           </div>
         </Container>
       </section>

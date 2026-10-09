@@ -29,35 +29,39 @@ export const DIFFERENTIATORS = [
   { title: "Relation durable", desc: "Un échange simple et direct, pensé pour durer au-delà d'une première mission." },
 ] as const
 
-/** Grandes familles de compétences. Les technologies citées sont celles confirmées (logos du site historique). */
+/** Grandes familles de compétences (technologies validées) ; `roles` = métiers, à distinguer des compétences. */
 export const EXPERTISES = [
   {
     slug: "developpement",
-    title: "Développement logiciel",
-    short: "Applications métier",
-    desc: "Conception, développement et évolution d'applications, côté serveur comme côté interface.",
-    stack: ["Java", "Spring Boot", ".NET", "Angular"],
+    title: "Développement web & logiciel",
+    short: "Applications",
+    desc: "Conception, développement, modernisation et maintenance d'applications web, backend et frontend.",
+    stack: ["Java", "Spring Boot", ".NET", "C#", "Angular", "React", "TypeScript", "JavaScript", "Flutter", "Python"],
+    roles: [],
   },
   {
     slug: "integration",
-    title: "Intégration & mise en production",
+    title: "DevOps & intégration continue",
     short: "DevOps",
-    desc: "Automatisation des builds et des livraisons pour fiabiliser les mises en production.",
-    stack: ["Jenkins", "CI/CD"],
+    desc: "Automatisation des builds, des tests et des déploiements pour fiabiliser la livraison des applications.",
+    stack: ["Azure DevOps", "Git", "GitLab CI/CD", "Jenkins", "Docker", "CI/CD", "Ansible", "Linux"],
+    roles: [],
   },
   {
     slug: "donnees",
-    title: "Bases de données",
-    short: "Données applicatives",
-    desc: "Modélisation, requêtes et évolution des bases de données qui portent vos applications.",
-    stack: ["MySQL", "SQL"],
+    title: "Bases de données & gestion des données",
+    short: "Données",
+    desc: "Conception, modélisation, interrogation et évolution des bases de données au service des applications.",
+    stack: ["SQL", "MySQL", "SQL Server", "PostgreSQL", "Oracle", "MongoDB", "NoSQL"],
+    roles: [],
   },
   {
     slug: "accompagnement",
     title: "Accompagnement fonctionnel & pilotage",
-    short: "Le lien métier / technique",
-    desc: "Analyse du besoin, animation agile et pilotage de projet, en appui des équipes techniques.",
-    stack: ["Product Owner", "Business Analyst", "Scrum Master", "Chef de projet"],
+    short: "Métier & pilotage",
+    desc: "Analyse des besoins, cadrage fonctionnel, coordination des équipes et pilotage de projets en environnement agile.",
+    stack: ["AMOA", "Agile / Scrum", "SAFe", "Recette fonctionnelle"],
+    roles: ["Business Analyst", "Product Owner", "Scrum Master", "Chef de projet"],
   },
 ] as const
 
