@@ -128,13 +128,13 @@ export default function Formation() {
         </div>
       </HeroSection>
 
-      {/* ── Ce qu'on prend en charge ── */}
+      {/* ── Prise en charge ── */}
       <section style={{ padding: "96px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
           <motion.div {...fadeUp()}>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Formation</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
-              Ce qu&apos;on prend en charge.
+              Prise en charge,<br />ta formation sera.
             </h2>
           </motion.div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }} className="covers-grid">
@@ -221,7 +221,7 @@ export default function Formation() {
           <motion.div {...fadeUp()}>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Évolution de carrière</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
-              Trois trajectoires.<br />Aucune voie imposée.
+              Choose your destiny !
             </h2>
             <p style={{ color: "var(--color-ink-2)", fontSize: 16, lineHeight: 1.75, maxWidth: "58ch", marginBottom: 56 }}>
               Pas de promotion automatique au management. Pas de plafond sur la voie technique. On construit ensemble ta trajectoire selon ce qui te motive — pas selon un organigramme préétabli.

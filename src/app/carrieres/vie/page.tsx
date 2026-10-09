@@ -1,6 +1,5 @@
 'use client'
 
-import Image from "next/image"
 import { motion, useReducedMotion } from "motion/react"
 import { Coffee, Users, Code2, Utensils, Beer, Mountain, TreePine, Flame, Home, CreditCard, HeartPulse, GraduationCap, Car, Bot, Gamepad2, MapPin } from "lucide-react"
 import { CollaboratorCard, type Collaborator } from "@/components/CollaboratorCard"
@@ -39,7 +38,7 @@ const DAILY_LIFE = [
     icon: Code2,
     time: "Après-midi",
     label: "Deep work",
-    desc: "Même principe que le matin : un second bloc de concentration, sans interruption inutile. Pas besoin d'en faire trop.",
+    desc: "Même principe que le matin : un second bloc de concentration, sans interruption inutile.",
   },
   {
     icon: Beer,
@@ -163,9 +162,6 @@ export default function Vie() {
                 Une journée chez Koncept,<br />honnêtement.
               </h2>
             </div>
-            <div className="sticker-mario" style={{ position: "relative", width: 130, height: 78, flexShrink: 0, transform: "rotate(-3deg)", marginBottom: 56 }}>
-              <Image src="/culture/mario-flappybird.gif" alt="Clin d'œil gaming Koncept" fill unoptimized sizes="130px" style={{ objectFit: "cover", borderRadius: 10, border: "1px solid var(--color-border-2)" }} />
-            </div>
           </motion.div>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }} className="daily-grid">
@@ -288,7 +284,6 @@ export default function Vie() {
           .events-grid{grid-template-columns:1fr !important}
           .perks-grid{grid-template-columns:repeat(2,1fr) !important}
           .portraits-grid{grid-template-columns:1fr !important}
-          .sticker-mario{display:none !important}
         }
         @media(max-width:479px){
           .perks-grid{grid-template-columns:1fr !important}
