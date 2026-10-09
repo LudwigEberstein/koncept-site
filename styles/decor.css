@@ -120,6 +120,12 @@
 @media (max-width: 767px) { .mona-figure { display: none; } }
 @media (max-width: 1099px) { .mario-figure { display: none; } }
 
+/* ===== Einstein (en-tête « Certifications », /carrieres/formation) : GIF détouré, il sort de derrière la grille ===== */
+.einstein-figure { position: relative; flex: 0 0 241px; aspect-ratio: 659 / 819; margin: -61px 0 -24px; pointer-events: none; }
+.einstein-figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: right bottom; }
+.certifs-grid > * { position: relative; z-index: 1; }
+@media (max-width: 899px) { .einstein-figure { display: none; } }
+
 /* ===== Indice du code Konami (touches de clavier) ===== */
 .konami-hint { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; margin: 26px 0 0; }
 .konami-hint-keys { display: inline-flex; gap: 5px; flex-wrap: wrap; }

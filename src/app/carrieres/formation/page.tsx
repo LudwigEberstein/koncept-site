@@ -157,6 +157,7 @@ export default function Formation() {
       {/* ── Certifications ── */}
       <section style={{ padding: "80px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px" }}>
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24 }}>
           <motion.div {...fadeUp()}>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 12 }}>Certifications</p>
             <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
@@ -166,6 +167,15 @@ export default function Formation() {
               Sans plafond par certification. Sans condition de rester après la certif. On part du principe qu&apos;un dev certifié qui reste est plus utile qu&apos;un dev non-certifié qui part.
             </p>
           </motion.div>
+          {/* Einstein : à droite de l'en-tête, il « sort » de derrière la grille de certifications */}
+          <div className="einstein-figure" aria-hidden="true">
+            <picture>
+              <source media="(prefers-reduced-motion: reduce)" srcSet="/culture/einstein-static.png" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/culture/einstein.gif" alt="" loading="lazy" />
+            </picture>
+          </div>
+          </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }} className="certifs-grid">
             {CERTIFS.map((c, i) => (
               <motion.div key={c.name}
