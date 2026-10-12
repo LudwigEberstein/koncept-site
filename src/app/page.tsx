@@ -7,7 +7,7 @@ import { organizationJsonLd } from '@/lib/jsonld'
 
 export const metadata: Metadata = {
   title: { absolute: `${SITE.name} | ESN à taille humaine à Toulouse` },
-  alternates: { canonical: 'https://koncept-is.fr' },
+  alternates: { canonical: '/' },
 }
 
 export default function Home() {

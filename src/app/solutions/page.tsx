@@ -9,7 +9,7 @@ import CtaBand from '@/components/ui/CtaBand'
 export const metadata: Metadata = {
   title: 'ESN toulousaine : des consultants IT pour vos projets',
   description: "Développeurs, architectes, DevOps, analystes et chefs de projet : Koncept accompagne vos projets IT (Java, .NET, Angular) avec des consultants suivis de près.",
-  alternates: { canonical: 'https://koncept-is.fr/solutions' },
+  alternates: { canonical: '/solutions' },
 }
 
 export default function Home() {
