@@ -1,0 +1,29 @@
+/* OVNI pixel art de la partie Carrières (voir Ufo.tsx). Mouvements en steps() : rendu saccadé façon 8 bits. */
+.ufo {
+  position: fixed; left: 0; z-index: 60; pointer-events: none; will-change: transform;
+  --px: 4px;
+  animation-duration: var(--ufo-duration, 10s);
+  animation-timing-function: steps(var(--ufo-steps, 100));
+  animation-fill-mode: forwards;
+}
+.ufo--ltr { animation-name: ufo-ltr; }
+.ufo--rtl { animation-name: ufo-rtl; }
+@keyframes ufo-ltr { from { transform: translateX(-150px); } to { transform: translateX(calc(100vw + 50px)); } }
+@keyframes ufo-rtl { from { transform: translateX(calc(100vw + 50px)); } to { transform: translateX(-150px); } }
+
+/* Léger tressautement d'un pixel, deux fois par seconde */
+.ufo-bob { animation: ufo-bob 0.5s steps(1) infinite alternate; }
+@keyframes ufo-bob { from { transform: translateY(0); } to { transform: translateY(calc(var(--px) * -1)); } }
+
+.ufo-sprite { display: block; width: calc(var(--px) * 18); height: calc(var(--px) * 13); }
+
+/* Feux rouges qui clignotent à tour de rôle */
+.ufo-light { animation: ufo-blink 0.8s steps(1) infinite; }
+@keyframes ufo-blink { 0% { opacity: 1; } 50% { opacity: 0.2; } }
+
+/* Faisceau qui scintille, rangée après rangée */
+.ufo-beam { opacity: 0; animation: ufo-beam 1.6s steps(1) infinite; }
+@keyframes ufo-beam { 0% { opacity: 0; } 25% { opacity: 0.75; } 60% { opacity: 0.3; } 80% { opacity: 0.75; } }
+
+@media (max-width: 640px) { .ufo { --px: 2px !important; } }
+@media (prefers-reduced-motion: reduce), print { .ufo { display: none; } }

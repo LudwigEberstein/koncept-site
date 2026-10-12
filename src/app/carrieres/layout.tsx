@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Ufo from '@/components/careers/Ufo'
 import { SITE } from '@/lib/content'
 
 export const metadata: Metadata = {
@@ -9,5 +10,10 @@ export const metadata: Metadata = {
 }
 
 export default function CarrieresLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>
+  return (
+    <>
+      {children}
+      <Ufo />
+    </>
+  )
 }
