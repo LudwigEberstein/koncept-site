@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { SITE } from '@/lib/content'
+import { JOBS, SITE } from '@/lib/content'
 
 // Priorité : accueil et pages d'entrée des deux univers > pages de contenu > pages légales.
 const ROUTES: { path: string; priority: number }[] = [
@@ -21,5 +21,6 @@ const ROUTES: { path: string; priority: number }[] = [
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return ROUTES.map(({ path, priority }) => ({ url: `${SITE.url}${path}`, priority }))
+  const offers = JOBS.map(({ slug }) => ({ path: `/carrieres/offres/${slug}`, priority: 0.7 }))
+  return [...ROUTES, ...offers].map(({ path, priority }) => ({ url: `${SITE.url}${path}`, priority }))
 }

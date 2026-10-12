@@ -160,7 +160,7 @@ export default function Gateway() {
         </div>
       </Link>
 
-      <div className="gw-hint">Choisis ton côté</div>
+      <div className="gw-hint" lang="en">Choose your side.</div>
     </div>
   )
 }

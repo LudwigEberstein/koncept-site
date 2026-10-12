@@ -25,10 +25,11 @@ export const LEGAL = {
   publicationDirector: "Gérard Pucheux, Président",
   /** Date de dernière mise à jour des pages légales. */
   updated: "12 octobre 2026",
+  /** Hébergeur actuel (Vercel). À remplacer par OVH (OVH SAS, 2 rue Kellermann, BP 80157, 59053 Roubaix Cedex 1, https://www.ovhcloud.com) lors de la bascule. */
   host: {
-    name: "OVH SAS",
-    address: "2 rue Kellermann, BP 80157, 59053 Roubaix Cedex 1, France",
-    url: "https://www.ovhcloud.com",
+    name: "Vercel Inc.",
+    address: "440 N Barranca Ave #4133, Covina, CA 91723, États-Unis",
+    url: "https://vercel.com",
   },
 } as const
 
@@ -102,15 +103,34 @@ export const CAREER_EVENTS = [
   { title: "Barbecue d'été", freq: "L'été", desc: "Quand il fait beau, on sort les grills pour un moment détendu entre collègues." },
 ] as const
 
-/** Date de mise en ligne des offres (données structurées Google for Jobs) : à mettre à jour avec les vraies dates. */
-export const JOBS_DATE_POSTED = "2026-10-12"
+/** Date de mise en ligne des offres (données structurées Google for Jobs). Pas de date de fin : à retirer avec l'offre une fois pourvue. */
+export const JOBS_DATE_POSTED = "2026-10-01"
 
+/** Étapes du process de recrutement, communes à toutes les offres. */
+export const JOB_PROCESS = [
+  { step: "1. Échange RH", desc: "30 min avec Valentine. On se présente, on voit si le feeling passe." },
+  { step: "2. Entretien métier", desc: "45 min avec un référent de ton domaine, technique ou fonctionnel. On parle de ton parcours et de cas concrets." },
+  { step: "3. Entretien manager", desc: "30 min avec ton futur manager. Si tout colle, l'offre se fait dans ce même entretien." },
+  { step: "4. Un café avec la team", desc: "Pour finir de te convaincre, viens prendre un café avec l'équipe. Pas d'épreuve : juste voir si ça matche." },
+] as const
+
+/**
+ * Offres d'emploi : source unique de la liste, des pages /carrieres/offres/[slug], du sitemap
+ * et des données structurées Google for Jobs. Ajouter une offre = ajouter une entrée ici ;
+ * la retirer une fois pourvue = supprimer l'entrée.
+ */
 export const JOBS = [
   {
+    slug: "developpeur-js-fullstack",
     title: "Développeur JS FullStack",
     location: "Toulouse",
     type: "CDI",
+    remote: "2j/semaine",
+    salary: "35–40 K€",
+    salaryRange: [35000, 40000],
+    badge: "Nouveau",
     sector: "Aéronautique / Télécoms",
+    intro: "On cherche un dev JS fullstack passionné pour rejoindre une équipe chez l'un de nos clients grands comptes. Pas un dev de plus dans un open space — quelqu'un qui veut s'investir, proposer des architectures, et laisser sa marque sur un vrai produit.",
     desc: "Vous intégrerez une équipe projet chez l'un de nos clients grands comptes. Vous serez responsable du développement frontend et backend en JavaScript/TypeScript, dans un contexte Agile exigeant.",
     stack: ["JavaScript", "TypeScript", "Node.js", "Angular", "React", "REST API"],
     profile: [
@@ -119,12 +139,24 @@ export const JOBS = [
       "Maîtrise de Node.js + un framework frontend (Angular ou React)",
       "Curiosité, rigueur, esprit d'équipe",
     ],
+    daily: [
+      "Feature development en React/Node.js sur un produit B2B utilisé par 50k+ utilisateurs",
+      "Code review sérieuses — les PR ne passent pas sans retour constructif",
+      "Participation aux rétrospectives et aux décisions d'architecture",
+      "Kata club Koncept le jeudi — volontaire mais chaleureusement encouragé",
+    ],
   },
   {
+    slug: "scrum-master",
     title: "Scrum Master confirmé",
     location: "Toulouse",
     type: "CDI",
+    remote: "2j/semaine",
+    salary: "40–45 K€",
+    salaryRange: [40000, 45000],
+    badge: "Nouveau",
     sector: "Aéronautique / Télécoms",
+    intro: "On cherche un·e Scrum Master confirmé·e pour accompagner des équipes de développement chez l'un de nos clients grands comptes. Quelqu'un qui sait faire vivre l'agilité au quotidien — sans dogme, avec du bon sens et de l'écoute.",
     desc: "Vous accompagnerez une ou plusieurs équipes de développement chez l'un de nos clients grands comptes : animation des cérémonies Scrum, suppression des blocages, amélioration continue de la livraison.",
     stack: ["Scrum", "Kanban", "Jira", "Confluence", "Agilité à l'échelle"],
     profile: [
@@ -133,8 +165,20 @@ export const JOBS = [
       "À l'aise avec les équipes techniques et les interlocuteurs métier",
       "Pédagogie, écoute, sens du collectif",
     ],
+    daily: [
+      "Animation des cérémonies Scrum : daily, planning, review, rétrospective",
+      "Identification et suppression des blocages de l'équipe, en lien avec le Product Owner",
+      "Suivi des indicateurs de livraison et amélioration continue des pratiques",
+      "Retours d'expérience partagés avec les autres Scrum Masters et le kata club Koncept",
+    ],
   },
 ] as const
+
+export type Job = (typeof JOBS)[number]
+
+export function getJob(slug: string): Job | undefined {
+  return JOBS.find(j => j.slug === slug)
+}
 
 // Navigation — two distinct tracks
 export const NAV_CLIENT = [

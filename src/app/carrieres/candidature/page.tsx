@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ArrowRight, Mail } from "lucide-react"
 import LinkedinIcon from "@/components/ui/LinkedinIcon"
 import { motion } from "motion/react"
@@ -11,6 +11,13 @@ import Container from "@/components/ui/Container"
 export default function Candidature() {
   const [form, setForm] = useState({ prenom: "", nom: "", email: "", poste: "", message: "" })
   const [submitted, setSubmitted] = useState(false)
+
+  // Poste pré-rempli depuis une offre (?poste=…) : lu après l'hydratation pour garder le HTML statique de la page.
+  useEffect(() => {
+    const poste = new URLSearchParams(window.location.search).get("poste")
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (poste) setForm(prev => ({ ...prev, poste }))
+  }, [])
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
