@@ -25,10 +25,11 @@ export const LEGAL = {
   publicationDirector: "Gérard Pucheux, Président",
   /** Date de dernière mise à jour des pages légales. */
   updated: "12 octobre 2026",
+  /** Hébergeur actuel (Vercel). À remplacer par OVH (OVH SAS, 2 rue Kellermann, BP 80157, 59053 Roubaix Cedex 1, https://www.ovhcloud.com) lors de la bascule. */
   host: {
-    name: "OVH SAS",
-    address: "2 rue Kellermann, BP 80157, 59053 Roubaix Cedex 1, France",
-    url: "https://www.ovhcloud.com",
+    name: "Vercel Inc.",
+    address: "440 N Barranca Ave #4133, Covina, CA 91723, États-Unis",
+    url: "https://vercel.com",
   },
 } as const
 
@@ -102,8 +103,8 @@ export const CAREER_EVENTS = [
   { title: "Barbecue d'été", freq: "L'été", desc: "Quand il fait beau, on sort les grills pour un moment détendu entre collègues." },
 ] as const
 
-/** Date de mise en ligne des offres (données structurées Google for Jobs) : à mettre à jour avec les vraies dates. */
-export const JOBS_DATE_POSTED = "2026-10-12"
+/** Date de mise en ligne des offres (données structurées Google for Jobs). Pas de date de fin : à retirer avec l'offre une fois pourvue. */
+export const JOBS_DATE_POSTED = "2026-10-01"
 
 export const JOBS = [
   {
