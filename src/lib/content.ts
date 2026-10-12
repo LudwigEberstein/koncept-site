@@ -33,12 +33,6 @@ export const LEGAL = {
   },
 } as const
 
-/**
- * Affiche les pastilles « À valider » sur les contenus non confirmés par le métier (univers Solutions).
- * Passer à false une fois les contenus validés : les pastilles disparaissent partout.
- */
-export const SHOW_VALIDATION_MARKERS = true
-
 /** Ce qui différencie Koncept — formulé sans chiffre ni promesse contractuelle. */
 export const DIFFERENTIATORS = [
   { title: "Proximité", desc: "Un interlocuteur direct chez Koncept, qui connaît votre contexte et vos équipes." },
