@@ -1,4 +1,4 @@
-import { LEGAL, SITE } from "./content"
+import { JOBS_DATE_POSTED, LEGAL, SITE, type Job } from "./content"
 
 const ORGANIZATION_ID = `${SITE.url}/#organization`
 
@@ -28,25 +28,30 @@ export function organizationJsonLd() {
   }
 }
 
-interface JobPostingInput {
-  title: string
-  description: string
-  datePosted: string
-  /** Rémunération annuelle brute en euros. */
-  salaryMin: number
-  salaryMax: number
+const escapeHtml = (t: string) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+
+/** Description complète de l'offre en HTML, identique au contenu affiché sur la page (exigence Google). */
+function jobDescriptionHtml(job: Job) {
+  const list = (items: readonly string[]) => `<ul>${items.map(i => `<li>${escapeHtml(i)}</li>`).join("")}</ul>`
+  return [
+    `<p>${escapeHtml(job.intro)}</p>`,
+    `<p><strong>La mission</strong></p><p>${escapeHtml(job.desc)}</p>`,
+    `<p><strong>Profil recherché</strong></p>${list(job.profile)}`,
+    `<p><strong>Journée type</strong></p>${list(job.daily)}`,
+  ].join("")
 }
 
-/** Offre d'emploi (schema.org/JobPosting), éligible à Google for Jobs. */
-export function jobPostingJsonLd({ title, description, datePosted, salaryMin, salaryMax }: JobPostingInput) {
+/** Offre d'emploi (schema.org/JobPosting), éligible à Google for Jobs. À placer sur la page dédiée à l'offre uniquement. */
+export function jobPostingJsonLd(job: Job) {
   return {
     "@context": "https://schema.org",
     "@type": "JobPosting",
-    title,
-    description,
-    datePosted,
+    title: job.title,
+    description: jobDescriptionHtml(job),
+    datePosted: JOBS_DATE_POSTED,
     employmentType: "FULL_TIME",
     directApply: false,
+    url: `${SITE.url}/carrieres/offres/${job.slug}`,
     hiringOrganization: {
       "@type": "Organization",
       "@id": ORGANIZATION_ID,
@@ -60,14 +65,14 @@ export function jobPostingJsonLd({ title, description, datePosted, salaryMin, sa
         "@type": "PostalAddress",
         streetAddress: "3 avenue de l'Europe",
         postalCode: "31400",
-        addressLocality: "Toulouse",
+        addressLocality: job.location,
         addressCountry: "FR",
       },
     },
     baseSalary: {
       "@type": "MonetaryAmount",
       currency: "EUR",
-      value: { "@type": "QuantitativeValue", minValue: salaryMin, maxValue: salaryMax, unitText: "YEAR" },
+      value: { "@type": "QuantitativeValue", minValue: job.salaryRange[0], maxValue: job.salaryRange[1], unitText: "YEAR" },
     },
   }
 }

@@ -1,63 +1,14 @@
 'use client'
 
 import Link from "next/link"
-import { ArrowRight, MapPin, Briefcase, ChevronDown, ChevronUp, Home, Wallet } from "lucide-react"
-import { useState } from "react"
-import { motion, AnimatePresence } from "motion/react"
-import { JOBS, JOBS_DATE_POSTED } from "@/lib/content"
-import { jobPostingJsonLd } from "@/lib/jsonld"
-import JsonLd from "@/components/seo/JsonLd"
+import { ArrowRight, MapPin, Briefcase, Home, Wallet } from "lucide-react"
+import { motion } from "motion/react"
+import { JOBS } from "@/lib/content"
 import { useFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
 import QuestMark from "@/components/ui/QuestMark"
 import Eyebrow from "@/components/ui/Eyebrow"
 import Container from "@/components/ui/Container"
-
-// ─── Enriched jobs ───────────────────────────────────────────────────────────
-
-const PROCESS = [
-  { step: "1. Échange RH", desc: "30 min avec Valentine. On se présente, on voit si le feeling passe." },
-  { step: "2. Entretien métier", desc: "45 min avec un référent de ton domaine, technique ou fonctionnel. On parle de ton parcours et de cas concrets." },
-  { step: "3. Entretien manager", desc: "30 min avec ton futur manager. Si tout colle, l'offre se fait dans ce même entretien." },
-  { step: "4. Un café avec la team", desc: "Pour finir de te convaincre, viens prendre un café avec l'équipe. Pas d'épreuve : juste voir si ça matche." },
-]
-
-const ENRICHED_JOBS = [
-  {
-    ...JOBS[0],
-    id: "js-fullstack",
-    badge: "Nouveau",
-    badgeColor: "var(--color-career)",
-    remote: "2j/semaine",
-    salary: "35–40 K€",
-    salaryRange: [35000, 40000] as const,
-    intro: "On cherche un dev JS fullstack passionné pour rejoindre une équipe chez l'un de nos clients grands comptes. Pas un dev de plus dans un open space — quelqu'un qui veut s'investir, proposer des architectures, et laisser sa marque sur un vrai produit.",
-    daily: [
-      "Feature development en React/Node.js sur un produit B2B utilisé par 50k+ utilisateurs",
-      "Code review sérieuses — les PR ne passent pas sans retour constructif",
-      "Participation aux rétrospectives et aux décisions d'architecture",
-      "Kata club Koncept le jeudi — volontaire mais chaleureusement encouragé",
-    ],
-    process: PROCESS,
-  },
-  {
-    ...JOBS[1],
-    id: "scrum-master",
-    badge: "Nouveau",
-    badgeColor: "var(--color-career)",
-    remote: "2j/semaine",
-    salary: "40–45 K€",
-    salaryRange: [40000, 45000] as const,
-    intro: "On cherche un·e Scrum Master confirmé·e pour accompagner des équipes de développement chez l'un de nos clients grands comptes. Quelqu'un qui sait faire vivre l'agilité au quotidien — sans dogme, avec du bon sens et de l'écoute.",
-    daily: [
-      "Animation des cérémonies Scrum : daily, planning, review, rétrospective",
-      "Identification et suppression des blocages de l'équipe, en lien avec le Product Owner",
-      "Suivi des indicateurs de livraison et amélioration continue des pratiques",
-      "Retours d'expérience partagés avec les autres Scrum Masters et le kata club Koncept",
-    ],
-    process: PROCESS,
-  },
-]
 
 const SPONTANEOUS_PROFILES = [
   { tech: "Java / Spring Boot", icon: "☕", desc: "Senior, architecte, lead — on est toujours en veille sur ces profils." },
@@ -71,22 +22,11 @@ const SPONTANEOUS_PROFILES = [
 // ─── Page ───────────────────────────────────────────────────────────────────
 
 export default function Offres() {
-  const [expanded, setExpanded] = useState<string | null>(ENRICHED_JOBS[0]?.id ?? null)
 
   const fadeUp = useFadeUp()
 
   return (
     <>
-      {ENRICHED_JOBS.map(job => (
-        <JsonLd key={job.id} data={jobPostingJsonLd({
-          title: job.title,
-          description: `${job.intro} ${job.desc}`,
-          datePosted: JOBS_DATE_POSTED,
-          salaryMin: job.salaryRange[0],
-          salaryMax: job.salaryRange[1],
-        })} />
-      ))}
-
       {/* ── Hero ── */}
       <HeroSection side="career" next="bg" paddingTop={140} paddingBottom={80}>
         <Container>
@@ -122,122 +62,29 @@ export default function Offres() {
       <section style={{ padding: "80px 0", background: "var(--color-bg)" }}>
         <Container maxWidth={1100}>
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-            {ENRICHED_JOBS.map((job, i) => {
-              const isOpen = expanded === job.id
-              return (
-                <motion.div key={job.id}
-                  style={{ borderRadius: 16, border: `1px solid ${isOpen ? "var(--color-career-border-hover)" : "var(--color-career-border)"}`, background: isOpen ? "var(--color-career-bg)" : "var(--color-bg-2)", overflow: "hidden", transition: "border-color 0.2s" }}
-                  {...fadeUp(i * 0.08)}
+            {JOBS.map((job, i) => (
+              <motion.div key={job.slug} {...fadeUp(i * 0.08)}>
+                <Link href={`/carrieres/offres/${job.slug}`} className="job-card"
+                  style={{ display: "flex", alignItems: "center", gap: 20, padding: "28px 32px", borderRadius: 16, border: "1px solid var(--color-career-border)", background: "var(--color-bg-2)", textDecoration: "none", color: "inherit", transition: "border-color 0.2s, background 0.2s" }}
                 >
-                  {/* Header — always visible */}
-                  <button
-                    onClick={() => setExpanded(isOpen ? null : job.id)}
-                    aria-expanded={isOpen}
-                    aria-controls={`job-detail-${job.id}`}
-                    style={{ width: "100%", padding: "28px 32px", display: "flex", alignItems: "center", gap: 20, background: "transparent", border: "none", cursor: "pointer", textAlign: "left" }}
-                  >
-                    <div style={{ flex: 1 }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10, flexWrap: "wrap" }}>
-                        <h3 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(18px, 2vw, 24px)", fontWeight: 800, letterSpacing: "-0.02em", color: "var(--color-ink)" }}>{job.title}</h3>
-                        <span style={{ background: "rgba(var(--color-career),0.15)", color: "var(--color-career)", borderRadius: 6, padding: "2px 9px", fontSize: 10, fontWeight: 800, letterSpacing: "0.06em" }}>{job.badge}</span>
-                      </div>
-                      <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-                        <span style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-ink-2)", fontSize: 13 }}><MapPin size={13} />{job.location}</span>
-                        <span style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-ink-2)", fontSize: 13 }}><Briefcase size={13} />{job.type}</span>
-                        <span style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-ink-2)", fontSize: 13 }}><Home size={13} />{job.remote} télétravail</span>
-                        <span style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-career)", fontSize: 13, fontWeight: 600 }}><Wallet size={13} />{job.salary}</span>
-                      </div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10, flexWrap: "wrap" }}>
+                      <h3 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(18px, 2vw, 24px)", fontWeight: 800, letterSpacing: "-0.02em", color: "var(--color-ink)" }}>{job.title}</h3>
+                      <span style={{ background: "var(--color-career-bg)", color: "var(--color-career)", borderRadius: 6, padding: "2px 9px", fontSize: 10, fontWeight: 800, letterSpacing: "0.06em" }}>{job.badge}</span>
                     </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
-                      <Link href="/carrieres/candidature"
-                        onClick={e => e.stopPropagation()}
-                        style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-career-dark)", color: "#fff", padding: "11px 20px", borderRadius: 9, fontSize: 13, fontWeight: 700, textDecoration: "none", transition: "filter 0.15s" }}
-                        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1.1)" }}
-                        onMouseLeave={e => { (e.currentTarget as HTMLElement).style.filter = "brightness(1)" }}
-                      >
-                        Postuler <ArrowRight size={13} />
-                      </Link>
-                      <div style={{ width: 32, height: 32, borderRadius: 8, background: "var(--color-career-bg)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--color-career)", flexShrink: 0 }}>
-                        {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                      </div>
+                    <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
+                      <span style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-ink-2)", fontSize: 13 }}><MapPin size={13} />{job.location}</span>
+                      <span style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-ink-2)", fontSize: 13 }}><Briefcase size={13} />{job.type}</span>
+                      <span style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-ink-2)", fontSize: 13 }}><Home size={13} />{job.remote} télétravail</span>
+                      <span style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-career)", fontSize: 13, fontWeight: 600 }}><Wallet size={13} />{job.salary}</span>
                     </div>
-                  </button>
-
-                  {/* Expanded content */}
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-                        style={{ overflow: "hidden" }}
-                      >
-                        <div id={`job-detail-${job.id}`} style={{ padding: "0 32px 32px", borderTop: "1px solid var(--color-border)" }}>
-                          {/* Intro */}
-                          <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.8, margin: "28px 0 28px", maxWidth: "72ch" }}>{job.intro}</p>
-
-                          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, marginBottom: 28 }} className="job-body">
-                            {/* Mission */}
-                            <div>
-                              <p style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 14 }}>La mission</p>
-                              <p style={{ color: "var(--color-ink-2)", fontSize: 14, lineHeight: 1.75, marginBottom: 18 }}>{job.desc}</p>
-                              <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
-                                {job.stack.map(s => (
-                                  <span key={s} style={{ background: "var(--color-career-bg)", border: "1px solid var(--color-career-border)", color: "var(--color-career)", borderRadius: 6, padding: "4px 10px", fontSize: 11, fontWeight: 700 }}>{s}</span>
-                                ))}
-                              </div>
-                            </div>
-
-                            {/* Profile */}
-                            <div>
-                              <p style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 14 }}>Profil recherché</p>
-                              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
-                                {job.profile.map(p => (
-                                  <li key={p} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
-                                    <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--color-career)", flexShrink: 0, marginTop: 6 }} />
-                                    <span style={{ color: "var(--color-ink-2)", fontSize: 14, lineHeight: 1.55 }}>{p}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          </div>
-
-                          {/* Daily */}
-                          <div style={{ padding: "24px 24px", borderRadius: 12, border: "1px solid var(--color-border)", background: "var(--color-bg-3)", marginBottom: 28 }}>
-                            <p style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 14 }}>Ta journée type</p>
-                            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }} className="daily-grid">
-                              {job.daily.map((d, j) => (
-                                <div key={j} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
-                                  <span style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 11, fontWeight: 800, color: "var(--color-career)", flexShrink: 0, marginTop: 1 }}>{String(j + 1).padStart(2, "0")}</span>
-                                  <span style={{ fontSize: 13, color: "var(--color-ink-2)", lineHeight: 1.55 }}>{d}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-
-                          {/* Process */}
-                          <div>
-                            <p style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 16 }}>Le process de recrutement</p>
-                            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10 }} className="process-grid">
-                              {job.process.map((p, j) => (
-                                <div key={p.step} style={{ padding: "16px 18px", borderRadius: 10, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)" }}>
-                                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
-                                    <div style={{ width: 22, height: 22, borderRadius: 6, background: "rgba(var(--color-career),0.15)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, color: "var(--color-career)", flexShrink: 0 }}>{j + 1}</div>
-                                  </div>
-                                  <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 12, fontWeight: 700, marginBottom: 5 }}>{p.step.replace(/^\d\.\s/, "")}</p>
-                                  <p style={{ fontSize: 11, color: "var(--color-ink-2)", lineHeight: 1.55 }}>{p.desc}</p>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              )
-            })}
+                  </div>
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-career-dark)", color: "#fff", padding: "11px 20px", borderRadius: 9, fontSize: 13, fontWeight: 700, whiteSpace: "nowrap" }}>
+                    Voir l&apos;offre <ArrowRight size={13} />
+                  </span>
+                </Link>
+              </motion.div>
+            ))}
           </div>
         </Container>
       </section>
@@ -297,18 +144,14 @@ export default function Offres() {
       <style>{`
         @media(max-width:1023px){
           .profiles-grid{grid-template-columns:repeat(2,1fr) !important}
-          .process-grid{grid-template-columns:repeat(2,1fr) !important}
         }
         @media(max-width:767px){
-          .job-body{grid-template-columns:1fr !important;gap:24px !important}
-          .daily-grid{grid-template-columns:1fr !important}
           .profiles-grid{grid-template-columns:repeat(2,1fr) !important}
-          .process-grid{grid-template-columns:repeat(2,1fr) !important}
         }
         @media(max-width:479px){
           .profiles-grid{grid-template-columns:1fr !important}
-          .process-grid{grid-template-columns:1fr !important}
         }
+        .job-card:hover{border-color:var(--color-career-border-hover) !important;background:var(--color-career-bg) !important}
       `}</style>
     </>
   )
