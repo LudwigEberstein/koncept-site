@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     default: `${SITE.name} | ESN à taille humaine à Toulouse`,
   },
   description: "Koncept, ESN toulousaine à taille humaine : développement logiciel, accompagnement technique et fonctionnel, pilotage de projets IT.",
+  // L'image (opengraph-image.tsx) est ajoutée automatiquement. Titre, description et URL de chaque page : voir resolveOpenGraph de Next.
+  openGraph: { type: 'website', siteName: SITE.name, locale: 'fr_FR' },
+  twitter: { card: 'summary_large_image' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
