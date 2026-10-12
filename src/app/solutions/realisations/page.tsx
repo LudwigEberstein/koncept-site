@@ -6,12 +6,8 @@ import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
 import Container from "@/components/ui/Container"
 import Eyebrow from "@/components/ui/Eyebrow"
-import ToValidate from "@/components/ui/ToValidate"
 
-/** Trame d'une réalisation : contexte, intervention, technologies, résultat. Les contenus restent à fournir. */
-const FIELDS = ["Contexte", "Notre intervention", "Technologies", "Résultat"] as const
-
-/** Références pressenties, en attente de validation (client autorisé à être cité, contenu de chaque fiche). */
+/** Références à présenter : les fiches (contexte, intervention, technologies, résultat) restent à rédiger. */
 const REFERENCES = ["oOLive", "Jade", "Édition Compagnon"] as const
 
 export default function Realisations() {
@@ -44,14 +40,7 @@ export default function Realisations() {
                 style={{ padding: "30px 28px", borderRadius: 16, border: "1px solid var(--color-border)", display: "flex", flexDirection: "column", gap: 18 }}
               >
                 <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 24, fontWeight: 800, letterSpacing: "-0.02em" }}>{client}</h2>
-                <dl style={{ display: "flex", flexDirection: "column", gap: 12, margin: 0 }}>
-                  {FIELDS.map(label => (
-                    <div key={label} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, paddingTop: 12, borderTop: "1px solid var(--color-border)" }}>
-                      <dt style={{ color: "var(--color-ink-2)", fontSize: 13, fontWeight: 600 }}>{label}</dt>
-                      <dd style={{ margin: 0 }}><ToValidate variant="pill">À confirmer</ToValidate></dd>
-                    </div>
-                  ))}
-                </dl>
+                <p style={{ color: "var(--color-ink-2)", fontSize: 14, lineHeight: 1.6, margin: 0, paddingTop: 12, borderTop: "1px solid var(--color-border)" }}>Fiche à venir.</p>
               </motion.article>
             ))}
           </div>
