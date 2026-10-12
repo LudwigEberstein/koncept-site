@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Carrières',
-  description: 'Rejoignez Koncept IS à Toulouse : CDI en développement, DevOps, agilité, pilotage de projet et analyse fonctionnelle. Ambiance humaine, projets exigeants, budget dédié à la formation, 2j de télétravail.',
+  title: 'Carrières : rejoindre une ESN à taille humaine',
+  description: 'Rejoignez Koncept à Toulouse : développement, DevOps, agilité, pilotage de projet et analyse fonctionnelle, dans une ESN où chacun est connu et suivi.',
   alternates: { canonical: 'https://koncept-is.fr/carrieres' },
 }
 

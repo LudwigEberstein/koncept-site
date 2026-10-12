@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Candidature spontanée',
-  description: 'Pas de poste qui vous corresponde ? Envoyez une candidature spontanée à Koncept IS — développeur, architecte, DevOps, business analyst, product owner, scrum master, chef de projet. Valentine répond personnellement.',
+  title: 'Candidature spontanée : tous nos métiers',
+  description: 'Pas de poste qui vous correspond ? Envoyez une candidature spontanée à Koncept : développement, architecture, DevOps, analyse, agilité, gestion de projet.',
   alternates: { canonical: 'https://koncept-is.fr/carrieres/candidature' },
 }
 
