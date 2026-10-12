@@ -14,7 +14,7 @@ export default function HomeHero() {
           <motion.p style={{ color: "var(--color-accent-text)", fontSize: 12, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 24 }}
             initial={reduce ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          >ESN à taille humaine · Toulouse</motion.p>
+          >ESN à Toulouse · À taille humaine</motion.p>
 
           <motion.h1 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(44px, 5.5vw, 80px)", fontWeight: 800, lineHeight: 1.05, letterSpacing: "-0.03em", margin: "0 0 28px" }}
             initial={reduce ? false : { opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }}
