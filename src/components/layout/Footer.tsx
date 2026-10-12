@@ -18,7 +18,7 @@ export default function Footer() {
         <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr 1fr", gap: 48, marginBottom: 48 }} className="footer-grid">
           {/* Brand */}
           <div>
-            <Image src={IMAGES.logo} alt="Koncept IS" width={120} height={28} style={{ height: 28, width: "auto", objectFit: "contain", marginBottom: 16 }} />
+            <Image src={IMAGES.logo} alt="Koncept" width={120} height={28} style={{ height: 28, width: "auto", objectFit: "contain", marginBottom: 16 }} />
             <p style={{ color: "var(--color-ink-2)", fontSize: 13, lineHeight: 1.7, marginBottom: 16 }}>
               ESN toulousaine à taille humaine. Développement logiciel et accompagnement technique et fonctionnel depuis 2014.
             </p>
@@ -87,12 +87,20 @@ export default function Footer() {
         {/* Bottom row */}
         <div style={{ borderTop: "1px solid var(--color-border)", paddingTop: 24, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
           <p style={{ color: "var(--color-ink-2)", fontSize: 12 }}>
-            &copy; <YearClient /> Koncept IS — ESN Toulousaine. Site par{" "}
+            &copy; <YearClient /> Koncept — ESN Toulousaine. Site par{" "}
             <a href="https://devantia.vercel.app" style={{ color: "var(--color-accent-text)", textDecoration: "none" }}>Devantia</a>.
             <span className="konami-footer-hint" aria-hidden="true" title="Psst…" style={{ marginLeft: 14, opacity: 0.22, letterSpacing: "0.12em", fontSize: 11, userSelect: "none" }}>↑ ↑ ↓ ↓ ← → ← → B A</span>
           </p>
+          <nav aria-label="Informations légales" style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
+            {[{ label: "Mentions légales", href: "/mentions-legales" }, { label: "Confidentialité", href: "/politique-de-confidentialite" }].map(({ label, href }) => (
+              <Link key={href} href={href} style={{ color: "var(--color-ink-2)", fontSize: 12, textDecoration: "none", transition: "color 0.2s" }}
+                onMouseEnter={e => (e.currentTarget.style.color = "var(--color-ink)")}
+                onMouseLeave={e => (e.currentTarget.style.color = "var(--color-ink-2)")}
+              >{label}</Link>
+            ))}
+          </nav>
           <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer"
-            aria-label="Koncept IS sur LinkedIn"
+            aria-label="Koncept sur LinkedIn"
             style={{ color: "var(--color-ink-2)", display: "flex", alignItems: "center", gap: 6, fontSize: 12, textDecoration: "none", transition: "color 0.2s" }}
             onMouseEnter={e => (e.currentTarget.style.color = "var(--color-ink)")}
             onMouseLeave={e => (e.currentTarget.style.color = "var(--color-ink-2)")}

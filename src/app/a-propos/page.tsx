@@ -18,7 +18,7 @@ const MILESTONES = [
   {
     year: "2014",
     label: "Fondation à Toulouse",
-    desc: "Gérard fonde Koncept IS avec une conviction : faire une ESN différente, à taille humaine, centrée sur la relation avec ses clients et ses consultants.",
+    desc: "Gérard fonde Koncept avec une conviction : faire une ESN différente, à taille humaine, centrée sur la relation avec ses clients et ses consultants.",
   },
   {
     year: "Aujourd'hui",
@@ -35,7 +35,7 @@ const DIRIGEANTS = [
     imgBack: "/team/gerard-back.png",
     pos: "50% 10%",
     posBack: "50% 10%",
-    bio: "Fondateur de Koncept IS, Gérard a bâti l'ESN sur un principe simple : que chaque client soit suivi par quelqu'un qui comprend son métier en profondeur.",
+    bio: "Fondateur de Koncept, Gérard a bâti l'ESN sur un principe simple : que chaque client soit suivi par quelqu'un qui comprend son métier en profondeur.",
     quote: "On ne veut pas être la plus grande ESN de Toulouse. On veut être la meilleure pour nos clients.",
   },
   {
@@ -104,7 +104,7 @@ export default function APropos() {
               style={{ color: "var(--color-accent-text)", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
             >
-              À propos de Koncept IS
+              À propos de Koncept
             </motion.p>
             <motion.h1
               style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(36px, 5.5vw, 80px)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 24 }}
@@ -116,7 +116,7 @@ export default function APropos() {
               style={{ color: "var(--color-ink-2)", fontSize: 17, lineHeight: 1.75, maxWidth: "50ch", marginBottom: 36 }}
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.1 }}
             >
-              Fondée à Toulouse en 2014, Koncept IS est une ESN à taille humaine. Notre priorité : la proximité avec nos clients et l'accompagnement de nos consultants.
+              Fondée à Toulouse en 2014, Koncept est une ESN à taille humaine. Notre priorité : la proximité avec nos clients et l'accompagnement de nos consultants.
             </motion.p>
             <motion.div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.18 }}
@@ -141,7 +141,7 @@ export default function APropos() {
             style={{ borderRadius: 20, overflow: "hidden", aspectRatio: "4/3", position: "relative" }}
             initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           >
-            <Image src={IMAGES.team} alt="L'équipe Koncept IS" fill sizes="(max-width: 1023px) 100vw, 50vw" style={{ objectFit: "cover" }} />
+            <Image src={IMAGES.team} alt="L'équipe Koncept" fill sizes="(max-width: 1023px) 100vw, 50vw" style={{ objectFit: "cover" }} />
           </motion.div>
         </div>
       </HeroSection>

@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Vie chez Koncept',
-  description: 'Découvrez le quotidien chez Koncept IS : stand-up à 9h30, deep work, déjeuners partagés, jeudi mousse, weekend d\'agence, télétravail 2j/semaine, mutuelle prise en charge, outils premium. La vraie vie d\'une ESN humaine.',
-  alternates: { canonical: 'https://koncept-is.fr/carrieres/vie' },
+  title: 'Ambiance et quotidien dans notre équipe toulousaine',
+  description: "Rituels d'équipe, moments partagés, télétravail et outils : découvrez le quotidien chez Koncept, une ESN à taille humaine.",
+  alternates: { canonical: '/carrieres/vie' },
 }
 
 export default function VieLayout({ children }: { children: React.ReactNode }) {

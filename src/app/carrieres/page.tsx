@@ -120,7 +120,7 @@ export default function Carrieres() {
               style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
             >
-              Carrières · Rejoignez Koncept IS
+              Carrières · Rejoignez Koncept
             </motion.p>
             <motion.h1
               style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(38px, 5.5vw, 80px)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 24 }}

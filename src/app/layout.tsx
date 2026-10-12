@@ -22,11 +22,13 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  // Base des URL relatives des métadonnées (canonical, etc.) : le domaine ne vit qu'à un endroit.
+  metadataBase: new URL(SITE.url),
   title: {
     template: `%s | ${SITE.name}`,
-    default: `${SITE.name} | ESN à Toulouse - Java, .NET, DevOps`,
+    default: `${SITE.name} | ESN à taille humaine à Toulouse`,
   },
-  description: "ESN toulousaine à taille humaine : développement logiciel Java, .NET et Angular, accompagnement technique et fonctionnel de vos projets.",
+  description: "Koncept, ESN toulousaine à taille humaine : développement logiciel, accompagnement technique et fonctionnel, pilotage de projets IT.",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

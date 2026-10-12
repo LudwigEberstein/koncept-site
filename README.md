@@ -1,6 +1,6 @@
-# Koncept IS — site web
+# Koncept — site web
 
-Site marketing de Koncept IS (ESN toulousaine), construit avec Next.js App Router.
+Site marketing de Koncept (ESN toulousaine), construit avec Next.js App Router.
 
 ## Stack
 

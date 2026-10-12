@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Secteurs',
-  description: 'Les secteurs dans lesquels les consultants de Koncept IS interviennent : aéronautique, banque et assurance, télécoms, éditeurs de logiciels, transport et mobilité, recherche et secteur public.',
-  alternates: { canonical: 'https://koncept-is.fr/solutions/secteurs' },
+  title: "Secteurs d'intervention de nos consultants IT",
+  description: "Les secteurs d'activité dans lesquels les consultants de Koncept interviennent, et les enjeux métier propres à chacun.",
+  alternates: { canonical: '/solutions/secteurs' },
 }
 
 export default function SecteursLayout({ children }: { children: React.ReactNode }) {

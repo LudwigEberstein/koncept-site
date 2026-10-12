@@ -23,7 +23,7 @@ export default function HomeAbout() {
             Une vraie équipe,<br /><span style={{ color: "var(--color-accent)" }}>à Toulouse.</span>
           </h2>
           <p style={{ color: "var(--color-ink-2)", fontSize: 16, lineHeight: 1.7, marginBottom: 28, maxWidth: "48ch" }}>
-            Koncept est une ESN toulousaine fondée en 2014. Nous accompagnons des entreprises avec des consultants que nous connaissons et que nous suivons.
+            Koncept est une ESN (entreprise de services du numérique) fondée à Toulouse en 2014, installée au Parc Technologique du Canal. Nous accompagnons les entreprises dans leurs projets informatiques : développement logiciel, accompagnement technique et fonctionnel, pilotage de projet. Nos consultants, nous les connaissons et nous les suivons tout au long de leur mission.
           </p>
           <Link href="/a-propos" style={{ color: "var(--color-ink)", fontSize: 14, fontWeight: 600, textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 6 }}>
             En savoir plus sur nous <ArrowRight size={14} aria-hidden="true" />

@@ -15,7 +15,7 @@ type RequestType = "projet" | "candidature" | "partenariat" | "autre" | ""
 
 const REQUEST_TYPES: { id: Exclude<RequestType, "">; label: string; desc: string; icon: string }[] = [
   { id: "projet", label: "Projet IT", desc: "Développement, architecture, DevOps, renfort d'équipe", icon: "⚙" },
-  { id: "candidature", label: "Candidature", desc: "Rejoindre l'équipe Koncept IS", icon: "✦" },
+  { id: "candidature", label: "Candidature", desc: "Rejoindre l'équipe Koncept", icon: "✦" },
   { id: "partenariat", label: "Partenariat", desc: "Collaboration commerciale ou technique", icon: "◆" },
   { id: "autre", label: "Autre", desc: "Question, information, prise de contact", icon: "●" },
 ]
@@ -350,7 +350,7 @@ export default function Contact() {
               {[
                 { icon: <MapPin size={15} />, label: "Adresse", value: `${SITE.address.street}, ${SITE.address.city}`, href: undefined },
                 { icon: <Mail size={15} />, label: "Email", value: SITE.email, href: `mailto:${SITE.email}` },
-                { icon: <LinkedinIcon size={15} />, label: "LinkedIn", value: "Suivez Koncept IS", href: SITE.linkedin },
+                { icon: <LinkedinIcon size={15} />, label: "LinkedIn", value: "Suivez Koncept", href: SITE.linkedin },
               ].map(item => (
                 <div key={item.label} style={{ display: "flex", gap: 12, alignItems: "center", padding: "14px 16px", borderRadius: 10, border: "1px solid var(--color-border)", background: "var(--color-bg-2)" }}>
                   <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(var(--color-accent-rgb), 0.08)", color: "var(--color-accent-text)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>

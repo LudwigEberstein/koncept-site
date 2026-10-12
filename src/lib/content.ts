@@ -2,6 +2,7 @@
 
 export const SITE = {
   name: "Koncept",
+  url: "https://koncept-is.fr",
   tagline: "Les bonnes compétences, au bon moment.",
   address: {
     street: "3, Avenue de l'Europe",
@@ -10,6 +11,25 @@ export const SITE = {
   },
   linkedin: "https://www.linkedin.com/company/konceptkomet",
   email: "contact@koncept-is.fr",
+} as const
+
+/** Informations légales (mentions légales, politique de confidentialité). */
+export const LEGAL = {
+  /** Raison sociale telle qu'elle figure sur le site actuel. */
+  company: "KONCEPT",
+  legalForm: "Société par actions simplifiée (SAS)",
+  capital: "20 000 €",
+  siret: "799 808 761 00032",
+  rcs: "RCS Toulouse 799 808 761",
+  vat: "FR54799808761",
+  publicationDirector: "Gérard Pucheux, Président",
+  /** Date de dernière mise à jour des pages légales. */
+  updated: "12 octobre 2026",
+  host: {
+    name: "OVH SAS",
+    address: "2 rue Kellermann, BP 80157, 59053 Roubaix Cedex 1, France",
+    url: "https://www.ovhcloud.com",
+  },
 } as const
 
 /**
@@ -82,6 +102,9 @@ export const CAREER_EVENTS = [
   { title: "Barbecue d'été", freq: "L'été", desc: "Quand il fait beau, on sort les grills pour un moment détendu entre collègues." },
 ] as const
 
+/** Date de mise en ligne des offres (données structurées Google for Jobs) : à mettre à jour avec les vraies dates. */
+export const JOBS_DATE_POSTED = "2026-10-12"
+
 export const JOBS = [
   {
     title: "Développeur JS FullStack",
@@ -129,6 +152,6 @@ export const NAV_CAREER = [
 ] as const
 
 export const IMAGES = {
-  logo: "https://koncept-is.fr/wp-content/uploads/2025/07/logo-koncept-web.png",
-  team: "https://koncept-is.fr/wp-content/uploads/2025/07/Koncept-equipe.png",
+  logo: "/brand/logo-koncept-web.png",
+  team: "/brand/koncept-equipe.png",
 } as const

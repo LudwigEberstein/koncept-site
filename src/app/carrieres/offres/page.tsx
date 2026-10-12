@@ -4,7 +4,9 @@ import Link from "next/link"
 import { ArrowRight, MapPin, Briefcase, ChevronDown, ChevronUp, Home, Wallet } from "lucide-react"
 import { useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
-import { JOBS } from "@/lib/content"
+import { JOBS, JOBS_DATE_POSTED } from "@/lib/content"
+import { jobPostingJsonLd } from "@/lib/jsonld"
+import JsonLd from "@/components/seo/JsonLd"
 import { useFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
 import QuestMark from "@/components/ui/QuestMark"
@@ -28,6 +30,7 @@ const ENRICHED_JOBS = [
     badgeColor: "var(--color-career)",
     remote: "2j/semaine",
     salary: "35–40 K€",
+    salaryRange: [35000, 40000] as const,
     intro: "On cherche un dev JS fullstack passionné pour rejoindre une équipe chez l'un de nos clients grands comptes. Pas un dev de plus dans un open space — quelqu'un qui veut s'investir, proposer des architectures, et laisser sa marque sur un vrai produit.",
     daily: [
       "Feature development en React/Node.js sur un produit B2B utilisé par 50k+ utilisateurs",
@@ -44,6 +47,7 @@ const ENRICHED_JOBS = [
     badgeColor: "var(--color-career)",
     remote: "2j/semaine",
     salary: "40–45 K€",
+    salaryRange: [40000, 45000] as const,
     intro: "On cherche un·e Scrum Master confirmé·e pour accompagner des équipes de développement chez l'un de nos clients grands comptes. Quelqu'un qui sait faire vivre l'agilité au quotidien — sans dogme, avec du bon sens et de l'écoute.",
     daily: [
       "Animation des cérémonies Scrum : daily, planning, review, rétrospective",
@@ -73,6 +77,16 @@ export default function Offres() {
 
   return (
     <>
+      {ENRICHED_JOBS.map(job => (
+        <JsonLd key={job.id} data={jobPostingJsonLd({
+          title: job.title,
+          description: `${job.intro} ${job.desc}`,
+          datePosted: JOBS_DATE_POSTED,
+          salaryMin: job.salaryRange[0],
+          salaryMax: job.salaryRange[1],
+        })} />
+      ))}
+
       {/* ── Hero ── */}
       <HeroSection side="career" next="bg" paddingTop={140} paddingBottom={80}>
         <Container>
