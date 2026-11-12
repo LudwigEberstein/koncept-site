@@ -4,6 +4,7 @@ import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
 import KonamiCode from '@/components/layout/KonamiCode'
 import SpotlightCards from '@/components/layout/SpotlightCards'
+import { RETURNING_VISITOR_REDIRECT } from '@/components/gateway/side'
 import { SITE } from '@/lib/content'
 import './globals.css'
 
@@ -37,6 +38,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${outfit.variable} ${inter.variable}`}>
+      <head>
+        {/* Rendu par le serveur seulement (le layout racine n'est jamais recréé côté client) : exécuté avant l'affichage de « / » */}
+        <script dangerouslySetInnerHTML={{ __html: RETURNING_VISITOR_REDIRECT }} />
+      </head>
       <body style={{ background: "var(--color-bg)", color: "var(--color-ink)", fontFamily: "var(--font-body, Inter, sans-serif)" }}>
         <Nav />
         <main>{children}</main>

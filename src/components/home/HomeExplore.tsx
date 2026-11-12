@@ -7,8 +7,8 @@ import { useFadeUp } from "@/lib/motion"
 import Container from "@/components/ui/Container"
 
 const ENTRIES = [
-  { title: "Secteurs", desc: "Les environnements dans lesquels nos consultants interviennent.", href: "/solutions/secteurs" },
-  { title: "Méthodologie", desc: "Notre façon de travailler avec vous et avec nos consultants.", href: "/solutions/methodologie" },
+  { title: "Secteurs", desc: "Les environnements dans lesquels nous intervenons.", href: "/solutions/secteurs" },
+  { title: "Méthodologie", desc: "Notre façon de travailler avec vous et d'accompagner nos consultants.", href: "/solutions/methodologie" },
   { title: "Réalisations", desc: "Des exemples concrets de nos interventions.", href: "/solutions/realisations" },
 ] as const
 

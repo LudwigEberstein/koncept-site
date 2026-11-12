@@ -3,22 +3,25 @@
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { Gamepad2 } from "lucide-react"
 import LinkedinIcon from "@/components/ui/LinkedinIcon"
-import { SITE, NAV_CLIENT, NAV_CAREER, IMAGES } from "@/lib/content"
+import { SITE, NAV_CLIENT, NAV_CAREER, IMAGES, GEEK_REFERENCES } from "@/lib/content"
 import { YearClient } from "./YearClient"
 
 export default function Footer() {
   const pathname = usePathname()
   if (pathname === "/") return null
+  const isSolutions = pathname.startsWith("/solutions")
+  const isCareer = pathname.startsWith("/carrieres")
   return (
-    <footer data-side={pathname.startsWith("/solutions") ? "pro" : undefined} style={{ background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
+    <footer data-side={isSolutions ? "pro" : undefined} style={{ background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
       <div style={{ maxWidth: 1320, margin: "0 auto", padding: "56px 24px 32px" }}>
 
         {/* Top row */}
         <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr 1fr", gap: 48, marginBottom: 48 }} className="footer-grid">
           {/* Brand */}
           <div>
-            <Image src={IMAGES.logo} alt="Koncept" width={120} height={28} style={{ height: 28, width: "auto", objectFit: "contain", marginBottom: 16 }} />
+            <Image src={IMAGES.logo} alt="Koncept" width={139} height={28} style={{ width: 139, height: 28, objectFit: "contain", marginBottom: 16 }} />
             <p style={{ color: "var(--color-ink-2)", fontSize: 13, lineHeight: 1.7, marginBottom: 16 }}>
               ESN toulousaine à taille humaine. Développement logiciel et accompagnement technique et fonctionnel depuis 2014.
             </p>
@@ -67,20 +70,26 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* CTA block */}
+          {/* CTA block : un seul bouton dans chaque parcours, les deux sur les pages communes (À propos, pages légales) */}
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-            <Link href="/solutions/contact" style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "13px 18px", borderRadius: 9, background: "var(--color-accent)", color: "#fff", fontSize: 13, fontWeight: 700, textDecoration: "none", textAlign: "center", transition: "filter 0.15s" }}
+            {!isCareer && <Link href="/solutions/contact" style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "13px 18px", borderRadius: 9, background: "var(--color-accent)", color: "#fff", fontSize: 13, fontWeight: 700, textDecoration: "none", textAlign: "center", transition: "filter 0.15s" }}
               onMouseEnter={e => (e.currentTarget.style.filter = "brightness(1.1)")}
               onMouseLeave={e => (e.currentTarget.style.filter = "brightness(1)")}
             >
               Parlons de votre projet
-            </Link>
-            <Link href="/carrieres/offres" style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "12px 18px", borderRadius: 9, background: "var(--color-career-bg)", color: "var(--color-career)", fontSize: 13, fontWeight: 700, textDecoration: "none", textAlign: "center", border: "1px solid var(--color-career-border)", transition: "background 0.15s" }}
+            </Link>}
+            {!isSolutions && <Link href="/carrieres/offres" style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "12px 18px", borderRadius: 9, background: "var(--color-career-bg)", color: "var(--color-career)", fontSize: 13, fontWeight: 700, textDecoration: "none", textAlign: "center", border: "1px solid var(--color-career-border)", transition: "background 0.15s" }}
               onMouseEnter={e => (e.currentTarget.style.background = "var(--color-career-bg-hover)")}
               onMouseLeave={e => (e.currentTarget.style.background = "var(--color-career-bg)")}
             >
               Voir les offres d&apos;emploi
-            </Link>
+            </Link>}
+            {isCareer && (
+              <p style={{ display: "flex", gap: 10, alignItems: "flex-start", marginTop: 6, color: "var(--color-ink-2)", fontSize: 13, lineHeight: 1.55 }}>
+                <Gamepad2 size={18} aria-hidden="true" style={{ color: "var(--color-career)", flexShrink: 0, marginTop: 1 }} />
+                <span>As-tu trouvé les {GEEK_REFERENCES.length} références geek de notre site ?</span>
+              </p>
+            )}
           </div>
         </div>
 

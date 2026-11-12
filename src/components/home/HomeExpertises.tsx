@@ -20,7 +20,7 @@ export default function HomeExpertises() {
               Ce que nous faisons.
             </h2>
             <p style={{ color: "var(--color-ink-2)", fontSize: 16, lineHeight: 1.6, marginTop: 14 }}>
-              Développement, DevOps, données et pilotage de projet.
+              Développement, DevOps et cloud, accompagnement fonctionnel et pilotage de projet.
             </p>
           </div>
           <Link href="/solutions/expertises" style={{ display: "flex", alignItems: "center", gap: 6, color: "var(--color-ink-2)", fontSize: 13, fontWeight: 600, textDecoration: "none" }}>
@@ -33,7 +33,7 @@ export default function HomeExpertises() {
             <motion.div key={exp.slug} className="glass-card" {...fadeUp(i * 0.06)}
               style={{ padding: "28px 26px", borderRadius: 14, border: "1px solid var(--color-border)", display: "flex", flexDirection: "column", gap: 12 }}
             >
-              <Eyebrow mb={0}>{exp.short}</Eyebrow>
+              <Eyebrow mb={0} size="sm">{exp.short}</Eyebrow>
               <h3 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 19, fontWeight: 700, letterSpacing: "-0.01em" }}>{exp.title}</h3>
               <p style={{ color: "var(--color-ink-2)", fontSize: 14, lineHeight: 1.6, flex: 1 }}>{exp.desc}</p>
               <p style={{ margin: 0, paddingTop: 14, borderTop: "1px solid var(--color-border)", color: "var(--color-ink-2)", opacity: 0.8, fontSize: 12.5, lineHeight: 1.7 }}>

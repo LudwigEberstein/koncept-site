@@ -123,7 +123,6 @@ export default function Methodologie() {
       <CtaBand side="pro" prev="bg" title="Échangeons sur votre besoin."
         text="Un premier échange suffit pour voir si nous pouvons vous aider."
         primary={{ label: "Nous contacter", href: "/solutions/contact" }}
-        secondary={{ label: "Voir nos expertises", href: "/solutions/expertises" }}
       />
 
       <style>{`

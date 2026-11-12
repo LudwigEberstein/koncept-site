@@ -11,11 +11,10 @@ import Container from "@/components/ui/Container"
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
-type RequestType = "projet" | "candidature" | "partenariat" | "autre" | ""
+type RequestType = "projet" | "partenariat" | "autre" | ""
 
 const REQUEST_TYPES: { id: Exclude<RequestType, "">; label: string; desc: string; icon: string }[] = [
   { id: "projet", label: "Projet IT", desc: "Développement, architecture, DevOps, renfort d'équipe", icon: "⚙" },
-  { id: "candidature", label: "Candidature", desc: "Rejoindre l'équipe Koncept", icon: "✦" },
   { id: "partenariat", label: "Partenariat", desc: "Collaboration commerciale ou technique", icon: "◆" },
   { id: "autre", label: "Autre", desc: "Question, information, prise de contact", icon: "●" },
 ]
@@ -28,13 +27,6 @@ const CONTACTS: Record<Exclude<RequestType, "">, { name: string; role: string; i
     img: "/team/aurelie-front.jpg",
     pos: "50% 10%",
     intro: "Je comprends votre besoin et vous propose les bons profils.",
-  },
-  candidature: {
-    name: "Valentine",
-    role: "Directrice RH",
-    img: "/team/valentine-front.jpg",
-    pos: "50% 8%",
-    intro: "Je lis chaque candidature avec attention. Même sans poste ouvert, n'hésitez pas à nous écrire.",
   },
   partenariat: {
     name: "Gérard",
@@ -59,11 +51,6 @@ const NEXT_STEPS: Record<Exclude<RequestType, "">, { step: string; desc: string 
     { step: "Échange sur votre besoin", desc: "Un premier échange pour comprendre votre contexte, vos contraintes et le profil recherché." },
     { step: "Proposition adaptée", desc: "Nous vous proposons des profils et des modalités d'intervention adaptés." },
   ],
-  candidature: [
-    { step: "Lecture de votre candidature", desc: "Valentine lit chaque candidature et vous répond personnellement." },
-    { step: "Premier échange", desc: "Un échange pour faire connaissance et vous présenter Koncept." },
-    { step: "Rencontre avec l'équipe", desc: "Si le profil correspond, un entretien avec l'équipe technique." },
-  ],
   partenariat: [
     { step: "Prise de contact", desc: "Gérard ou Aurélie revient vers vous pour évaluer l'intérêt d'un échange." },
     { step: "Présentation mutuelle", desc: "Nous prenons le temps de nous connaître avant tout engagement." },
@@ -80,7 +67,7 @@ const NEXT_STEPS: Record<Exclude<RequestType, "">, { step: string; desc: string 
 
 export default function Contact() {
   const [type, setType] = useState<RequestType>("")
-  const [form, setForm] = useState({ prenom: "", nom: "", email: "", phone: "", societe: "", budget: "", message: "" })
+  const [form, setForm] = useState({ prenom: "", nom: "", email: "", societe: "", budget: "", message: "" })
   const [submitted, setSubmitted] = useState(false)
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
@@ -115,7 +102,7 @@ export default function Contact() {
       <HeroSection side="pro" next="bg" paddingTop={140} paddingBottom={72}>
         <Container>
           <motion.p
-            style={{ color: "var(--color-accent-text)", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
+            style={{ color: "var(--color-accent-text)", fontSize: 18, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
           >
             Contact
@@ -130,7 +117,7 @@ export default function Contact() {
             style={{ color: "var(--color-ink-2)", fontSize: 17, lineHeight: 1.7, maxWidth: "52ch", marginBottom: 0 }}
             initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.1 }}
           >
-            Projet, candidature ou simple question : écrivez-nous, quelqu'un de l'équipe vous répond.
+            Projet, partenariat ou simple question : écrivez-nous, quelqu'un de l'équipe vous répond.
           </motion.p>
         </Container>
       </HeroSection>
@@ -171,7 +158,7 @@ export default function Contact() {
                   <p style={{ ...labelStyle, fontSize: 13, marginBottom: 12 }}>
                     <span style={{ color: "var(--color-accent-text)", fontWeight: 800 }}>01</span>&nbsp; Quel est l&apos;objet de votre demande ?
                   </p>
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10 }} className="type-grid">
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }} className="type-grid">
                     {REQUEST_TYPES.map(rt => {
                       const isSelected = type === rt.id
                       return (
@@ -221,16 +208,10 @@ export default function Contact() {
                         </div>
                       </div>
 
-                      {/* Email + Phone */}
-                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }} className="name-grid">
-                        <div>
-                          <label style={labelStyle}>Email</label>
-                          <input name="email" type="email" value={form.email} onChange={handleChange} required placeholder="jean.dupont@email.com" style={inputStyle} onFocus={focusRed} onBlur={blurReset} />
-                        </div>
-                        <div>
-                          <label style={labelStyle}>Téléphone <span style={{ fontWeight: 400 }}>(optionnel)</span></label>
-                          <input name="phone" type="tel" value={form.phone} onChange={handleChange} placeholder="+33 6 00 00 00 00" style={inputStyle} onFocus={focusRed} onBlur={blurReset} />
-                        </div>
+                      {/* Email */}
+                      <div>
+                        <label style={labelStyle}>Email</label>
+                        <input name="email" type="email" value={form.email} onChange={handleChange} required placeholder="jean.dupont@email.com" style={inputStyle} onFocus={focusRed} onBlur={blurReset} />
                       </div>
 
                       {/* Société + Budget — only for projet */}
@@ -256,14 +237,12 @@ export default function Contact() {
                       {/* Message */}
                       <div>
                         <label style={labelStyle}>
-                          {type === "projet" ? "Décrivez votre projet" : type === "candidature" ? "Parlez-nous de vous" : "Votre message"}
+                          {type === "projet" ? "Décrivez votre projet" : "Votre message"}
                         </label>
                         <textarea name="message" value={form.message} onChange={handleChange} required rows={6}
                           placeholder={
                             type === "projet"
                               ? "Contexte du projet, stack existante, délais, enjeux principaux..."
-                              : type === "candidature"
-                              ? "Votre parcours, vos technologies de prédilection, ce que vous cherchez..."
                               : "Décrivez votre demande..."
                           }
                           style={{ ...inputStyle, resize: "vertical", lineHeight: 1.7 }}
@@ -405,7 +384,6 @@ export default function Contact() {
           .contact-grid{grid-template-columns:1fr !important}
         }
         @media(max-width:767px){
-          .type-grid{grid-template-columns:repeat(2,1fr) !important}
           .name-grid{grid-template-columns:1fr !important}
         }
         @media(max-width:479px){

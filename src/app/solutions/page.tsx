@@ -23,7 +23,6 @@ export default function Home() {
       <CtaBand side="pro" prev="bg2" title="Parlons de votre besoin."
         text="Décrivez-nous votre contexte : nous vous répondons simplement et directement."
         primary={{ label: "Nous contacter", href: "/solutions/contact" }}
-        secondary={{ label: "Rejoindre l'équipe", href: "/carrieres" }}
       />
     </>
   )

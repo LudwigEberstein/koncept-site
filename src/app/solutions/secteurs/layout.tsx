@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: "Secteurs d'intervention de nos consultants IT",
-  description: "Les secteurs d'activité dans lesquels les consultants de Koncept interviennent, et les enjeux métier propres à chacun.",
+  description: "Les secteurs d'activité dans lesquels les consultants de Koncept interviennent, de la TPE au grand compte, et les enjeux métier propres à chacun.",
   alternates: { canonical: '/solutions/secteurs' },
 }
 

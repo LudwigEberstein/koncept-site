@@ -1,7 +1,8 @@
 'use client'
 
+import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, Play, Coffee, Gamepad2, Bike, Dices, Pizza, Terminal, BookOpen, ClipboardList, Mail, Heart } from "lucide-react"
+import { ArrowRight, Play, Coffee, Gamepad2, Bike, Dices, Pizza, Music, BookOpen, ClipboardList, Mail, Heart, UserRound } from "lucide-react"
 import { motion } from "motion/react"
 import { useFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
@@ -10,6 +11,7 @@ import SquidShape, { type Shape } from "@/components/ui/SquidShape"
 import KonamiHint from "@/components/ui/KonamiHint"
 import Eyebrow from "@/components/ui/Eyebrow"
 import Container from "@/components/ui/Container"
+import { FEATURED_PORTRAITS, getCollaborators } from "@/lib/content"
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 
@@ -32,7 +34,7 @@ const WHY_US: { shape: Shape; title: string; desc: string }[] = [
   {
     shape: "circle",
     title: "Des projets variés",
-    desc: "Aéronautique, banque et assurance, télécoms, transport… Des contextes exigeants, des enjeux réels, des projets qui font progresser.",
+    desc: "Aéronautique et spatial, banque, assurance et santé, télécoms, transport… Des contextes exigeants, des enjeux réels, des projets qui font progresser.",
   },
   {
     shape: "triangle",
@@ -42,7 +44,7 @@ const WHY_US: { shape: Shape; title: string; desc: string }[] = [
   {
     shape: "square",
     title: "Une vraie culture d'équipe",
-    desc: "Gaming, moto, café, katas et ateliers. L'esprit d'équipe est réel ici — pas un argument de recrutement.",
+    desc: "Gaming, moto, café, repas, musique et sport. L'esprit d'équipe est réel ici — pas un argument de recrutement.",
   },
 ]
 
@@ -50,7 +52,7 @@ const DNA_ITEMS = [
   {
     icon: Coffee,
     label: "Café du matin",
-    desc: "La machine Nespresso est sacrée. Les réunions commencent après le deuxième café — c'est une règle non-écrite depuis 2015.",
+    desc: "La machine à café est sacrée. Règle d'or : ne parle pas à Aurélie avant son premier café.",
   },
   {
     icon: Gamepad2,
@@ -70,32 +72,17 @@ const DNA_ITEMS = [
   {
     icon: Pizza,
     label: "Vendredi pizza",
-    desc: "Si le sprint est bouclé à l'heure, c'est pizza. L'incentive qui marche à tous les coups depuis 2016.",
+    desc: "Le vendredi midi, c'est pizza. Au même titre que le jeudi, c'est mousse.",
   },
   {
-    icon: Terminal,
-    label: "Katas & ateliers",
-    desc: "Sessions hebdo volontaires, ouvertes à tous — algos, archi, mais aussi agilité et cadrage. Pas de slides : un écran partagé, des ateliers, et de la discussion franche.",
+    icon: Music,
+    label: "Sport & musique",
+    desc: "Escalade, foot en salle… Et côté musique, le match est serré : Florent et ses boum-boum contre Fred et son jazz-rock.",
   },
 ]
 
-const PORTRAITS = [
-  {
-    name: "Thomas",
-    title: "Développeur Java",
-    quote: "Ce qui m'a gardé ici, c'est qu'on me fait confiance sur les sujets techniques. Je ne suis pas une ressource — je suis un expert.",
-  },
-  {
-    name: "Sarah",
-    title: "Architecte Solution",
-    quote: "J'ai refusé des offres mieux payées pour rester. L'environnement et les projets n'ont pas de prix.",
-  },
-  {
-    name: "Camille",
-    title: "Scrum Master",
-    quote: "Ici, on me demande mon avis sur la façon de faire avancer l'équipe, pas seulement d'animer des cérémonies. L'agilité, c'est du bon sens et de l'écoute.",
-  },
-]
+/** Citations : extraites des portraits de /carrieres/vie (source : COLLABORATORS). */
+const PORTRAITS = getCollaborators(FEATURED_PORTRAITS.carrieres)
 
 const SUB_PAGES = [
   { href: "/carrieres/vie", label: "Vie chez Koncept", desc: "La culture, les events, l'ADN quotidien.", icon: Heart },
@@ -117,7 +104,7 @@ export default function Carrieres() {
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "minmax(0, 720px)", gap: 80, alignItems: "center" }} className="hero-grid">
           <div>
             <motion.p
-              style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
+              style={{ fontSize: 18, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
             >
               Carrières · Rejoignez Koncept
@@ -132,7 +119,7 @@ export default function Carrieres() {
               style={{ color: "var(--color-ink-2)", fontSize: 17, lineHeight: 1.75, maxWidth: "48ch", marginBottom: 36 }}
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.1 }}
             >
-              Pas de process RH kafkaïen. Pas de grille de compétences à remplir.
+              Pas de recrutement à rallonge : on se dit vite si ça matche.
               Si tu es passionné, honnête et que tu veux t'investir sur de vrais projets, techniques ou fonctionnels — on veut te rencontrer.
             </motion.p>
             <motion.div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 32 }}
@@ -202,7 +189,7 @@ export default function Carrieres() {
               Entre deux deploys,<br />on a une vraie vie.
             </h2>
             <p style={{ color: "var(--color-ink-2)", fontSize: 16, lineHeight: 1.7, maxWidth: "56ch", marginBottom: 52 }}>
-              La culture geek n&apos;est pas un argument de recrutement : c&apos;est ce qui se passe entre deux deploys, au déjeuner et le vendredi soir.
+              La culture geek n&apos;est pas un argument de recrutement : c&apos;est ce qui se passe une fois le PC fermé.
             </p>
           </motion.div>
           {/* Mona Lisa : à droite de l'en-tête, dans le flux (ne rallonge pas la section, ne recouvre aucun texte) */}
@@ -249,10 +236,15 @@ export default function Carrieres() {
                 <span aria-hidden="true" style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 64, fontWeight: 800, lineHeight: 0.6, color: "var(--side2)", opacity: 0.9, height: 28 }}>&ldquo;</span>
                 <blockquote style={{ margin: 0, fontSize: 15, lineHeight: 1.7, color: "var(--color-ink)", flex: 1 }}>{p.quote}</blockquote>
                 <figcaption style={{ display: "flex", alignItems: "center", gap: 12, borderTop: "1px solid var(--color-border)", paddingTop: 18 }}>
-                  <span aria-hidden="true" style={{ width: 40, height: 40, borderRadius: "50%", display: "grid", placeItems: "center", fontFamily: "var(--font-display, Outfit, sans-serif)", fontWeight: 800, fontSize: 16, color: "var(--side2)", border: "1.5px solid rgba(var(--side-rgb), .55)", background: "rgba(var(--side-rgb), .12)", flexShrink: 0 }}>{p.name[0]}</span>
+                  {p.img ? (
+                    <Image src={p.img} alt="" aria-hidden="true" width={40} height={40}
+                      style={{ width: 40, height: 40, borderRadius: "50%", objectFit: "cover", objectPosition: p.imgPos ?? "50% 20%", border: "1.5px solid rgba(var(--side-rgb), .55)", flexShrink: 0 }} />
+                  ) : (
+                    <span aria-hidden="true" style={{ width: 40, height: 40, borderRadius: "50%", display: "grid", placeItems: "center", color: "var(--side2)", border: "1.5px solid rgba(var(--side-rgb), .55)", background: "rgba(var(--side-rgb), .12)", flexShrink: 0 }}><UserRound size={18} /></span>
+                  )}
                   <span>
                     <span style={{ display: "block", fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 14, fontWeight: 700 }}>{p.name}</span>
-                    <span style={{ display: "block", color: "var(--side2)", fontSize: 11, fontWeight: 600 }}>{p.title}</span>
+                    <span style={{ display: "block", color: "var(--side2)", fontSize: 11, fontWeight: 600 }}>{p.role}</span>
                   </span>
                 </figcaption>
               </motion.figure>
@@ -264,11 +256,6 @@ export default function Carrieres() {
       {/* ── Nav sous-pages ── */}
       <section style={{ padding: "80px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
         <Container>
-          <motion.h2 {...fadeUp()}
-            style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(24px, 3vw, 40px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 40 }}
-          >
-            Explorer la section Carrières.
-          </motion.h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }} className="nav-grid">
             {SUB_PAGES.map((page, i) => (
               <motion.div key={page.href} {...fadeUp(i * 0.08)}>
@@ -290,7 +277,6 @@ export default function Carrieres() {
         title="Prêt·e à devenir Koncepteur·se ?"
         text="Des missions variées, une équipe soudée, un accompagnement de proximité — et de l'humour."
         primary={{ label: "Voir les offres d'emploi", href: "/carrieres/offres" }}
-        secondary={{ label: "Candidature spontanée", href: "/carrieres/candidature" }}
       />
 
       <style>{`

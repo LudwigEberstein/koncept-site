@@ -14,7 +14,6 @@ const WHAT_WE_COVER = [
   { icon: "🎤", label: "Conférences", desc: "Conférences et meetups toulousains (tech, agile, produit), pour rester connecté à la communauté locale. Les frais d'inscription sont pris en charge." },
   { icon: "📚", label: "Livres", desc: "Une wish-list de livres = budget formation. Clean Code, DDD, mais aussi Scrum Guide, Lean Startup, Team Topologies — on commande." },
   { icon: "🖥", label: "Plateformes en ligne", desc: "Udemy, Pluralsight, et les licences d'outils d'IA. Accès financé par Koncept pour monter en compétence en ligne." },
-  { icon: "⚡", label: "Kata club interne", desc: "Sessions hebdo volontaires, ouvertes à tous les métiers : code, agilité, cadrage. Présentées à tour de rôle." },
   { icon: "🔬", label: "Veille", desc: "30 min/semaine de veille libre pendant les heures de travail. Ce qu'on découvre est partagé en équipe." },
 ]
 
@@ -75,15 +74,6 @@ const CERTIFS = [
   { name: "ITIL 4", level: "Foundation", color: "#eab308" },
 ]
 
-const KATA_SESSIONS = [
-  { label: "Algo & Data Structures", desc: "LeetCode, Advent of Code. Pas pour l'entretien — pour le plaisir et la rigueur." },
-  { label: "Design Patterns", desc: "GoF, patterns d'entreprise, anti-patterns. Avec des exemples tirés des vrais projets Koncept." },
-  { label: "Architecture & DDD", desc: "Event storming, bounded contexts, CQRS/ES. Le niveau au-dessus du code propre." },
-  { label: "DevSecOps", desc: "Threat modeling, SAST/DAST, secrets management. La sécurité n'est pas une option." },
-  { label: "Agilité & facilitation", desc: "Rétrospectives, ateliers, user story mapping. Pour mieux travailler ensemble, pas seulement mieux coder." },
-  { label: "Cadrage & produit", desc: "Product discovery, priorisation, écriture de user stories. Le lien entre le besoin et le code." },
-]
-
 // ─── Page ───────────────────────────────────────────────────────────────────
 
 export default function Formation() {
@@ -97,7 +87,7 @@ export default function Formation() {
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }} className="hero-grid">
           <div>
             <motion.p
-              style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
+              style={{ fontSize: 18, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
             >
               Carrières · Formation et évolution
@@ -123,7 +113,7 @@ export default function Formation() {
               { value: "Dédié", label: "budget formation", sub: "Dès le 1er jour" },
               { value: "100 %", label: "certifs financées", sub: "Prises en charge par Koncept" },
               { value: "30 min", label: "veille/semaine", sub: "Temps libre dédié" },
-              { value: "Hebdo", label: "kata club", sub: "Sessions internes ouvertes à tous" },
+              { value: "Confs", label: "et meetups", sub: "Inscriptions prises en charge" },
             ].map(s => (
               <div className="glass-card" key={s.label} style={{ padding: "28px 22px", borderRadius: 14, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)", textAlign: "center" }}>
                 <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 800, color: "var(--color-career)", letterSpacing: "-0.03em" }}>{s.value}</p>
@@ -144,9 +134,10 @@ export default function Formation() {
               Prise en charge,<br />ta formation sera.
             </h2>
           </motion.div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }} className="covers-grid">
+          {/* Cartes en flex-wrap (.cover-card) : 3 par ligne sur desktop, 2 sur tablette, 1 sur mobile ; la dernière ligne s'étire, quel que soit le nombre d'éléments */}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 16 }}>
             {WHAT_WE_COVER.map((item, i) => (
-              <motion.div className="glass-card" key={item.label}
+              <motion.div className="glass-card cover-card" key={item.label}
                 style={{ display: "flex", gap: 18, padding: "28px 28px", borderRadius: 14, border: "1px solid var(--color-border)", background: "var(--color-bg-3)", alignItems: "flex-start" }}
                 {...fadeUp(i * 0.08)}
               >
@@ -198,42 +189,8 @@ export default function Formation() {
         </Container>
       </section>
 
-      {/* ── Kata Club ── */}
-      <section style={{ padding: "80px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }} className="kata-grid">
-          <motion.div {...fadeUp()} style={{ position: "relative" }}>
-            <Eyebrow tone="career">Kata Club</Eyebrow>
-            <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>
-              Une session<br />chaque semaine.
-            </h2>
-            <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.75, marginBottom: 24 }}>
-              Tous les jeudis, 1h de session volontaire, ouverte à tous les métiers. Pas de slides, pas de cours théorique — du code, un atelier, un écran partagé, et de la discussion franche entre pairs. Présentées à tour de rôle.
-            </p>
-            <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.75 }}>
-              Environ 60 % des Koncepteurs participent régulièrement. C&apos;est l&apos;endroit où les meilleures pratiques se transmettent vraiment.
-            </p>
-          </motion.div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-            {KATA_SESSIONS.map((s, i) => (
-              <motion.div key={s.label}
-                style={{ display: "flex", gap: 16, padding: "20px 24px", borderRadius: 12, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)", alignItems: "flex-start" }}
-                {...fadeUp(i * 0.08)}
-              >
-                <div style={{ width: 28, height: 28, borderRadius: 7, background: "rgba(var(--color-career),0.15)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 12, fontWeight: 800, color: "var(--color-career)" }}>
-                  {String(i + 1).padStart(2, "0")}
-                </div>
-                <div>
-                  <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 14, fontWeight: 700, marginBottom: 4 }}>{s.label}</p>
-                  <p style={{ color: "var(--color-ink-2)", fontSize: 13, lineHeight: 1.6 }}>{s.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── Trajectoires ── */}
-      <section style={{ padding: "96px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
+      <section style={{ padding: "96px 0", background: "var(--color-bg-2)", borderTop: "1px solid var(--color-border)" }}>
         <Container>
           <motion.div {...fadeUp()}>
             <Eyebrow tone="career">Évolution de carrière</Eyebrow>
@@ -276,20 +233,20 @@ export default function Formation() {
       </section>
 
       {/* ── CTA ── */}
-      <CtaBand side="career" prev="bg" title="Envie de progresser avec nous ?" text="On construit ta trajectoire ensemble dès l'entretien."
+      <CtaBand side="career" prev="bg2" title="Envie de progresser avec nous ?" text="On construit ta trajectoire ensemble dès l'entretien."
         primary={{ label: "Voir les offres", href: "/carrieres/offres" }}
       />
 
       <style>{`
+        .cover-card{flex:1 1 calc((100% - 33px) / 3)}
         @media(max-width:1023px){
-          .covers-grid{grid-template-columns:repeat(2,1fr) !important}
+          .cover-card{flex-basis:calc((100% - 17px) / 2)}
           .certifs-grid{grid-template-columns:repeat(3,1fr) !important}
           .paths-grid{grid-template-columns:1fr !important}
-          .kata-grid{grid-template-columns:1fr !important;gap:48px !important}
         }
         @media(max-width:767px){
           .hero-grid{grid-template-columns:1fr !important;gap:48px !important}
-          .covers-grid{grid-template-columns:1fr !important}
+          .cover-card{flex-basis:100%}
           .certifs-grid{grid-template-columns:repeat(2,1fr) !important}
         }
         @media(max-width:479px){

@@ -1,5 +1,6 @@
 /* design tokens — koncept */
 :root {
+  --nav-h:           68px; /* hauteur du header (barre + liseré de l'onglet actif) : source unique, aussi utilisée pour décaler les ancres */
   --color-bg:        #15151A;
   --color-bg-2:      #242430;
   --color-bg-3:      #2E2E3A;

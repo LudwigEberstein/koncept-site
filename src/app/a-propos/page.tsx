@@ -2,10 +2,10 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, UserRound } from "lucide-react"
 import LinkedinIcon from "@/components/ui/LinkedinIcon"
 import { motion } from "motion/react"
-import { IMAGES, SITE, VALUES, CAREER_EVENTS, DIFFERENTIATORS } from "@/lib/content"
+import { IMAGES, VALUES, CAREER_EVENTS, DIFFERENTIATORS, FEATURED_PORTRAITS, getCollaborators } from "@/lib/content"
 import { useFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
@@ -37,6 +37,7 @@ const DIRIGEANTS = [
     posBack: "50% 10%",
     bio: "Fondateur de Koncept, Gérard a bâti l'ESN sur un principe simple : que chaque client soit suivi par quelqu'un qui comprend son métier en profondeur.",
     quote: "On ne veut pas être la plus grande ESN de Toulouse. On veut être la meilleure pour nos clients.",
+    linkedin: "https://www.linkedin.com/in/g%C3%A9rard-pucheux-9426a3b5/",
   },
   {
     name: "Valentine",
@@ -48,6 +49,7 @@ const DIRIGEANTS = [
     posBack: "50% 10%",
     bio: "Valentine construit la culture Koncept de l'intérieur. Son obsession : que chaque Koncepteur trouve sa place et s'y épanouisse vraiment.",
     quote: "On recrute des gens, pas des compétences. Les compétences, ça s'apprend. La personnalité, non.",
+    linkedin: "https://www.linkedin.com/in/valentine-bordes-b4b5489a/",
   },
   {
     name: "Aurélie",
@@ -58,35 +60,12 @@ const DIRIGEANTS = [
     posBack: "50% 0%", // visage tout en haut de la photo
     bio: "Aurélie est l'interlocutrice de confiance des DSI et directeurs de projet. Elle porte la promesse Koncept à chaque avant-vente.",
     quote: "Je ne signe pas un contrat si je ne suis pas convaincue qu'on peut le tenir.",
+    linkedin: "https://www.linkedin.com/in/aur%C3%A9lie-sajous-88669212b/",
   },
 ]
 
-const PORTRAITS = [
-  {
-    name: "Thomas",
-    title: "Lead Développeur Java",
-    xp: "Collaborateur Koncept",
-    img: "https://picsum.photos/seed/thomas-lead-java-koncept/300/300",
-    quote: "Ce qui m'a gardé ici, c'est qu'on me fait confiance sur les sujets techniques. Je ne suis pas une ressource — je suis un expert.",
-    sector: "Aéronautique · Télécoms",
-  },
-  {
-    name: "Sarah",
-    title: "Architecte Solution",
-    xp: "Collaborateur Koncept",
-    img: "https://picsum.photos/seed/sarah-architecte-koncept/300/300",
-    quote: "J'ai refusé des offres mieux payées pour rester ici. L'environnement et les projets n'ont pas de prix.",
-    sector: "Banque & Assurance",
-  },
-  {
-    name: "Camille",
-    title: "Scrum Master",
-    xp: "Collaboratrice Koncept",
-    img: "https://picsum.photos/seed/camille-scrum-koncept/300/300",
-    quote: "Ici, on me demande mon avis sur la façon de faire avancer l'équipe, pas seulement d'animer des cérémonies. L'agilité, c'est du bon sens et de l'écoute.",
-    sector: "Agilité & pilotage",
-  },
-]
+/** Citations : extraites des portraits de /carrieres/vie (source : COLLABORATORS). */
+const PORTRAITS = getCollaborators(FEATURED_PORTRAITS.aPropos)
 
 // ─── Page ───────────────────────────────────────────────────────────────────
 
@@ -101,7 +80,7 @@ export default function APropos() {
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }} className="hero-grid">
           <div>
             <motion.p
-              style={{ color: "var(--color-accent-text)", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
+              style={{ color: "var(--color-accent-text)", fontSize: 18, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
             >
               À propos de Koncept
@@ -283,12 +262,12 @@ export default function APropos() {
                   <blockquote style={{ borderLeft: "2px solid var(--color-accent)", paddingLeft: 12, margin: "0 0 16px", flexGrow: 1 }}>
                     <p style={{ color: "var(--color-ink-2)", fontSize: 12, lineHeight: 1.65, fontStyle: "italic" }}>"{m.quote}"</p>
                   </blockquote>
-                  <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer"
+                  <a href={m.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${m.name} sur LinkedIn`}
                     style={{ display: "inline-flex", alignItems: "center", gap: 6, color: "var(--color-ink-2)", fontSize: 11, fontWeight: 600, textDecoration: "none", transition: "color 0.15s" }}
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "var(--color-ink)" }}
                     onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "var(--color-ink-2)" }}
                   >
-                    <LinkedinIcon size={13} /> LinkedIn
+                    <LinkedinIcon size={13} aria-hidden="true" /> LinkedIn
                   </a>
                 </div>
               </motion.div>
@@ -313,27 +292,31 @@ export default function APropos() {
                 className="portrait-row"
                 {...fadeUp(i * 0.1)}
               >
-                <Image
-                  src={p.img} alt={p.name}
-                  width={72} height={72}
-                  style={{ borderRadius: "50%", objectFit: "cover", border: "2px solid var(--color-border)", flexShrink: 0 }}
-                />
+                {p.img ? (
+                  <Image
+                    src={p.img} alt={p.name}
+                    width={72} height={72}
+                    style={{ borderRadius: "50%", objectFit: "cover", objectPosition: p.imgPos ?? "50% 20%", border: "2px solid var(--color-border)", flexShrink: 0 }}
+                  />
+                ) : (
+                  <span aria-hidden="true" style={{ width: 72, height: 72, borderRadius: "50%", display: "grid", placeItems: "center", color: "var(--color-accent-text)", border: "2px solid rgba(var(--color-accent-rgb), .45)", background: "rgba(var(--color-accent-rgb), .10)", flexShrink: 0 }}>
+                    <UserRound size={30} />
+                  </span>
+                )}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 24, alignItems: "center" }} className="portrait-inner">
                   <div>
                     <blockquote style={{ margin: "0 0 12px" }}>
-                      <p style={{ fontSize: 15, fontStyle: "italic", lineHeight: 1.65, color: "var(--color-ink)" }}>"{p.quote}"</p>
+                      <p style={{ fontSize: 15, fontStyle: "italic", lineHeight: 1.65, color: "var(--color-ink)" }}>&laquo;&nbsp;{p.quote}&nbsp;&raquo;</p>
                     </blockquote>
                     <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
                       <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 14, fontWeight: 700 }}>{p.name}</p>
                       <span style={{ width: 4, height: 4, borderRadius: "50%", background: "var(--color-border)" }} />
-                      <p style={{ color: "var(--color-ink-2)", fontSize: 13 }}>{p.title}</p>
-                      <span style={{ width: 4, height: 4, borderRadius: "50%", background: "var(--color-border)" }} />
-                      <p style={{ color: "var(--color-ink-2)", fontSize: 12 }}>{p.xp}</p>
+                      <p style={{ color: "var(--color-ink-2)", fontSize: 13 }}>{p.role}</p>
                     </div>
                   </div>
                   <div style={{ textAlign: "right", flexShrink: 0 }}>
                     <span style={{ fontSize: 11, fontWeight: 600, color: "var(--color-ink-2)", background: "var(--color-bg-2)", border: "1px solid var(--color-border)", padding: "4px 10px", borderRadius: 6, whiteSpace: "nowrap" }}>
-                      {p.sector}
+                      {p.badge}
                     </span>
                   </div>
                 </div>
@@ -412,7 +395,6 @@ export default function APropos() {
       {/* ── CTA final ── */}
       <CtaBand side="career" prev="bg" word="ENSEMBLE" title="Travaillons ensemble." text="Parlez-nous de votre besoin : nous vous répondons simplement et directement."
         primary={{ label: "Parlons de votre projet", href: "/solutions/contact" }}
-        secondary={{ label: "Rejoindre l'équipe", href: "/carrieres" }}
       />
 
       <style>{`

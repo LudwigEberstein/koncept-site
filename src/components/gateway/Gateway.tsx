@@ -85,7 +85,7 @@ export default function Gateway() {
       <h1 className="gw-sr">{SITE.name} — ESN à Toulouse : solutions IT pour les entreprises et carrières pour les métiers de l'IT</h1>
 
       <div className="gw-logo">
-        <Image src={IMAGES.logo} alt={SITE.name} width={120} height={30} priority />
+        <Image src={IMAGES.logo} alt={SITE.name} width={149} height={30} priority />
       </div>
 
       {/* ============ Solutions ============ */}
@@ -115,16 +115,11 @@ export default function Gateway() {
         </svg>
         <div className="gw-scan" />
 
-        <div className="gw-glass" style={{ bottom: "2.5%", left: "6vw", animationDelay: "-4s", minWidth: 230 }} aria-hidden="true">
-          <span className="gw-ok">Pipeline en production</span>
-          <b>42 services</b>
-          <span style={{ fontFamily: "ui-monospace, Consolas, monospace", fontSize: 11 }}>$ deploy --env prod ✓</span>
-        </div>
 
         <div className="gw-inner">
           <div className="gw-tag">Solutions · Entreprises</div>
           <h2 className="gw-title">Nous construisons<br />vos <em>systèmes</em>.</h2>
-          <p className="gw-txt">Développement, architecture, cloud, DevOps. Des équipes qui s&apos;intègrent à vos projets avec méthode et engagement.</p>
+          <p className="gw-txt">Développement, architecture, cloud et DevOps, mais aussi accompagnement fonctionnel, opérationnel et conseil. Des équipes qui s&apos;intègrent à vos projets avec méthode et engagement.</p>
           <span className="gw-cta">Découvrir nos solutions →</span>
         </div>
       </Link>
@@ -155,7 +150,7 @@ export default function Gateway() {
         <div className="gw-inner">
           <div className="gw-tag">Carrières · Candidats</div>
           <h2 className="gw-title">Ton talent,<br />notre <em>Koncept</em>.</h2>
-          <p className="gw-txt">Des missions qui ont du sens, une équipe soudée, et un café qui t&apos;attend. Rejoins l&apos;aventure.</p>
+          <p className="gw-txt">Une boîte qui écoute ses collabs, une équipe soudée, et un café qui t&apos;attend. Rejoins l&apos;aventure.</p>
           <span className="gw-cta">Rejoindre l&apos;équipe →</span>
         </div>
       </Link>
