@@ -101,7 +101,7 @@ export default function APropos() {
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }} className="hero-grid">
           <div>
             <motion.p
-              style={{ color: "var(--color-accent-text)", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
+              style={{ color: "var(--color-accent-text)", fontSize: 18, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
             >
               À propos de Koncept
@@ -412,7 +412,6 @@ export default function APropos() {
       {/* ── CTA final ── */}
       <CtaBand side="career" prev="bg" word="ENSEMBLE" title="Travaillons ensemble." text="Parlez-nous de votre besoin : nous vous répondons simplement et directement."
         primary={{ label: "Parlons de votre projet", href: "/solutions/contact" }}
-        secondary={{ label: "Rejoindre l'équipe", href: "/carrieres" }}
       />
 
       <style>{`

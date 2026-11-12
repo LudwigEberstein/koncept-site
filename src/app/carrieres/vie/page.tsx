@@ -16,7 +16,7 @@ const DAILY_LIFE = [
     icon: Coffee,
     time: "9h00",
     label: "Café du matin",
-    desc: "La machine Nespresso dans la cuisine est sacrée. Personne ne se parle vraiment avant le deuxième café — c'est une règle non-écrite depuis 2015. L'ordre des capsules est sujet à débat régulier.",
+    desc: "La machine à café de la cuisine est sacrée. Règle d'or : ne parle pas à Aurélie avant son premier café.",
   },
   {
     icon: Users,
@@ -113,7 +113,7 @@ const COLLABORATORS: Collaborator[] = [
     role: "Scrum Master",
     seniority: "Collaboratrice Koncept",
     img: "https://picsum.photos/seed/camille-scrum-koncept/400/300",
-    parcours: "Passée par la gestion de projet puis l'analyse fonctionnelle, Camille s'est tournée vers l'agilité. Elle accompagne aujourd'hui des équipes sur plusieurs missions, tout en participant au kata club interne.",
+    parcours: "Passée par la gestion de projet puis l'analyse fonctionnelle, Camille s'est tournée vers l'agilité. Elle accompagne aujourd'hui des équipes sur plusieurs missions.",
     stack: ["Scrum", "Kanban", "SAFe", "Jira", "Rétrospectives", "Facilitation"],
     favProject: "L'accompagnement d'une équipe qui venait de changer de mode de fonctionnement : au début, personne ne croyait aux rétrospectives. À la fin, c'est l'équipe qui les réclamait.",
     lovesKoncept: "On me fait confiance pour choisir comment accompagner une équipe, et j'ai des collègues d'autres métiers avec qui échanger. Les 2 jours de télétravail sans justification à fournir, ça change tout sur la durée.",
@@ -133,7 +133,7 @@ export default function Vie() {
       <HeroSection side="career" next="bg" paddingTop={140} paddingBottom={80}>
         <Container>
           <motion.p
-            style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
+            style={{ fontSize: 18, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
           >
             Carrières · Vie chez Koncept
@@ -280,9 +280,8 @@ export default function Vie() {
       </section>
 
       {/* ── CTA ── */}
-      <CtaBand side="career" prev="bg2" title="Ça ressemble à ce que tu cherches ?" text="Jette un œil aux offres ouvertes — ou écris-nous directement."
+      <CtaBand side="career" prev="bg2" title="Ça ressemble à ce que tu cherches ?" text="Jette un œil aux offres ouvertes."
         primary={{ label: "Voir les offres", href: "/carrieres/offres" }}
-        secondary={{ label: "Candidature spontanée", href: "/carrieres/candidature" }}
       />
 
       <style>{`

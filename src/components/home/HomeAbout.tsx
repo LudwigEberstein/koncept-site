@@ -20,7 +20,7 @@ export default function HomeAbout() {
         <motion.div {...fadeUp(0.08)}>
           <Eyebrow>Qui sommes-nous</Eyebrow>
           <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 44px)", fontWeight: 800, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 20 }}>
-            Une vraie équipe,<br /><span style={{ color: "var(--color-accent)" }}>à Toulouse.</span>
+            Une vraie équipe,<br />à Toulouse.
           </h2>
           <p style={{ color: "var(--color-ink-2)", fontSize: 16, lineHeight: 1.7, marginBottom: 28, maxWidth: "48ch" }}>
             Koncept est une ESN (entreprise de services du numérique) fondée à Toulouse en 2014, installée au Parc Technologique du Canal. Nous accompagnons les entreprises dans leurs projets informatiques : développement logiciel, accompagnement technique et fonctionnel, pilotage de projet. Nos consultants, nous les connaissons et nous les suivons tout au long de leur mission.

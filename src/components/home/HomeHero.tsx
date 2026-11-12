@@ -11,7 +11,7 @@ export default function HomeHero() {
     <HeroSection id="accueil" side="pro" next="bg2" paddingTop={140} paddingBottom={80}>
       <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", width: "100%", display: "grid", gridTemplateColumns: "minmax(0, 720px)", gap: 64, alignItems: "center" }} className="hero-grid">
         <div>
-          <motion.p style={{ color: "var(--color-accent-text)", fontSize: 12, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 24 }}
+          <motion.p style={{ color: "var(--color-accent-text)", fontSize: 18, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 24 }}
             initial={reduce ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >ESN à Toulouse · À taille humaine</motion.p>
@@ -27,7 +27,7 @@ export default function HomeHero() {
             initial={reduce ? false : { opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
           >
-            Koncept met à votre service des consultants en développement logiciel et en accompagnement technique et fonctionnel, avec un interlocuteur proche et réactif.
+            Koncept met à votre service des consultants en développement logiciel et en accompagnement technique, fonctionnel et opérationnel (chef de projet, Scrum Master…), avec un interlocuteur proche et réactif.
           </motion.p>
 
           <motion.div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}

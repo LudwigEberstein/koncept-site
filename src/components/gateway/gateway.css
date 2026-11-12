@@ -37,17 +37,6 @@
 .gw-net { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .75; pointer-events: none; }
 .gw-scan { position: absolute; left: 0; right: 0; top: 0; height: 140px; background: linear-gradient(transparent, rgba(var(--color-pro-light-rgb),.10), transparent); animation: gw-scan 7s linear infinite; pointer-events: none; }
 @keyframes gw-scan { from { transform: translateY(-140px) } to { transform: translateY(100vh) } }
-.gw-glass {
-  position: absolute; padding: 14px 16px; border-radius: 14px; min-width: 190px;
-  background: rgba(14,22,40,.6); border: 1px solid rgba(var(--color-pro-light-rgb),.28); backdrop-filter: blur(10px);
-  box-shadow: 0 20px 50px rgba(0,0,0,.4); font-size: 12px; color: #a8a39b; animation: gw-float 6s ease-in-out infinite;
-}
-.gw-glass b { display: block; font-size: 26px; color: #f0ede8; letter-spacing: -.03em; font-weight: 800; margin: 2px 0 6px; }
-.gw-glass svg { display: block; width: 100%; height: 34px; }
-.gw-ok { display: inline-flex; align-items: center; gap: 6px; color: #4ade80; font-weight: 600; }
-.gw-ok::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 10px #4ade80; animation: gw-blink 1.6s infinite; }
-@keyframes gw-blink { 50% { opacity: .3 } }
-@keyframes gw-float { 50% { transform: translateY(-10px) } }
 
 /* ===== Carrières : noir & rouge ===== */
 .gw-blob { position: absolute; border-radius: 50%; filter: blur(90px); animation: gw-drift 16s ease-in-out infinite alternate; }
@@ -95,7 +84,6 @@
   .gw-fun .gw-txt { max-width: min(420px, 20vw); }
   .gw-cta { font-size: 17px; padding: 16px 26px; }
   .gw-tag { font-size: 13px; }
-  .gw-glass { font-size: 14px; min-width: 230px; } .gw-glass b { font-size: 32px; }
 }
 @media (min-width: 2560px) {
   .gw-title { font-size: clamp(30px, 4vw, 110px); }
@@ -103,14 +91,12 @@
   .gw-cta { font-size: 21px; padding: 20px 32px; border-radius: 16px; }
   .gw-tag { font-size: 16px; padding: 8px 16px; }
   .gw-logo img { height: 44px; }
-  .gw-glass { font-size: 18px; min-width: 300px; padding: 20px 22px; } .gw-glass b { font-size: 42px; }
   .gw-hint { font-size: 15px; }
 }
 /* Écrans peu hauts (13" / laptops) : on compacte */
 @media (max-height: 760px) {
   .gw-txt { margin-bottom: 18px; font-size: 15px; }
   .gw-title { margin-bottom: 12px; }
-  .gw-glass b { font-size: 22px; }
 }
 
 /* ===== Mobile : empilé ===== */
@@ -119,11 +105,11 @@
   .gw-fun { clip-path: polygon(0 calc(var(--gw-x) * 1% + 6%), 100% calc(var(--gw-x) * 1% - 6%), 100% 100%, 0 100%); justify-content: flex-start; align-items: flex-end; padding-bottom: 64px; }
   .gw-inner, .gw-pro .gw-inner, .gw-fun .gw-inner { width: 100%; padding: 0 28px; margin: 0; align-self: auto; }
   .gw-title { font-size: 30px; margin-bottom: 14px; }
-  .gw-txt, .gw-glass, .gw-net { display: none; }
+  .gw-txt, .gw-net { display: none; }
   .gw-figure { height: 34vh; right: -8vw; bottom: -2vh; opacity: .9; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .gw, .gw-half, .gw-cta { transition: none; }
-  .gw-scan, .gw-glass, .gw-blob, .gw-marq > span, .gw-ok::before { animation: none; }
+  .gw-scan, .gw-blob, .gw-marq > span { animation: none; }
 }

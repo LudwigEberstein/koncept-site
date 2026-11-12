@@ -111,10 +111,8 @@
 .cta-band-btn { display: inline-flex; align-items: center; gap: 9px; padding: 15px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; transition: transform .2s, box-shadow .2s, background .2s; }
 .cta-band-btn.primary { background: #fff; color: #111; }
 .cta-band-btn.primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,.3); }
-.cta-band-btn.secondary { color: #fff; border: 1px solid rgba(255,255,255,.55); }
-.cta-band-btn.secondary:hover { background: rgba(255,255,255,.12); }
 .cta-band-big {
-  position: absolute; left: 0; right: 0; bottom: 62px; white-space: nowrap; overflow: hidden; pointer-events: none; opacity: .17;
+  position: absolute; left: 0; right: 0; bottom: 24px; white-space: nowrap; overflow: hidden; pointer-events: none; opacity: .17;
   font: 800 clamp(70px, 9vw, 128px)/1.15 var(--font-display, Outfit, sans-serif); letter-spacing: -.04em;
 }
 .cta-band-big > span { display: inline-block; animation: hd-marq 38s linear infinite; }
@@ -174,7 +172,7 @@
 @media (max-width: 767px) {
   .hd-code, .hd-net, .hd-grid { display: none; }
   .cta-band-box { padding-bottom: 150px; }
-  .cta-band-big { bottom: 36px; }
+  .cta-band-big { bottom: 14px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hd-code pre, .cta-band-big > span, .quest-mark, .konami-rain span, .konami-hint kbd { animation: none; }
