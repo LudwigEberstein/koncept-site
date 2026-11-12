@@ -134,9 +134,10 @@ export default function Formation() {
               Prise en charge,<br />ta formation sera.
             </h2>
           </motion.div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }} className="covers-grid">
+          {/* Cartes en flex-wrap (.cover-card) : 3 par ligne sur desktop, 2 sur tablette, 1 sur mobile ; la dernière ligne s'étire, quel que soit le nombre d'éléments */}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 16 }}>
             {WHAT_WE_COVER.map((item, i) => (
-              <motion.div className="glass-card" key={item.label}
+              <motion.div className="glass-card cover-card" key={item.label}
                 style={{ display: "flex", gap: 18, padding: "28px 28px", borderRadius: 14, border: "1px solid var(--color-border)", background: "var(--color-bg-3)", alignItems: "flex-start" }}
                 {...fadeUp(i * 0.08)}
               >
@@ -237,14 +238,15 @@ export default function Formation() {
       />
 
       <style>{`
+        .cover-card{flex:1 1 calc((100% - 33px) / 3)}
         @media(max-width:1023px){
-          .covers-grid{grid-template-columns:repeat(2,1fr) !important}
+          .cover-card{flex-basis:calc((100% - 17px) / 2)}
           .certifs-grid{grid-template-columns:repeat(3,1fr) !important}
           .paths-grid{grid-template-columns:1fr !important}
         }
         @media(max-width:767px){
           .hero-grid{grid-template-columns:1fr !important;gap:48px !important}
-          .covers-grid{grid-template-columns:1fr !important}
+          .cover-card{flex-basis:100%}
           .certifs-grid{grid-template-columns:repeat(2,1fr) !important}
         }
         @media(max-width:479px){

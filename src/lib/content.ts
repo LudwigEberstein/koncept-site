@@ -91,7 +91,7 @@ export const EXPERTISES = [
       "La recette fonctionnelle avant chaque mise en production",
     ],
     profils: ["Consultant AMOA", "Analyste métier", "Product Owner"],
-    stack: ["AMOA", "Analyse métier", "Product Owner", "Recette fonctionnelle"],
+    stack: ["AMOA", "Analyse métier", "Spécifications fonctionnelles", "Gestion du backlog", "Recette fonctionnelle"],
   },
   {
     slug: "pilotage",
@@ -106,7 +106,7 @@ export const EXPERTISES = [
       "Un suivi régulier et transparent de l'avancement",
     ],
     profils: ["Chef de projet", "Scrum Master"],
-    stack: ["Chef de projet", "Scrum Master", "Agile / Scrum", "SAFe"],
+    stack: ["Agile / Scrum", "SAFe", "Jira", "Roadmap", "Gouvernance de projet"],
   },
 ] as const
 
@@ -155,7 +155,7 @@ export type Collaborator = {
   badge: string
   /** Accorde les libellés au féminin (« Ce qu'elle aime chez Koncept »). */
   elle?: boolean
-  /** Photo (n'importe quel format : elle est recadrée en 4:3 sur les cartes, en rond dans les citations) ; sans photo, les initiales s'affichent. */
+  /** Photo (n'importe quel format : elle est recadrée en 4:3 sur les cartes, en rond dans les citations) ; sans photo, la carte affiche le prénom et la citation une icône (jamais d'initiales). */
   img?: string
   /** Point d'ancrage du recadrage (object-position), pour garder le visage dans le cadre. */
   imgPos?: string
@@ -242,8 +242,13 @@ export const FEATURED_PORTRAITS = {
   aPropos: ["Frédéric", "Sébastien", "Ludwig"],
 } as const
 
+/** Portraits dans l'ordre demandé. Un prénom absent de COLLABORATORS fait échouer le build (pas de carte qui disparaît en silence). */
 export function getCollaborators(names: readonly string[]): Collaborator[] {
-  return names.map(n => COLLABORATORS.find(c => c.name === n)).filter((c): c is Collaborator => !!c)
+  return names.map(n => {
+    const c = COLLABORATORS.find(c => c.name === n)
+    if (!c) throw new Error(`Portrait introuvable dans COLLABORATORS : « ${n} » (vérifier l'orthographe et les accents)`)
+    return c
+  })
 }
 
 export const CAREER_EVENTS = [

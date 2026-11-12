@@ -7,9 +7,6 @@ import { motion, AnimatePresence } from "motion/react"
 import { ArrowRight, ChevronDown } from "lucide-react"
 import type { Collaborator } from "@/lib/content"
 
-export type { Collaborator }
-
-
 // ─── Section accordion ───────────────────────────────────────────────────────
 
 type SectionProps = {
@@ -122,7 +119,7 @@ export function CollaboratorCard({ data, accentColor, variant = "career" }: Prop
       }}
     >
       {/* ── Visuel : photo (même cadre 4:3 pour toutes les cartes), ou prénom tant qu'il n'y a pas de photo ── */}
-      <div className="collab-visual" style={{ position: "relative", aspectRatio: "4/3", overflow: "hidden", background: "var(--color-bg-3)" }}>
+      <div style={{ position: "relative", aspectRatio: "4/3", overflow: "hidden", background: "var(--color-bg-3)" }}>
         {data.img ? (
           data.imgFit ? (
             <>

@@ -89,7 +89,6 @@ export default function Nav() {
 
   return (
     <header data-side={section === "solutions" ? "pro" : undefined} style={{
-      ["--nav-h" as string]: "68px", // hauteur du header : source unique (barre + liseré de l'onglet actif)
       position: "sticky", top: 0, zIndex: 50,
       background: scrolled ? "rgba(13,13,13,0.95)" : "rgba(13,13,13,0.8)",
       backdropFilter: "blur(20px)",

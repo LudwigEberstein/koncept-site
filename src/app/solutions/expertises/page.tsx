@@ -55,7 +55,7 @@ export default function Expertises() {
         const Icon = ICONS[exp.slug]
         return (
           <section key={exp.slug} id={exp.slug} aria-labelledby={`${exp.slug}-titre`}
-            style={{ padding: "88px 0", background: i % 2 === 0 ? "var(--color-bg)" : "var(--color-bg-2)", borderTop: i === 0 ? undefined : "1px solid var(--color-border)", scrollMarginTop: 68 }}
+            style={{ padding: "88px 0", background: i % 2 === 0 ? "var(--color-bg)" : "var(--color-bg-2)", borderTop: i === 0 ? undefined : "1px solid var(--color-border)", scrollMarginTop: "var(--nav-h)" }}
           >
             <Container className="exp-row">
               {/* Présentation : numéro, titre, profils */}

@@ -299,7 +299,7 @@ export default function APropos() {
                     style={{ borderRadius: "50%", objectFit: "cover", objectPosition: p.imgPos ?? "50% 20%", border: "2px solid var(--color-border)", flexShrink: 0 }}
                   />
                 ) : (
-                  <span aria-hidden="true" style={{ width: 72, height: 72, borderRadius: "50%", display: "grid", placeItems: "center", fontFamily: "var(--font-display, Outfit, sans-serif)", fontWeight: 800, fontSize: 24, color: "var(--color-accent-text)", border: "2px solid rgba(var(--color-accent-rgb), .45)", background: "rgba(var(--color-accent-rgb), .10)" }}>
+                  <span aria-hidden="true" style={{ width: 72, height: 72, borderRadius: "50%", display: "grid", placeItems: "center", color: "var(--color-accent-text)", border: "2px solid rgba(var(--color-accent-rgb), .45)", background: "rgba(var(--color-accent-rgb), .10)", flexShrink: 0 }}>
                     <UserRound size={30} />
                   </span>
                 )}

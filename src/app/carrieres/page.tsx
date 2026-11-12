@@ -82,7 +82,7 @@ const DNA_ITEMS = [
 ]
 
 /** Citations : extraites des portraits de /carrieres/vie (source : COLLABORATORS). */
-const PORTRAITS = getCollaborators(FEATURED_PORTRAITS.carrieres).map(c => ({ name: c.name, title: c.role, quote: c.quote, img: c.img, imgPos: c.imgPos }))
+const PORTRAITS = getCollaborators(FEATURED_PORTRAITS.carrieres)
 
 const SUB_PAGES = [
   { href: "/carrieres/vie", label: "Vie chez Koncept", desc: "La culture, les events, l'ADN quotidien.", icon: Heart },
@@ -240,11 +240,11 @@ export default function Carrieres() {
                     <Image src={p.img} alt="" aria-hidden="true" width={40} height={40}
                       style={{ width: 40, height: 40, borderRadius: "50%", objectFit: "cover", objectPosition: p.imgPos ?? "50% 20%", border: "1.5px solid rgba(var(--side-rgb), .55)", flexShrink: 0 }} />
                   ) : (
-                    <span aria-hidden="true" style={{ width: 40, height: 40, borderRadius: "50%", display: "grid", placeItems: "center", fontFamily: "var(--font-display, Outfit, sans-serif)", fontWeight: 800, fontSize: 16, color: "var(--side2)", border: "1.5px solid rgba(var(--side-rgb), .55)", background: "rgba(var(--side-rgb), .12)", flexShrink: 0 }}><UserRound size={18} /></span>
+                    <span aria-hidden="true" style={{ width: 40, height: 40, borderRadius: "50%", display: "grid", placeItems: "center", color: "var(--side2)", border: "1.5px solid rgba(var(--side-rgb), .55)", background: "rgba(var(--side-rgb), .12)", flexShrink: 0 }}><UserRound size={18} /></span>
                   )}
                   <span>
                     <span style={{ display: "block", fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 14, fontWeight: 700 }}>{p.name}</span>
-                    <span style={{ display: "block", color: "var(--side2)", fontSize: 11, fontWeight: 600 }}>{p.title}</span>
+                    <span style={{ display: "block", color: "var(--side2)", fontSize: 11, fontWeight: 600 }}>{p.role}</span>
                   </span>
                 </figcaption>
               </motion.figure>
