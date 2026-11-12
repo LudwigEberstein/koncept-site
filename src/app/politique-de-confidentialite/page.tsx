@@ -20,7 +20,7 @@ export default function ConfidentialitePage() {
       <p>Nous ne collectons que les données que vous nous transmettez volontairement via les formulaires du site :</p>
       <ul>
         <li>
-          <strong>Formulaire de contact</strong> : prénom, nom, adresse e-mail, téléphone et société (facultatifs), contenu de votre message.
+          <strong>Formulaire de contact</strong> : prénom, nom, adresse e-mail, société (facultative), contenu de votre message.
           Finalité : répondre à votre demande. Base légale : votre consentement et nos mesures précontractuelles.
         </li>
         <li>

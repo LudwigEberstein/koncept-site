@@ -85,7 +85,7 @@ export default function Gateway() {
       <h1 className="gw-sr">{SITE.name} — ESN à Toulouse : solutions IT pour les entreprises et carrières pour les métiers de l'IT</h1>
 
       <div className="gw-logo">
-        <Image src={IMAGES.logo} alt={SITE.name} width={120} height={30} priority />
+        <Image src={IMAGES.logo} alt={SITE.name} width={149} height={30} priority />
       </div>
 
       {/* ============ Solutions ============ */}

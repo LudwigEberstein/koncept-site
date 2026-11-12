@@ -2,7 +2,8 @@
 
 import { motion } from "motion/react"
 import { Coffee, Users, Code2, Utensils, Beer, Mountain, TreePine, Flame, Home, CreditCard, HeartPulse, GraduationCap, Car, Bot, Gamepad2, MapPin } from "lucide-react"
-import { CollaboratorCard, type Collaborator } from "@/components/CollaboratorCard"
+import { CollaboratorCard, YouCard } from "@/components/CollaboratorCard"
+import { COLLABORATORS } from "@/lib/content"
 import { useFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
@@ -46,7 +47,7 @@ const DAILY_LIFE = [
     icon: Beer,
     time: "18h+",
     label: "Après le boulot",
-    desc: "Ça dépend des jours. Le jeudi, c'est « jeudi mousse » aux Marins d'Eau Douce, juste à côté des locaux. Le mercredi, ça peut être escalade. Aucune pression : chacun fait comme il veut.",
+    desc: "Ça dépend des jours. Le jeudi, c'est « jeudi mousse » aux Marins d'Eau Douce, juste à côté des locaux. Le mardi, ça peut être escalade. Aucune pression : chacun fait comme il veut.",
   },
 ]
 
@@ -82,43 +83,7 @@ const PERKS = [
   { icon: Car, label: "Parking + vélo", desc: "Parking gratuit sur site. Arceaux vélo sécurisés. Indemnité kilométrique vélo disponible." },
   { icon: Bot, label: "Outils premium", desc: "Claude Code, ChatGPT, la suite Microsoft complète et le partage de documents sur SharePoint. Les bons outils ne sont pas une option." },
   { icon: Gamepad2, label: "Gaming", desc: "Jeux vidéo et jeux de société entre collègues : on aime jouer, et ça se voit." },
-  { icon: MapPin, label: "Centre de Toulouse", desc: "Parc Technologique du Canal. Accessible tramway ligne T1, à 20 min du centre." },
-]
-
-const COLLABORATORS: Collaborator[] = [
-  {
-    name: "Thomas",
-    role: "Lead Développeur Java",
-    seniority: "8 ans chez Koncept",
-    img: "https://picsum.photos/seed/thomas-lead-java-koncept/400/300",
-    parcours: "Développeur Java confirmé en sortie d'école, Thomas a grandi sur des projets aéronautique et télécoms. Il a pris la lead tech d'une équipe de 6 personnes après 4 ans, sans jamais quitter le code.",
-    stack: ["Java 21", "Spring Boot", "Kafka", "PostgreSQL", "Docker", "GitLab CI"],
-    favProject: "La refonte du SI temps-réel d'un opérateur télécoms — 50 ms de latence, 2M d'événements/jour, et une migration sans downtime qu'on a préparée 6 mois.",
-    lovesKoncept: "Ce qui m'a gardé ici, c'est la confiance réelle sur les décisions techniques. Je ne suis pas une ressource à placer — je suis un expert reconnu par mes pairs. Et l'équipe, franchement, ça aide.",
-    advice: "Ne triche pas sur le niveau en entretien. On cherche quelqu'un qui sait ce qu'il ne sait pas autant que quelqu'un qui maîtrise sa stack. La curiosité se voit tout de suite.",
-  },
-  {
-    name: "Sarah",
-    role: "Architecte Solution",
-    seniority: "5 ans chez Koncept",
-    img: "https://picsum.photos/seed/sarah-architecte-koncept/400/300",
-    parcours: "Passée par une grande SSII puis une startup fintech, Sarah a rejoint Koncept pour retrouver une taille humaine sans sacrifier la qualité des projets. Elle est aujourd'hui architecte référente sur deux comptes bancaires majeurs.",
-    stack: ["Architecture microservices", "API Gateway", "AWS", "Kubernetes", "Terraform", "TypeScript"],
-    favProject: "La conception d'une plateforme d'onboarding client pour une banque régionale — du DDD en greenfield, avec une équipe qu'on a formée de zéro. Le genre de projet qu'on n'a pas souvent.",
-    lovesKoncept: "J'ai refusé des offres mieux payées pour rester ici. L'environnement, les projets complexes, et des collègues qui challengent vraiment mes décisions — ça n'a pas de prix sur une fiche de paie.",
-    advice: "Prépare un exemple concret d'une décision technique que tu regrettes. C'est ce genre de recul qu'on valorise. On n'embauche pas des gens qui ont toujours raison — on embauche des gens qui apprennent vite.",
-  },
-  {
-    name: "Camille",
-    role: "Scrum Master",
-    seniority: "Collaboratrice Koncept",
-    img: "https://picsum.photos/seed/camille-scrum-koncept/400/300",
-    parcours: "Passée par la gestion de projet puis l'analyse fonctionnelle, Camille s'est tournée vers l'agilité. Elle accompagne aujourd'hui des équipes sur plusieurs missions.",
-    stack: ["Scrum", "Kanban", "SAFe", "Jira", "Rétrospectives", "Facilitation"],
-    favProject: "L'accompagnement d'une équipe qui venait de changer de mode de fonctionnement : au début, personne ne croyait aux rétrospectives. À la fin, c'est l'équipe qui les réclamait.",
-    lovesKoncept: "On me fait confiance pour choisir comment accompagner une équipe, et j'ai des collègues d'autres métiers avec qui échanger. Les 2 jours de télétravail sans justification à fournir, ça change tout sur la durée.",
-    advice: "Viens avec des exemples concrets de situations difficiles que tu as vécues en équipe, et de ce que tu en as appris. Un bon Scrum Master sait écouter avant de proposer.",
-  },
+  { icon: MapPin, label: "Accès en métro", desc: "Parc Technologique du Canal, accessible par la ligne B du métro (station Ramonville)." },
 ]
 
 // ─── Page ───────────────────────────────────────────────────────────────────
@@ -266,15 +231,18 @@ export default function Vie() {
               Ils font Koncept au quotidien.
             </h2>
             <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.75, maxWidth: "52ch", marginBottom: 48 }}>
-              Pas des témoignages marketing. Des vrais retours de Koncepteurs, sur leur parcours, leur métier, et pourquoi ils sont encore là.
+              Pas des témoignages marketing : des Koncepteurs racontent leur parcours, leur métier, et pourquoi ils sont encore là. La sixième place, c'est peut-être la tienne.
             </p>
           </motion.div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} className="portraits-grid">
             {COLLABORATORS.map((c, i) => (
-              <motion.div key={c.name} {...fadeUp(i * 0.1)}>
+              <motion.div key={c.name} {...fadeUp((i % 3) * 0.1)}>
                 <CollaboratorCard data={c} variant="career" />
               </motion.div>
             ))}
+            <motion.div {...fadeUp((COLLABORATORS.length % 3) * 0.1)}>
+              <YouCard />
+            </motion.div>
           </div>
         </Container>
       </section>

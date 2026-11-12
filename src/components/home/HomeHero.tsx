@@ -27,7 +27,7 @@ export default function HomeHero() {
             initial={reduce ? false : { opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
           >
-            Koncept met à votre service des consultants en développement logiciel et en accompagnement technique, fonctionnel et opérationnel (chef de projet, Scrum Master…), avec un interlocuteur proche et réactif.
+            Koncept met à votre service des consultants en développement logiciel et en accompagnement technique, fonctionnel et opérationnel, avec un interlocuteur proche et réactif.
           </motion.p>
 
           <motion.div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}

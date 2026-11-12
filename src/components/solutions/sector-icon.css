@@ -1,0 +1,33 @@
+/* Pictos animés des secteurs (SectorIcon) : trait à la couleur du côté (--side2), boucles lentes et discrètes */
+.sx-icon { width: 52px; height: 52px; border-radius: 13px; display: grid; place-items: center; background: rgba(var(--side-rgb), .14); flex-shrink: 0; }
+.sx-icon svg { width: 40px; height: 40px; overflow: visible; fill: none; stroke: var(--side2); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.sx-icon .sx-fill { fill: var(--side2); stroke: none; }
+
+.sx-trail { stroke-dasharray: 2 3; opacity: .6; animation: sx-dash 1.2s linear infinite; }
+.sx-plane { animation: sx-fly 3.6s ease-in-out infinite; }
+.sx-star { animation: sx-twinkle 2.4s ease-in-out infinite; }
+.sx-star-2 { animation-delay: -1.2s; }
+.sx-ecg { stroke-dasharray: 1; animation: sx-ecg 2.4s linear infinite; }
+.sx-wave { animation: sx-wave 2s ease-in-out infinite; }
+.sx-wave-2 { animation-delay: .35s; }
+.sx-cursor { animation: sx-blink 1s steps(1) infinite; }
+.sx-road { stroke-dasharray: 6 5; animation: sx-road .7s linear infinite; }
+.sx-bubble { transform-box: fill-box; animation: sx-bubble 2.6s ease-in infinite; }
+.sx-bubble-2 { animation-delay: -.9s; }
+.sx-bubble-3 { animation-delay: -1.7s; }
+
+@keyframes sx-dash { to { stroke-dashoffset: -5 } }
+@keyframes sx-fly { 0% { transform: translate(0, 0); opacity: 0 } 15%, 80% { opacity: 1 } 100% { transform: translate(28px, -25px); opacity: 0 } }
+@keyframes sx-twinkle { 0%, 100% { opacity: .2 } 50% { opacity: 1 } }
+@keyframes sx-ecg { 0% { stroke-dashoffset: 1 } 50% { stroke-dashoffset: 0 } 100% { stroke-dashoffset: -1 } }
+@keyframes sx-wave { 0%, 100% { opacity: .15 } 50% { opacity: 1 } }
+@keyframes sx-blink { 50% { opacity: 0 } }
+@keyframes sx-road { to { stroke-dashoffset: 11 } }
+@keyframes sx-bubble { 0% { transform: translateY(0); opacity: 0 } 20% { opacity: 1 } 100% { transform: translateY(-10px); opacity: 0 } }
+
+@media (prefers-reduced-motion: reduce) {
+  .sx-icon * { animation: none !important; }
+  .sx-plane { transform: translate(14px, -12px); }
+  .sx-ecg { stroke-dashoffset: 0; }
+  .sx-bubble { opacity: .8; }
+}

@@ -8,6 +8,7 @@ import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
 import Container from "@/components/ui/Container"
 import Eyebrow from "@/components/ui/Eyebrow"
+import SectorIcon from "@/components/solutions/SectorIcon"
 
 /** Tailles de structures accompagnées, de la plus petite à la plus grande. */
 const SIZES = [
@@ -44,9 +45,9 @@ export default function Secteurs() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 340px), 1fr))", gap: 14 }}>
             {SECTORS.map((s, i) => (
               <motion.div key={s.slug} className="glass-card" {...fadeUp(i * 0.05)}
-                style={{ padding: "26px 24px", borderRadius: 14, border: "1px solid var(--color-border)", display: "flex", flexDirection: "column", gap: 10 }}
+                style={{ padding: "26px 24px", borderRadius: 14, border: "1px solid var(--color-border)", display: "flex", flexDirection: "column", gap: 12 }}
               >
-                <div style={{ width: 28, height: 3, background: "var(--color-accent)", borderRadius: 2 }} />
+                <SectorIcon slug={s.slug} />
                 <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 19, fontWeight: 700 }}>{s.name}</h2>
                 <p style={{ color: "var(--color-ink-2)", fontSize: 14, lineHeight: 1.6 }}>{s.enjeu}</p>
               </motion.div>

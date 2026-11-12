@@ -21,7 +21,7 @@ export default function Footer() {
         <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr 1fr", gap: 48, marginBottom: 48 }} className="footer-grid">
           {/* Brand */}
           <div>
-            <Image src={IMAGES.logo} alt="Koncept" width={120} height={28} style={{ height: 28, width: "auto", objectFit: "contain", marginBottom: 16 }} />
+            <Image src={IMAGES.logo} alt="Koncept" width={139} height={28} style={{ width: 139, height: 28, objectFit: "contain", marginBottom: 16 }} />
             <p style={{ color: "var(--color-ink-2)", fontSize: 13, lineHeight: 1.7, marginBottom: 16 }}>
               ESN toulousaine à taille humaine. Développement logiciel et accompagnement technique et fonctionnel depuis 2014.
             </p>

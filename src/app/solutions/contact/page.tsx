@@ -67,7 +67,7 @@ const NEXT_STEPS: Record<Exclude<RequestType, "">, { step: string; desc: string 
 
 export default function Contact() {
   const [type, setType] = useState<RequestType>("")
-  const [form, setForm] = useState({ prenom: "", nom: "", email: "", phone: "", societe: "", budget: "", message: "" })
+  const [form, setForm] = useState({ prenom: "", nom: "", email: "", societe: "", budget: "", message: "" })
   const [submitted, setSubmitted] = useState(false)
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
@@ -208,16 +208,10 @@ export default function Contact() {
                         </div>
                       </div>
 
-                      {/* Email + Phone */}
-                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }} className="name-grid">
-                        <div>
-                          <label style={labelStyle}>Email</label>
-                          <input name="email" type="email" value={form.email} onChange={handleChange} required placeholder="jean.dupont@email.com" style={inputStyle} onFocus={focusRed} onBlur={blurReset} />
-                        </div>
-                        <div>
-                          <label style={labelStyle}>Téléphone <span style={{ fontWeight: 400 }}>(optionnel)</span></label>
-                          <input name="phone" type="tel" value={form.phone} onChange={handleChange} placeholder="+33 6 00 00 00 00" style={inputStyle} onFocus={focusRed} onBlur={blurReset} />
-                        </div>
+                      {/* Email */}
+                      <div>
+                        <label style={labelStyle}>Email</label>
+                        <input name="email" type="email" value={form.email} onChange={handleChange} required placeholder="jean.dupont@email.com" style={inputStyle} onFocus={focusRed} onBlur={blurReset} />
                       </div>
 
                       {/* Société + Budget — only for projet */}

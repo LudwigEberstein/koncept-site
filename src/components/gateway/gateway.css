@@ -75,7 +75,7 @@
 .gw-fun .gw-cta { background: linear-gradient(90deg, var(--gw-red), #a31515); box-shadow: 0 10px 30px rgba(212,32,32,.4); }
 .gw-half:hover .gw-cta, .gw-half:focus-visible .gw-cta { transform: translateX(6px); }
 .gw-logo { position: absolute; z-index: 6; top: 24px; left: 50%; transform: translateX(-50%); pointer-events: none; filter: drop-shadow(0 2px 20px #000); }
-.gw-logo img { display: block; height: 30px; width: auto; }
+.gw-logo img { display: block; width: 149px; height: 30px; object-fit: contain; }
 .gw-hint { position: absolute; z-index: 6; bottom: 22px; left: 50%; transform: translateX(-50%); font-size: 12px; color: #a8a39b; letter-spacing: .06em; pointer-events: none; }
 
 /* Grands écrans : on plafonne la largeur du texte et on agrandit les visuels */
@@ -90,7 +90,7 @@
   .gw-txt { font-size: 24px; max-width: 600px; } .gw-fun .gw-txt { max-width: min(520px, 20vw); }
   .gw-cta { font-size: 21px; padding: 20px 32px; border-radius: 16px; }
   .gw-tag { font-size: 16px; padding: 8px 16px; }
-  .gw-logo img { height: 44px; }
+  .gw-logo img { width: 219px; height: 44px; }
   .gw-hint { font-size: 15px; }
 }
 /* Écrans peu hauts (13" / laptops) : on compacte */

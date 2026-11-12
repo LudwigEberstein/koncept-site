@@ -101,7 +101,7 @@ export default function Nav() {
 
         {/* Logo */}
         <Link href={homeHref} style={{ display: "flex", alignItems: "center", textDecoration: "none", flexShrink: 0, marginRight: 16 }}>
-          <Image src={IMAGES.logo} alt={`${SITE.name} — accueil`} width={120} height={30} style={{ height: 30, width: "auto", objectFit: "contain" }} priority />
+          <Image src={IMAGES.logo} alt={`${SITE.name} — accueil`} width={149} height={30} style={{ width: 149, height: 30, objectFit: "contain" }} priority />
         </Link>
 
         {/* Desktop nav */}

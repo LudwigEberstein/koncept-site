@@ -1,7 +1,8 @@
 'use client'
 
+import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, Play, Coffee, Gamepad2, Bike, Dices, Pizza, Music, BookOpen, ClipboardList, Mail, Heart } from "lucide-react"
+import { ArrowRight, Play, Coffee, Gamepad2, Bike, Dices, Pizza, Music, BookOpen, ClipboardList, Mail, Heart, UserRound } from "lucide-react"
 import { motion } from "motion/react"
 import { useFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
@@ -10,6 +11,7 @@ import SquidShape, { type Shape } from "@/components/ui/SquidShape"
 import KonamiHint from "@/components/ui/KonamiHint"
 import Eyebrow from "@/components/ui/Eyebrow"
 import Container from "@/components/ui/Container"
+import { FEATURED_PORTRAITS, getCollaborators } from "@/lib/content"
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 
@@ -79,23 +81,8 @@ const DNA_ITEMS = [
   },
 ]
 
-const PORTRAITS = [
-  {
-    name: "Thomas",
-    title: "Développeur Java",
-    quote: "Ce qui m'a gardé ici, c'est qu'on me fait confiance sur les sujets techniques. Je ne suis pas une ressource — je suis un expert.",
-  },
-  {
-    name: "Sarah",
-    title: "Architecte Solution",
-    quote: "J'ai refusé des offres mieux payées pour rester. L'environnement et les projets n'ont pas de prix.",
-  },
-  {
-    name: "Camille",
-    title: "Scrum Master",
-    quote: "Ici, on me demande mon avis sur la façon de faire avancer l'équipe, pas seulement d'animer des cérémonies. L'agilité, c'est du bon sens et de l'écoute.",
-  },
-]
+/** Citations : extraites des portraits de /carrieres/vie (source : COLLABORATORS). */
+const PORTRAITS = getCollaborators(FEATURED_PORTRAITS.carrieres).map(c => ({ name: c.name, title: c.role, quote: c.quote, img: c.img, imgPos: c.imgPos }))
 
 const SUB_PAGES = [
   { href: "/carrieres/vie", label: "Vie chez Koncept", desc: "La culture, les events, l'ADN quotidien.", icon: Heart },
@@ -249,7 +236,12 @@ export default function Carrieres() {
                 <span aria-hidden="true" style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 64, fontWeight: 800, lineHeight: 0.6, color: "var(--side2)", opacity: 0.9, height: 28 }}>&ldquo;</span>
                 <blockquote style={{ margin: 0, fontSize: 15, lineHeight: 1.7, color: "var(--color-ink)", flex: 1 }}>{p.quote}</blockquote>
                 <figcaption style={{ display: "flex", alignItems: "center", gap: 12, borderTop: "1px solid var(--color-border)", paddingTop: 18 }}>
-                  <span aria-hidden="true" style={{ width: 40, height: 40, borderRadius: "50%", display: "grid", placeItems: "center", fontFamily: "var(--font-display, Outfit, sans-serif)", fontWeight: 800, fontSize: 16, color: "var(--side2)", border: "1.5px solid rgba(var(--side-rgb), .55)", background: "rgba(var(--side-rgb), .12)", flexShrink: 0 }}>{p.name[0]}</span>
+                  {p.img ? (
+                    <Image src={p.img} alt="" aria-hidden="true" width={40} height={40}
+                      style={{ width: 40, height: 40, borderRadius: "50%", objectFit: "cover", objectPosition: p.imgPos ?? "50% 20%", border: "1.5px solid rgba(var(--side-rgb), .55)", flexShrink: 0 }} />
+                  ) : (
+                    <span aria-hidden="true" style={{ width: 40, height: 40, borderRadius: "50%", display: "grid", placeItems: "center", fontFamily: "var(--font-display, Outfit, sans-serif)", fontWeight: 800, fontSize: 16, color: "var(--side2)", border: "1.5px solid rgba(var(--side-rgb), .55)", background: "rgba(var(--side-rgb), .12)", flexShrink: 0 }}><UserRound size={18} /></span>
+                  )}
                   <span>
                     <span style={{ display: "block", fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 14, fontWeight: 700 }}>{p.name}</span>
                     <span style={{ display: "block", color: "var(--side2)", fontSize: 11, fontWeight: 600 }}>{p.title}</span>

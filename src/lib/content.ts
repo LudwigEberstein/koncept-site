@@ -143,7 +143,108 @@ export const GEEK_REFERENCES = [
   "« Achievement unlocked » (/carrieres/formation)",
   "« Choose your destiny ! » — Mortal Kombat (/carrieres/formation)",
   "« Nouvelle quête disponible » et son « ! » (/carrieres/offres)",
+  "« Player 2 » — la carte « Toi » des portraits (/carrieres/vie)",
 ] as const
+
+/** Portrait d'un collaborateur (cartes de /carrieres/vie, citations de /carrieres et /a-propos). */
+export type Collaborator = {
+  /** Prénom seul (pas d'initiale du nom). */
+  name: string
+  role: string
+  /** Famille de métier, affichée en pastille sur le visuel. */
+  badge: string
+  /** Accorde les libellés au féminin (« Ce qu'elle aime chez Koncept »). */
+  elle?: boolean
+  /** Photo (n'importe quel format : elle est recadrée en 4:3 sur les cartes, en rond dans les citations) ; sans photo, les initiales s'affichent. */
+  img?: string
+  /** Point d'ancrage du recadrage (object-position), pour garder le visage dans le cadre. */
+  imgPos?: string
+  /** Dézoom : part de la largeur du visuel occupée par la photo (ex. 0.72) ; le reste est prolongé en flou. */
+  imgFit?: number
+  parcours: string
+  stack: string[]
+  favProject: string
+  lovesKoncept: string
+  advice: string
+  /** Citation courte pour les sections Portraits de /carrieres et /a-propos. */
+  quote: string
+}
+
+/**
+ * Portraits collaborateurs. Ludwig : textes réels (validés par lui).
+ * Alexis, Frédéric, Mélaine, Sébastien : textes SIMULÉS, à faire relire par les intéressés avant la mise en ligne.
+ */
+export const COLLABORATORS: Collaborator[] = [
+  {
+    name: "Alexis",
+    role: "Développeur expérimenté",
+    badge: "Développement",
+    parcours: "Entré chez Koncept comme développeur backend, Alexis a enchaîné des missions sur des applications métier dans l'aéronautique et les télécoms. Il intervient aujourd'hui sur toute la chaîne, du back au front, et accompagne les développeurs qui rejoignent son équipe.",
+    stack: ["Java", "Spring Boot", "Angular", "TypeScript", "SQL", "Git"],
+    favProject: "Moderniser une application vieillissante sans jamais couper le service : on a remplacé les briques une par une, et les utilisateurs ne s'en sont aperçus qu'en voyant que tout allait plus vite.",
+    lovesKoncept: "On me laisse choisir les sujets sur lesquels je veux progresser, et il y a toujours quelqu'un pour relire mon code ou débattre d'une archi. Et le soir, c'est moi le maître du jeu.",
+    advice: "Montre du code que tu as écrit, même imparfait, et explique tes choix. On apprend bien plus d'une discussion sur un vrai projet que d'un exercice d'algo.",
+    quote: "On me laisse choisir les sujets sur lesquels je veux progresser, et il y a toujours quelqu'un pour relire mon code.",
+  },
+  {
+    name: "Frédéric",
+    role: "Tech lead",
+    badge: "Technique",
+    parcours: "Développeur full stack pendant plusieurs années, Frédéric a pris le rôle de tech lead sur des projets en équipe. Il fait le lien entre l'architecture, les développeurs et le métier, sans jamais lâcher complètement le code.",
+    stack: ["Node.js", "React", "TypeScript", "Docker", "GitLab CI/CD", "Revue de code"],
+    favProject: "Lancer une équipe sur un nouveau produit en partant d'une page blanche : choisir la stack, poser les conventions, et voir l'équipe devenir autonome en quelques sprints.",
+    lovesKoncept: "On me fait confiance sur les choix techniques, et on m'écoute quand je dis qu'une équipe a besoin de temps pour bien faire les choses. Et à la pause, on peut parler jazz-rock sans être jugé.",
+    advice: "Parle-nous d'une décision technique que tu as dû défendre, ou que tu regrettes. On cherche des gens qui savent expliquer leurs choix, pas des gens qui ont toujours raison.",
+    quote: "On me fait confiance sur les choix techniques, et on m'écoute quand une équipe a besoin de temps pour bien faire.",
+  },
+  {
+    name: "Mélaine",
+    role: "Scrum Master",
+    badge: "Agilité",
+    elle: true,
+    parcours: "Passée par l'analyse fonctionnelle, Mélaine s'est tournée vers l'agilité pour travailler au plus près des équipes. Scrum Master, elle accompagne aujourd'hui des équipes de développement chez nos clients et partage ses pratiques avec les autres Scrum Masters de Koncept.",
+    stack: ["Scrum", "Kanban", "SAFe", "Jira", "Rétrospectives", "Facilitation"],
+    favProject: "Accompagner une équipe qui ne croyait plus aux rétrospectives. Quelques mois plus tard, c'est elle qui les réclamait.",
+    lovesKoncept: "On me laisse choisir comment accompagner une équipe, sans recette imposée. Et quand je bloque, j'ai des collègues d'autres métiers avec qui en parler.",
+    advice: "Viens avec une situation d'équipe difficile que tu as vécue, et ce que tu en as appris. Un bon Scrum Master écoute avant de proposer.",
+    quote: "On me laisse choisir comment accompagner une équipe, sans recette imposée. L'agilité, c'est d'abord de l'écoute.",
+  },
+  {
+    name: "Sébastien",
+    role: "Architecte solution",
+    badge: "Architecture",
+    parcours: "Développeur puis tech lead, Sébastien est devenu architecte solution à force de dessiner les systèmes avant de les coder. Il conçoit aujourd'hui des architectures applicatives et cloud, et accompagne les équipes qui les mettent en œuvre.",
+    stack: ["Microservices", "API", "AWS", "Azure", "Docker", "DDD"],
+    favProject: "Concevoir une plateforme en partant du métier plutôt que de la technique : beaucoup d'ateliers avec les utilisateurs avant la première ligne de code, et une architecture qui a tenu quand le périmètre a grandi.",
+    lovesKoncept: "Des collègues qui challengent vraiment mes schémas, et une direction accessible quand il faut trancher. Ici, l'architecture se discute, elle ne s'impose pas.",
+    advice: "Prépare un exemple de compromis technique que tu as dû faire, et explique pourquoi. L'architecture, c'est surtout l'art de choisir ce qu'on ne fera pas.",
+    quote: "Des collègues qui challengent vraiment mes schémas. Ici, l'architecture se discute, elle ne s'impose pas.",
+  },
+  {
+    name: "Ludwig",
+    role: "Chef de projet Agile",
+    badge: "Pilotage",
+    img: "/team/ludwig-front.webp",
+    imgPos: "50% 15%",
+    imgFit: 0.72,
+    parcours: "Développeur puis Technical Leader sur des applications critiques pour l'industrie aéronautique et la santé, Ludwig s'est tourné vers l'agilité en tant que Scrum Master en contexte SAFe puis en tant que chef de projet. Il pilote aujourd'hui des projets chez un grand compte, tout en coordonnant le suivi des prestations Koncept sur site.",
+    stack: ["Pilotage de projet", "Scrum", "SAFe", "Jira", "Roadmap", "Gouvernance"],
+    favProject: "Reprendre un projet où le client ne voyait plus clair. On a posé quelques indicateurs simples, rendu le delivery visible, et la confiance est revenue.",
+    lovesKoncept: "On m'a fait confiance pour évoluer, du développement jusqu'au pilotage de projets. Et ma carrière, je la construis en one-to-one avec la direction, avec un vrai suivi : on parle de là où je veux aller, pas seulement de la prochaine mission.",
+    advice: "Apprends à parler le langage des devs et celui des managers. C'est souvent entre les deux que se joue la réussite d'un projet.",
+    quote: "Ma carrière, je la construis en one-to-one avec la direction : on parle de là où je veux aller, pas seulement de la prochaine mission.",
+  },
+]
+
+/** Prénoms des portraits mis en avant en citation, par page. */
+export const FEATURED_PORTRAITS = {
+  carrieres: ["Alexis", "Mélaine", "Ludwig"],
+  aPropos: ["Frédéric", "Sébastien", "Ludwig"],
+} as const
+
+export function getCollaborators(names: readonly string[]): Collaborator[] {
+  return names.map(n => COLLABORATORS.find(c => c.name === n)).filter((c): c is Collaborator => !!c)
+}
 
 export const CAREER_EVENTS = [
   { title: "Weekend d'agence", freq: "Annuel", desc: "Un weekend par an où toute l'agence se retrouve pour de la cohésion, des activités et de vrais moments hors projets." },
@@ -158,7 +259,7 @@ export const JOBS_DATE_POSTED = "2026-10-01"
 export const JOB_PROCESS = [
   { step: "1. Échange RH", desc: "30 min avec Valentine. On se présente, on voit si le feeling passe." },
   { step: "2. Entretien métier", desc: "45 min avec un référent de ton domaine, technique ou fonctionnel. On parle de ton parcours et de cas concrets." },
-  { step: "3. Entretien manager", desc: "30 min avec ton futur manager. Si tout colle, l'offre se fait dans ce même entretien." },
+  { step: "3. Entretien manager", desc: "45 min avec ton futur manager. Si tout colle, l'offre se fait dans ce même entretien." },
   { step: "4. Un café avec la team", desc: "Pour finir de te convaincre, viens prendre un café avec l'équipe. Pas d'épreuve : juste voir si ça matche." },
 ] as const
 
