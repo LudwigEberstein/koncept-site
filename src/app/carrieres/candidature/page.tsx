@@ -56,7 +56,7 @@ export default function Candidature() {
     <>
       <HeroSection side="career" next="bg" paddingTop={140} paddingBottom={64}>
         <Container>
-          <motion.p style={{ color: "var(--color-career)", fontSize: 18, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
+          <motion.p style={{ color: "var(--color-career)", fontSize: "clamp(14px, 3.8vw, 18px)", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
             Carrières · Candidature
           </motion.p>
@@ -116,7 +116,7 @@ export default function Candidature() {
                 </div>
                 <div>
                   <label htmlFor="cand-poste" style={labelStyle}>Poste visé / domaine d&apos;expertise</label>
-                  <input id="cand-poste" name="poste" type="text" value={form.poste} onChange={handleChange} required placeholder="ex : Développeur full stack, Business Analyst, Scrum Master..." style={inputStyle} onFocus={focusRed} onBlur={blurReset} />
+                  <input id="cand-poste" name="poste" type="text" value={form.poste} onChange={handleChange} required placeholder="ex : Développeur, Business Analyst..." style={inputStyle} onFocus={focusRed} onBlur={blurReset} />
                 </div>
                 <div>
                   <label htmlFor="cand-message" style={labelStyle}>Ton message</label>
@@ -183,7 +183,7 @@ export default function Candidature() {
                   <div>
                     <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--color-ink-2)", marginBottom: 2 }}>{item.label}</p>
                     <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer"
-                      style={{ fontSize: 13, color: "var(--color-ink)", textDecoration: "none", transition: "color 0.15s" }}
+                      style={{ display: "inline-block", padding: "4px 0", fontSize: 13, color: "var(--color-ink)", textDecoration: "none", transition: "color 0.15s" }}
                       onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "var(--color-career)" }}
                       onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "var(--color-ink)" }}
                     >{item.value}</a>

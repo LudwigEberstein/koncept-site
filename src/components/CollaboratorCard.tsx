@@ -270,7 +270,7 @@ export function YouCard() {
         .you-list dd { margin: 0; font-size: 13px; line-height: 1.65; color: var(--color-ink-2); }
         .you-cta { display: inline-flex; align-items: center; gap: 7px; padding: 11px 18px; border-radius: 10px; background: var(--color-career-dark); color: #fff; font-size: 13px; font-weight: 700; text-decoration: none; transition: filter .15s; }
         .you-cta:hover { filter: brightness(1.12); }
-        .you-link { color: var(--color-career); font-size: 13px; font-weight: 700; text-decoration: none; }
+        .you-link { display: inline-block; padding: 6px 0; color: var(--color-career); font-size: 13px; font-weight: 700; text-decoration: none; }
         .you-link:hover { text-decoration: underline; }
         @media (prefers-reduced-motion: reduce) { .you-start { animation: none; } .you-avatar { transition: none; } }
       `}</style>

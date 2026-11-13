@@ -70,7 +70,7 @@ const TEAM: Member[] = [
     pos: "50% 8%", // photo portrait (3:4) : on ancre sur le visage, pas sur le centre
     fit: 0.86, // dézoom : part de la largeur de la carte occupée par la photo, le reste est prolongé en flou
     posBack: "50% 10%",
-    bio: "Valentine construit la culture Koncept de l'intérieur. Son obsession : que chaque Koncepteur trouve sa place et s'y épanouisse vraiment.",
+    bio: "Recrutement, carrières, vie d'équipe : Valentine contribue à construire la culture Koncept au quotidien. Sa recette ? De l'écoute, du franc-parler et la conviction qu'une entreprise à taille humaine doit le rester dans les faits, pas seulement sur le papier.",
     quote: "On recrute des gens, pas des compétences. Les compétences, ça s'apprend. La personnalité, non.",
     linkedin: "https://www.linkedin.com/in/valentine-bordes-b4b5489a/",
   },
@@ -115,7 +115,7 @@ export default function APropos() {
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }} className="hero-grid">
           <div>
             <motion.p
-              style={{ color: "var(--color-accent-text)", fontSize: 18, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
+              style={{ color: "var(--color-accent-text)", fontSize: "clamp(14px, 3.8vw, 18px)", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
             >
               À propos de Koncept
@@ -286,7 +286,7 @@ export default function APropos() {
                     </blockquote>
                   )}
                   <a href={m.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${m.name} sur LinkedIn`}
-                    style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: "auto", alignSelf: "flex-start", color: "var(--color-ink-2)", fontSize: 11, fontWeight: 600, textDecoration: "none", transition: "color 0.15s" }}
+                    style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: "auto", alignSelf: "flex-start", padding: "6px 0", color: "var(--color-ink-2)", fontSize: 11, fontWeight: 600, textDecoration: "none", transition: "color 0.15s" }}
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "var(--color-ink)" }}
                     onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "var(--color-ink-2)" }}
                   >
@@ -306,7 +306,7 @@ export default function APropos() {
             <motion.div {...fadeUp()} style={{ position: "sticky", top: 100 }}>
               <Eyebrow tone="career">Vie de l&apos;entreprise</Eyebrow>
               <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(26px, 3vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: 20 }}>
-                On travaille bien<br />parce qu&apos;on vit bien.
+                Des équipes épanouies,<br />des projets <span style={{ color: "var(--color-career)" }}>réussis.</span>
               </h2>
               <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.75, marginBottom: 32, maxWidth: "40ch" }}>
                 La qualité de nos projets passe par la qualité de vie de nos équipes. Ce n&apos;est pas un discours RH — c&apos;est notre modèle.

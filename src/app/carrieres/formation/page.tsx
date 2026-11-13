@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from "motion/react"
+import { Lock, LockOpen } from "lucide-react"
 import { useFadeUp } from "@/lib/motion"
 import HeroSection from "@/components/ui/HeroSection"
 import CtaBand from "@/components/ui/CtaBand"
@@ -10,10 +11,10 @@ import Container from "@/components/ui/Container"
 // ─── Data ───────────────────────────────────────────────────────────────────
 
 const WHAT_WE_COVER = [
-  { icon: "🎓", label: "Certifications", desc: "Cloud (AWS, Azure, GCP), Kubernetes, Java, Scrum Master, Product Owner, gestion de projet, analyse métier… Koncept prend en charge l'intégralité du coût." },
+  { icon: "🎓", label: "Certifications", desc: "Cloud, Java, Angular, Scrum, SAFe, management, IA… Celles dont ta mission a besoin sont financées à 100 %. Pour ton évolution, on construit le projet ensemble." },
   { icon: "🎤", label: "Conférences", desc: "Conférences et meetups toulousains (tech, agile, produit), pour rester connecté à la communauté locale. Les frais d'inscription sont pris en charge." },
   { icon: "📚", label: "Livres", desc: "Une wish-list de livres = budget formation. Clean Code, DDD, mais aussi Scrum Guide, Lean Startup, Team Topologies — on commande." },
-  { icon: "🖥", label: "Plateformes en ligne", desc: "Udemy et d'autres outils d'e-learning, ainsi que des licences d'outils d'IA. Accès financé par Koncept pour monter en compétence en ligne." },
+  { icon: "🖥", label: "Plateformes en ligne", desc: "Udemy, outils d'IA et formations dédiées : Koncept finance les ressources pour développer tes compétences. Une autre plateforme t'intéresse ? On en discute !" },
   { icon: "🔬", label: "Veille", desc: "30 min/semaine de veille libre pendant les heures de travail. Ce qu'on découvre est partagé en équipe." },
 ]
 
@@ -59,20 +60,53 @@ const PATHS: { id: string; title: string; emoji: string; color: string; desc: st
   },
 ]
 
-const CERTIFS = [
-  { name: "AWS Solutions Architect", level: "Associate → Professional", color: "#f59e0b" },
-  { name: "Azure Fundamentals → Expert", level: "AZ-900 → AZ-305", color: "#2B50F0" },
-  { name: "Google Cloud Professional", level: "Associate → Professional", color: "#34a853" },
-  { name: "Kubernetes (CKA/CKAD)", level: "Linux Foundation", color: "#06b6d4" },
-  { name: "Oracle Java Certified", level: "OCA → OCP", color: "#f97316" },
-  { name: "GitLab CI/CD", level: "Associate → Professional", color: "#8b5cf6" },
-  { name: "Scrum Master / SAFe", level: "PSM I/II · SAFe Agilist", color: "#D42020" },
-  { name: "ISTQB", level: "Foundation → Advanced", color: "#64748b" },
-  { name: "Product Owner", level: "PSPO I/II · SAFe POPM", color: "#ec4899" },
-  { name: "Gestion de projet", level: "PMP · PRINCE2", color: "#14b8a6" },
-  { name: "Analyse métier", level: "IIBA : ECBA → CBAP", color: "#a855f7" },
-  { name: "ITIL 4", level: "Foundation", color: "#eab308" },
-]
+/** Familles de certifications : une couleur chacune, qui remplace les intertitres (les tuiles sont rangées par famille). */
+const CERT_FAMILIES = {
+  dev: { label: "Développement & Architecture", color: "#ff5a5a" },
+  cloud: { label: "Cloud & DevOps", color: "#7C97FF" },
+  agile: { label: "Agilité, Projet & Qualité", color: "#a78bfa" },
+  soft: { label: "Management & Compétences transversales", color: "#22d3ee" },
+} as const
+
+type CertFamily = keyof typeof CERT_FAMILIES
+type Cert = { name: string; level: string; family: CertFamily }
+
+const FAMILY_ORDER = Object.keys(CERT_FAMILIES) as CertFamily[]
+/** Tri par famille (ordre de CERT_FAMILIES), en gardant l'ordre de saisie à l'intérieur d'une famille. */
+const byFamily = (list: Cert[]) => [...list].sort((a, b) => FAMILY_ORDER.indexOf(a.family) - FAMILY_ORDER.indexOf(b.family))
+
+/** Certifications déjà financées par Koncept pour des collaborateurs (liste validée par Valentine, 2026-11-13). */
+const CERTS_UNLOCKED: Cert[] = byFamily([
+  { name: "Java", level: "Oracle OCP", family: "dev" },
+  { name: "Angular", level: "Angular Training · Junior · Mid-Level", family: "dev" },
+  { name: "TOGAF", level: "Practitioner", family: "dev" },
+  { name: "AWS Cloud Practitioner", level: "Foundational", family: "cloud" },
+  { name: "AWS Solutions Architect", level: "Associate", family: "cloud" },
+  { name: "AWS Developer", level: "Associate", family: "cloud" },
+  { name: "Scrum Master", level: "PSM I · PSM II", family: "agile" },
+  { name: "Product Owner", level: "PSPO I", family: "agile" },
+  { name: "SAFe", level: "Agilist · Practitioner", family: "agile" },
+  { name: "AgilePM", level: "Foundation", family: "agile" },
+  { name: "ISTQB", level: "Foundation", family: "agile" },
+  { name: "Management d'équipe", level: "Manitude", family: "soft" },
+  { name: "IA & efficacité administrative", level: "Classe Digitale", family: "soft" },
+])
+
+/** Exemples de certifications finançables (liste volontairement non exhaustive, validée par Valentine). */
+const CERTS_LOCKED: Cert[] = byFamily([
+  { name: "Angular", level: "Angular Training · Senior", family: "dev" },
+  { name: "AWS", level: "Niveau Professional", family: "cloud" },
+  { name: "Azure", level: "AZ-900 → AZ-305", family: "cloud" },
+  { name: "Google Cloud", level: "Associate → Professional", family: "cloud" },
+  { name: "Kubernetes", level: "CKA · CKAD", family: "cloud" },
+  { name: "Terraform", level: "Associate", family: "cloud" },
+  { name: "GitLab CI/CD", level: "Associate", family: "cloud" },
+  { name: "Product Owner", level: "PSPO II", family: "agile" },
+  { name: "SAFe", level: "Scrum Master · POPM", family: "agile" },
+  { name: "AgilePM", level: "Practitioner", family: "agile" },
+  { name: "ISTQB", level: "Advanced", family: "agile" },
+  { name: "Projet & services IT", level: "PMP · PRINCE2 · ITIL 4", family: "agile" },
+])
 
 // ─── Page ───────────────────────────────────────────────────────────────────
 
@@ -87,7 +121,7 @@ export default function Formation() {
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }} className="hero-grid">
           <div>
             <motion.p
-              style={{ fontSize: 18, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
+              style={{ fontSize: "clamp(14px, 3.8vw, 18px)", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
             >
               Carrières · Formation et évolution
@@ -111,7 +145,7 @@ export default function Formation() {
           >
             {[
               { value: "Dédié", label: "budget formation", sub: "Dès le 1er jour" },
-              { value: "100 %", label: "certifs financées", sub: "Prises en charge par Koncept" },
+              { value: "100 %", label: "certifs mission financées", sub: "Prises en charge par Koncept" },
               { value: "30 min", label: "veille/semaine", sub: "Temps libre dédié" },
               { value: "Confs", label: "et meetups", sub: "Inscriptions prises en charge" },
             ].map(s => (
@@ -152,7 +186,7 @@ export default function Formation() {
         </Container>
       </section>
 
-      {/* ── Certifications ── */}
+      {/* ── Certifications : « Débloqués » (déjà financées) puis « À débloquer » (exemples finançables) ── */}
       <section style={{ padding: "80px 0", background: "var(--color-bg)", borderTop: "1px solid var(--color-border)" }}>
         <Container>
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24 }}>
@@ -162,10 +196,10 @@ export default function Formation() {
               Achievement unlocked.
             </h2>
             <p style={{ color: "var(--color-ink-2)", fontSize: 15, maxWidth: "52ch", lineHeight: 1.7, marginBottom: 48 }}>
-              Sans condition de rester après la certif. On part du principe qu&apos;un Koncepteur certifié qui reste est plus utile qu&apos;un non-certifié qui part.
+              Tu débloques de nouvelles compétences, Koncept finance. L&apos;objectif&nbsp;? Te faire progresser, pas te retenir. On préfère que tu restes par envie, pas par obligation.
             </p>
           </motion.div>
-          {/* Einstein : à droite de l'en-tête, il « sort » de derrière la grille de certifications */}
+          {/* Einstein : à droite de l'en-tête, il « sort » de derrière les certifications */}
           <div className="einstein-figure" aria-hidden="true">
             <picture>
               <source media="(prefers-reduced-motion: reduce)" srcSet="/culture/einstein-static.png" />
@@ -174,18 +208,46 @@ export default function Formation() {
             </picture>
           </div>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }} className="certifs-grid">
-            {CERTIFS.map((c, i) => (
-              <motion.div key={c.name}
-                style={{ padding: "20px 20px", borderRadius: 12, border: `1px solid ${c.color}30`, background: `${c.color}08` }}
-                {...fadeUp(i * 0.06)}
-              >
-                <div style={{ width: 4, height: 28, borderRadius: 2, background: c.color, marginBottom: 14 }} />
-                <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 14, fontWeight: 700, marginBottom: 5 }}>{c.name}</p>
-                <p style={{ fontSize: 11, color: "var(--color-ink-2)", fontWeight: 500 }}>{c.level}</p>
+
+          {[
+            { id: "debloques", title: "Débloqués", sub: "Déjà débloquées par nos Koncepteurs, financées par Koncept.", certs: CERTS_UNLOCKED, locked: false },
+            { id: "a-debloquer", title: "À débloquer", sub: "Pas encore débloquées chez nous. Si ta mission nécessite une certification, on la finance. Pour ton évolution de carrière, on construit le projet ensemble.", certs: CERTS_LOCKED, locked: true },
+          ].map(group => (
+            <div key={group.id} style={{ position: "relative", zIndex: 1, marginBottom: 44 }}>
+              <motion.div {...fadeUp()} style={{ marginBottom: 18 }}>
+                <h3 style={{ display: "flex", alignItems: "center", gap: 12, fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 20, fontWeight: 800, letterSpacing: "-0.02em", marginBottom: 6 }}>
+                  {group.locked ? <Lock size={18} aria-hidden="true" style={{ color: "var(--color-ink-2)" }} /> : <LockOpen size={18} aria-hidden="true" style={{ color: "var(--color-career)" }} />}
+                  {group.title}
+                  <span className="cert-count">{group.certs.length}</span>
+                </h3>
+                <p style={{ color: "var(--color-ink-2)", fontSize: 14, lineHeight: 1.65, maxWidth: "70ch" }}>{group.sub}</p>
               </motion.div>
-            ))}
-          </div>
+              <ul className={`cert-wall${group.locked ? " locked" : ""}`}>
+                {group.certs.map((c, i) => (
+                  <motion.li key={`${c.name}-${c.level}`} className="cert-tile" title={CERT_FAMILIES[c.family].label}
+                    style={{ "--c": CERT_FAMILIES[c.family].color } as React.CSSProperties}
+                    {...fadeUp(i * 0.04)}
+                  >
+                    <span className="cert-bar" aria-hidden="true" />
+                    <span className="cert-text">
+                      <span className="cert-name">{c.name}</span>
+                      <span className="cert-level">{c.level}</span>
+                    </span>
+                    {group.locked && (
+                      <span className="cert-lock" aria-hidden="true">
+                        <Lock size={15} aria-hidden="true" className="closed" />
+                        <LockOpen size={15} aria-hidden="true" className="open" />
+                      </span>
+                    )}
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          <motion.p {...fadeUp()} style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 17, fontWeight: 700, marginTop: -8 }}>
+            Une certif qui n&apos;est pas dans la liste&nbsp;? <span style={{ color: "var(--color-career)" }}>Parles-en, on regarde ensemble.</span>
+          </motion.p>
         </Container>
       </section>
 
@@ -239,18 +301,38 @@ export default function Formation() {
 
       <style>{`
         .cover-card{flex:1 1 calc((100% - 33px) / 3)}
+        /* Mur de badges : la largeur suit le texte et les tuiles s'étirent pour que chaque ligne soit pleine, quel que soit le nombre de certifs */
+        .cert-wall{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px}
+        .cert-tile{flex:1 1 auto;display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:12px;border:1px solid color-mix(in srgb, var(--c) 30%, transparent);background:color-mix(in srgb, var(--c) 6%, transparent);transition:border-color .25s, background .25s}
+        .cert-bar{width:4px;align-self:stretch;min-height:28px;border-radius:2px;background:var(--c);flex-shrink:0;transition:background .25s}
+        .cert-text{display:flex;flex-direction:column;gap:4px;flex:1}
+        .cert-name{font-family:var(--font-display, Outfit, sans-serif);font-size:14px;font-weight:700;color:var(--color-ink);white-space:nowrap}
+        .cert-level{font-size:11px;font-weight:500;color:var(--color-ink-2);white-space:nowrap}
+        .cert-count{font:700 11px/1 ui-monospace, Consolas, monospace;letter-spacing:.06em;color:var(--color-ink-2);border:1px solid var(--color-border-2);border-radius:6px;padding:4px 7px}
+        /* « À débloquer » : grisé et cadenas fermé ; au survol, la tuile reprend sa couleur et le cadenas s'ouvre (accessible, pas interdit) */
+        .cert-wall.locked .cert-tile{border-color:var(--color-border);background:rgba(255,255,255,.02)}
+        .cert-wall.locked .cert-bar{background:var(--color-border-2)}
+        .cert-wall.locked .cert-name{color:var(--color-ink-2)}
+        .cert-lock{position:relative;width:15px;height:15px;flex-shrink:0;color:var(--color-ink-2)}
+        .cert-lock svg{position:absolute;inset:0;transition:opacity .2s, transform .2s}
+        .cert-lock .open{opacity:0;transform:translateY(2px)}
+        .cert-wall.locked .cert-tile:hover{border-color:color-mix(in srgb, var(--c) 45%, transparent);background:color-mix(in srgb, var(--c) 8%, transparent)}
+        .cert-wall.locked .cert-tile:hover .cert-bar{background:var(--c)}
+        .cert-wall.locked .cert-tile:hover .cert-name{color:var(--color-ink)}
+        .cert-wall.locked .cert-tile:hover .cert-lock{color:var(--c)}
+        .cert-wall.locked .cert-tile:hover .closed{opacity:0;transform:translateY(-2px)}
+        .cert-wall.locked .cert-tile:hover .open{opacity:1;transform:none}
+        @media(prefers-reduced-motion:reduce){.cert-tile,.cert-bar,.cert-lock svg{transition:none}}
         @media(max-width:1023px){
           .cover-card{flex-basis:calc((100% - 17px) / 2)}
-          .certifs-grid{grid-template-columns:repeat(3,1fr) !important}
           .paths-grid{grid-template-columns:1fr !important}
         }
         @media(max-width:767px){
           .hero-grid{grid-template-columns:1fr !important;gap:48px !important}
           .cover-card{flex-basis:100%}
-          .certifs-grid{grid-template-columns:repeat(2,1fr) !important}
         }
         @media(max-width:479px){
-          .certifs-grid{grid-template-columns:1fr !important}
+          .cert-name,.cert-level{white-space:normal}
         }
       `}</style>
     </>

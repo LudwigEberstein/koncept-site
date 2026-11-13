@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from "motion/react"
-import { Coffee, Users, Code2, Utensils, Beer, Mountain, TreePine, Flame, Home, CreditCard, HeartPulse, GraduationCap, Compass, Bot, Gamepad2, MapPin } from "lucide-react"
+import { Coffee, Users, Swords, Utensils, Save, LogOut, Mountain, TreePine, Flame, Home, CreditCard, HeartPulse, GraduationCap, Compass, Bot, Gamepad2, MapPin } from "lucide-react"
 import { CollaboratorCard, YouCard } from "@/components/CollaboratorCard"
 import { COLLABORATORS } from "@/lib/content"
 import { useFadeUp } from "@/lib/motion"
@@ -12,42 +12,43 @@ import Container from "@/components/ui/Container"
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 
+/** Journée type en mission (textes validés par Valentine, 2026-11-13). */
 const DAILY_LIFE = [
   {
     icon: Coffee,
     time: "9h00",
-    label: "Café du matin",
-    desc: "La machine à café de la cuisine est sacrée. Règle d'or : ne parle pas à Aurélie avant son premier café.",
+    label: "Spawn chez le client",
+    desc: "Badge, café et coup d'œil aux sujets du jour. Certains sont déjà opérationnels, d'autres attendent encore que le café fasse effet.",
   },
   {
     icon: Users,
     time: "9h30",
-    label: "Stand-up",
-    desc: "15 minutes max. On dit ce qu'on fait, ce qui bloque, et ce dont on a besoin. Pas de PowerPoint, pas de reporting. Si ça dépasse 15 min, quelqu'un sort une alarme.",
+    label: "Briefing de mission",
+    desc: "Daily, point d'équipe ou simple échange informel, selon le projet. Tu n'es pas le PNJ du fond de la salle : tu fais partie de l'équipe.",
   },
   {
-    icon: Code2,
-    time: "10h → 12h",
-    label: "Deep work",
-    desc: "Bloc de concentration protégé. Pas de meetings non-urgents, Slack en silencieux. C'est là que le vrai travail se passe — et tout le monde le sait.",
+    icon: Swords,
+    time: "Matinée",
+    label: "Quête principale",
+    desc: "Développement, analyse, recette, architecture ou pilotage, avec les équipes et les outils du client. Pas toujours de boss final, mais toujours quelques défis à relever.",
   },
   {
     icon: Utensils,
     time: "12h30",
-    label: "Déjeuner",
-    desc: "On file chercher un truc aux food trucks du coin et on partage un repas. Discussions sur tout et sur rien : on refait le monde autour d'un kebab.",
+    label: "Pause ravitaillement",
+    desc: "Food trucks du coin, restaurant d'entreprise ou file d'attente devant le micro-ondes. On parle projets, séries, week-end… ou de tout sauf du boulot. Et le vendredi, c'est pizza pour ceux qui sont à l'agence !",
   },
   {
-    icon: Code2,
+    icon: Save,
     time: "Après-midi",
-    label: "Deep work",
-    desc: "Même principe que le matin : un second bloc de concentration, sans interruption inutile.",
+    label: "Checkpoint",
+    desc: "Une fonctionnalité à terminer, un sujet à débloquer, un livrable à finaliser. On sauvegarde sa progression, et demain, on reprend là où on s'est arrêté.",
   },
   {
-    icon: Beer,
-    time: "18h+",
-    label: "Après le boulot",
-    desc: "Ça dépend des jours. Le jeudi, c'est « jeudi mousse » aux Marins d'Eau Douce, juste à côté des locaux. Le mardi, ça peut être escalade. Aucune pression : chacun fait comme il veut.",
+    icon: LogOut,
+    time: "Fin de journée",
+    label: "Log out",
+    desc: "Le jeudi, c'est « jeudi mousse » aux Marins d'Eau Douce, juste à côté des locaux. Le mardi, escalade. Aucune obligation : le mode multijoueur reste facultatif.",
   },
 ]
 
@@ -98,7 +99,7 @@ export default function Vie() {
       <HeroSection side="career" next="bg" paddingTop={140} paddingBottom={80}>
         <Container>
           <motion.p
-            style={{ fontSize: 18, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
+            style={{ fontSize: "clamp(14px, 3.8vw, 18px)", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
           >
             Carrières · Vie chez Koncept
@@ -125,8 +126,11 @@ export default function Vie() {
             <motion.div {...fadeUp()}>
               <Eyebrow tone="career">Le quotidien</Eyebrow>
               <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
-                Une journée chez Koncept,<br />honnêtement.
+                Une journée en mission,<br />honnêtement.
               </h2>
+              <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.75, maxWidth: "56ch", marginTop: -32, marginBottom: 48 }}>
+                La plupart des Koncepteurs travaillent chez nos clients, intégrés à leurs équipes. Horaires, rituels et projets varient d&apos;une mission à l&apos;autre. Mais concrètement, une journée en mission, ça ressemble à quoi&nbsp;?
+              </p>
             </motion.div>
             {/* Mario : à droite de l'en-tête, dans le flux (ne rallonge pas la section, ne recouvre aucun texte) */}
             <div className="mario-figure" aria-hidden="true">
@@ -144,9 +148,10 @@ export default function Vie() {
                 style={{ display: "flex", gap: 20, padding: "24px 28px", borderRadius: 14, border: "1px solid var(--color-border)", background: "var(--color-bg-2)", alignItems: "flex-start" }}
                 {...fadeUp(i * 0.07)}
               >
-                <div style={{ flexShrink: 0, textAlign: "center" }}>
+                {/* Colonne de largeur fixe : les textes restent alignés quelle que soit la longueur de l'horaire (« Fin de journée » passe sur deux lignes) */}
+                <div style={{ flexShrink: 0, width: 60, textAlign: "center" }}>
                   <item.icon size={24} aria-hidden="true" style={{ display: "block", margin: "0 auto 8px", color: "var(--side2)" }} />
-                  <span style={{ fontSize: 10, fontWeight: 700, color: "var(--color-career)", letterSpacing: "0.04em" }}>{item.time}</span>
+                  <span style={{ display: "block", fontSize: 10, fontWeight: 700, lineHeight: 1.3, color: "var(--color-career)", letterSpacing: "0.04em" }}>{item.time}</span>
                 </div>
                 <div>
                   <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 15, fontWeight: 700, marginBottom: 7 }}>{item.label}</p>
@@ -259,6 +264,7 @@ export default function Vie() {
         }
         @media(max-width:767px){
           .daily-grid{grid-template-columns:1fr !important}
+          .daily-grid > div{padding:20px !important;gap:16px !important}
           .events-grid{grid-template-columns:1fr !important}
           .perks-grid{grid-template-columns:repeat(2,1fr) !important}
           .portraits-grid{grid-template-columns:1fr !important}

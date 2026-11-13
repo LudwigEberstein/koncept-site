@@ -142,6 +142,7 @@ export const GEEK_REFERENCES = [
   "OVNI en pixel art — Space Invaders (pages Carrières)",
   "« --force-with-love » — Star Wars (code du héros)",
   "Mario, Flappy Bird et la plante piranha (/carrieres/vie)",
+  "La journée en mission version jeu vidéo : spawn, PNJ, checkpoint, log out (/carrieres/vie)",
   "« Prise en charge, ta formation sera » — Yoda (/carrieres/formation)",
   "« Achievement unlocked » (/carrieres/formation)",
   "« Choose your destiny ! » — Mortal Kombat (/carrieres/formation)",
