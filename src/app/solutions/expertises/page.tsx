@@ -65,7 +65,7 @@ export default function Expertises() {
                     <Icon size={24} aria-hidden="true" />
                   </span>
                   <span style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 14, fontWeight: 800, color: "var(--side2)", letterSpacing: "0.06em" }}>
-                    {String(i + 1).padStart(2, "0")} / {String(EXPERTISES.length).padStart(2, "0")}
+                    {i + 1} / {EXPERTISES.length}
                   </span>
                 </div>
                 <h2 id={`${exp.slug}-titre`} style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(30px, 3.4vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.08, marginBottom: 16 }}>

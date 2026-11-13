@@ -13,7 +13,7 @@ const WHAT_WE_COVER = [
   { icon: "🎓", label: "Certifications", desc: "Cloud (AWS, Azure, GCP), Kubernetes, Java, Scrum Master, Product Owner, gestion de projet, analyse métier… Koncept prend en charge l'intégralité du coût." },
   { icon: "🎤", label: "Conférences", desc: "Conférences et meetups toulousains (tech, agile, produit), pour rester connecté à la communauté locale. Les frais d'inscription sont pris en charge." },
   { icon: "📚", label: "Livres", desc: "Une wish-list de livres = budget formation. Clean Code, DDD, mais aussi Scrum Guide, Lean Startup, Team Topologies — on commande." },
-  { icon: "🖥", label: "Plateformes en ligne", desc: "Udemy, Pluralsight, et les licences d'outils d'IA. Accès financé par Koncept pour monter en compétence en ligne." },
+  { icon: "🖥", label: "Plateformes en ligne", desc: "Udemy et d'autres outils d'e-learning, ainsi que des licences d'outils d'IA. Accès financé par Koncept pour monter en compétence en ligne." },
   { icon: "🔬", label: "Veille", desc: "30 min/semaine de veille libre pendant les heures de travail. Ce qu'on découvre est partagé en équipe." },
 ]
 
@@ -35,7 +35,7 @@ const PATHS: { id: string; title: string; emoji: string; color: string; desc: st
     id: "lead",
     title: "Lead & Architecture",
     emoji: "◈",
-    color: "var(--color-career)",
+    color: "#ff5a5a", // = --color-career, en hexadécimal : on y concatène une opacité (#rrggbbaa) pour le cadre et le fond
     desc: "Tu veux concevoir des systèmes entiers, couvrir plusieurs projets, être l'interlocuteur technique des DSI. La voie architecte.",
     steps: [
       { year: "0–2 ans", label: "Senior dev — maîtrise d'une ou plusieurs stacks" },

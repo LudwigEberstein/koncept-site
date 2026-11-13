@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from "motion/react"
-import { Coffee, Users, Code2, Utensils, Beer, Mountain, TreePine, Flame, Home, CreditCard, HeartPulse, GraduationCap, Car, Bot, Gamepad2, MapPin } from "lucide-react"
+import { Coffee, Users, Code2, Utensils, Beer, Mountain, TreePine, Flame, Home, CreditCard, HeartPulse, GraduationCap, Compass, Bot, Gamepad2, MapPin } from "lucide-react"
 import { CollaboratorCard, YouCard } from "@/components/CollaboratorCard"
 import { COLLABORATORS } from "@/lib/content"
 import { useFadeUp } from "@/lib/motion"
@@ -57,33 +57,33 @@ const EVENTS = [
     icon: Flame,
     title: "Barbecue d'été",
     desc: "Quand il fait beau, on sort les grills. Un moment détendu pour se retrouver, discuter et profiter, loin des écrans.",
-    details: ["Toute l'équipe", "Grillades et boissons fraîches", "Jeux et discussions"],
+    details: ["Toute l'équipe, les conjoints, les enfants et les chiens", "Grillades et boissons fraîches", "Jeux et discussions"],
   },
   {
     freq: "Décembre",
     icon: TreePine,
     title: "Soirée de Noël",
     desc: "On clôt l'année tous ensemble, autour d'un bon repas. L'occasion de se retrouver, de se raconter l'année et de souffler avant les fêtes.",
-    details: ["Toute l'équipe", "Repas partagé", "Bilan de l'année, sans PowerPoint"],
+    details: ["Toute l'équipe et les conjoints", "Repas partagé", "Bilan de l'année, sans PowerPoint"],
   },
   {
     freq: "Une fois par an",
     icon: Mountain,
     title: "Weekend d'agence",
-    desc: "Le grand rendez-vous de l'année : toute l'agence part ensemble le temps d'un weekend. De la cohésion, de l'aventure et de vrais moments en dehors des projets.",
-    details: ["Toute l'agence réunie", "Activités en équipe", "Soirée et bonne humeur"],
+    desc: "Le grand rendez-vous de l'année : toute l'agence part ensemble le temps d'un weekend. De la cohésion, de l'aventure et de vrais moments en dehors des projets. Ce qui se passe en weekend d'agence reste en weekend d'agence.",
+    details: ["Uniquement l'équipe : ce moment est pour nous", "Activités et tireuse à jus (de houblon)", "Soirée, bonne humeur et grasse mat (ou pas !)"],
   },
 ]
 
 const PERKS = [
   { icon: Home, label: "Télétravail partiel", desc: "2 jours/semaine en télétravail, sans justification. La confiance est la règle par défaut." },
-  { icon: CreditCard, label: "Carte Swile", desc: "Tickets restaurant avec participation employeur généreuse. Le midi ne devrait pas être un sujet de stress." },
-  { icon: HeartPulse, label: "Mutuelle prise en charge", desc: "Une complémentaire santé financée à 100 % par Koncept. Carte de tiers payant immédiate." },
+  { icon: CreditCard, label: "Carte Swile", desc: "Tickets restaurant avec une participation employeur généreuse : 60 %. Le repas, c'est sacré !" },
+  { icon: HeartPulse, label: "Mutuelle prise en charge", desc: "Une complémentaire santé financée à 100 %, enfants inclus (pas ton chat !). Carte de tiers payant immédiate et dématérialisée." },
   { icon: GraduationCap, label: "Budget formation dédié", desc: "Un budget dédié à ta formation, disponible dès le premier jour. Certifs, confs, livres, MOOCs — tu choisis." },
-  { icon: Car, label: "Parking + vélo", desc: "Parking gratuit sur site. Arceaux vélo sécurisés. Indemnité kilométrique vélo disponible." },
+  { icon: Compass, label: "Suivi de carrière en one-to-one", desc: "Ta carrière se construit en direct avec la direction, avec un vrai suivi : on parle de là où tu veux aller, pas seulement de ta prochaine mission." },
   { icon: Bot, label: "Outils premium", desc: "Claude Code, ChatGPT, la suite Microsoft complète et le partage de documents sur SharePoint. Les bons outils ne sont pas une option." },
   { icon: Gamepad2, label: "Gaming", desc: "Jeux vidéo et jeux de société entre collègues : on aime jouer, et ça se voit." },
-  { icon: MapPin, label: "Accès en métro", desc: "Parc Technologique du Canal, accessible par la ligne B du métro (station Ramonville)." },
+  { icon: MapPin, label: "Accès en métro", desc: "Parc Technologique du Canal, accessible par la ligne B du métro (station Ramonville). Et parking gratuit sur place." },
 ]
 
 // ─── Page ───────────────────────────────────────────────────────────────────
@@ -113,7 +113,7 @@ export default function Vie() {
             style={{ color: "var(--color-ink-2)", fontSize: 17, lineHeight: 1.75, maxWidth: "56ch" }}
             initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.1 }}
           >
-            On travaille sur des projets exigeants — et on vit bien entre les deux. Pas parce qu&apos;on y est obligés, mais parce qu&apos;on est des gens qui partagent les mêmes passions.
+            On travaille sur des projets exigeants, et on prend aussi le temps de bien vivre ensemble. Pas parce qu&apos;on y est obligés, mais parce qu&apos;on partage les mêmes passions.
           </motion.p>
         </Container>
       </HeroSection>

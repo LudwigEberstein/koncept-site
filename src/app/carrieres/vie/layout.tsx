@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Ambiance et quotidien dans notre équipe toulousaine',
-  description: "Rituels d'équipe, moments partagés, télétravail et outils : découvrez le quotidien chez Koncept, une ESN à taille humaine.",
+  description: "Rituels d'équipe, moments partagés, télétravail et outils : découvre le quotidien chez Koncept, une ESN à taille humaine.",
   alternates: { canonical: '/carrieres/vie' },
 }
 
