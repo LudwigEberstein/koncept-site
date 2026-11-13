@@ -1,7 +1,7 @@
 'use client'
 
 import Link from "next/link"
-import { ArrowRight, MapPin, Briefcase, Home, Wallet } from "lucide-react"
+import { ArrowRight, MapPin, Briefcase, Home, Wallet, CodeXml, Cloud, ClipboardList, Target, RefreshCw, Compass } from "lucide-react"
 import { motion } from "motion/react"
 import { JOBS } from "@/lib/content"
 import { useFadeUp } from "@/lib/motion"
@@ -11,12 +11,12 @@ import Eyebrow from "@/components/ui/Eyebrow"
 import Container from "@/components/ui/Container"
 
 const SPONTANEOUS_PROFILES = [
-  { tech: "Java / Spring Boot", icon: "☕", desc: "Senior, architecte, lead — on est toujours en veille sur ces profils." },
-  { tech: ".NET / C#", icon: "◆", desc: "Développeur ou architecte .NET pour des projets industriels et bancaires." },
-  { tech: "DevOps / Cloud", icon: "⚡", desc: "Kubernetes, Terraform, CI/CD. Les profils DevOps sérieux sont rares — et recherchés." },
-  { tech: "Frontend React / Angular", icon: "▣", desc: "Senior frontend sur des applications métier complexes, pas des landing pages." },
-  { tech: "Business Analyst / Product Owner", icon: "◈", desc: "Pour faire le lien entre les besoins métier et les équipes techniques." },
-  { tech: "Scrum Master / Chef de projet", icon: "◎", desc: "Pour animer, coordonner et faire avancer les équipes et les projets." },
+  { tech: "Développeur full stack", icon: CodeXml, desc: "Java, .NET, JavaScript : du back au front, on est toujours en veille sur ces profils." },
+  { tech: "DevOps", icon: Cloud, desc: "CI/CD, conteneurs, cloud AWS et Azure. Les profils DevOps sérieux sont rares, et recherchés." },
+  { tech: "Business Analyst", icon: ClipboardList, desc: "Pour analyser les besoins métier et les traduire en solutions concrètes pour les équipes techniques." },
+  { tech: "Product Owner", icon: Target, desc: "Pour porter la vision du produit et prioriser le backlog avec les équipes." },
+  { tech: "Scrum Master", icon: RefreshCw, desc: "Pour faire vivre l'agilité au quotidien et aider les équipes à s'améliorer, sans dogme." },
+  { tech: "Chef de projet", icon: Compass, desc: "Pour piloter les projets et coordonner les équipes, en lien direct avec nos clients." },
 ]
 
 // ─── Page ───────────────────────────────────────────────────────────────────
@@ -31,7 +31,7 @@ export default function Offres() {
       <HeroSection side="career" next="bg" paddingTop={140} paddingBottom={80}>
         <Container>
           <motion.p
-            style={{ fontSize: 18, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
+            style={{ fontSize: "clamp(14px, 3.8vw, 18px)", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
           >
             Carrières · Offres d&apos;emploi
@@ -51,7 +51,7 @@ export default function Offres() {
           <motion.div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.18 }}
           >
-            {["CDI uniquement", "Toulouse", "2j télétravail/semaine", "Un vrai retour humain"].map(p => (
+            {["CDI uniquement", "Toulouse", "2j télétravail/semaine", "Un vrai suivi"].map(p => (
               <span key={p} style={{ fontSize: 12, fontWeight: 500, color: "var(--color-ink-2)", background: "var(--color-bg-2)", border: "1px solid var(--color-border)", padding: "5px 12px", borderRadius: 9999 }}>{p}</span>
             ))}
           </motion.div>
@@ -117,7 +117,7 @@ export default function Offres() {
                 style={{ padding: "24px 22px", borderRadius: 14, border: "1px solid var(--color-career-border)", background: "var(--color-career-bg)" }}
                 {...fadeUp(i * 0.08)}
               >
-                <span style={{ fontSize: 22, display: "block", marginBottom: 12 }}>{p.icon}</span>
+                <p.icon size={22} aria-hidden="true" style={{ display: "block", marginBottom: 12, color: "var(--side2)" }} />
                 <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 14, fontWeight: 700, marginBottom: 6, color: "var(--color-career)" }}>{p.tech}</p>
                 <p style={{ fontSize: 12, color: "var(--color-ink-2)", lineHeight: 1.65 }}>{p.desc}</p>
               </motion.div>
@@ -128,7 +128,7 @@ export default function Offres() {
           >
             <div>
               <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 20, fontWeight: 800, marginBottom: 6 }}>Ton profil n&apos;est pas listé ?</p>
-              <p style={{ color: "var(--color-ink-2)", fontSize: 14 }}>Envoie-nous quand même. On est curieux des profils atypiques.</p>
+              <p style={{ color: "var(--color-ink-2)", fontSize: 14 }}>Écris-nous quand même. On est curieux des profils atypiques.</p>
             </div>
             <Link href="/carrieres/candidature"
               style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--color-career-bg)", color: "var(--color-career)", padding: "14px 24px", borderRadius: 10, fontSize: 14, fontWeight: 700, textDecoration: "none", border: "1px solid var(--color-career-border)", whiteSpace: "nowrap", transition: "background 0.15s" }}

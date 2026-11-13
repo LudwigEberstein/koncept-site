@@ -20,11 +20,11 @@ export default function OfferDetail({ job }: { job: Job }) {
     <>
       <HeroSection side="career" next="bg" paddingTop={140} paddingBottom={64}>
         <Container maxWidth={1100}>
-          <Link href="/carrieres/offres" style={{ display: "inline-flex", alignItems: "center", gap: 6, color: "var(--color-ink-2)", fontSize: 13, fontWeight: 600, textDecoration: "none", marginBottom: 28 }}>
+          <Link href="/carrieres/offres" style={{ display: "inline-flex", alignItems: "center", gap: 6, color: "var(--color-ink-2)", fontSize: 13, fontWeight: 600, textDecoration: "none", padding: "6px 0", marginBottom: 22 }}>
             <ArrowLeft size={14} aria-hidden="true" /> Toutes les offres
           </Link>
           <motion.p
-            style={{ fontSize: 18, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
+            style={{ fontSize: "clamp(14px, 3.8vw, 18px)", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
           >
             Carrières · Offre d&apos;emploi

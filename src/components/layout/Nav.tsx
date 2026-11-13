@@ -202,7 +202,7 @@ export default function Nav() {
           {/* CTA — pushed right */}
           <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 14 }}>
             <Link href={ctaHref} style={{
-              background: isCareerPage ? "var(--color-career-dark)" : "var(--color-accent)",
+              background: isCareerPage ? "var(--color-career-dark)" : "var(--color-pro-dark)", // « Parlons de votre projet » mène aux Solutions : toujours en bleu, y compris sur les pages communes
               color: "#fff", padding: "9px 18px",
               borderRadius: 8, fontSize: 13, fontWeight: 700, textDecoration: "none",
               display: "flex", alignItems: "center", gap: 6,
@@ -275,7 +275,7 @@ export default function Nav() {
             À propos
           </Link>
 
-          <Link href="/solutions/contact" style={{ marginTop: 20, display: "flex", justifyContent: "center", alignItems: "center", gap: 8, background: "var(--color-accent)", color: "#fff", padding: "14px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none" }}>
+          <Link href="/solutions/contact" style={{ marginTop: 20, display: "flex", justifyContent: "center", alignItems: "center", gap: 8, background: "var(--color-pro-dark)", color: "#fff", padding: "14px", borderRadius: 10, fontSize: 15, fontWeight: 700, textDecoration: "none" }}>
             Parlons de votre projet <ArrowRight size={15} aria-hidden="true" />
           </Link>
           <Link href="/carrieres/offres" style={{ marginTop: 10, display: "flex", justifyContent: "center", alignItems: "center", gap: 8, background: "var(--color-career-bg)", color: "var(--color-career)", padding: "12px", borderRadius: 10, fontSize: 14, fontWeight: 700, textDecoration: "none" }}>

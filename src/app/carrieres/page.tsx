@@ -104,10 +104,10 @@ export default function Carrieres() {
         <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "minmax(0, 720px)", gap: 80, alignItems: "center" }} className="hero-grid">
           <div>
             <motion.p
-              style={{ fontSize: 18, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
+              style={{ fontSize: "clamp(14px, 3.8vw, 18px)", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
             >
-              Carrières · Rejoignez Koncept
+              Carrières · Rejoins Koncept
             </motion.p>
             <motion.h1
               style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(38px, 5.5vw, 80px)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 24 }}

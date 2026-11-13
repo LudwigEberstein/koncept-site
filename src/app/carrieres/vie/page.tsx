@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from "motion/react"
-import { Coffee, Users, Code2, Utensils, Beer, Mountain, TreePine, Flame, Home, CreditCard, HeartPulse, GraduationCap, Car, Bot, Gamepad2, MapPin } from "lucide-react"
+import { Coffee, Users, Swords, Utensils, Save, LogOut, Mountain, TreePine, Flame, Home, CreditCard, HeartPulse, GraduationCap, Compass, Bot, Gamepad2, MapPin } from "lucide-react"
 import { CollaboratorCard, YouCard } from "@/components/CollaboratorCard"
 import { COLLABORATORS } from "@/lib/content"
 import { useFadeUp } from "@/lib/motion"
@@ -12,42 +12,43 @@ import Container from "@/components/ui/Container"
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 
+/** Journée type en mission (textes validés par Valentine, 2026-11-13). */
 const DAILY_LIFE = [
   {
     icon: Coffee,
     time: "9h00",
-    label: "Café du matin",
-    desc: "La machine à café de la cuisine est sacrée. Règle d'or : ne parle pas à Aurélie avant son premier café.",
+    label: "Spawn chez le client",
+    desc: "Badge, café et coup d'œil aux sujets du jour. Certains sont déjà opérationnels, d'autres attendent encore que le café fasse effet.",
   },
   {
     icon: Users,
     time: "9h30",
-    label: "Stand-up",
-    desc: "15 minutes max. On dit ce qu'on fait, ce qui bloque, et ce dont on a besoin. Pas de PowerPoint, pas de reporting. Si ça dépasse 15 min, quelqu'un sort une alarme.",
+    label: "Briefing de mission",
+    desc: "Daily, point d'équipe ou simple échange informel, selon le projet. Tu n'es pas le PNJ du fond de la salle : tu fais partie de l'équipe.",
   },
   {
-    icon: Code2,
-    time: "10h → 12h",
-    label: "Deep work",
-    desc: "Bloc de concentration protégé. Pas de meetings non-urgents, Slack en silencieux. C'est là que le vrai travail se passe — et tout le monde le sait.",
+    icon: Swords,
+    time: "Matinée",
+    label: "Quête principale",
+    desc: "Développement, analyse, recette, architecture ou pilotage, avec les équipes et les outils du client. Pas toujours de boss final, mais toujours quelques défis à relever.",
   },
   {
     icon: Utensils,
     time: "12h30",
-    label: "Déjeuner",
-    desc: "On file chercher un truc aux food trucks du coin et on partage un repas. Discussions sur tout et sur rien : on refait le monde autour d'un kebab.",
+    label: "Pause ravitaillement",
+    desc: "Food trucks du coin, restaurant d'entreprise ou file d'attente devant le micro-ondes. On parle projets, séries, week-end… ou de tout sauf du boulot. Et le vendredi, c'est pizza pour ceux qui sont à l'agence !",
   },
   {
-    icon: Code2,
+    icon: Save,
     time: "Après-midi",
-    label: "Deep work",
-    desc: "Même principe que le matin : un second bloc de concentration, sans interruption inutile.",
+    label: "Checkpoint",
+    desc: "Une fonctionnalité à terminer, un sujet à débloquer, un livrable à finaliser. On sauvegarde sa progression, et demain, on reprend là où on s'est arrêté.",
   },
   {
-    icon: Beer,
-    time: "18h+",
-    label: "Après le boulot",
-    desc: "Ça dépend des jours. Le jeudi, c'est « jeudi mousse » aux Marins d'Eau Douce, juste à côté des locaux. Le mardi, ça peut être escalade. Aucune pression : chacun fait comme il veut.",
+    icon: LogOut,
+    time: "Fin de journée",
+    label: "Log out",
+    desc: "Le jeudi, c'est « jeudi mousse » aux Marins d'Eau Douce, juste à côté des locaux. Le mardi, escalade. Aucune obligation : le mode multijoueur reste facultatif.",
   },
 ]
 
@@ -57,33 +58,33 @@ const EVENTS = [
     icon: Flame,
     title: "Barbecue d'été",
     desc: "Quand il fait beau, on sort les grills. Un moment détendu pour se retrouver, discuter et profiter, loin des écrans.",
-    details: ["Toute l'équipe", "Grillades et boissons fraîches", "Jeux et discussions"],
+    details: ["Toute l'équipe, les conjoints, les enfants et les chiens", "Grillades et boissons fraîches", "Jeux et discussions"],
   },
   {
     freq: "Décembre",
     icon: TreePine,
     title: "Soirée de Noël",
     desc: "On clôt l'année tous ensemble, autour d'un bon repas. L'occasion de se retrouver, de se raconter l'année et de souffler avant les fêtes.",
-    details: ["Toute l'équipe", "Repas partagé", "Bilan de l'année, sans PowerPoint"],
+    details: ["Toute l'équipe et les conjoints", "Repas partagé", "Bilan de l'année, sans PowerPoint"],
   },
   {
     freq: "Une fois par an",
     icon: Mountain,
     title: "Weekend d'agence",
-    desc: "Le grand rendez-vous de l'année : toute l'agence part ensemble le temps d'un weekend. De la cohésion, de l'aventure et de vrais moments en dehors des projets.",
-    details: ["Toute l'agence réunie", "Activités en équipe", "Soirée et bonne humeur"],
+    desc: "Le grand rendez-vous de l'année : toute l'agence part ensemble le temps d'un weekend. De la cohésion, de l'aventure et de vrais moments en dehors des projets. Ce qui se passe en weekend d'agence reste en weekend d'agence.",
+    details: ["Uniquement l'équipe : ce moment est pour nous", "Activités et tireuse à jus (de houblon)", "Soirée, bonne humeur et grasse mat (ou pas !)"],
   },
 ]
 
 const PERKS = [
   { icon: Home, label: "Télétravail partiel", desc: "2 jours/semaine en télétravail, sans justification. La confiance est la règle par défaut." },
-  { icon: CreditCard, label: "Carte Swile", desc: "Tickets restaurant avec participation employeur généreuse. Le midi ne devrait pas être un sujet de stress." },
-  { icon: HeartPulse, label: "Mutuelle prise en charge", desc: "Une complémentaire santé financée à 100 % par Koncept. Carte de tiers payant immédiate." },
+  { icon: CreditCard, label: "Carte Swile", desc: "Tickets restaurant avec une participation employeur généreuse : 60 %. Le repas, c'est sacré !" },
+  { icon: HeartPulse, label: "Mutuelle prise en charge", desc: "Une complémentaire santé financée à 100 %, enfants inclus (pas ton chat !). Carte de tiers payant immédiate et dématérialisée." },
   { icon: GraduationCap, label: "Budget formation dédié", desc: "Un budget dédié à ta formation, disponible dès le premier jour. Certifs, confs, livres, MOOCs — tu choisis." },
-  { icon: Car, label: "Parking + vélo", desc: "Parking gratuit sur site. Arceaux vélo sécurisés. Indemnité kilométrique vélo disponible." },
+  { icon: Compass, label: "Suivi de carrière en one-to-one", desc: "Ta carrière se construit en direct avec la direction, avec un vrai suivi : on parle de là où tu veux aller, pas seulement de ta prochaine mission." },
   { icon: Bot, label: "Outils premium", desc: "Claude Code, ChatGPT, la suite Microsoft complète et le partage de documents sur SharePoint. Les bons outils ne sont pas une option." },
   { icon: Gamepad2, label: "Gaming", desc: "Jeux vidéo et jeux de société entre collègues : on aime jouer, et ça se voit." },
-  { icon: MapPin, label: "Accès en métro", desc: "Parc Technologique du Canal, accessible par la ligne B du métro (station Ramonville)." },
+  { icon: MapPin, label: "Accès en métro", desc: "Parc Technologique du Canal, accessible par la ligne B du métro (station Ramonville). Et parking gratuit sur place." },
 ]
 
 // ─── Page ───────────────────────────────────────────────────────────────────
@@ -98,7 +99,7 @@ export default function Vie() {
       <HeroSection side="career" next="bg" paddingTop={140} paddingBottom={80}>
         <Container>
           <motion.p
-            style={{ fontSize: 18, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
+            style={{ fontSize: "clamp(14px, 3.8vw, 18px)", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-career)", marginBottom: 20 }}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
           >
             Carrières · Vie chez Koncept
@@ -113,7 +114,7 @@ export default function Vie() {
             style={{ color: "var(--color-ink-2)", fontSize: 17, lineHeight: 1.75, maxWidth: "56ch" }}
             initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.1 }}
           >
-            On travaille sur des projets exigeants — et on vit bien entre les deux. Pas parce qu&apos;on y est obligés, mais parce qu&apos;on est des gens qui partagent les mêmes passions.
+            On travaille sur des projets exigeants, et on prend aussi le temps de bien vivre ensemble. Pas parce qu&apos;on y est obligés, mais parce qu&apos;on partage les mêmes passions.
           </motion.p>
         </Container>
       </HeroSection>
@@ -125,8 +126,11 @@ export default function Vie() {
             <motion.div {...fadeUp()}>
               <Eyebrow tone="career">Le quotidien</Eyebrow>
               <h2 style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 56 }}>
-                Une journée chez Koncept,<br />honnêtement.
+                Une journée en mission,<br />honnêtement.
               </h2>
+              <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.75, maxWidth: "56ch", marginTop: -32, marginBottom: 48 }}>
+                La plupart des Koncepteurs travaillent chez nos clients, intégrés à leurs équipes. Horaires, rituels et projets varient d&apos;une mission à l&apos;autre. Mais concrètement, une journée en mission, ça ressemble à quoi&nbsp;?
+              </p>
             </motion.div>
             {/* Mario : à droite de l'en-tête, dans le flux (ne rallonge pas la section, ne recouvre aucun texte) */}
             <div className="mario-figure" aria-hidden="true">
@@ -144,9 +148,10 @@ export default function Vie() {
                 style={{ display: "flex", gap: 20, padding: "24px 28px", borderRadius: 14, border: "1px solid var(--color-border)", background: "var(--color-bg-2)", alignItems: "flex-start" }}
                 {...fadeUp(i * 0.07)}
               >
-                <div style={{ flexShrink: 0, textAlign: "center" }}>
+                {/* Colonne de largeur fixe : les textes restent alignés quelle que soit la longueur de l'horaire (« Fin de journée » passe sur deux lignes) */}
+                <div style={{ flexShrink: 0, width: 60, textAlign: "center" }}>
                   <item.icon size={24} aria-hidden="true" style={{ display: "block", margin: "0 auto 8px", color: "var(--side2)" }} />
-                  <span style={{ fontSize: 10, fontWeight: 700, color: "var(--color-career)", letterSpacing: "0.04em" }}>{item.time}</span>
+                  <span style={{ display: "block", fontSize: 10, fontWeight: 700, lineHeight: 1.3, color: "var(--color-career)", letterSpacing: "0.04em" }}>{item.time}</span>
                 </div>
                 <div>
                   <p style={{ fontFamily: "var(--font-display, Outfit, sans-serif)", fontSize: 15, fontWeight: 700, marginBottom: 7 }}>{item.label}</p>
@@ -259,6 +264,7 @@ export default function Vie() {
         }
         @media(max-width:767px){
           .daily-grid{grid-template-columns:1fr !important}
+          .daily-grid > div{padding:20px !important;gap:16px !important}
           .events-grid{grid-template-columns:1fr !important}
           .perks-grid{grid-template-columns:repeat(2,1fr) !important}
           .portraits-grid{grid-template-columns:1fr !important}

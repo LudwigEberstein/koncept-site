@@ -11,6 +11,8 @@ export const SITE = {
   },
   linkedin: "https://www.linkedin.com/company/konceptkomet",
   email: "contact@koncept-is.fr",
+  /** Adresse des candidatures (partie Carrières). */
+  recruitmentEmail: "recrutement@koncept-is.fr",
 } as const
 
 /** Informations légales (mentions légales, politique de confidentialité). */
@@ -53,7 +55,7 @@ export const EXPERTISES = [
     title: "Développement full stack",
     short: "Applications",
     desc: "Architecture, conception, développement, modernisation et maintenance d'applications web, backend et frontend.",
-    enjeu: "Une application à concevoir, à faire évoluer ou à moderniser, et une équipe qui manque de bras ou d'expertise technique.",
+    enjeu: "Une application à concevoir, à faire évoluer ou à moderniser, et une équipe qui manque de bras ou d'expertise technique ?",
     apport: [
       "Des développeurs qui s'intègrent à votre équipe et à vos pratiques",
       "Une réflexion d'architecture avant la première ligne de code",
@@ -68,29 +70,29 @@ export const EXPERTISES = [
     title: "DevOps & Cloud",
     short: "DevOps & Cloud",
     desc: "Intégration et déploiement continus, conteneurisation, automatisation et infrastructure cloud.",
-    enjeu: "Des mises en production longues ou risquées, des environnements difficiles à maintenir, une migration vers le cloud à mener.",
+    enjeu: "Des mises en production longues ou risquées, des environnements difficiles à maintenir, une migration vers le cloud à mener ?",
     apport: [
       "Des chaînes d'intégration et de déploiement continus fiables",
       "Des environnements conteneurisés et reproductibles",
       "L'automatisation des tâches d'infrastructure",
       "Le déploiement et l'exploitation sur AWS et Azure",
     ],
-    profils: ["Ingénieur DevOps", "Ingénieur cloud"],
+    profils: ["Ingénieur DevOps", "Ingénieur cloud", "Ingénieur de production"],
     stack: ["AWS", "Azure", "Azure DevOps", "Git", "GitLab CI/CD", "Jenkins", "Docker", "Ansible", "Linux"],
   },
   {
     slug: "fonctionnel",
     title: "Accompagnement fonctionnel",
     short: "Métier",
-    desc: "Analyse des besoins, cadrage fonctionnel, gestion du backlog et recette, au service des équipes métier.",
-    enjeu: "Des besoins métier à clarifier, des utilisateurs à embarquer, un écart entre ce qui est demandé et ce qui est livré.",
+    desc: "Analyse des besoins, cadrage fonctionnel, gestion du backlog et recette.",
+    enjeu: "Des besoins métier à clarifier, des utilisateurs à embarquer, un écart entre ce qui est demandé et ce qui est livré ?",
     apport: [
       "L'analyse et la formalisation des besoins avec les équipes métier",
       "Le cadrage fonctionnel et la rédaction des spécifications",
       "La priorisation du backlog aux côtés des développeurs",
       "La recette fonctionnelle avant chaque mise en production",
     ],
-    profils: ["Consultant AMOA", "Analyste métier", "Product Owner"],
+    profils: ["Business Analyst", "Product Owner", "Product Manager", "Testeur QA"],
     stack: ["AMOA", "Analyse métier", "Spécifications fonctionnelles", "Gestion du backlog", "Recette fonctionnelle"],
   },
   {
@@ -98,7 +100,7 @@ export const EXPERTISES = [
     title: "Pilotage & accompagnement opérationnel",
     short: "Pilotage",
     desc: "Pilotage de projets, coordination des équipes et animation de l'agilité au quotidien.",
-    enjeu: "Un projet qui dérive, des équipes à coordonner, une organisation agile à mettre en place ou à faire vivre.",
+    enjeu: "Un projet qui dérive, des équipes à coordonner, une organisation agile à mettre en place ou à faire vivre ?",
     apport: [
       "Le pilotage du projet : planning, risques, arbitrages",
       "La coordination entre équipes métier, techniques et partenaires",
@@ -106,7 +108,7 @@ export const EXPERTISES = [
       "Un suivi régulier et transparent de l'avancement",
     ],
     profils: ["Chef de projet", "Scrum Master"],
-    stack: ["Agile / Scrum", "SAFe", "Jira", "Roadmap", "Gouvernance de projet"],
+    stack: ["Agile", "Scrum", "Kanban", "SAFe", "Jira", "Roadmap", "Gouvernance de projet"],
   },
 ] as const
 
@@ -115,16 +117,17 @@ export const SECTORS = [
   { slug: "aeronautique", name: "Aéronautique & Spatial", enjeu: "Des programmes au long cours, des exigences de qualité et de sécurité élevées : nous renforçons les équipes de développement, d'analyse et de pilotage." },
   { slug: "banque", name: "Banque, Assurance & Santé", enjeu: "Des métiers très réglementés, des données sensibles et des utilisateurs exigeants : nous accompagnons l'évolution de leurs outils, du recueil du besoin à la mise en production." },
   { slug: "telecom", name: "Télécommunications", enjeu: "Des systèmes d'information vastes et interconnectés : nous intervenons sur leurs applications, leur intégration continue et la coordination de leurs projets." },
-  { slug: "editeurs", name: "Éditeurs de logiciels & services numériques", enjeu: "Un produit qui doit évoluer vite sans perdre en qualité : nous renforçons leurs équipes produit, techniques comme fonctionnelles." },
+  { slug: "editeurs", name: "Éditeurs de logiciels & Services numériques", enjeu: "Un produit qui doit évoluer vite sans perdre en qualité : nous renforçons leurs équipes produit, techniques comme fonctionnelles." },
   { slug: "transport", name: "Transport & Mobilité", enjeu: "Des opérations suivies en temps réel et de gros volumes de données : nous contribuons à leurs solutions de gestion et de suivi, comme celles de flottes de véhicules." },
-  { slug: "recherche-public", name: "Recherche & secteur public", enjeu: "Des projets au service de chercheurs, d'agents ou d'usagers : nous les accompagnons du cadrage jusqu'à la maintenance des applications." },
+  { slug: "recherche-public", name: "Recherche & Secteur public", enjeu: "Des projets au service de chercheurs, d'agents ou d'usagers : nous les accompagnons du cadrage jusqu'à la maintenance des applications." },
 ] as const
 
+/** Vision et valeurs (/a-propos) : les quatre valeurs Koncept, qui résument aussi notre vision de la relation client. */
 export const VALUES = [
-  { title: "Proximité", desc: "Un interlocuteur unique, disponible, qui connaît votre activité et s'implique comme s'il faisait partie de votre équipe." },
-  { title: "Confiance", desc: "Des engagements tenus, des délais respectés. On ne vous vend pas ce qu'on ne peut pas livrer." },
-  { title: "Échange", desc: "Partage de connaissances, transparence sur les difficultés, communication franche à chaque étape du projet." },
-  { title: "Partage", desc: "Une culture de l'entraide en interne comme avec nos clients. Ce qui est appris ici bénéficie à tout le monde." },
+  { title: "Proximité", desc: "Un interlocuteur direct et disponible, qui connaît votre activité et s'implique comme s'il faisait partie de votre équipe." },
+  { title: "Confiance", desc: "Des consultants bien choisis et suivis, des engagements tenus : on ne vous vend pas ce qu'on ne peut pas livrer." },
+  { title: "Échange", desc: "Une communication simple, franche et transparente à chaque étape, avec nos clients comme avec nos équipes." },
+  { title: "Partage", desc: "Une culture de l'entraide : ce qui est appris ici bénéficie à tout le monde, en interne comme chez nos clients." },
 ] as const
 
 /**
@@ -139,6 +142,7 @@ export const GEEK_REFERENCES = [
   "OVNI en pixel art — Space Invaders (pages Carrières)",
   "« --force-with-love » — Star Wars (code du héros)",
   "Mario, Flappy Bird et la plante piranha (/carrieres/vie)",
+  "La journée en mission version jeu vidéo : spawn, PNJ, checkpoint, log out (/carrieres/vie)",
   "« Prise en charge, ta formation sera » — Yoda (/carrieres/formation)",
   "« Achievement unlocked » (/carrieres/formation)",
   "« Choose your destiny ! » — Mortal Kombat (/carrieres/formation)",
@@ -146,7 +150,7 @@ export const GEEK_REFERENCES = [
   "« Player 2 » — la carte « Toi » des portraits (/carrieres/vie)",
 ] as const
 
-/** Portrait d'un collaborateur (cartes de /carrieres/vie, citations de /carrieres et /a-propos). */
+/** Portrait d'un collaborateur (cartes de /carrieres/vie, citations de /carrieres). */
 export type Collaborator = {
   /** Prénom seul (pas d'initiale du nom). */
   name: string
@@ -166,7 +170,7 @@ export type Collaborator = {
   favProject: string
   lovesKoncept: string
   advice: string
-  /** Citation courte pour les sections Portraits de /carrieres et /a-propos. */
+  /** Citation courte pour la section Portraits de /carrieres. */
   quote: string
 }
 
@@ -239,7 +243,6 @@ export const COLLABORATORS: Collaborator[] = [
 /** Prénoms des portraits mis en avant en citation, par page. */
 export const FEATURED_PORTRAITS = {
   carrieres: ["Alexis", "Mélaine", "Ludwig"],
-  aPropos: ["Frédéric", "Sébastien", "Ludwig"],
 } as const
 
 /** Portraits dans l'ordre demandé. Un prénom absent de COLLABORATORS fait échouer le build (pas de carte qui disparaît en silence). */
@@ -250,12 +253,6 @@ export function getCollaborators(names: readonly string[]): Collaborator[] {
     return c
   })
 }
-
-export const CAREER_EVENTS = [
-  { title: "Weekend d'agence", freq: "Annuel", desc: "Un weekend par an où toute l'agence se retrouve pour de la cohésion, des activités et de vrais moments hors projets." },
-  { title: "Soirée de Noël", freq: "Décembre", desc: "On clôt l'année tous ensemble autour d'un bon repas." },
-  { title: "Barbecue d'été", freq: "L'été", desc: "Quand il fait beau, on sort les grills pour un moment détendu entre collègues." },
-] as const
 
 /** Date de mise en ligne des offres (données structurées Google for Jobs). Pas de date de fin : à retirer avec l'offre une fois pourvue. */
 export const JOBS_DATE_POSTED = "2026-10-01"
@@ -285,7 +282,7 @@ export const JOBS = [
     badge: "Nouveau",
     sector: "Aéronautique / Télécoms",
     intro: "On cherche un dev JS fullstack passionné pour rejoindre une équipe chez l'un de nos clients grands comptes. Pas un dev de plus dans un open space — quelqu'un qui veut s'investir, proposer des architectures, et laisser sa marque sur un vrai produit.",
-    desc: "Vous intégrerez une équipe projet chez l'un de nos clients grands comptes. Vous serez responsable du développement frontend et backend en JavaScript/TypeScript, dans un contexte Agile exigeant.",
+    desc: "Tu intégreras une équipe projet chez l'un de nos clients grands comptes. Tu seras responsable du développement frontend et backend en JavaScript/TypeScript, dans un contexte Agile exigeant.",
     stack: ["JavaScript", "TypeScript", "Node.js", "Angular", "React", "REST API"],
     profile: [
       "Bac+3 à Bac+5 en informatique",
@@ -310,7 +307,7 @@ export const JOBS = [
     badge: "Nouveau",
     sector: "Aéronautique / Télécoms",
     intro: "On cherche un·e Scrum Master confirmé·e pour accompagner des équipes de développement chez l'un de nos clients grands comptes. Quelqu'un qui sait faire vivre l'agilité au quotidien — sans dogme, avec du bon sens et de l'écoute.",
-    desc: "Vous accompagnerez une ou plusieurs équipes de développement chez l'un de nos clients grands comptes : animation des cérémonies Scrum, suppression des blocages, amélioration continue de la livraison.",
+    desc: "Tu accompagneras une ou plusieurs équipes de développement chez l'un de nos clients grands comptes : animation des cérémonies Scrum, suppression des blocages, amélioration continue de la livraison.",
     stack: ["Scrum", "Kanban", "Jira", "Confluence", "Agilité à l'échelle"],
     profile: [
       "Expérience confirmée comme Scrum Master (équipes de développement logiciel)",
