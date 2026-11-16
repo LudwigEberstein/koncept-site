@@ -1,0 +1,38 @@
+name: CI
+
+# À chaque PR vers master (ouverture et nouveaux commits) : lint, types, puis tests end-to-end
+# sur un build de production local (next start), sans dépendre de Vercel ni d'aucun secret.
+# Informatif seulement : aucune règle de protection de branche ne l'exige, la fusion reste possible même en échec.
+# Lancement manuel possible depuis l'onglet Actions de GitHub (« Run workflow »).
+on:
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      # next-env.d.ts importe les types de routes générés dans .next/ : on les génère sans build.
+      - run: npx next typegen
+      - run: npm run typecheck
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
