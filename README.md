@@ -50,7 +50,28 @@ npm run dev        # serveur de développement
 npm run lint       # ESLint
 npm run typecheck  # tsc --noEmit
 npm run build      # build de production
+npm test           # tests unitaires (Vitest)
 ```
+
+## Tests unitaires (Vitest)
+
+Tests rapides (moins d'une seconde), sans navigateur ni serveur : fichiers `*.test.ts(x)` rangés à côté du code testé, configuration dans `vitest.config.mts`.
+
+```bash
+npm test             # lance tous les tests une fois
+npm run test:watch   # relance les tests à chaque modification
+```
+
+Ce qui est vérifié :
+
+- `src/lib/network.test.ts` : le réseau décoratif est identique côté serveur et navigateur, et relie chaque nœud à ses 2 plus proches voisins.
+- `src/lib/jsonld.test.ts` : données structurées Google (Organization, JobPosting) : titre, date, URL, salaire, description complète et échappée.
+- `src/lib/content.test.ts` : cohérence des contenus : identifiants uniques, libellé de salaire identique à la fourchette publiée à Google, date d'offre valide, portraits mis en avant existants, liens de menu et images qui existent.
+- `src/components/gateway/side.test.ts` : la redirection des visiteurs de retour (script du `<head>`), y compris `/?choisir` et un stockage local bloqué.
+- `src/components/seo/JsonLd.test.tsx` : une donnée ne peut pas refermer la balise `<script>`.
+- `src/app/routes.test.ts` : le sitemap liste toutes les pages et seulement elles, `robots.txt`, et les redirections de l'ancien site (permanentes, vers des pages existantes).
+
+Ce qui ne se teste pas ici : le rendu des pages et les parcours visiteur, couverts par les tests end-to-end ci-dessous.
 
 ## Tests end-to-end (Playwright)
 
@@ -82,4 +103,4 @@ Sous PowerShell : `$env:PLAYWRIGHT_BASE_URL = "https://koncept-is.fr"; npm run t
 
 Les tests de formulaires sont ignorés d'office sur `koncept-is.fr`, pour ne pas envoyer de faux messages à l'équipe.
 
-La CI GitHub Actions (`.github/workflows/ci.yml`) lance lint, types et tests end-to-end à chaque PR vers `master`. Elle est informative : rien n'empêche de fusionner une PR dont la CI échoue. Le résultat s'affiche en bas de la PR sur GitHub (onglet Checks) ; en cas d'échec, le rapport Playwright est joint au run.
+La CI GitHub Actions (`.github/workflows/ci.yml`) lance lint, types, tests unitaires et tests end-to-end à chaque PR vers `master`. Elle est informative : rien n'empêche de fusionner une PR dont la CI échoue. Le résultat s'affiche en bas de la PR sur GitHub (onglet Checks) ; en cas d'échec, le rapport Playwright est joint au run.

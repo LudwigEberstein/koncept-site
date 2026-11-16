@@ -1,6 +1,6 @@
 name: CI
 
-# À chaque PR vers master (ouverture et nouveaux commits) : lint, types, puis tests end-to-end
+# À chaque PR vers master (ouverture et nouveaux commits) : lint, types, tests unitaires, puis tests end-to-end
 # sur un build de production local (next start), sans dépendre de Vercel ni d'aucun secret.
 # Informatif seulement : aucune règle de protection de branche ne l'exige, la fusion reste possible même en échec.
 # Lancement manuel possible depuis l'onglet Actions de GitHub (« Run workflow »).
@@ -28,6 +28,7 @@ jobs:
       # next-env.d.ts importe les types de routes générés dans .next/ : on les génère sans build.
       - run: npx next typegen
       - run: npm run typecheck
+      - run: npm test
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
       - uses: actions/upload-artifact@v7
